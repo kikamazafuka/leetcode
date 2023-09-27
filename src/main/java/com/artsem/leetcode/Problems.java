@@ -72,30 +72,27 @@ public class Problems {
 
 
     public static int countPoints(String rings) {
-        boolean red = false;
-        boolean green = false;
-        boolean blue = false;
-        int count = 0;
-        for(int i = 0; i< rings.length(); i+=2){
-            if (red && green && blue){
-                count++;
-            }
+        int [] r = new int [10];
+        int [] g = new int [10];
+        int [] b = new int [10];
+        for (int i = 0; i<rings.length(); i++){
             if (rings.charAt(i)=='R'){
-                red=true;
+                r[rings.charAt(i+1)-'0']++ ;
             }
             if (rings.charAt(i)=='G'){
-                green=true;
+                g[rings.charAt(i+1)-'0']++;
             }
             if (rings.charAt(i)=='B'){
-                blue=true;
+                b[rings.charAt(i+1)-'0']++;
             }
-
         }
-        Map<Character, Character> map = new HashMap<>();
-        for(int i = 0; i<rings.length()-1; i+=2){
-            map.put(rings.charAt(i),rings.charAt(i+1));
+        int result = 0;
+        for(int i = 0; i<10; i++){
+            if (r[i]>0 && g[i]>0 && b[i]>0){
+                result++;
+            }
         }
-        return 1;
+        return result;
     }
     public static int countGoodTriplets(int[] arr, int a, int b, int c) {
         int res = 0;

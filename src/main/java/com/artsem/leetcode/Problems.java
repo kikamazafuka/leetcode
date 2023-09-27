@@ -75,7 +75,7 @@ public class Problems {
         int [] r = new int [10];
         int [] g = new int [10];
         int [] b = new int [10];
-        for (int i = 0; i<rings.length(); i++){
+        for (int i = 0; i<rings.length(); i+=2){
             if (rings.charAt(i)=='R'){
                 r[rings.charAt(i+1)-'0']++ ;
             }

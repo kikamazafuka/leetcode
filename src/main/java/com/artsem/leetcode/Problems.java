@@ -14,7 +14,7 @@ public class Problems {
 
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
-        int [] arr = new int[]{3,0,1,1,9,7};
+        int [] arr = new int[]{3,4,5,6,7,8};
         int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
@@ -37,6 +37,7 @@ public class Problems {
         String st = "ngguoys";
 
 
+        System.out.println(Problems.subsetXORSum(arr));
         System.out.println(Problems.countPoints(rings));
         System.out.println(Problems.countGoodTriplets(arr,7,2,3));
         System.out.println(Problems.maxProductDifference(small));
@@ -70,6 +71,24 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int subsetXORSum(int[] nums) {
+        //int result = 0;
+        int total = 0;
+        List<List<Integer>> subsets = Problems.generateSubsets(nums);
+        subsets.sort(Comparator.comparing(List::size));
+        for (List<Integer> subset : subsets){
+            int result = 0;
+            for (int num : subset){
+                if(subset.size()==1){
+                    total+=num;
+                    continue;
+                }
+                result^=num;
+            }
+            total+=result;
+        }
+        return total;
+    }
 
     public static List<List<Integer>> generateSubsets(int[] arr) {
         List<List<Integer>> subsets = new ArrayList<>();

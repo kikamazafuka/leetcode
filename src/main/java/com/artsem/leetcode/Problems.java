@@ -71,6 +71,26 @@ public class Problems {
     }
 
 
+    public static List<List<Integer>> generateSubsets(int[] arr) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        int n = arr.length;
+
+        // Generate all possible binary numbers from 0 to 2^n - 1
+        for (int i = 0; i < (1 << n); i++) {
+            List<Integer> subset = new ArrayList<>();
+
+            // Check each bit of 'i' to determine inclusion in the subset
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) != 0) {
+                    subset.add(arr[j]);
+                }
+            }
+
+            subsets.add(subset);
+        }
+
+        return subsets;
+    }
     public static int countPoints(String rings) {
         int [] r = new int [10];
         int [] g = new int [10];

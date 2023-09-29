@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Problems {
     public static void main(String[] args) {
         int [] twoSum = new int[]{12,4,6,8,1,4};
-        String str = "codeleet";
+        String str = "a1c1e1";
 
         String rings = "B0R0G0R9R0B0G0";
         String [] str1 = new String[]{"alice and bob love leetcode","i think so too","this is great thanks very much"};//"G()(al)";
@@ -37,6 +37,7 @@ public class Problems {
         String st = "ngguoys";
 
 
+        System.out.println(Problems.replaceDigits(str));
         System.out.println(Problems.subsetXORSum(arr));
         System.out.println(Problems.countPoints(rings));
         System.out.println(Problems.countGoodTriplets(arr,7,2,3));
@@ -71,6 +72,17 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String replaceDigits(String s) {
+        StringBuilder sb = new StringBuilder ();
+        for(int i = 0; i<s.length(); i++){
+            if(i%2!=0){
+                char cur = (char)(s.charAt(i-1)+(s.charAt(i)-'0'));
+                sb.append(cur);
+            }else sb.append(s.charAt(i));
+
+        }
+        return sb.toString();
+    }
     public static int subsetXORSum(int[] nums) {
         //int result = 0;
         int total = 0;

@@ -34,9 +34,10 @@ public class Problems {
         String ruleKey = "type", ruleValue = "phone";
         String[] word1 = new String[]{"gin","zen","gig","msg"};
         String[] word2 = new String[]{"a", "bc"};
-        String st = "ngguoys";
+        String st = "abcd";
 
 
+        System.out.println(Problems.makeSmallestPalindrome(st));
         System.out.println(Problems.maxProduct(arr));
         System.out.println(Problems.replaceDigits(str));
         System.out.println(Problems.subsetXORSum(arr));
@@ -73,6 +74,18 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String makeSmallestPalindrome(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        char [] sArr = s.toCharArray();
+        for (int i=0; i<s.length()/2; i++){
+            if (sArr[i]<sArr[sArr.length-i-1]){
+                sb.setCharAt(sArr.length-i-1,sArr[i]);
+            } else if (sArr[i]>sArr[sArr.length-i-1]){
+                sb.setCharAt(i, sArr[sArr.length-i-1]);
+            }
+        }
+        return sb.toString();
+    }
     public static int maxProduct(int[] nums) {
 //        int max = 0;
 //        int max2 = 0;

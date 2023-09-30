@@ -14,7 +14,7 @@ public class Problems {
 
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
-        int [] arr = new int[]{3,4,5,6,7,8};
+        int [] arr = new int[]{1,5,4,5};
         int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
@@ -37,6 +37,7 @@ public class Problems {
         String st = "ngguoys";
 
 
+        System.out.println(Problems.maxProduct(arr));
         System.out.println(Problems.replaceDigits(str));
         System.out.println(Problems.subsetXORSum(arr));
         System.out.println(Problems.countPoints(rings));
@@ -72,6 +73,23 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int maxProduct(int[] nums) {
+        int max = 0;
+        int max2 = 0;
+        int index = 0;
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]>max){
+                max=nums[i];
+                index = i;
+            }
+        }
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]>max2 && nums[i]<=max && i != index){
+                max2= nums[i];
+            }
+        }
+        return (max-1)*(max2-1);
+    }
     public static String replaceDigits(String s) {
         StringBuilder sb = new StringBuilder ();
         for(int i = 0; i<s.length(); i++){

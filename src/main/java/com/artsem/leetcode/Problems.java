@@ -33,10 +33,11 @@ public class Problems {
         list1.add("you");
         String ruleKey = "type", ruleValue = "phone";
         String[] word1 = new String[]{"gin","zen","gig","msg"};
-        String[] word2 = new String[]{"a", "bc"};
+        String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
         String st = "abcd";
 
 
+        System.out.println(Problems.maximumNumberOfStringPairs(word2));
         System.out.println(Problems.makeSmallestPalindrome(st));
         System.out.println(Problems.maxProduct(arr));
         System.out.println(Problems.replaceDigits(str));
@@ -74,6 +75,19 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int maximumNumberOfStringPairs(String[] words) {
+        int count = 0;
+        for(int i = 0; i<words.length; i++){
+            for(int j = i+1; j<words.length; j++){
+
+                StringBuilder sb = new StringBuilder();
+                if (words[i].equals(sb.append(words[j]).reverse().toString())){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
     public static String makeSmallestPalindrome(String s) {
         StringBuilder sb = new StringBuilder(s);
         char [] sArr = s.toCharArray();

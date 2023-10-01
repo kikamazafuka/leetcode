@@ -77,14 +77,22 @@ public class Problems {
 
     public static int maximumNumberOfStringPairs(String[] words) {
         int count = 0;
-        for(int i = 0; i<words.length; i++){
-            for(int j = i+1; j<words.length; j++){
-
-                StringBuilder sb = new StringBuilder();
-                if (words[i].equals(sb.append(words[j]).reverse().toString())){
-                    count++;
-                }
+//        for(int i = 0; i<words.length; i++){
+//            for(int j = i+1; j<words.length; j++){
+//
+//                StringBuilder sb = new StringBuilder();
+//                if (words[i].equals(sb.append(words[j]).reverse().toString())){
+//                    count++;
+//                }
+//            }
+//        }
+        Set<String> set = new HashSet<>();
+        for (String word : words){
+            String reverse = new StringBuilder(word).reverse().toString();
+            if (set.contains(reverse)){
+                count++;
             }
+            set.add(word);
         }
         return count;
     }

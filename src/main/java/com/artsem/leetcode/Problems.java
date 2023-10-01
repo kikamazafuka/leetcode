@@ -32,11 +32,13 @@ public class Problems {
         list1.add("on");
         list1.add("you");
         String ruleKey = "type", ruleValue = "phone";
-        String[] word1 = new String[]{"gin","zen","gig","msg"};
+        String[] word1 = new String[]{"Mary","John","Emma"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
+        int [] ages = new int[]{180,165,170};
         String st = "abcd";
 
 
+        System.out.println(Problems.sortPeople(word1,ages));
         System.out.println(Problems.maximumNumberOfStringPairs(word2));
         System.out.println(Problems.makeSmallestPalindrome(st));
         System.out.println(Problems.maxProduct(arr));
@@ -75,6 +77,19 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String[] sortPeople(String[] names, int[] heights) {
+        String [] result = new String[names.length];
+        Map<Integer, String> map = new TreeMap<>();
+        for(int i = 0; i<names.length; i++){
+            map.put(heights[i], names[i]);
+        }
+        int i = 0;
+        for (Map.Entry<Integer, String> entry : map.entrySet()){
+            result[names.length-i-1]=entry.getValue();
+            i++;
+        }
+        return result;
+    }
     public static int maximumNumberOfStringPairs(String[] words) {
         int count = 0;
 //        for(int i = 0; i<words.length; i++){

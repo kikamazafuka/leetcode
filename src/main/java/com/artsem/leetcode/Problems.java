@@ -38,6 +38,7 @@ public class Problems {
         String st = "abcd";
 
 
+        System.out.println(Problems.pivotInteger(1));
         System.out.println(Problems.sortPeople(word1,ages));
         System.out.println(Problems.maximumNumberOfStringPairs(word2));
         System.out.println(Problems.makeSmallestPalindrome(st));
@@ -77,6 +78,28 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int pivotInteger(int n) {
+        if (n==1){
+            return 1;
+        }
+        int i = 1;
+        int sum = n;
+        int count = 1;
+        while (count>0){
+            count = Problems.pivotIntegerRecursion(n-i);
+            sum+=(n-i);
+            if (count==sum){
+                return n-i;
+            }
+            i++;
+        }
+        return -1;
+    }
+    public static int pivotIntegerRecursion(int n) {
+        if (n>0){
+            return n + pivotIntegerRecursion(n-1);
+        }else return 0;
+    }
     public static String[] sortPeople(String[] names, int[] heights) {
         String [] result = new String[names.length];
         Map<Integer, String> map = new TreeMap<>();

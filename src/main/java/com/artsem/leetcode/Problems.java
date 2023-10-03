@@ -1,5 +1,9 @@
 package com.artsem.leetcode;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,6 +22,20 @@ public class Problems {
         int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
+        Runtime r = Runtime.getRuntime();
+        System.out.println("Total mem: " + r.totalMemory());
+        System.out.println("Free mem: " + r.freeMemory());
+        ProcessBuilder processBuilder = new ProcessBuilder("notepad.exe", "test");
+        try {
+            processBuilder.start();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("test"));
+            writer.write(str);
+
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
         List<List<String>> list = new ArrayList<>();
@@ -78,6 +96,18 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String reversePrefix(String word, char ch) {
+        StringBuilder sb = new StringBuilder();
+        boolean flag = true;
+        for(char c : word.toCharArray()){
+            sb.append(c);
+            if(c==ch && flag){
+                sb.reverse();
+                flag = false;
+            }
+        }
+        return sb.toString();
+    }
     public static int pivotInteger(int n) {
         if (n==1){
             return 1;

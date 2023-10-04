@@ -22,20 +22,20 @@ public class Problems {
         int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
-        Runtime r = Runtime.getRuntime();
-        System.out.println("Total mem: " + r.totalMemory());
-        System.out.println("Free mem: " + r.freeMemory());
-        ProcessBuilder processBuilder = new ProcessBuilder("notepad.exe", "test");
-        try {
-            processBuilder.start();
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter("test"));
-            writer.write(str);
-
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        Runtime r = Runtime.getRuntime();
+//        System.out.println("Total mem: " + r.totalMemory());
+//        System.out.println("Free mem: " + r.freeMemory());
+//        ProcessBuilder processBuilder = new ProcessBuilder("notepad.exe", "test");
+//        try {
+//            processBuilder.start();
+//
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("test"));
+//            writer.write(str);
+//
+//            writer.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
 
         List<List<String>> list = new ArrayList<>();
@@ -50,12 +50,16 @@ public class Problems {
         list1.add("on");
         list1.add("you");
         String ruleKey = "type", ruleValue = "phone";
-        String[] word1 = new String[]{"Mary","John","Emma"};
+        String[] word1 = new String[]{"a"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
         int [] ages = new int[]{180,165,170};
         String st = "abcd";
 
 
+        LinkedList<Integer> list2 = new LinkedList<>();
+
+
+        System.out.println(Problems.longestCommonPrefix(word1));
         System.out.println(Problems.pivotInteger(1));
         System.out.println(Problems.sortPeople(word1,ages));
         System.out.println(Problems.maximumNumberOfStringPairs(word2));
@@ -96,6 +100,96 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    /**
+     * Your MyHashMap object will be instantiated and called as such:
+     * MyHashMap obj = new MyHashMap();
+     * obj.put(key,value);
+     * int param_2 = obj.get(key);
+     * obj.remove(key);
+     */
+    class MyHashMap {
+
+        LinkedList<Entry> [] list;
+
+        public MyHashMap() {
+            list = new LinkedList[16];
+        }
+
+        public void put(int key, int value) {
+            int index = getIndex(key);
+            if(list[index] == null){
+                list[index] = new LinkedList();
+            }
+            for( Entry entry : list[index]){
+                if(entry.key==key){
+                    entry.value = value;
+                    return;
+                }
+            }
+
+            list[index].add(new Entry(key, value));
+        }
+
+        public int get(int key) {
+            int index = getIndex(key);
+            LinkedList<Entry> linkList = list[index];
+            if(linkList!=null){
+                for(Entry entry : linkList){
+                    if(entry.key==key){
+                        return entry.value;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public void remove(int key) {
+            int index = getIndex(key);
+            LinkedList <Entry> linkList = list[index];
+            if(linkList!=null){
+                for(Entry entry : linkList){
+                    if(entry.key==key){
+                        linkList.remove(entry);
+                    }
+                }
+            }
+        }
+        int getIndex(int key){
+            Integer obKey = key;
+            if(key==0){
+                return 0;
+            }
+            return obKey.hashCode() % 16;
+        }
+
+        private static class Entry{
+            int key;
+            int value;
+
+            Entry(int key, int value){
+                this.key = key;
+                this.value = value;
+            }
+        }
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs.length<2){
+            return strs[0];
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i<strs.length; i++){
+            for(int j = 0; j<strs.length-1; j++){
+                if(strs[j].charAt(i)!=strs[j+1].charAt(i)){
+                    if (sb.isEmpty()){
+                        return "";
+                    } else return sb.toString();
+                }
+            }
+            sb.append(strs[i].charAt(i));
+        }
+        return sb.toString();
+    }
     public static String reversePrefix(String word, char ch) {
         StringBuilder sb = new StringBuilder();
         boolean flag = true;

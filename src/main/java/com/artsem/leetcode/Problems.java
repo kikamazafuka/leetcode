@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problems {
     public static void main(String[] args) {
@@ -52,13 +53,15 @@ public class Problems {
         String ruleKey = "type", ruleValue = "phone";
         String[] word1 = new String[]{"a"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
-        int [] ages = new int[]{180,165,170};
+        int [] ages = new int[]{3,3,4};
         String st = "abcd";
 
 
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.freqAlphabets("1326#"));
+        System.out.println(Problems.majorityElement(ages));
         System.out.println(Problems.longestCommonPrefix(word1));
         System.out.println(Problems.pivotInteger(1));
         System.out.println(Problems.sortPeople(word1,ages));
@@ -98,6 +101,50 @@ public class Problems {
         System.out.println(Problems.sumOfMultiples(9));
         System.out.println(Problems.balancedStringSplit(str));
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
+    }
+
+    public static String freqAlphabets(String s) {
+        Map <String, String> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        char c = 'a';
+        for(int i = 1; i<=26; i++){
+            if(i<10){
+                map.put(i+"", String.valueOf((char)(c+(i-1))));
+            } else map.put(i+"#", String.valueOf((char)(c+(i-1))));
+        }
+        for(int i = s.length()-1; i>=0; i--){
+            if(s.charAt(i)=='#'){
+                String str = ""+(s.charAt(i-2))+(s.charAt(i-1))+
+                        s.charAt(i);
+                sb.append(map.get(str));
+                i-=2;
+            } else sb.append(map.get(""+s.charAt(i)));
+        }
+        return sb.reverse().toString();
+    }
+    public static List<Integer> majorityElement(int[] nums) {
+        List<Integer> list = new ArrayList();
+        if(nums.length==2 && nums[0]==nums[1]){
+            list.add(nums[0]);
+            return list;
+        }
+        if(nums.length<3){
+            return IntStream.of(nums).boxed().collect(Collectors.toList());
+        }
+        double a = nums.length/3;
+        for(int i = 0; i<nums.length; i++){
+            double count = 1.0;
+            for(int j = i+1; j<nums.length; j++){
+                if(nums[i]==nums[j]){
+                    count++;
+                }
+                if(count>a){
+                    list.add(nums[i]);
+                }
+            }
+        }
+        return list;
+
     }
 
     /**

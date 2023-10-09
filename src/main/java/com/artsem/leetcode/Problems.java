@@ -1,5 +1,7 @@
 package com.artsem.leetcode;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -54,12 +56,14 @@ public class Problems {
         String[] word1 = new String[]{"a"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
         int [] ages = new int[]{3,1,2,2,2,1,3};
-        String st = "abcd";
+        String st = "cdf";
+        String st2 = "a";
 
 
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.mergeAlternately(st,st2));
         System.out.println(Problems.countPairs(ages, 2));
         System.out.println(Problems.freqAlphabets("1326#"));
         System.out.println(Problems.majorityElement(ages));
@@ -104,6 +108,21 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String mergeAlternately(String word1, String word2) {
+        StringBuilder sb = new StringBuilder();
+        String greaterWord = word1.length()>word2.length() ? word1 :word2;
+        int length = Math.min(word1.length(), word2.length());
+        int count = 0;
+        for(int i = 0; i<length; i++){
+            sb.append(word1.charAt(i)).append(word2.charAt(i));
+            count++;
+        }
+        if (word1.length()!=word2.length()){
+            sb.append(greaterWord.substring(count));
+        }
+
+        return sb.toString();
+    }
     public static int countPairs(int[] nums, int k) {
 //        int count = 0;
 //        for(int i = 0; i<nums.length; i++){

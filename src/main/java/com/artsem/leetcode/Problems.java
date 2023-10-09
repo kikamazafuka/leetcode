@@ -105,15 +105,32 @@ public class Problems {
     }
 
     public static int countPairs(int[] nums, int k) {
-        int count = 0;
-        for(int i = 0; i<nums.length; i++){
-            for(int j = i+1; j<nums.length; j++){
-                if(nums[i]==nums[j] && (i*j)%k==0){
-                    count++;
+//        int count = 0;
+//        for(int i = 0; i<nums.length; i++){
+//            for(int j = i+1; j<nums.length; j++){
+//                if(nums[i]==nums[j] && (i*j)%k==0){
+//                    count++;
+//                }
+//            }
+//        }
+//        return count;
+
+        Map<Integer, ArrayList<Integer>> map = new HashMap<>();
+        int result = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+
+            map.putIfAbsent(nums[i], new ArrayList<Integer>());
+            ArrayList<Integer> list = map.get(nums[i]);
+
+            for (int num : list) {
+                if (num * i % k == 0) {
+                    result++;
                 }
             }
+            list.add(i);
         }
-        return count;
+        return result;
     }
     public static String freqAlphabets(String s) {
         Map <String, String> map = new HashMap<>();

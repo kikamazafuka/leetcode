@@ -53,13 +53,14 @@ public class Problems {
         String ruleKey = "type", ruleValue = "phone";
         String[] word1 = new String[]{"a"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
-        int [] ages = new int[]{3,3,4};
+        int [] ages = new int[]{3,1,2,2,2,1,3};
         String st = "abcd";
 
 
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.countPairs(ages, 2));
         System.out.println(Problems.freqAlphabets("1326#"));
         System.out.println(Problems.majorityElement(ages));
         System.out.println(Problems.longestCommonPrefix(word1));
@@ -103,6 +104,17 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int countPairs(int[] nums, int k) {
+        int count = 0;
+        for(int i = 0; i<nums.length; i++){
+            for(int j = i+1; j<nums.length; j++){
+                if(nums[i]==nums[j] && (i*j)%k==0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
     public static String freqAlphabets(String s) {
         Map <String, String> map = new HashMap<>();
         StringBuilder sb = new StringBuilder();

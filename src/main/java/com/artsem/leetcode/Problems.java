@@ -132,13 +132,32 @@ public class Problems {
 //                }
 //            }
 //        }
-        for(String str : words){
-            StringBuilder sb = new StringBuilder(str);
-            if(str.equals(sb.reverse().toString())){
+        ///***///
+//        for(String str : words){
+//            StringBuilder sb = new StringBuilder(str);
+//            if(str.equals(sb.reverse().toString())){
+//                return str;
+//            }
+//        }
+        ///***///
+        for (String str : words){
+            if (isPalindrome(str)){
                 return str;
             }
         }
         return "";
+    }
+    private static boolean isPalindrome(String str){
+        int i = 0;
+        int j = str.length()-1;
+        while (i<j){
+            if(str.charAt(i)!=str.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
     }
     public static int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
 //        int result = arrivalTime+delayedTime;

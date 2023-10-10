@@ -109,11 +109,13 @@ public class Problems {
     }
 
     public static int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
-        int result = arrivalTime+delayedTime;
-        if(result>=24){
-            return result-24;
-        }
-        return result;
+//        int result = arrivalTime+delayedTime;
+//        if(result>=24){
+//            return result-24;
+//        }
+//        return result;
+        return arrivalTime+delayedTime>=24 ?
+                arrivalTime+delayedTime-24 : arrivalTime+delayedTime;
     }
     public static String mergeAlternately(String word1, String word2) {
 //        StringBuilder sb = new StringBuilder();

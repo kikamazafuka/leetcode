@@ -72,6 +72,7 @@ public class Problems {
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.commonFactors(885,885));
         System.out.println(Problems.firstPalindrome(word1));
         System.out.println(Problems.mergeAlternately(st,st2));
         System.out.println(Problems.countPairs(ages, 2));
@@ -118,6 +119,37 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int commonFactors(int a, int b) {
+        int max = Math.max(a,b);
+        int count=0;
+        for(int i = 1; i<=max; i++){
+            if(a%i==0 && b%i==0){
+                count++;
+            }
+        }
+        return count;
+    }
+    public int minOperations(int[] nums) {
+
+        Arrays.sort(nums);
+        int min = nums[0];
+        int max = nums[nums.length-1];
+        if (max-min==nums.length-1 && isUnique(nums)){
+            return 0;
+        }
+        return -1;
+    }
+
+    private static boolean isUnique (int[] nums){
+        for(int i = 0; i<nums.length; i++){
+            for(int j = i+1; j<nums.length; j++){
+                if (nums[i]==nums[j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     public static String firstPalindrome(String[] words) {
 //        for(String str : words){
 //            if(str.length()==1){

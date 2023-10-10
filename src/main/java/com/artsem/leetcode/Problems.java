@@ -53,7 +53,16 @@ public class Problems {
         list1.add("on");
         list1.add("you");
         String ruleKey = "type", ruleValue = "phone";
-        String[] word1 = new String[]{"a"};
+        String[] word1 = new String[]{"lbthk","tzieipzwrrgocjalktndbxoaemamaqqwzouahtnuppejbnodcssnxfwedrqsyfyicaaau",
+                "uwzmfqwxgsugfhaqyzxesaqyvwdvxbzpprrmzpwvrzxl","vhcejfcvcwybbobkymlzlcvzkflkahpnvr",
+                "rwgnemugierbbsxkvvotyycppktbxogfzrwkodyldkyfoaclglpjkg",
+                "kaevoxszzozbxsedmkurtkiazgpryfkqqswnlleiviawlidgniqubvrtuxvhjiwyz",
+                "qimvtamreucfsilmvbbtvuupzggcnlqpxxvywytmjiosofpfkovrqaxeftqklmrrtgcahnzfbhnevbgxaofhpyboaaluqwkilpic",
+                "rvrskjpvvqkeijvorpumsiuhhbpuimeoeezhwbkbeyzvzcf","njzejpscyerhspkqnllhlgoijvtuzwxmesdauvs",
+                "mxsaiqcdphtoqapjzddhtytoxbmfzrvqzzbduvopfqkwhjtiuiypfyetnoaxstbjffacbfwakc",
+                "mbgfgyfuyzqhtakttlrbqlajwivfxunvcdklppxygwjzbyxkdfkotclhbpgcypjahtrjljvxomrqqjvkjpujnz",
+                "bxyttlorydrofawwqblxnameywdtmlccvlvcclmtdwyemanxlbqwwafordyrolttyxb","vihvixvdnmmslxeykdfejanvqbdxeqreqgugsyovomkmovoysgugqerqexdbqvnajefdkyexlsmmndvxivhiv","ivplvqpjrcpeyfiylhmyrwjqweivmglcbzkqzmrobmernmekteq","qqqulahmmzhinf","cfnevpqobbtexxbeghbfzneslosjnsgncokcronrzrcoqoldl","ydjcrktgxelsx","knzvrxmnwpkunta","nrbgjdunazgktzkmsuqzwsvwrwogyoksmuvdhrbumvkzgiotuoojldiwnkcoeyiyxbueuhowhlv",
+                "kkcmfkofzefedrdcjwaolpglvbyfjdjzxsbsvaoytjeoyrieyhbpfesyqofrwdmbpdat"};
         String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
         int [] ages = new int[]{3,1,2,2,2,1,3};
         String st = "cdf";
@@ -63,6 +72,7 @@ public class Problems {
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.firstPalindrome(word1));
         System.out.println(Problems.mergeAlternately(st,st2));
         System.out.println(Problems.countPairs(ages, 2));
         System.out.println(Problems.freqAlphabets("1326#"));
@@ -108,6 +118,22 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static String firstPalindrome(String[] words) {
+        for(String str : words){
+            if(str.length()==1){
+                return str;
+            }
+            for(int i = 0; i<str.length()/2; i++){
+                if(str.charAt(i)!=str.charAt(str.length()-1-i)){
+                    break;
+                }
+                if(str.charAt(i)==str.charAt(str.length()-1-i) && i==str.length()/2-1){
+                    return str;
+                }
+            }
+        }
+        return "";
+    }
     public static int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
 //        int result = arrivalTime+delayedTime;
 //        if(result>=24){

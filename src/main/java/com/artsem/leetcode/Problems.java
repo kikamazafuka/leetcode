@@ -108,6 +108,13 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
+        int result = arrivalTime+delayedTime;
+        if(result>=24){
+            return result-24;
+        }
+        return result;
+    }
     public static String mergeAlternately(String word1, String word2) {
 //        StringBuilder sb = new StringBuilder();
 //        String greaterWord = word1.length()>word2.length() ? word1 :word2;

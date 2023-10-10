@@ -63,7 +63,7 @@ public class Problems {
                 "mbgfgyfuyzqhtakttlrbqlajwivfxunvcdklppxygwjzbyxkdfkotclhbpgcypjahtrjljvxomrqqjvkjpujnz",
                 "bxyttlorydrofawwqblxnameywdtmlccvlvcclmtdwyemanxlbqwwafordyrolttyxb","vihvixvdnmmslxeykdfejanvqbdxeqreqgugsyovomkmovoysgugqerqexdbqvnajefdkyexlsmmndvxivhiv","ivplvqpjrcpeyfiylhmyrwjqweivmglcbzkqzmrobmernmekteq","qqqulahmmzhinf","cfnevpqobbtexxbeghbfzneslosjnsgncokcronrzrcoqoldl","ydjcrktgxelsx","knzvrxmnwpkunta","nrbgjdunazgktzkmsuqzwsvwrwogyoksmuvdhrbumvkzgiotuoojldiwnkcoeyiyxbueuhowhlv",
                 "kkcmfkofzefedrdcjwaolpglvbyfjdjzxsbsvaoytjeoyrieyhbpfesyqofrwdmbpdat"};
-        String[] word2 = new String[]{"cd","ac","dc","ca","zz"};
+        String[] word2 = new String[]{"abc","car","ada","racecar","cool"};
         int [] ages = new int[]{3,1,2,2,2,1,3};
         String st = "cdf";
         String st2 = "a";
@@ -119,17 +119,23 @@ public class Problems {
     }
 
     public static String firstPalindrome(String[] words) {
+//        for(String str : words){
+//            if(str.length()==1){
+//                return str;
+//            }
+//            for(int i = 0; i<str.length()/2; i++){
+//                if(str.charAt(i)!=str.charAt(str.length()-1-i)){
+//                    break;
+//                }
+//                if(str.charAt(i)==str.charAt(str.length()-1-i) && i==str.length()/2-1){
+//                    return str;
+//                }
+//            }
+//        }
         for(String str : words){
-            if(str.length()==1){
+            StringBuilder sb = new StringBuilder(str);
+            if(str.equals(sb.reverse().toString())){
                 return str;
-            }
-            for(int i = 0; i<str.length()/2; i++){
-                if(str.charAt(i)!=str.charAt(str.length()-1-i)){
-                    break;
-                }
-                if(str.charAt(i)==str.charAt(str.length()-1-i) && i==str.length()/2-1){
-                    return str;
-                }
             }
         }
         return "";

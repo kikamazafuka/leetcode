@@ -21,7 +21,7 @@ public class Problems {
 
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
-        int [] arr = new int[]{1,5,4,5};
+        int [] arr = new int[]{0,0,0};
         int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
@@ -72,6 +72,7 @@ public class Problems {
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.minOperations2(arr));
         System.out.println(Problems.commonFactors(885,885));
         System.out.println(Problems.firstPalindrome(word1));
         System.out.println(Problems.mergeAlternately(st,st2));
@@ -119,6 +120,19 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int minOperations2(int[] nums) {
+        if(nums.length==1){
+            return 0;
+        }
+        int count = 0;
+        for(int i = 0; i<nums.length-1; i++){
+            if(nums[i]>=nums[i+1]){
+                count+=nums[i]-nums[i+1]+1;
+                nums[i+1]+=nums[i]-nums[i+1]+1;
+            }
+        }
+        return count;
+    }
     public static int commonFactors(int a, int b) {
         int max = Math.max(a,b);
         int count=0;

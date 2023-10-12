@@ -22,7 +22,7 @@ public class Problems {
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
         int [] arr = new int[]{0,0,0};
-        int [][] multArr = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
+        int [][] multArr = new int[][]{{5,8},{3,9},{5,12},{16,5}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
 //        Runtime r = Runtime.getRuntime();
@@ -72,6 +72,7 @@ public class Problems {
         LinkedList<Integer> list2 = new LinkedList<>();
 
 
+        System.out.println(Problems.countGoodRectangles(multArr));
         System.out.println(Problems.minOperations2(arr));
         System.out.println(Problems.commonFactors(885,885));
         System.out.println(Problems.firstPalindrome(word1));
@@ -120,6 +121,22 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+    public static int countGoodRectangles(int[][] rectangles) {
+        int [] arr = new int[rectangles.length];
+        for(int i = 0; i<rectangles.length; i++){
+            for(int j = 0; j<1; j++){
+                arr[i]=Math.min(rectangles[i][j], rectangles[i][j+1]);
+            }
+        }
+        Arrays.sort(arr);
+        int count = 0;
+        for(int i = 0; i<arr.length; i++){
+            if(arr[i]==arr[arr.length-1]){
+                count++;
+            }
+        }
+        return count;
+    }
     public int sumOfSquares(int[] nums) {
         int res = 0;
         for(int i = 0; i<nums.length; i++){

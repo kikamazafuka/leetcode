@@ -22,7 +22,7 @@ public class Problems {
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
         int [] arr = new int[]{0,0,0};
-        int [][] multArr = new int[][]{{5,8},{3,9},{5,12},{16,5}};
+        int [][] multArr = new int[][]{{3,12},{3,9},{8,5}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
 //        Runtime r = Runtime.getRuntime();
@@ -122,17 +122,29 @@ public class Problems {
     }
 
     public static int countGoodRectangles(int[][] rectangles) {
-        int [] arr = new int[rectangles.length];
+//        int [] arr = new int[rectangles.length];
+//        for(int i = 0; i<rectangles.length; i++){
+//            for(int j = 0; j<1; j++){
+//                arr[i]=Math.min(rectangles[i][j], rectangles[i][j+1]);
+//            }
+//        }
+//        Arrays.sort(arr);
+//        int count = 0;
+//        for(int i = 0; i<arr.length; i++){
+//            if(arr[i]==arr[arr.length-1]){
+//                count++;
+//            }
+//        }
+        int sqLen = 0;
+        int count = 1;
         for(int i = 0; i<rectangles.length; i++){
-            for(int j = 0; j<1; j++){
-                arr[i]=Math.min(rectangles[i][j], rectangles[i][j+1]);
-            }
-        }
-        Arrays.sort(arr);
-        int count = 0;
-        for(int i = 0; i<arr.length; i++){
-            if(arr[i]==arr[arr.length-1]){
+            int curr = Math.min(rectangles[i][0], rectangles[i][1]);
+            if(sqLen==curr){
                 count++;
+            }
+            if(sqLen<curr){
+                sqLen = curr;
+                count = 1;
             }
         }
         return count;

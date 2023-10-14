@@ -118,41 +118,48 @@ public class Problems {
 //        resultList.add(collect2);
 //        return resultList;
         List<List<Integer>> resultList = new ArrayList<>();
-        List <Integer>  nums1List = new ArrayList<>();
-        List <Integer>  nums2List = new ArrayList<>();
-        for (int i = 0; i<nums1.length; i++){
-            for (int j = 0; j<nums2.length; j++){
-                if (nums1[i]==nums2[j]){
-                   break;
-                }
-                if (j==nums2.length-1 && nums2[j]!=nums1[i]){
-                    nums1List.add(nums1[i]);
-                }
-            }
-        }
-
-        for (int i = 0; i<nums2.length; i++){
-            for (int j = 0; j<nums1.length; j++){
-                if (nums2[i]==nums1[j]){
-                    break;
-                }
-                if (j==nums1.length-1 && nums1[j]!=nums2[i]){
-                    nums2List.add(nums2[i]);
-                }
-            }
-        }
+        List <Integer>  nums1List = Problems.collectToListWhichAreNotPresent(nums1,nums2);
+        List <Integer>  nums2List = Problems.collectToListWhichAreNotPresent(nums2, nums1);
+//        for (int i = 0; i<nums1.length; i++){
+//            for (int j = 0; j<nums2.length; j++){
+//                if (nums1[i]==nums2[j]){
+//                   break;
+//                }
+//                if (j==nums2.length-1 && nums2[j]!=nums1[i]){
+//                    nums1List.add(nums1[i]);
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i<nums2.length; i++){
+//            for (int j = 0; j<nums1.length; j++){
+//                if (nums2[i]==nums1[j]){
+//                    break;
+//                }
+//                if (j==nums1.length-1 && nums1[j]!=nums2[i]){
+//                    nums2List.add(nums2[i]);
+//                }
+//            }
+//        }
         List<Integer> collect1 = nums1List.stream().distinct().toList();
         List<Integer> collect2 = nums2List.stream().distinct().toList();
         resultList.add(collect1);
         resultList.add(collect2);
         return resultList;
-//        for (int num1 : nums1){
-//            for (int num2 : nums2){
-//                if (num1==num2){
-//                    break;
-//                }
-//            }
-//        }
+    }
+    public  static List<Integer> collectToListWhichAreNotPresent(int nums1[], int nums2[]){
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i<nums1.length; i++){
+            for (int j = 0; j<nums2.length; j++){
+                if (nums1[i]==nums2[j]){
+                    break;
+                }
+                if (j==nums2.length-1 && nums2[j]!=nums1[i]){
+                    resultList.add(nums1[i]);
+                }
+            }
+        }
+        return resultList;
     }
     public static int countGoodRectangles(int[][] rectangles) {
 //        int [] arr = new int[rectangles.length];

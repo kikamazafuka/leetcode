@@ -21,24 +21,9 @@ public class Problems {
 
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
-        int [] arr = new int[]{0,0,0};
+        int [] arr = new int[]{0,6,0};
         int [][] multArr = new int[][]{{3,12},{3,9},{8,5}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
-
-//        Runtime r = Runtime.getRuntime();
-//        System.out.println("Total mem: " + r.totalMemory());
-//        System.out.println("Free mem: " + r.freeMemory());
-//        ProcessBuilder processBuilder = new ProcessBuilder("notepad.exe", "test");
-//        try {
-//            processBuilder.start();
-//
-//            BufferedWriter writer = new BufferedWriter(new FileWriter("test"));
-//            writer.write(str);
-//
-//            writer.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
 
 
         List<List<String>> list = new ArrayList<>();
@@ -69,9 +54,7 @@ public class Problems {
         String st2 = "a";
 
 
-        LinkedList<Integer> list2 = new LinkedList<>();
-
-
+        System.out.println(Problems.findDifference(small, arr));
         System.out.println(Problems.countGoodRectangles(multArr));
         System.out.println(Problems.minOperations2(arr));
         System.out.println(Problems.commonFactors(885,885));
@@ -121,6 +104,20 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
     }
 
+
+    public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        List <Integer>  nums1List = new ArrayList<>(Arrays.stream(nums1).boxed().toList());
+        List <Integer>  nums1List2 = new ArrayList<>(Arrays.stream(nums1).boxed().toList());
+        List <Integer>  nums2List = new ArrayList<>(Arrays.stream(nums2).boxed().toList());
+        nums1List.removeAll(nums2List);
+        nums2List.removeAll(nums1List2);
+        List<Integer> collect1 = nums1List.stream().distinct().toList();
+        List<Integer> collect2 = nums2List.stream().distinct().toList();
+        resultList.add(collect1);
+        resultList.add(collect2);
+        return resultList;
+    }
     public static int countGoodRectangles(int[][] rectangles) {
 //        int [] arr = new int[rectangles.length];
 //        for(int i = 0; i<rectangles.length; i++){

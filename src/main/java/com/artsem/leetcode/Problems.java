@@ -117,35 +117,22 @@ public class Problems {
 //        resultList.add(collect1);
 //        resultList.add(collect2);
 //        return resultList;
-        List<List<Integer>> resultList = new ArrayList<>();
-        List <Integer>  nums1List = Problems.collectToListWhichAreNotPresent(nums1,nums2);
-        List <Integer>  nums2List = Problems.collectToListWhichAreNotPresent(nums2, nums1);
-//        for (int i = 0; i<nums1.length; i++){
-//            for (int j = 0; j<nums2.length; j++){
-//                if (nums1[i]==nums2[j]){
-//                   break;
-//                }
-//                if (j==nums2.length-1 && nums2[j]!=nums1[i]){
-//                    nums1List.add(nums1[i]);
-//                }
-//            }
-//        }
+
+//        List<List<Integer>> resultList = new ArrayList<>();
+//        List <Integer>  nums1List = Problems.collectToListWhichAreNotPresent(nums1,nums2);
+//        List <Integer>  nums2List = Problems.collectToListWhichAreNotPresent(nums2, nums1);
 //
-//        for (int i = 0; i<nums2.length; i++){
-//            for (int j = 0; j<nums1.length; j++){
-//                if (nums2[i]==nums1[j]){
-//                    break;
-//                }
-//                if (j==nums1.length-1 && nums1[j]!=nums2[i]){
-//                    nums2List.add(nums2[i]);
-//                }
-//            }
-//        }
-        List<Integer> collect1 = nums1List.stream().distinct().toList();
-        List<Integer> collect2 = nums2List.stream().distinct().toList();
-        resultList.add(collect1);
-        resultList.add(collect2);
-        return resultList;
+//        List<Integer> collect1 = nums1List.stream().distinct().toList();
+//        List<Integer> collect2 = nums2List.stream().distinct().toList();
+//        resultList.add(collect1);
+//        resultList.add(collect2);
+//        return resultList;
+
+        Set<Integer> set1 = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
+        Set<Integer> set2 = Arrays.stream(nums2).filter(n ->!set1.contains(n)).boxed().collect(Collectors.toSet());
+        Arrays.stream(nums2).forEach(set1::remove);
+        return Arrays.asList(new ArrayList<>(set1), new ArrayList<>(set2));
+
     }
     public  static List<Integer> collectToListWhichAreNotPresent(int nums1[], int nums2[]){
         List<Integer> resultList = new ArrayList<>();

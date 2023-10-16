@@ -53,15 +53,23 @@ public class Problems {
         String st = "cdf";
         String st2 = "a";
 
-        TreeNode root = new TreeNode(10);
-        root.left = new TreeNode(5);
-        root.right = new TreeNode(15);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(7);
-        root.right.right = new TreeNode(18);
+        TreeNode root = new TreeNode(7);
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+       // root.left.right = new TreeNode(7);
+        root.right.right = new TreeNode(19);
+
+        TreeNode cloned = new TreeNode(7);
+        cloned.left = new TreeNode(4);
+        cloned.right = new TreeNode(3);
+        cloned.right.left = new TreeNode(6);
+        cloned.right.right = new TreeNode(19);
+
+
+
+        Problems.getTargetCopy(root, cloned, root.right);
         System.out.println(Problems.rangeSumBST(root,7,15));
-
-
         System.out.println(Problems.findDifference(small, arr));
         System.out.println(Problems.countGoodRectangles(multArr));
         System.out.println(Problems.minOperations2(arr));
@@ -125,25 +133,47 @@ public class Problems {
           this.right = right;
       }
   }
+
+    public final static TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        return traverse(cloned, target);
+    }
+
+    private static TreeNode traverse (TreeNode node, TreeNode target) {
+        if(node == null){
+            return null;
+        }
+        if (node.val == target.val) {
+            return node;
+        }
+        TreeNode leftNode = traverse(node.left, target);
+        TreeNode rightNode = traverse(node.right, target);
+        if(leftNode!=null){
+            return leftNode;
+        }
+        if(rightNode!=null){
+            return rightNode;
+        }
+        return null;
+    }
     public static int rangeSumBST(TreeNode root, int low, int high) {
         int sum = 0;
         List<Integer> result = new ArrayList<>();
-        traverse(root,result, low, high);
+        traverse1(root,result, low, high);
         for(int num : result){
             sum+=num;
         }
         return sum;
 
     }
-    private static void traverse (TreeNode node, List<Integer> list, int low, int high){
+    private static void traverse1 (TreeNode node, List<Integer> list, int low, int high){
         if(node == null){
             return;
         }
         if(low<=node.val && node.val<=high){
             list.add(node.val);
         }
-        traverse(node.left, list, low, high);
-        traverse(node.right, list, low, high);
+        traverse1(node.left, list, low, high);
+        traverse1(node.right, list, low, high);
     }
     public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
 //        List<List<Integer>> resultList = new ArrayList<>();

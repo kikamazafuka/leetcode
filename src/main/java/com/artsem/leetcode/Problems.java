@@ -53,6 +53,14 @@ public class Problems {
         String st = "cdf";
         String st2 = "a";
 
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(15);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(7);
+        root.right.right = new TreeNode(18);
+        System.out.println(Problems.rangeSumBST(root,7,15));
+
 
         System.out.println(Problems.findDifference(small, arr));
         System.out.println(Problems.countGoodRectangles(multArr));
@@ -105,6 +113,38 @@ public class Problems {
     }
 
 
+     private static class TreeNode {
+     int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+  }
+    public static int rangeSumBST(TreeNode root, int low, int high) {
+        int sum = 0;
+        List<Integer> result = new ArrayList<>();
+        traverse(root,result, low, high);
+        for(int num : result){
+            sum+=num;
+        }
+        return sum;
+
+    }
+    private static void traverse (TreeNode node, List<Integer> list, int low, int high){
+        if(node == null){
+            return;
+        }
+        if(low<=node.val && node.val<=high){
+            list.add(node.val);
+        }
+        traverse(node.left, list, low, high);
+        traverse(node.right, list, low, high);
+    }
     public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
 //        List<List<Integer>> resultList = new ArrayList<>();
 //        List <Integer>  nums1List = new ArrayList<>(Arrays.stream(nums1).boxed().toList());

@@ -121,6 +121,9 @@ public class Problems {
     }
 
 
+    public static boolean isSameAfterReversals(int num) {
+        return num % 10 != 0 || num == 0;
+    }
      private static class TreeNode {
      int val;
       TreeNode left;
@@ -150,10 +153,7 @@ public class Problems {
         if(leftNode!=null){
             return leftNode;
         }
-        if(rightNode!=null){
-            return rightNode;
-        }
-        return null;
+        return rightNode;
     }
     public static int rangeSumBST(TreeNode root, int low, int high) {
         int sum = 0;
@@ -204,7 +204,7 @@ public class Problems {
         return Arrays.asList(new ArrayList<>(set1), new ArrayList<>(set2));
 
     }
-    public  static List<Integer> collectToListWhichAreNotPresent(int nums1[], int nums2[]){
+    public  static List<Integer> collectToListWhichAreNotPresent(int[] nums1, int[] nums2){
         List<Integer> resultList = new ArrayList<>();
         for (int i = 0; i<nums1.length; i++){
             for (int j = 0; j<nums2.length; j++){
@@ -1076,7 +1076,7 @@ public class Problems {
         for (int i = 0; i<sArr.length; i++) {
             for (String str : sArr) {
                 if (str.charAt(str.length() - 1) == c) {
-                    sb.append(str.substring(0,str.length()-1));
+                    sb.append(str, 0, str.length()-1);
                     sb.append(" ");
                 }
             }
@@ -1541,7 +1541,7 @@ public class Problems {
     }
 
     public static String restoreStringRef(String s, int[] indices) {
-        char c[]= new char[s.length()];
+        char[] c = new char[s.length()];
         for(int i = 0; i<s.length(); i++){
             c[indices[i]]=s.charAt(i);
         }

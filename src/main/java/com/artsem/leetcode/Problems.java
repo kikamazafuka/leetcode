@@ -67,6 +67,7 @@ public class Problems {
         cloned.right.right = new TreeNode(19);
 
 
+        System.out.println(Problems.removeTrailingZeros("50"));
         System.out.println(Problems.isSameAfterReversals(526));
         Problems.getTargetCopy(root, cloned, root.right);
         System.out.println(Problems.rangeSumBST(root,7,15));
@@ -121,6 +122,17 @@ public class Problems {
     }
 
 
+    public static String removeTrailingZeros(String num) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = num.length()-1; i>=0; i--){
+            if(num.charAt(i)!='0'){
+
+                sb.append(num.subSequence(0,i+1));
+                return sb.toString();
+            }
+        }
+        return "";
+    }
     public static boolean isSameAfterReversals(int num) {
         //return num % 10 != 0 || num == 0;
         if(num == 0){

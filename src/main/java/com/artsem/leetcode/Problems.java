@@ -119,9 +119,27 @@ public class Problems {
         System.out.println(Problems.sumOfMultiples(9));
         System.out.println(Problems.balancedStringSplit(str));
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
+
     }
 
 
+    public static int minimumSum(int num) {
+        // sort(num);
+        int [] arr = new int[4];
+        for(int i = 0 ; i<arr.length; i++){
+            arr[i]=num%10;
+            num/=10;
+        }
+        Arrays.sort(arr);
+        return (arr[0]*10+arr[3])+(arr[1]*10+arr[2]);
+       /* int i1 = num/1000*10+(num%10);
+        num /=10;
+        String str = Integer.parseString(num);
+        str = str.subString(1);
+        int num2 = Integer.parseInt(str);
+        int i2 = num2/1000*10+(num2%10);
+        return i1+i2;*/
+    }
     public static String removeTrailingZeros(String num) {
         StringBuilder sb = new StringBuilder();
         for(int i = num.length()-1; i>=0; i--){

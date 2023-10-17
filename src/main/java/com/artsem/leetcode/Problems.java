@@ -67,7 +67,7 @@ public class Problems {
         cloned.right.right = new TreeNode(19);
 
 
-
+        System.out.println(Problems.isSameAfterReversals(526));
         Problems.getTargetCopy(root, cloned, root.right);
         System.out.println(Problems.rangeSumBST(root,7,15));
         System.out.println(Problems.findDifference(small, arr));
@@ -122,7 +122,25 @@ public class Problems {
 
 
     public static boolean isSameAfterReversals(int num) {
-        return num % 10 != 0 || num == 0;
+        //return num % 10 != 0 || num == 0;
+        if(num == 0){
+            return true;
+        }
+        if(num%10==0){
+            return false;
+        }
+        int numC = num;
+        int reversedNum = 0;
+        while(numC>0){
+            reversedNum=reversedNum*10+numC%10;
+            numC/=10;
+        }
+        int reversedResult=0;
+        while(reversedNum>0){
+            reversedResult=reversedResult*10+reversedNum%10;
+            reversedNum/=10;
+        }
+        return reversedResult==num;
     }
      private static class TreeNode {
      int val;

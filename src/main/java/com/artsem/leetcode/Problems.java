@@ -131,21 +131,40 @@ public class Problems {
 //            num/=10;
 //        }
 //        Arrays.sort(arr);
+
+
         int [] arr = new int[4];
         for(int i = 0 ; i<arr.length; i++){
             arr[i]=num%10;
             num/=10;
         }
-        for(int i = 0; i<arr.length; i++){
-            int minInd = i;
-            for(int j = i+1; j<arr.length; j++){
-                if(arr[j]<arr[minInd]){
-                    minInd = j;
+        /** Selection sort **/
+//        for(int i = 0; i<arr.length; i++){
+//            int minInd = i;
+//            for(int j = i+1; j<arr.length; j++){
+//                if(arr[j]<arr[minInd]){
+//                    minInd = j;
+//                }
+//            }
+//            int temp = arr[minInd];
+//            arr[minInd] = arr[i];
+//            arr[i] = temp;
+//        }
+
+        /** Bubble sort **/
+        for(int i = 0; i<arr.length-1; i++){
+            boolean swapped = false;
+            for(int j = 0; j<arr.length-i-1; j++){
+                if(arr[j]>arr[j+1]){
+                    int temp = arr[j+1];
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                    swapped=true;
                 }
             }
-            int temp = arr[minInd];
-            arr[minInd] = arr[i];
-            arr[i] = temp;
+            if(!swapped){
+                break;
+            }
         }
         return (arr[0]*10+arr[3])+(arr[1]*10+arr[2]);
     }

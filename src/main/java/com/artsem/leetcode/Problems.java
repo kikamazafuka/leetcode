@@ -22,7 +22,7 @@ public class Problems {
         int num = 234;
         int [] small = new int[]{5,6,2,7,4};
         int [] arr = new int[]{0,6,0};
-        int [][] multArr = new int[][]{{3,12},{3,9},{8,5}};
+        int [][] multArr = new int[][]{{9,81},{33,17}};
         int [][] multArrSum = new int[][]{{1},{0},{1}};
 
 
@@ -67,6 +67,7 @@ public class Problems {
         cloned.right.right = new TreeNode(19);
 
 
+        System.out.println(Problems.deleteGreatestValue(multArr));
         System.out.println(Problems.removeTrailingZeros("50"));
         System.out.println(Problems.isSameAfterReversals(526));
         Problems.getTargetCopy(root, cloned, root.right);
@@ -123,6 +124,26 @@ public class Problems {
     }
 
 
+    public static int deleteGreatestValue(int[][] grid) {
+        if(grid[0].length==1){
+            return grid[0][0];
+        }
+        int n = grid[0].length;
+        int result = 0;
+        while(n>=1){
+            int max = 0;
+            for(int [] row : grid){
+                Arrays.sort(row);
+                if(max<row[n-1]){
+                    max=row[n-1];
+                }
+
+            }
+            result+=max;
+            n--;
+        }
+        return result;
+    }
     public static int minimumSum(int num) {
 //        // sort(num);
 //        int [] arr = new int[4];

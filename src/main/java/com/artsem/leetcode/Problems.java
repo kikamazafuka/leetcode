@@ -133,7 +133,8 @@ public class Problems {
         while(n>=1){
             int max = 0;
             for(int [] row : grid){
-                Arrays.sort(row);
+                //Arrays.sort(row);
+                selectionSort(row);
                 if(max<row[n-1]){
                     max=row[n-1];
                 }
@@ -188,6 +189,21 @@ public class Problems {
             }
         }
         return (arr[0]*10+arr[3])+(arr[1]*10+arr[2]);
+    }
+
+    private static int [] selectionSort(int []arr){
+        for( int i= 0; i<arr.length; i++){
+            int minInd = i;
+            for(int j = i+1; j<arr.length; j++){
+                if(arr[j]<arr[minInd]){
+                    minInd = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minInd];
+            arr[minInd] = temp;
+        }
+        return arr;
     }
     public static String removeTrailingZeros(String num) {
         StringBuilder sb = new StringBuilder();

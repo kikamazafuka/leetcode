@@ -124,6 +124,14 @@ public class Problems {
     }
 
 
+    public static int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int sum = 0;
+        for(int i = 0; i<nums.length; i+=2){
+            sum+=nums[i];
+        }
+        return sum;
+    }
     public static int deleteGreatestValue(int[][] grid) {
         if(grid[0].length==1){
             return grid[0][0];
@@ -191,7 +199,7 @@ public class Problems {
         return (arr[0]*10+arr[3])+(arr[1]*10+arr[2]);
     }
 
-    private static int [] selectionSort(int []arr){
+    private static void selectionSort(int []arr){
         for( int i= 0; i<arr.length; i++){
             int minInd = i;
             for(int j = i+1; j<arr.length; j++){
@@ -203,7 +211,6 @@ public class Problems {
             arr[i] = arr[minInd];
             arr[minInd] = temp;
         }
-        return arr;
     }
     public static String removeTrailingZeros(String num) {
         StringBuilder sb = new StringBuilder();

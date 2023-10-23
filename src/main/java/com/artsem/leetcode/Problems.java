@@ -66,7 +66,11 @@ public class Problems {
         cloned.right.left = new TreeNode(6);
         cloned.right.right = new TreeNode(19);
 
+        Calendar calendar = Calendar.getInstance();
+        String [] month = {"Sep", "Oct","", " ", " ", " ", " ", "", "", "ad"};
 
+
+        System.out.println(month[calendar.get(Calendar.MONTH)]);
         System.out.println(Problems.deleteGreatestValue(multArr));
         System.out.println(Problems.removeTrailingZeros("50"));
         System.out.println(Problems.isSameAfterReversals(526));
@@ -121,8 +125,23 @@ public class Problems {
         System.out.println(Problems.balancedStringSplit(str));
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
+
     }
 
+    public int heightChecker(int[] heights) {
+        int length = heights.length;
+        int [] expected = new int [length];
+        int count = 0;
+
+        int [] sortedHeights = Arrays.copyOf(heights,length);
+        Arrays.sort(sortedHeights);
+        for(int i = 0; i<length; i++){
+            if(sortedHeights[i]!=heights[i]){
+                count++;
+            }
+        }
+        return count;
+    }
 
     public int[] sortArrayByParity(int[] nums) {
         if(nums.length<=1){

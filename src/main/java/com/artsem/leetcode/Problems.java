@@ -49,7 +49,7 @@ public class Problems {
                 "bxyttlorydrofawwqblxnameywdtmlccvlvcclmtdwyemanxlbqwwafordyrolttyxb","vihvixvdnmmslxeykdfejanvqbdxeqreqgugsyovomkmovoysgugqerqexdbqvnajefdkyexlsmmndvxivhiv","ivplvqpjrcpeyfiylhmyrwjqweivmglcbzkqzmrobmernmekteq","qqqulahmmzhinf","cfnevpqobbtexxbeghbfzneslosjnsgncokcronrzrcoqoldl","ydjcrktgxelsx","knzvrxmnwpkunta","nrbgjdunazgktzkmsuqzwsvwrwogyoksmuvdhrbumvkzgiotuoojldiwnkcoeyiyxbueuhowhlv",
                 "kkcmfkofzefedrdcjwaolpglvbyfjdjzxsbsvaoytjeoyrieyhbpfesyqofrwdmbpdat"};
         String[] word2 = new String[]{"abc","car","ada","racecar","cool"};
-        int [] ages = new int[]{3,1,2,2,2,1,3};
+        int [] ages = new int[]{0,1,0};
         String st = "cdf";
         String st2 = "a";
 
@@ -70,6 +70,7 @@ public class Problems {
         String [] month = {"Sep", "Oct","", " ", " ", " ", " ", "", "", "ad"};
 
 
+        System.out.println((Problems.canPlaceFlowers(ages,1)));
         System.out.println(month[calendar.get(Calendar.MONTH)]);
         System.out.println(Problems.deleteGreatestValue(multArr));
         System.out.println(Problems.removeTrailingZeros("50"));
@@ -126,6 +127,45 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
 
+    }
+
+    public List<Integer> targetIndices(int[] nums, int target) {
+        Arrays.sort(nums);
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i] == target){
+                result.add(i);
+            }
+        }
+        return result;
+    }
+    public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+
+        int countOne = 0;
+        int countPossibleFlower=0;
+
+        if(flowerbed[0]==0){
+            for(int i = 0; i<flowerbed.length; i++){
+                if(flowerbed[i]==1){
+                    countOne++;
+                }
+                if (i%2!=0 || i==0){
+                    countPossibleFlower++;
+                }
+            }
+            return countPossibleFlower-countOne>=n;
+        } else{
+            for(int i = 0; i<flowerbed.length; i++){
+                if(flowerbed[i]==1){
+                    countOne++;
+                }
+                if (i%2==0){
+                    countPossibleFlower++;
+                }
+
+            }
+            return countPossibleFlower-countOne>=n;
+        }
     }
 
     public int heightChecker(int[] heights) {

@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Problems {
+
+
     public static void main(String[] args) {
         int [] twoSum = new int[]{12,4,6,8,1,4};
         String str = "a1c1e1";
@@ -68,8 +70,12 @@ public class Problems {
 
         Calendar calendar = Calendar.getInstance();
         String [] month = {"Sep", "Oct","", " ", " ", " ", " ", "", "", "ad"};
+        int [][] multArr1 = new int[][]{{1,1},{4,5},{3,8}};
+        int [][] multArrSum1 = new int[][]{{3,1},{1,5}};
+        Map map = new HashMap<>();
 
 
+        System.out.println(Problems.mergeSimilarItems(multArr1,multArrSum1));
         System.out.println((Problems.canPlaceFlowers(ages,1)));
         System.out.println(month[calendar.get(Calendar.MONTH)]);
         System.out.println(Problems.deleteGreatestValue(multArr));
@@ -129,6 +135,38 @@ public class Problems {
 
     }
 
+    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+//        int length = Math.max(items1.length, items2.length);
+//        Set <Integer> set = new TreeSet<>();
+//
+//
+//        for(int i = 0; i<length; i++){
+//            if(i<items1.length){
+//                set.add(items1[i][0]);
+//            }
+//            if(i<items2.length){
+//                set.add(items2[i][0]);
+//            }
+//        }
+
+        Map<Integer, Integer> map = new TreeMap<>();
+        for(int [] item : items1){
+            map.put(item[0], item[1]);
+        }
+        for (int [] item : items2){
+            if (map.containsKey(item[0])){
+                map.put(item[0], map.get(item[0])+item[1]);
+            } else map.put(item[0], item[1]);
+        }
+        List<List<Integer>> result = new ArrayList<>();
+        for (Map.Entry mapEntry : map.entrySet()){
+            List<Integer> list = new ArrayList<>();
+            list.add((Integer) mapEntry.getKey());
+            list.add((Integer) mapEntry.getValue());
+            result.add(list);
+        }
+        return result;
+    }
     public List<Integer> targetIndices(int[] nums, int target) {
         Arrays.sort(nums);
         List<Integer> result = new ArrayList<>();

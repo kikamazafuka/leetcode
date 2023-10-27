@@ -51,7 +51,7 @@ public class Problems {
                 "bxyttlorydrofawwqblxnameywdtmlccvlvcclmtdwyemanxlbqwwafordyrolttyxb","vihvixvdnmmslxeykdfejanvqbdxeqreqgugsyovomkmovoysgugqerqexdbqvnajefdkyexlsmmndvxivhiv","ivplvqpjrcpeyfiylhmyrwjqweivmglcbzkqzmrobmernmekteq","qqqulahmmzhinf","cfnevpqobbtexxbeghbfzneslosjnsgncokcronrzrcoqoldl","ydjcrktgxelsx","knzvrxmnwpkunta","nrbgjdunazgktzkmsuqzwsvwrwogyoksmuvdhrbumvkzgiotuoojldiwnkcoeyiyxbueuhowhlv",
                 "kkcmfkofzefedrdcjwaolpglvbyfjdjzxsbsvaoytjeoyrieyhbpfesyqofrwdmbpdat"};
         String[] word2 = new String[]{"abc","car","ada","racecar","cool"};
-        int [] ages = new int[]{0,1,0};
+        int [] ages = new int[]{0,1,2,3,3,4,5,6,7,8};
         String st = "cdf";
         String st2 = "a";
 
@@ -72,9 +72,13 @@ public class Problems {
         String [] month = {"Sep", "Oct","", " ", " ", " ", " ", "", "", "ad"};
         int [][] multArr1 = new int[][]{{1,1},{4,5},{3,8}};
         int [][] multArrSum1 = new int[][]{{3,1},{1,5}};
-        Map map = new HashMap<>();
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Integer.bitCount(5));
+        System.out.println(Problems.sortByBits(ages));
+        System.out.println(Integer.toBinaryString(2));
+        System.out.println(gregorianCalendar);
         System.out.println(Problems.mergeSimilarItems(multArr1,multArrSum1));
         System.out.println((Problems.canPlaceFlowers(ages,1)));
         System.out.println(month[calendar.get(Calendar.MONTH)]);
@@ -132,23 +136,52 @@ public class Problems {
         System.out.println(Problems.balancedStringSplit(str));
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
-
     }
 
-    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
-//        int length = Math.max(items1.length, items2.length);
-//        Set <Integer> set = new TreeSet<>();
-//
-//
-//        for(int i = 0; i<length; i++){
-//            if(i<items1.length){
-//                set.add(items1[i][0]);
-//            }
-//            if(i<items2.length){
-//                set.add(items2[i][0]);
-//            }
-//        }
 
+    public static int[] sortByBits(int[] arr) {
+
+//        List<String> binList = new ArrayList<>();
+//        for (int num : arr){
+//            binList.add(Integer.toBinaryString(num));
+//        }
+//        Map <String, Integer> map = new TreeMap<>();
+//        for (String str : binList){
+//            int count = 0;
+//            int bits = Integer.par(str,2);
+//            for (char c : str.toCharArray()){
+//                if (c=='1'){
+//                  count++;
+//                }
+//            }
+//
+//            //str = String.format("%16s", str.replace(' ', '0'));
+//            while (str.length()<16){
+//                str = "0"+str;
+//            }
+//
+//            map.put(str,count);
+//        }
+//
+//        Set<String> res = map.keySet();
+//        int [] result = new int [res.size()];
+//        int i = 0;
+//        for (String str : res){
+//            result[i] = Integer.parseInt(str,2);
+//            i++;
+//        }
+//        return result;
+
+        for(int i = 0; i<arr.length; i++){
+            arr[i] += Integer.bitCount(arr[i])*10001;
+        }
+        Arrays.sort(arr);
+        for(int i = 0; i<arr.length; i++){
+            arr[i] = arr[i] % 10001;
+        }
+        return arr;
+    }
+    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
         Map<Integer, Integer> map = new TreeMap<>();
         for(int [] item : items1){
             map.put(item[0], item[1]);

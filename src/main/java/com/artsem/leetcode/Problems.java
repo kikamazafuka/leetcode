@@ -140,14 +140,15 @@ public class Problems {
 
 
     public String generateTheString(int n) {
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i<n-1; i++){
-            sb.append("a");
-        }
-        if (n%2!=0){
-            sb.append("a");
-        } else sb.append("b");
-        return sb.toString();
+//        StringBuilder sb = new StringBuilder();
+//        for(int i = 0; i<n-1; i++){
+//            sb.append("a");
+//        }
+//        if (n%2!=0){
+//            sb.append("a");
+//        } else sb.append("b");
+//        return sb.toString();
+        return n%2!=0 ? "a".repeat(n) : "b"+"a".repeat(n-1);
     }
     public int[] countBits(int n) {
         int [] res = new int [n+1];

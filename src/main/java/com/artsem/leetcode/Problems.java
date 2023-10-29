@@ -142,17 +142,19 @@ public class Problems {
     public boolean halvesAreAlike(String s) {
         String left = s.substring(0,s.length()/2);
         String right = s.substring(s.length()/2,s.length());
-        int countLeft = 0;
-        int countRight = 0;
-        for(int i = 0; i<s.length()/2; i++){
-            if(Problems.isVowel(""+left.charAt(i))){
-                countLeft++;
-            }
-            if(Problems.isVowel(""+right.charAt(i))){
-                countRight++;
-            }
-        }
-        return countLeft==countRight;
+//        int countLeft = 0;
+//        int countRight = 0;
+//        for(int i = 0; i<s.length()/2; i++){
+//            if(Problems.isVowel(""+left.charAt(i))){
+//                countLeft++;
+//            }
+//            if(Problems.isVowel(""+right.charAt(i))){
+//                countRight++;
+//            }
+//        }
+//        return countLeft==countRight;
+        return left.replaceAll("[^aeiouAEIOU]", "").length() ==
+                right.replaceAll("[^aeiouAEIOU]", "").length();
     }
 
     private static boolean isVowel(String c){

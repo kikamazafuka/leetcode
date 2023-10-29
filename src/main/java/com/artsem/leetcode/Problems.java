@@ -153,8 +153,27 @@ public class Problems {
 //            }
 //        }
 //        return countLeft==countRight;
-        return left.replaceAll("[^aeiouAEIOU]", "").length() ==
-                right.replaceAll("[^aeiouAEIOU]", "").length();
+        ///////////////////////////
+//        return left.replaceAll("[^aeiouAEIOU]", "").length() ==
+//                right.replaceAll("[^aeiouAEIOU]", "").length();
+        ///////////////////////////
+        String vowels = "aeiouAEIOU";
+        int countLeft = 0;
+        int countRight = 0;
+        Set set = new HashSet();
+        for(char c : vowels.toCharArray()){
+            set.add(c);
+        }
+
+        for(int i = 0, j = s.length()-1; i<j; i++, j--){
+            if(set.contains(s.charAt(i))){
+                countLeft++;
+            }
+            if(set.contains(s.charAt(j))){
+                countRight++;
+            }
+        }
+        return countLeft==countRight;
     }
 
     private static boolean isVowel(String c){

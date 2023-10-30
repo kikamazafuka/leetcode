@@ -40,17 +40,19 @@ public class Problems {
         list1.add("on");
         list1.add("you");
         String ruleKey = "type", ruleValue = "phone";
-        String[] word1 = new String[]{"lbthk","tzieipzwrrgocjalktndbxoaemamaqqwzouahtnuppejbnodcssnxfwedrqsyfyicaaau",
-                "uwzmfqwxgsugfhaqyzxesaqyvwdvxbzpprrmzpwvrzxl","vhcejfcvcwybbobkymlzlcvzkflkahpnvr",
-                "rwgnemugierbbsxkvvotyycppktbxogfzrwkodyldkyfoaclglpjkg",
-                "kaevoxszzozbxsedmkurtkiazgpryfkqqswnlleiviawlidgniqubvrtuxvhjiwyz",
-                "qimvtamreucfsilmvbbtvuupzggcnlqpxxvywytmjiosofpfkovrqaxeftqklmrrtgcahnzfbhnevbgxaofhpyboaaluqwkilpic",
-                "rvrskjpvvqkeijvorpumsiuhhbpuimeoeezhwbkbeyzvzcf","njzejpscyerhspkqnllhlgoijvtuzwxmesdauvs",
-                "mxsaiqcdphtoqapjzddhtytoxbmfzrvqzzbduvopfqkwhjtiuiypfyetnoaxstbjffacbfwakc",
-                "mbgfgyfuyzqhtakttlrbqlajwivfxunvcdklppxygwjzbyxkdfkotclhbpgcypjahtrjljvxomrqqjvkjpujnz",
-                "bxyttlorydrofawwqblxnameywdtmlccvlvcclmtdwyemanxlbqwwafordyrolttyxb","vihvixvdnmmslxeykdfejanvqbdxeqreqgugsyovomkmovoysgugqerqexdbqvnajefdkyexlsmmndvxivhiv","ivplvqpjrcpeyfiylhmyrwjqweivmglcbzkqzmrobmernmekteq","qqqulahmmzhinf","cfnevpqobbtexxbeghbfzneslosjnsgncokcronrzrcoqoldl","ydjcrktgxelsx","knzvrxmnwpkunta","nrbgjdunazgktzkmsuqzwsvwrwogyoksmuvdhrbumvkzgiotuoojldiwnkcoeyiyxbueuhowhlv",
-                "kkcmfkofzefedrdcjwaolpglvbyfjdjzxsbsvaoytjeoyrieyhbpfesyqofrwdmbpdat"};
-        String[] word2 = new String[]{"abc","car","ada","racecar","cool"};
+        String[] word1 = new String[]{"sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","vbx","fsi","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","gqira","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
+                "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
+        String[] word2 = new String[]{"pay","attention","practice","attend"};
         int [] ages = new int[]{0,1,2,3,3,4,5,6,7,8};
         String st = "cdf";
         String st2 = "a";
@@ -75,8 +77,9 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.prefixCount(word1,"sxyjellhlh"));
         System.out.println(Integer.bitCount(5));
-        System.out.println(Problems.sortByBits(ages));
+//        System.out.println(Problems.sortByBits(ages));
         System.out.println(Integer.toBinaryString(2));
         System.out.println(gregorianCalendar);
         System.out.println(Problems.mergeSimilarItems(multArr1,multArrSum1));
@@ -139,6 +142,15 @@ public class Problems {
     }
 
 
+    public static int prefixCount(String[] words, String pref) {
+        int count = 0;
+        for(String word : words){
+            if(pref.length()<=word.length() && word.substring(0,pref.length()).equals(pref)){
+                count++;
+            }
+        }
+        return count;
+    }
     public boolean halvesAreAlike(String s) {
         String left = s.substring(0,s.length()/2);
         String right = s.substring(s.length()/2,s.length());
@@ -160,7 +172,7 @@ public class Problems {
         String vowels = "aeiouAEIOU";
         int countLeft = 0;
         int countRight = 0;
-        Set set = new HashSet();
+        Set<Character> set = new HashSet<>();
         for(char c : vowels.toCharArray()){
             set.add(c);
         }
@@ -231,6 +243,10 @@ public class Problems {
 //        }
 //        return result;
 
+        String str = "str";
+        Formatter fmt = new Formatter();
+        fmt.format("%06d", str);
+        str = String.format("%16s", str);
         for(int i = 0; i<arr.length; i++){
             arr[i] += Integer.bitCount(arr[i])*10001;
         }

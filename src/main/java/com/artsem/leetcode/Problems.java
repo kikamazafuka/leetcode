@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Problems {
 
@@ -143,13 +144,14 @@ public class Problems {
 
 
     public static int prefixCount(String[] words, String pref) {
-        int count = 0;
-        for(String word : words){
-            if(word.startsWith(pref)){
-                count++;
-            }
-        }
-        return count;
+//        int count = 0;
+//        for(String word : words){
+//            if(word.startsWith(pref)){
+//                count++;
+//            }
+//        }
+//        return count;
+        return (int) Stream.of(words).filter(w->w.startsWith(pref)).count();
     }
     public boolean halvesAreAlike(String s) {
         String left = s.substring(0,s.length()/2);

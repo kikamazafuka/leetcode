@@ -145,7 +145,7 @@ public class Problems {
     public static int prefixCount(String[] words, String pref) {
         int count = 0;
         for(String word : words){
-            if(pref.length()<=word.length() && word.substring(0,pref.length()).equals(pref)){
+            if(word.startsWith(pref)){
                 count++;
             }
         }

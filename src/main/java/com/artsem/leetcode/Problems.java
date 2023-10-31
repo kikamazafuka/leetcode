@@ -54,7 +54,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{0,1,2,3,3,4,5,6,7,8};
+        int [] ages = new int[]{6,7,9};
         String st = "cdf";
         String st2 = "a";
 
@@ -78,6 +78,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.findGCD(ages));
         System.out.println(Problems.prefixCount(word1,"sxyjellhlh"));
         System.out.println(Integer.bitCount(5));
 //        System.out.println(Problems.sortByBits(ages));
@@ -140,9 +141,39 @@ public class Problems {
         System.out.println(Problems.balancedStringSplit(str));
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
+
     }
 
 
+    public static int findGCD(int[] nums) {
+        int min = 1001;
+        int max = 0;
+        for (int num : nums) {
+            if (num < min) {
+                min = num;
+            }
+            if (num > max) {
+                max = num;
+            }
+        }
+        List<Integer> maxList = new ArrayList<>();
+        List<Integer> minList = new ArrayList<>();
+        int maxCount = 1;
+        while(maxCount<=max){
+            if(max%maxCount==0){
+                maxList.add(maxCount);
+            }
+            maxCount++;
+        }
+        int minCount = 1;
+        while(minCount<=min){
+            if(min%minCount==0){
+                minList.add(minCount);
+            }
+            minCount++;
+        }
+        return maxList.stream().filter(minList::contains).mapToInt(v->v).max().orElse(-1);
+    }
     public static int prefixCount(String[] words, String pref) {
 //        int count = 0;
 //        for(String word : words){

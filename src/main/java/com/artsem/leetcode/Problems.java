@@ -54,7 +54,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{6,7,9};
+        int [] ages = new int[]{2,5,6,9,10};
         String st = "cdf";
         String st2 = "a";
 
@@ -156,23 +156,30 @@ public class Problems {
                 max = num;
             }
         }
-        List<Integer> maxList = new ArrayList<>();
-        List<Integer> minList = new ArrayList<>();
-        int maxCount = 1;
-        while(maxCount<=max){
-            if(max%maxCount==0){
-                maxList.add(maxCount);
+//        List<Integer> maxList = new ArrayList<>();
+//        List<Integer> minList = new ArrayList<>();
+//        int maxCount = 1;
+//        while(maxCount<=max){
+//            if(max%maxCount==0){
+//                maxList.add(maxCount);
+//            }
+//            maxCount++;
+//        }
+//        int minCount = 1;
+//        while(minCount<=min){
+//            if(min%minCount==0){
+//                minList.add(minCount);
+//            }
+//            minCount++;
+//        }
+        int gcd = 0;
+        for(int i = 1; i<min; i++){
+            if(max%i==0 && min%i==0){
+                gcd=i;
             }
-            maxCount++;
         }
-        int minCount = 1;
-        while(minCount<=min){
-            if(min%minCount==0){
-                minList.add(minCount);
-            }
-            minCount++;
-        }
-        return maxList.stream().filter(minList::contains).mapToInt(v->v).max().orElse(-1);
+        return gcd;
+        //return maxList.stream().filter(minList::contains).mapToInt(v->v).max().orElse(-1);
     }
     public static int prefixCount(String[] words, String pref) {
 //        int count = 0;

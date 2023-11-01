@@ -145,6 +145,14 @@ public class Problems {
     }
 
 
+    public int[] findArray(int[] pref) {
+        int []result = new int [pref.length];
+        result[0] = pref[0];
+        for(int i = 0; i<pref.length-1; i++){
+            result[i+1] = pref[i] ^ pref[i+1];
+        }
+        return result;
+    }
     public void reverseString(char[] s) {
         for(int i = 0, j = s.length-1; i<j; i++, j--){
             char temp = s[i];

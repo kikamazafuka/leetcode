@@ -147,6 +147,34 @@ public class Problems {
 
     }
 
+    public boolean areOccurrencesEqual(String s) {
+        Set<Integer> res = new HashSet<>();
+        for(char c : s.toCharArray()){
+            int appear = 0;
+            for(int i = 0; i<s.length(); i++){
+                if(c==s.charAt(i)){
+                    appear++;
+                }
+            }
+            res.add(appear);
+        }
+        return res.size() == 1;
+    }
+    public int findNumbers(int[] nums) {
+
+        int res = 0;
+        for(int n : nums){
+            int digNum = 0;
+            while(n>0){
+                n/=10;
+                digNum++;
+            }
+            if(digNum%2==0){
+                res++;
+            }
+        }
+        return res;
+    }
     public static String destCity(List<List<String>> paths) {
 
         Map <String, String> map = new HashMap<>();

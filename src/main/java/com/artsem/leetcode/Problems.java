@@ -2,10 +2,7 @@ package com.artsem.leetcode;
 
 import org.w3c.dom.ls.LSOutput;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,6 +12,11 @@ public class Problems {
 
 
     public static void main(String[] args) {
+
+        String dirname = "/leetcode";
+        File dir = new File(dirname);
+        System.out.println(dir.getAbsolutePath());
+
         int [] twoSum = new int[]{12,4,6,8,1,4};
         String str = "a1c1e1";
 
@@ -30,9 +32,9 @@ public class Problems {
 
 
         List<List<String>> list = new ArrayList<>();
-        list.add(List.of(new String[]{"phone","blue","pixel"}));
-        list.add(List.of(new String[]{"computer","silver","phone"}));
-        list.add(List.of(new String[]{"phone", "blue", "pixel"}));
+        list.add(List.of(new String[]{"A","B"}));
+        list.add(List.of(new String[]{"C","D"}));
+        list.add(List.of(new String[]{"B","C"}));
         List<String> list1 = new ArrayList<>();
         list1.add("never");
         list1.add("gonna");
@@ -78,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.destCity(list));
         System.out.println(Problems.findGCD(ages));
         System.out.println(Problems.prefixCount(word1,"sxyjellhlh"));
         System.out.println(Integer.bitCount(5));
@@ -144,6 +147,20 @@ public class Problems {
 
     }
 
+    public static String destCity(List<List<String>> paths) {
+
+        Map <String, String> map = new HashMap<>();
+        for (List<String> ls : paths){
+            map.put(ls.get(0), ls.get(1));
+        }
+        for (List<String > ls : paths){
+            if (!map.containsKey(ls.get(1))){
+                return ls.get(1);
+            }
+        }
+
+        return "";
+    }
 
     public int countNegatives(int[][] grid) {
         int count = 0;

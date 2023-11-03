@@ -148,16 +148,26 @@ public class Problems {
     }
 
     public boolean areOccurrencesEqual(String s) {
-        Set<Integer> res = new HashSet<>();
+//        Set<Integer> res = new HashSet<>();
+//        for(char c : s.toCharArray()){
+//            int appear = 0;
+//            for(int i = 0; i<s.length(); i++){
+//                if(c==s.charAt(i)){
+//                    appear++;
+//                }
+//            }
+//            res.add(appear);
+//        }
+//        return res.size() == 1;
+
+        Map <Character, Integer> map = new HashMap<>();
         for(char c : s.toCharArray()){
-            int appear = 0;
-            for(int i = 0; i<s.length(); i++){
-                if(c==s.charAt(i)){
-                    appear++;
-                }
-            }
-            res.add(appear);
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)+1);
+            } else map.put(c,1);
         }
+        Set<Integer> res = new HashSet<>(map.values());
+
         return res.size() == 1;
     }
     public int findNumbers(int[] nums) {

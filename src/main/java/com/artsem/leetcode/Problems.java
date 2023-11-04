@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.sumBase(34,6));
         System.out.println(Problems.destCity(list));
         System.out.println(Problems.findGCD(ages));
         System.out.println(Problems.prefixCount(word1,"sxyjellhlh"));
@@ -147,6 +148,15 @@ public class Problems {
 
     }
 
+    public static int sumBase(int n, int k) {
+
+        String converted = Integer.toString(n,k);
+        int res = 0;
+        for (char c : converted.toCharArray()){
+            res+=c-'0';
+        }
+        return res;
+    }
     public boolean areOccurrencesEqual(String s) {
 //        Set<Integer> res = new HashSet<>();
 //        for(char c : s.toCharArray()){

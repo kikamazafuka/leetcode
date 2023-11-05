@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{2,5,6,9,10};
+        int [] ages = new int[]{8,4,6,2,3};
         String st = "cdf";
         String st2 = "a";
 
@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.finalPrices(ages));
         System.out.println(Problems.sumBase(34,6));
         System.out.println(Problems.destCity(list));
         System.out.println(Problems.findGCD(ages));
@@ -148,6 +149,19 @@ public class Problems {
 
     }
 
+    public static int[] finalPrices(int[] prices) {
+        int [] answer = new int [prices.length];
+        for(int i = 0; i<prices.length; i++){
+            answer[i] = prices[i];
+            for(int j = i+1; j<prices.length; j++){
+                if(prices[j]<=prices[i]){
+                    answer[i] = prices[i]-prices[j];
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
     public static int sumBase(int n, int k) {
 
         String converted = Integer.toString(n,k);

@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{8,4,6,2,3};
+        int [] ages = new int[]{1,2,3,2};
         String st = "cdf";
         String st2 = "a";
 
@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.sumOfUnique(ages));
         System.out.println(Problems.finalPrices(ages));
         System.out.println(Problems.sumBase(34,6));
         System.out.println(Problems.destCity(list));
@@ -149,6 +150,22 @@ public class Problems {
 
     }
 
+    public static int sumOfUnique(int[] nums) {
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i<nums.length; i++){
+            for (int j = 0; j<nums.length; j++){
+                if (i!=j && nums[i]==nums[j]){
+                    break;
+                }
+                if (j==nums.length-1){
+                    list.add(nums[i]);
+                }
+            }
+        }
+        return list.stream().mapToInt(Integer::intValue).sum();
+
+    }
     public static int[] finalPrices(int[] prices) {
         int [] answer = new int [prices.length];
         for(int i = 0; i<prices.length; i++){

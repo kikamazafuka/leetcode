@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{1,2,3,2};
+        int [] ages = new int[]{1,1,1,1,1};
         String st = "cdf";
         String st2 = "a";
 
@@ -152,18 +152,38 @@ public class Problems {
 
     public static int sumOfUnique(int[] nums) {
 
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i<nums.length; i++){
-            for (int j = 0; j<nums.length; j++){
-                if (i!=j && nums[i]==nums[j]){
-                    break;
-                }
-                if (j==nums.length-1){
-                    list.add(nums[i]);
-                }
+//        List<Integer> list = new ArrayList<>();
+//        for (int i = 0; i<nums.length; i++){
+//            for (int j = 0; j<nums.length; j++){
+//                if (i!=j && nums[i]==nums[j]){
+//                    break;
+//                }
+//                if (j==nums.length-1){
+//                    list.add(nums[i]);
+//                }
+//            }
+//        }
+//        return list.stream().mapToInt(Integer::intValue).sum();
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else map.put(num, 1);
+        }
+        int sum = 0;
+        for (Map.Entry<Integer,Integer> entry : map.entrySet()){
+            if (entry.getValue()==1){
+                sum += entry.getKey();
             }
         }
-        return list.stream().mapToInt(Integer::intValue).sum();
+//        List <Integer> ls = new ArrayList<>();
+//        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+//            if (entry.getValue()==1){
+//                ls.add(entry.getKey());
+//            }
+//        }
+        return sum;
 
     }
     public static int[] finalPrices(int[] prices) {

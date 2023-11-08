@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{1,1,1,1,1};
+        int [] ages = new int[]{1,2,3,4,5};
         String st = "cdf";
         String st2 = "a";
 
@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.distinctDifferenceArray(ages));
         System.out.println(Problems.sumOfUnique(ages));
         System.out.println(Problems.finalPrices(ages));
         System.out.println(Problems.sumBase(34,6));
@@ -150,6 +151,21 @@ public class Problems {
 
     }
 
+    public static int[] distinctDifferenceArray(int[] nums) {
+        int [] res = new int [nums.length];
+        for(int i = 0; i<nums.length; i++){
+            Set<Integer> prefix = new HashSet<>();
+            Set<Integer> suffix = new HashSet<>();
+            for(int j = 0; j<=i ; j++){
+                prefix.add(nums[j]);
+            }
+            for(int k = i+1; k<nums.length ; k++){
+                suffix.add(nums[k]);
+            }
+            res[i] = prefix.size()-suffix.size();
+        }
+        return res;
+    }
     public static int sumOfUnique(int[] nums) {
 
 //        List<Integer> list = new ArrayList<>();

@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.sumZero(5));
         System.out.println(Problems.distinctDifferenceArray(ages));
         System.out.println(Problems.sumOfUnique(ages));
         System.out.println(Problems.finalPrices(ages));
@@ -149,6 +150,17 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
 
+    }
+
+    public static int[] sumZero(int n) {
+        int [] arr = new int [n];
+        int num = n;
+        for(int i = 0, j=n-1; i<j; i++, j--){
+            arr[i] = num;
+            arr[j] = -arr[i];
+            num--;
+        }
+        return arr;
     }
 
     public static int[] distinctDifferenceArray(int[] nums) {

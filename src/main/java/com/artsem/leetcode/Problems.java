@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.sortString("leetcode"));
         System.out.println(Problems.sumZero(5));
         System.out.println(Problems.distinctDifferenceArray(ages));
         System.out.println(Problems.sumOfUnique(ages));
@@ -152,6 +153,31 @@ public class Problems {
 
     }
 
+    public static String sortString(String s) {
+        Map<Character,Integer> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        while (Collections.max(map.values().stream().distinct().toList())>0) {
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (map.containsKey(c) && map.get(c) > 0) {
+                    sb.append(c);
+                    map.put(c, map.get(c) - 1);
+                }
+                if (sb.length()==s.length()){
+                    return sb.toString();
+                }
+            }
+            for (char c = 'z'; c >= 'a'; c--) {
+                if (map.containsKey(c) && map.get(c) > 0) {
+                    sb.append(c);
+                    map.put(c, map.get(c) - 1);
+                }
+            }
+        }
+        return sb.toString();
+    }
     public static int[] sumZero(int n) {
         int [] arr = new int [n];
         int num = n;

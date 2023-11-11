@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{1,2,3,4,5};
+        int [] ages = new int[]{2,6,2,1};
         String st = "cdf";
         String st2 = "a";
 
@@ -80,6 +80,7 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.repeatedNTimes(ages));
         System.out.println(Problems.sortString("leetcode"));
         System.out.println(Problems.sumZero(5));
         System.out.println(Problems.distinctDifferenceArray(ages));
@@ -153,6 +154,16 @@ public class Problems {
 
     }
 
+    public static int repeatedNTimes(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+            if(map.containsKey(nums[i])){
+                return nums[i];
+            }
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        }
+        return -1;
+    }
     public static String sortString(String s) {
         Map<Character,Integer> map = new HashMap<>();
         StringBuilder sb = new StringBuilder();

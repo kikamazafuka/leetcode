@@ -155,11 +155,18 @@ public class Problems {
     }
 
     public static int countSeniors(String[] details) {
-        List <Integer> ls = new ArrayList<>();
+//        List <Integer> ls = new ArrayList<>();
+//        for(String s : details){
+//            ls.add(Integer.valueOf(s.substring(11,13)));
+//        }
+//       return (int)(ls.stream().filter(i->i>60).count());
+        int count = 0;
         for(String s : details){
-            ls.add(Integer.valueOf(s.substring(11,13)));
+            if(Integer.parseInt(s.substring(11,13))>60){
+                count++;
+            }
         }
-       return (int)(ls.stream().filter(i->i>60).count());
+        return count;
     }
     public static int repeatedNTimes(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

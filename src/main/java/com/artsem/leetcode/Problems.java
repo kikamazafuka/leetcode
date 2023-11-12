@@ -154,6 +154,13 @@ public class Problems {
 
     }
 
+    public static int countSeniors(String[] details) {
+        List <Integer> ls = new ArrayList<>();
+        for(String s : details){
+            ls.add(Integer.valueOf(s.substring(11,13)));
+        }
+       return (int)(ls.stream().filter(i->i>60).count());
+    }
     public static int repeatedNTimes(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i<nums.length; i++){

@@ -75,11 +75,12 @@ public class Problems {
 
         Calendar calendar = Calendar.getInstance();
         String [] month = {"Sep", "Oct","", " ", " ", " ", " ", "", "", "ad"};
-        int [][] multArr1 = new int[][]{{1,1},{4,5},{3,8}};
+        int [][] multArr1 = new int[][]{{0,1},{1,1},{3,8}};
         int [][] multArrSum1 = new int[][]{{3,1},{1,5}};
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
 
+        System.out.println(Problems.rowAndMaximumOnes(multArr1));
         System.out.println(Problems.repeatedNTimes(ages));
         System.out.println(Problems.sortString("leetcode"));
         System.out.println(Problems.sumZero(5));
@@ -154,6 +155,21 @@ public class Problems {
 
     }
 
+    public static int[] rowAndMaximumOnes(int[][] mat) {
+        int index = 0;
+        int max = 0;
+        int [] res = new int [2];
+        for(int [] arr : mat){
+            int count = (int) Arrays.stream(arr).filter(n->n==1).count();
+            if (count>max){
+                max = count;
+                res[0]=index;
+                res[1]=count;
+            }
+            index++;
+        }
+        return res;
+    }
     public static int countSeniors(String[] details) {
 //        List <Integer> ls = new ArrayList<>();
 //        for(String s : details){

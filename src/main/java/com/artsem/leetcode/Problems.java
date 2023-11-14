@@ -155,6 +155,23 @@ public class Problems {
 
     }
 
+//[19,71,9,89,57,47,57,81]
+//        [93,88,23,96,82,53,91,95]
+//        63
+    public static int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i<startTime.length; i++){
+            map.put(startTime[i], endTime[i]);
+        }
+        int count = 0;
+        for(Map.Entry entry : map.entrySet()){
+
+            if ((int)entry.getKey()<=queryTime && (int)entry.getValue()>=queryTime){
+                count++;
+            }
+        }
+        return count;
+    }
     public static int[] rowAndMaximumOnes(int[][] mat) {
         int index = 0;
         int max = 0;

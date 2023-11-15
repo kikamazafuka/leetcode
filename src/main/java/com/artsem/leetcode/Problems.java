@@ -159,29 +159,40 @@ public class Problems {
 
 
     public static boolean judgeCircle(String moves) {
-        Map <Character, Integer> map = new HashMap<>();
-        for(int i = 0; i<moves.length(); i++){
-            map.put(moves.charAt(i), map.getOrDefault(moves.charAt(i), 0)+1);
-        }
-        if (map.size()%2!=0){
-            return false;
-        }
-        if (map.size()==4){
-            return (int)map.get('U')==(int)map.get('D') && (int)map.get('R')==(int)map.get('L');
-        }
-        if (map.containsKey('U') && (!map.containsKey('L') || !map.containsKey('R'))){
-            if (map.get('D')==null){
-                return false;
+//        Map <Character, Integer> map = new HashMap<>();
+//        for(int i = 0; i<moves.length(); i++){
+//            map.put(moves.charAt(i), map.getOrDefault(moves.charAt(i), 0)+1);
+//        }
+//        if (map.size()%2!=0){
+//            return false;
+//        }
+//        if (map.size()==4){
+//            return (int)map.get('U')==(int)map.get('D') && (int)map.get('R')==(int)map.get('L');
+//        }
+//        if (map.containsKey('U') && (!map.containsKey('L') || !map.containsKey('R'))){
+//            if (map.get('D')==null){
+//                return false;
+//            }
+//            return (int)map.get('U')==map.get('D');
+//        }
+//        if (map.containsKey('R') && (!map.containsKey('U') || !map.containsKey('D'))){
+//            if (map.get('L')==null){
+//                return false;
+//            }
+//            return (int)map.get('R')==map.get('L');
+//        }
+//        return false;
+        int u = 0;
+        int d = 0;
+        for(char c : moves.toCharArray()){
+            switch (c) {
+                case 'D' -> ++u;
+                case 'U' -> --u;
+                case 'R' -> ++d;
+                case 'L' -> --d;
             }
-            return (int)map.get('U')==map.get('D');
         }
-        if (map.containsKey('R') && (!map.containsKey('U') || !map.containsKey('D'))){
-            if (map.get('L')==null){
-                return false;
-            }
-            return (int)map.get('R')==map.get('L');
-        }
-        return false;
+        return d==0 && u==0;
 
     }
     public static int busyStudent(int[] startTime, int[] endTime, int queryTime) {

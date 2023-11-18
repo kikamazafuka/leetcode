@@ -162,32 +162,32 @@ public class Problems {
 
     public static int calPoints(String[] operations) {
         List<Integer> ls = new ArrayList<>();
-//        for (String operation : operations) {
-//            if (operation.charAt(0) >= '0' && operation.charAt(0) <= '9'
-//                    || operation.charAt(0)=='-') {
-//                ls.add(Integer.parseInt(operation));
-//                continue;
-//            }
-//            char c = operation.charAt(0);
-//            switch (c) {
-//                case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
-//                case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
-//                case 'C' -> ls.remove(ls.size() - 1);
-//            }
-//        }
-        for(String o : operations){
-            try{
-                int num = Integer.parseInt(o);
-                ls.add(num);
-            } catch (NumberFormatException e){
-                char c = o.charAt(0);
-                switch (c) {
-                    case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
-                    case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
-                    case 'C' -> ls.remove(ls.size() - 1);
-                }
+        for (String operation : operations) {
+            if (operation.charAt(0) >= '0' && operation.charAt(0) <= '9'
+                    || operation.charAt(0)=='-') {
+                ls.add(Integer.parseInt(operation));
+                continue;
+            }
+            char c = operation.charAt(0);
+            switch (c) {
+                case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
+                case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
+                case 'C' -> ls.remove(ls.size() - 1);
             }
         }
+//        for(String o : operations){
+//            try{
+//                int num = Integer.parseInt(o);
+//                ls.add(num);
+//            } catch (NumberFormatException e){
+//                char c = o.charAt(0);
+//                switch (c) {
+//                    case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
+//                    case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
+//                    case 'C' -> ls.remove(ls.size() - 1);
+//                }
+//            }
+//        }
 
         return ls.stream().reduce(0, Integer::sum);
     }

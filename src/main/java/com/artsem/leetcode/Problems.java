@@ -81,6 +81,7 @@ public class Problems {
         String ss = "RULDDLLDLRDUUUURULRURRRRLRULRLULLLRRULULDDRDLRULDRRULLUDDURDLRRUDRUDDURLLLUUDULRUDRLURRDRLLDDLLLDLRLLRUUDUURDRLDUDRUDRLUDULRLUDRLDDUULDDLDURULUDUUDDRRDUURRLRDLDLRLLDRRUUURDLULLURRRRDRRURDUURDLRRUULRURRUULULUUDURUDLRDDDDDURRRLRUDRUULUUUULDURDRULLRRRUDDDUUULUURRDRDDRLLDRLDULDLUUDRDLULLDLDDRUUUUDDRRRDLLLLURUURLRUUULRDDULUULUURDURDDDRRURLURDLLLRLULRDLDDLRDRRRRLUURRRRLDUDLLRUDLDRDLDRUULDRDULRULRRDLDLLLUDLDLULLDURUURRLLULUURLRLRDUDULLDURRUDDLDDLLUDURLLRLDLDUDLURLLDRRURRDUDLDUULDUDRRUDULLUUDURRRURLULDDLRRURULUURURRDULUULDDDUUDRLDDRLULDUDDLLLDLDURDLRLUURDDRLUDRLUDLRRLUUULLDUUDUDURRUULLDDUDLURRDDLURLDRDRUDRLDDLDULDRULUDRRDRLLUURULURRRUDRLLUURULURRLUULRDDDRDDLDRLDRLDUDRLDRLDDLDUDDURUDUDDDLRRDLUUUDUDURLRDRURUDUDDRDRRLUDURULDULDDRLDLUURUULUDRLRLRLLLLRLDRURRRUULRDURDRRDDURULLRDUDRLULRRLLLDRLRLRRDULDDUDUURLRULUUUULURULDLDRDRLDDLRLURRUULRRLDULLUULUDUDRLDUDRDLLDULURLUDDUURULDURRUURLRDRRRLDDULLLLDDRRLRRDRDLRUDUUDLRLDRDRURULDLULRRDLLURDLLDLRDRURLRUDURDRRRULURDRURLDRRRDUDUDUDURUUUUULURDUDDRRDULRDDLULRDRULDRUURRURLUDDDDLDRLDLLLLRLDRLRDRRRLLDRDRUULURLDRULLDRRDUUDLURLLDULDUUDLRRRDDUDRLDULRDLLULRRUURRRURLRRLDDUDDLULRUDULDULRDUDRLRDULRUUDDRUURUDLDRDUDDUULLUDDLLRLURURLRRULLDDDLURDRRDLLLLULLDLUDDLURLLDDRLDLLDDRDRDDUDLDURLUUUUUDLLLRLDULDDRDDDDRUDLULDRRLLLDUUUDDDRDDLLULUULRRULRUDRURDDULURDRRURUULDDDDUULLLURRRRDLDDLRLDDDRLUUDRDDRDDLUDLUUULLDLRDLURRRLRDRLURUURLULLLLRDDLLLLRUDURRLDURULURULDDRULUDRLDRLLURURRRDURURDRRUDLDDLLRRDRDDLRLRLUDUDRRUDLLDUURUURRDUDLRRLRURUDURDLRRULLDLLUDURUDDRUDULLDUDRRDDUDLLLDLRDRUURLLDLDRDDLDLLUDRDDRUUUDDULRUULRDRUDUURRRURUDLURLRDDLUULRDULRDURLLRDDDRRUDDUDUDLLDDRRUUDURDLLUURDLRULULDULRUURUDRULDRDULLULRRDDLDRDLLLDULRRDDLDRDLLRDDRLUUULUURULRULRUDULRULRUURUDUUDLDUDUUURLLURDDDUDUDLRLULDLDUDUULULLRDUDLDRUDRUULRURDDLDDRDULRLRLRRRRLRULDLLLDDRLUDLULLUUDLDRRLUDULRDRLLRRRULRLRLLUDRUUDUDDLRLDRDDDDRDLDRURULULRUURLRDLLDDRLLRUDRRDDRDUDULRUDULURRUDRDLRDUUDDLDRUDLLDDLRLULLLRUUDRRRRUULLRLLULURLDUDDURLRULULDLDRURDRLLURRDLURRURLULDLRLDUDLULLLDRDLULDLRULLLUDUDUDUDLDDDDDRDLUDUULLUDRLUURDRLULD";
 
 
+        System.out.println(Problems.hammingDistance(93,73));
         System.out.println(Problems.calPoints(month));
         System.out.println(Problems.numberOfPairs(new int [] {5,12,53,22,7,59,41,54,71,24,91,74,62,47,20,14,73,11,82,2,15,38,38,20,57,70,86,93,38,75,94,19,36,40,28,6,35,86,38,94,4,90,18,87,24,22}));
         System.out.println(Problems.judgeCircle(ss));
@@ -160,20 +161,55 @@ public class Problems {
     }
 
 
+    public static int hammingDistance(int x, int y) {
+        int r = x^y;
+        String str =Integer.toBinaryString(r);
+        int count = 0;
+        for (char binChar : str.toCharArray()){
+            if (binChar=='1'){
+                count++;
+            }
+
+        }
+        return count;
+    }
+    public static int countSetBits(int n) {
+        int count = 0;
+
+        // Count the set bits using bitwise AND operation
+        while (n > 0) {
+            count += n & 1; // Check the rightmost bit
+            n >>= 1; // Shift to the right
+        }
+
+        return count;
+    }
     public static int calPoints(String[] operations) {
         List<Integer> ls = new ArrayList<>();
-        for (String operation : operations) {
-            if (operation.charAt(0) >= '0' && operation.charAt(0) <= '9'
-                    || operation.charAt(0)=='-') {
-                ls.add(Integer.parseInt(operation));
-                continue;
-            }
-            char c = operation.charAt(0);
-            switch (c) {
-                case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
-                case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
-                case 'C' -> ls.remove(ls.size() - 1);
-            }
+//        for (String operation : operations) {
+//            if (operation.charAt(0) >= '0' && operation.charAt(0) <= '9'
+//                    || operation.charAt(0)=='-') {
+//                ls.add(Integer.parseInt(operation));
+//                continue;
+//            }
+//            char c = operation.charAt(0);
+//            switch (c) {
+//                case '+' -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
+//                case 'D' -> ls.add(ls.get(ls.size() - 1) * 2);
+//                case 'C' -> ls.remove(ls.size() - 1);
+//            }
+//        }
+        for(String o : operations){
+                switch (o) {
+                    case "+" -> ls.add(ls.get(ls.size() - 1) + ls.get(ls.size() - 2));
+                    case "D" -> ls.add(ls.get(ls.size() - 1) * 2);
+                    case "C" -> ls.remove(ls.size() - 1);
+                    default -> ls.add(Integer.parseInt(o));
+                }
+        }
+        int sum = 0;
+        for (Integer num : ls){
+            sum+=num;
         }
 //        for(String o : operations){
 //            try{
@@ -189,7 +225,8 @@ public class Problems {
 //            }
 //        }
 
-        return ls.stream().reduce(0, Integer::sum);
+        return sum;
+//        return ls.stream().reduce(0, Integer::sum);
     }
     public int minPartitions(String n) {
         char max = '0';

@@ -162,6 +162,9 @@ public class Problems {
     }
 
 
+    public int minimizedStringLength(String s) {
+        return (int)s.chars().distinct().count();
+    }
     public static int [] mergeSort (int [] arr){
         if (arr.length==1){
             return arr;

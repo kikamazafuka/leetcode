@@ -56,7 +56,7 @@ public class Problems {
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh",
                 "sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh","sxyjellhlh"};
         String[] word2 = new String[]{"pay","attention","practice","attend"};
-        int [] ages = new int[]{2,6,2,1};
+        int [] ages = new int[]{2,6,2,1,0 ,9, 7};
         String st = "cdf";
         String st2 = "a";
 
@@ -80,7 +80,23 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         String ss = "RULDDLLDLRDUUUURULRURRRRLRULRLULLLRRULULDDRDLRULDRRULLUDDURDLRRUDRUDDURLLLUUDULRUDRLURRDRLLDDLLLDLRLLRUUDUURDRLDUDRUDRLUDULRLUDRLDDUULDDLDURULUDUUDDRRDUURRLRDLDLRLLDRRUUURDLULLURRRRDRRURDUURDLRRUULRURRUULULUUDURUDLRDDDDDURRRLRUDRUULUUUULDURDRULLRRRUDDDUUULUURRDRDDRLLDRLDULDLUUDRDLULLDLDDRUUUUDDRRRDLLLLURUURLRUUULRDDULUULUURDURDDDRRURLURDLLLRLULRDLDDLRDRRRRLUURRRRLDUDLLRUDLDRDLDRUULDRDULRULRRDLDLLLUDLDLULLDURUURRLLULUURLRLRDUDULLDURRUDDLDDLLUDURLLRLDLDUDLURLLDRRURRDUDLDUULDUDRRUDULLUUDURRRURLULDDLRRURULUURURRDULUULDDDUUDRLDDRLULDUDDLLLDLDURDLRLUURDDRLUDRLUDLRRLUUULLDUUDUDURRUULLDDUDLURRDDLURLDRDRUDRLDDLDULDRULUDRRDRLLUURULURRRUDRLLUURULURRLUULRDDDRDDLDRLDRLDUDRLDRLDDLDUDDURUDUDDDLRRDLUUUDUDURLRDRURUDUDDRDRRLUDURULDULDDRLDLUURUULUDRLRLRLLLLRLDRURRRUULRDURDRRDDURULLRDUDRLULRRLLLDRLRLRRDULDDUDUURLRULUUUULURULDLDRDRLDDLRLURRUULRRLDULLUULUDUDRLDUDRDLLDULURLUDDUURULDURRUURLRDRRRLDDULLLLDDRRLRRDRDLRUDUUDLRLDRDRURULDLULRRDLLURDLLDLRDRURLRUDURDRRRULURDRURLDRRRDUDUDUDURUUUUULURDUDDRRDULRDDLULRDRULDRUURRURLUDDDDLDRLDLLLLRLDRLRDRRRLLDRDRUULURLDRULLDRRDUUDLURLLDULDUUDLRRRDDUDRLDULRDLLULRRUURRRURLRRLDDUDDLULRUDULDULRDUDRLRDULRUUDDRUURUDLDRDUDDUULLUDDLLRLURURLRRULLDDDLURDRRDLLLLULLDLUDDLURLLDDRLDLLDDRDRDDUDLDURLUUUUUDLLLRLDULDDRDDDDRUDLULDRRLLLDUUUDDDRDDLLULUULRRULRUDRURDDULURDRRURUULDDDDUULLLURRRRDLDDLRLDDDRLUUDRDDRDDLUDLUUULLDLRDLURRRLRDRLURUURLULLLLRDDLLLLRUDURRLDURULURULDDRULUDRLDRLLURURRRDURURDRRUDLDDLLRRDRDDLRLRLUDUDRRUDLLDUURUURRDUDLRRLRURUDURDLRRULLDLLUDURUDDRUDULLDUDRRDDUDLLLDLRDRUURLLDLDRDDLDLLUDRDDRUUUDDULRUULRDRUDUURRRURUDLURLRDDLUULRDULRDURLLRDDDRRUDDUDUDLLDDRRUUDURDLLUURDLRULULDULRUURUDRULDRDULLULRRDDLDRDLLLDULRRDDLDRDLLRDDRLUUULUURULRULRUDULRULRUURUDUUDLDUDUUURLLURDDDUDUDLRLULDLDUDUULULLRDUDLDRUDRUULRURDDLDDRDULRLRLRRRRLRULDLLLDDRLUDLULLUUDLDRRLUDULRDRLLRRRULRLRLLUDRUUDUDDLRLDRDDDDRDLDRURULULRUURLRDLLDDRLLRUDRRDDRDUDULRUDULURRUDRDLRDUUDDLDRUDLLDDLRLULLLRUUDRRRRUULLRLLULURLDUDDURLRULULDLDRURDRLLURRDLURRURLULDLRLDUDLULLLDRDLULDLRULLLUDUDUDUDLDDDDDRDLUDUULLUDRLUURDRLULD";
 
+        ArrayList<Integer> listToMerge1 = new ArrayList<>();
+        listToMerge1.add(1);
+        listToMerge1.add(3);
+        listToMerge1.add(5);
+        listToMerge1.add(9);
+        ArrayList<Integer> listToMerge2 = new ArrayList<>();
+        listToMerge2.add(2);
+        listToMerge2.add(6);
+        listToMerge2.add(7);
+        listToMerge2.add(12);
+        listToMerge2.add(13);
+        listToMerge2.add(14);
 
+        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
+
+
+        System.out.println();
         System.out.println(Arrays.toString(Problems.mergeSort(ages)));
         System.out.println(Problems.hammingDistance(93,73));
         System.out.println(Problems.calPoints(month));
@@ -161,9 +177,73 @@ public class Problems {
 
     }
 
-
+    public static void mergeArrListInPlace(ArrayList<Integer> a, ArrayList<Integer> b){
+        int i = 0;
+        int j = 0;
+        while (i<a.size() && j<b.size()){
+            if (a.get(i)<b.get(j)){
+                i++;
+            } else a.add(i, b.get(j++));
+        }
+        while (j<b.size()){
+            a.add(b.get(j++));
+        }
+    }
+    public static void mergeArrList(ArrayList<Integer> arrayList1, ArrayList<Integer> arrayList2){
+        List<Integer> res = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        while (i<arrayList1.size() && j<arrayList2.size()){
+            if (arrayList1.get(i)<arrayList2.get(j)){
+                res.add(arrayList1.get(i++));
+            } else res.add(arrayList2.get(j++));
+        }
+        while (i<arrayList1.size()){
+            res.add(arrayList1.get(i++));
+        }
+        while (j<arrayList2.size()){
+            res.add(arrayList2.get(j++));
+        }
+        for (int k = 0; k<res.size(); k++){
+            if (k<arrayList1.size()){
+                arrayList1.set(k,res.get(k));
+            } else arrayList1.add(res.get(k));
+        }
+    }
     public int minimizedStringLength(String s) {
         return (int)s.chars().distinct().count();
+    }
+
+    public static void mergeSortInPlace (int [] arr, int s, int e){
+        if (e-s==1){
+            return;
+        }
+        int mid = arr.length/2;
+        mergeSortInPlace(arr, s, mid);
+        mergeSortInPlace(arr,mid,e);
+        mergeInPlace(arr, s, mid, e);
+    }
+
+    private static void mergeInPlace(int[] arr, int s, int mid, int e) {
+        int [] mix = new int[e-s];
+        int i = s;
+        int j = mid;
+        int k = e;
+        while (i<mid && j<e){
+            if (arr[i]<arr[j]){
+                mix[k] = arr[i++];
+            }else mix[k] = arr[j++];
+            k++;
+        }
+        while (i<mid){
+            mix[k++] = arr[i++];
+        }
+        while (j<e){
+            mix[k++] = arr[j++];
+        }
+        for (int l = 0; l<mix.length; l++){
+            arr[s+l] = mix[l];
+        }
     }
     public static int [] mergeSort (int [] arr){
         if (arr.length==1){

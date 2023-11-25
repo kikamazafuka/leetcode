@@ -189,15 +189,24 @@ public class Problems {
 
 
     public static void moveZeroes(int[] nums) {
-        int snowBallSize = 0;
-        for (int i=0;i<nums.length;i++){
-            if (nums[i]==0){
-                snowBallSize++;
+//        int snowBallSize = 0;
+//        for (int i=0;i<nums.length;i++){
+//            if (nums[i]==0){
+//                snowBallSize++;
+//            }
+//            else if (snowBallSize > 0) {
+//                nums[i-snowBallSize]=nums[i];
+//                nums[i] = 0;
+//            }
+//        }
+        int i = 0;
+        for(int num : nums){
+            if(num!=0){
+                nums[i++]=num;
             }
-            else if (snowBallSize > 0) {
-                nums[i-snowBallSize]=nums[i];
-                nums[i] = 0;
-            }
+        }
+        while(i<nums.length){
+            nums[i++] = 0;
         }
     }
     public static void moveZeroes1(int[] nums) {

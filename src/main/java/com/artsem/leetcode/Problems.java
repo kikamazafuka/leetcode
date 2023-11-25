@@ -188,6 +188,18 @@ public class Problems {
     }
 
 
+    public static boolean isSubsequence(String s, String t) {
+        int i = 0;
+        for(char c : t.toCharArray()){
+            if(s.charAt(i)==c){
+                i++;
+            }
+            if(i==s.length()){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void moveZeroes(int[] nums) {
 //        int snowBallSize = 0;
 //        for (int i=0;i<nums.length;i++){

@@ -97,10 +97,15 @@ public class Problems {
         list2.add(listToMerge3);
 //        listToMerge2.add(13);
 //        listToMerge2.add(14);
+        int [] nums = new int []{0,1,0,3,12};
 
 //        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
 
+        moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
+//        System.out.println(Arrays.toString(Problems.moveZeroes(nums)));
+        System.out.println(Problems.reverseVowels("leetcode"));
         System.out.println(Problems.numberOfPoints(list2));
         System.out.println(Arrays.toString(Problems.mergeSort(ages)));
         System.out.println(Problems.hammingDistance(93,73));
@@ -180,6 +185,33 @@ public class Problems {
         System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
 
 
+    }
+
+
+    public static void moveZeroes(int[] nums) {
+        for(int i = 0; i<nums.length; i++){
+            for(int j = 0; j<nums.length-1; j++){
+                if(nums[j]==0){
+                    int temp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = temp;
+                }
+            }
+        }
+//        return nums;
+    }
+    public static String reverseVowels(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0, j = s.length()-1; i<s.length(); i++, j--){
+            if(!isVowel(""+s.charAt(i))){
+                sb.append(s.charAt(i));
+            }
+            if(isVowel(""+s.charAt(j))){
+                sb.append(s.charAt(j));
+            }
+
+        }
+        return sb.toString();
     }
 
     public static int numberOfPoints(List<List<Integer>> nums) {

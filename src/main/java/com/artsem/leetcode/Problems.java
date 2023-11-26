@@ -97,11 +97,12 @@ public class Problems {
         list2.add(listToMerge3);
 //        listToMerge2.add(13);
 //        listToMerge2.add(14);
-        int [] nums = new int []{0,1,0,3,12};
+        int [] nums = new int []{1,8,6,2,5,4,8,3,7};
 
 //        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
 
+        System.out.println(Problems.maxArea(nums));
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
 //        System.out.println(Arrays.toString(Problems.moveZeroes(nums)));
@@ -188,6 +189,22 @@ public class Problems {
     }
 
 
+    public static int maxArea(int[] height) {
+        int leftIndex = 0;
+        int rightIndex = height.length-1;
+        int max = 0;
+        int water = 0;
+        while(leftIndex<rightIndex){
+            water = Math.min(height[leftIndex], height[rightIndex])*(rightIndex-leftIndex);
+            if(water>max){
+                max=water;
+            }
+            if(height[leftIndex]<height[rightIndex]){
+                leftIndex++;
+            } else rightIndex--;
+        }
+        return max;
+    }
     public static boolean isSubsequence(String s, String t) {
         int i = 0;
         for(char c : t.toCharArray()){

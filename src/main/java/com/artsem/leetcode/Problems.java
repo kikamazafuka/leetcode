@@ -97,11 +97,12 @@ public class Problems {
         list2.add(listToMerge3);
 //        listToMerge2.add(13);
 //        listToMerge2.add(14);
-        int [] nums = new int []{1,8,6,2,5,4,8,3,7};
+        int [] nums = new int []{4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4};
 
 //        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
 
+        System.out.println(Problems.maxOperations(nums,2));
         System.out.println(Problems.maxArea(nums));
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
@@ -189,6 +190,32 @@ public class Problems {
     }
 
 
+    public static int maxOperations(int[] nums, int k) {
+        int count = 0;
+        int l  = 0;
+        int r = nums.length-1;
+        Arrays.sort(nums);
+        while(l<r){
+            if(nums[l]+nums[r]==k){
+                count++;
+                r--;
+                l++;
+            } else if (nums[l]+nums[r]>k ){
+                r--;
+            }else l++;
+        }
+        return count;
+
+      /*  for(int i = 0; i<nums.length; i++){
+            for(int j = nums.length-1; j>i; j--){
+                if(nums[i]+nums[j]==k){
+                    count ++;
+                    break;
+                }
+            }
+        }
+        return count;*/
+    }
     public static int maxArea(int[] height) {
         int leftIndex = 0;
         int rightIndex = height.length-1;

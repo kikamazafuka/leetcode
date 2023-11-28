@@ -97,11 +97,12 @@ public class Problems {
         list2.add(listToMerge3);
 //        listToMerge2.add(13);
 //        listToMerge2.add(14);
-        int [] nums = new int []{4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4};
+        int [] nums = new int []{1,12,-5,-6,50,3};
 
 //        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
 
+        System.out.println(Problems.findMaxAverage(nums, 4));
         System.out.println(Problems.maxOperations(nums,2));
         System.out.println(Problems.maxArea(nums));
         moveZeroes(nums);
@@ -189,6 +190,21 @@ public class Problems {
 
     }
 
+
+    public static double findMaxAverage(int[] nums, int k) {
+        List<Double> list = new ArrayList<>();
+        int j = 0;
+        while(j<=nums.length-k){
+            int sum = 0;
+            for(int i = j; i<k+j; i++){
+                sum+=nums[i];
+            }
+            double avr = (double)sum / k;
+            list.add(avr);
+            j++;
+        }
+        return list.stream().max(Double::compare).get();
+    }
 
     public static int maxOperations(int[] nums, int k) {
         int count = 0;

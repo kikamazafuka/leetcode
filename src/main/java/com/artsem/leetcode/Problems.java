@@ -192,6 +192,18 @@ public class Problems {
     }
 
 
+    public static String reverseWordsMed(String s) {
+        String [] strArr = s.split(" ");
+        StringBuilder str = new StringBuilder();
+        for(int i=strArr.length-1; i>=0; i--){
+            if (strArr[i].equals("")){
+                continue;
+            }
+            str.append(strArr[i].trim());
+            str.append(" ");
+        }
+        return str.toString().trim();
+    }
     public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         List<Boolean> res = new ArrayList<>();
 //        for (int j : candies) {

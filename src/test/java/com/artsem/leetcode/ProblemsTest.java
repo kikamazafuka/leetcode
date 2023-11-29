@@ -88,4 +88,9 @@ public class ProblemsTest {
         List<Boolean> list = new ArrayList<>(List.of(true,false,true));
         Assert.assertEquals(list, Problems.kidsWithCandies(candies,10));
     }
+
+    @Test
+    public void testReverseWordsMed(){
+        Assert.assertEquals("example good a", Problems.reverseWordsMed("a good   example"));
+    }
 }

@@ -97,11 +97,12 @@ public class Problems {
         list2.add(listToMerge3);
 //        listToMerge2.add(13);
 //        listToMerge2.add(14);
-        int[] nums = new int[]{-1};
+        int[] nums = new int[0];
+
 
 //        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
-
+        System.out.println(Arrays.toString(Problems.getAverages(nums,40000)));
         System.out.println(Problems.findMaxAverage(nums, 1));
         System.out.println(Problems.maxOperations(nums, 2));
         System.out.println(Problems.maxArea(nums));
@@ -191,6 +192,74 @@ public class Problems {
     }
 
 
+    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        List<Boolean> res = new ArrayList<>();
+//        for (int j : candies) {
+//            boolean flag = false;
+//            for (int candy : candies) {
+//                if (j + extraCandies < candy) {
+//                    res.add(false);
+//                    flag = true;
+//                    break;
+//                }
+//            }
+//            if (flag) {
+//                continue;
+//            }
+//            res.add(true);
+//        }
+        int maxCandy = Arrays.stream(candies).max().getAsInt();
+        for (int candy : candies){
+            if (candy+extraCandies<maxCandy){
+                res.add(false);
+            } else res.add(true);
+        }
+
+        return res;
+    }
+    public static int[] getAverages(int[] nums, int k) {
+        int [] res = new int [nums.length];
+        if(nums.length<k*2+1){
+            Arrays.fill(res, -1);
+            return res;
+        }
+        int l = 0;
+        int r = nums.length-1;
+        while(l<k){
+            res[l] = -1;
+            res[r] = -1;
+            l++;
+            r--;
+        }
+        long sum = 0;
+        for(int i = 0; i<2*k+1; i++){
+            sum += nums[i];
+        }
+        long avr = sum/(2*k+1);
+        res[l++] = (int)avr;
+        int n = 2*k+1;
+        for(int i = k; i<nums.length-k-1; i++){
+            sum += nums[n++] - nums[i-k];
+            res[l++] = (int)(sum / (2L * k + 1));
+        }
+        return res;
+    }
+
+    public static int[] readNumbersFromFile(String filePath) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line = reader.readLine();
+            if (line != null) {
+                // Split the line by commas and convert each part to an integer
+                String[] numberStrings = line.split(",");
+                int[] numbers = new int[numberStrings.length];
+                for (int i = 0; i < numberStrings.length; i++) {
+                    numbers[i] = Integer.parseInt(numberStrings[i].trim());
+                }
+                return numbers;
+            }
+        }
+        return  new int [0];
+    }
     public static double findMaxAverage(int[] nums, int k) {
 //        double maxAvr = -100000;
 //        for (int j = 0; j <= nums.length - k; j++) {

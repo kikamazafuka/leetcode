@@ -95,12 +95,10 @@ public class Problems {
         listToMerge3.add(4);
         listToMerge3.add(7);
         list2.add(listToMerge3);
-//        listToMerge2.add(13);
-//        listToMerge2.add(14);
+
         int[] nums = new int[0];
 
 
-//        Problems.mergeArrListInPlace(listToMerge1,listToMerge2);
 
         System.out.println(Arrays.toString(Problems.getAverages(nums,40000)));
         System.out.println(Problems.findMaxAverage(nums, 1));
@@ -108,7 +106,6 @@ public class Problems {
         System.out.println(Problems.maxArea(nums));
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
-//        System.out.println(Arrays.toString(Problems.moveZeroes(nums)));
         System.out.println(Problems.reverseVowels("leetcode"));
         System.out.println(Problems.numberOfPoints(list2));
         System.out.println(Arrays.toString(Problems.mergeSort(ages)));
@@ -192,6 +189,27 @@ public class Problems {
     }
 
 
+    public static int maxVowels(String s, int k) {
+        int countVowels = 0;
+        for(int i = 0; i<k; i++){
+            if(isVowel(s.charAt(i)+"")){
+                countVowels++;
+            }
+        }
+        int maxVowels = countVowels;
+        for(int i = k; i<s.length(); i++){
+            if(isVowel(s.charAt(i)+"")){
+                countVowels++;
+            }
+            if (isVowel(s.charAt(i-k)+"")){
+                countVowels--;
+            }
+            if (maxVowels<countVowels){
+                maxVowels = countVowels;
+            }
+        }
+        return maxVowels;
+    }
     public static String reverseWordsMed(String s) {
         String [] strArr = s.split(" ");
         StringBuilder str = new StringBuilder();

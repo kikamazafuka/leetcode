@@ -189,6 +189,19 @@ public class Problems {
     }
 
 
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int max = 0;
+        int count = 0;
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]==1){
+                count++;
+            } else count = 0;
+            if(max<count){
+                max=count;
+            }
+        }
+        return max;
+    }
     public static int maxVowels(String s, int k) {
         int countVowels = 0;
         for(int i = 0; i<k; i++){

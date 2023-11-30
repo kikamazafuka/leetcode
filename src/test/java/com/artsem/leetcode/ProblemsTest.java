@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class ProblemsTest {
@@ -93,4 +91,19 @@ public class ProblemsTest {
     public void testReverseWordsMed(){
         Assert.assertEquals("example good a", Problems.reverseWordsMed("a good   example"));
     }
+
+
+    @Test
+    public void testMaxVowels(){
+        Assert.assertEquals(3, Problems.maxVowels("abciiidef", 3));
+    }
+    @Test
+    public void testMaxVowels2(){
+        Assert.assertEquals(2, Problems.maxVowels("aeiou", 2));
+    }
+    @Test
+    public void testMaxVowels3(){
+        Assert.assertEquals(2, Problems.maxVowels("leetcode", 3));
+    }
+
 }

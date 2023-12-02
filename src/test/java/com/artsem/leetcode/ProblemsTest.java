@@ -112,4 +112,11 @@ public class ProblemsTest {
         Assert.assertEquals(6, Problems.longestOnes(nums, 2));
 
     }
+
+    @Test
+    public void testProductExceptSelf(){
+        int [] nums = new int[]{-1,1,0,-3,3,0};
+        int [] exp = new int[]{0,0,0,0,0,0};
+        Assert.assertArrayEquals(exp,Problems.productExceptSelf(nums));
+    }
 }

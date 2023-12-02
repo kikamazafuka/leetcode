@@ -189,6 +189,30 @@ public class Problems {
     }
 
 
+    public static int[] productExceptSelf(int[] nums) {
+        int [] ans = new int [nums.length];
+        int prod = 1;
+        int zeroIndex = -1;
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i] == 0){
+                zeroIndex = i;
+                continue;
+            }
+            prod *= nums[i];
+        }
+        for(int i = 0; i<nums.length; i++){
+            if(zeroIndex>0){
+                ans[i] = 0;
+            }else if(zeroIndex>=0 && nums[i]!=0){
+                ans[i] = 0;
+            } else if(nums[i]==0) {
+                ans[i] = prod;
+            } else if(nums[i]!=0){
+                ans[i] = prod/nums[i];
+            } else ans[i] = 0;
+        }
+        return ans;
+    }
     public static int longestSubarray(int[] nums) {
         int l = 0, r;
         int num = 1;

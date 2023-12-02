@@ -189,6 +189,60 @@ public class Problems {
     }
 
 
+    public static int longestSubarray(int[] nums) {
+        int l = 0, r;
+        int num = 1;
+        for(r=0; r<nums.length; r++){
+            if(nums[r]==0){
+                num--;
+            }
+            if(num<0 && nums[l++]==0){
+                num++;
+            }
+        }
+        return r-l-1;
+    }
+    public static int longestOnes(int[] nums, int k) {
+//        int count = 0;
+//        int max = 0;
+//        int countK = 0;
+//        for(int i = 0; i<nums.length; i++){
+//            if(nums[i]==1){
+//                count++;
+//            } else if(countK < k){
+//                countK++;
+//                count++;
+//            } else {
+//                count = 0;
+//                countK = 0;
+//            }
+//            if(max<count){
+//                max = count;
+//            }
+//        }
+//        return max;
+
+        // 1,1,1,0,0,0,1,1,1,1,0
+
+//        int count = 0;
+//        int length = 0;
+//        for(int i = 0; i<k; ){
+//            if(nums[i]==0){
+//                i++;
+//            }
+//            if(nums[i]==1){
+//                count++;
+//            }
+//            length++;
+//        }
+//        return 1;
+        int i = 0, j;
+        for (j = 0; j < nums.length; ++j) {
+            if (nums[j] == 0) k--;
+            if (k < 0 && nums[i++] == 0) k++;
+        }
+        return j - i;
+    }
     public int findMaxConsecutiveOnes(int[] nums) {
         int max = 0;
         int count = 0;

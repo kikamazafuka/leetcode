@@ -106,4 +106,10 @@ public class ProblemsTest {
         Assert.assertEquals(2, Problems.maxVowels("leetcode", 3));
     }
 
+    @Test
+    public void testLongestOnes(){
+        int [] nums = new int[]{1,1,1,0,0,0,1,1,1,1,0};
+        Assert.assertEquals(6, Problems.longestOnes(nums, 2));
+
+    }
 }

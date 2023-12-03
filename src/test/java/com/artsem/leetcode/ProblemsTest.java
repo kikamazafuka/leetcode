@@ -119,4 +119,30 @@ public class ProblemsTest {
         int [] exp = new int[]{24,12,8,6};
         Assert.assertArrayEquals(exp,Problems.productExceptSelf(nums));
     }
+
+    @Test
+    public void testIncreasingTriplet(){
+        int [] nums = new int[]{20,100,10,12,5,13};
+        Assert.assertTrue(Problems.increasingTriplet(nums));
+    }
+    @Test
+    public void testIncreasingTriplet1(){
+        int [] nums = new int[]{6,7,1,2};
+        Assert.assertFalse(Problems.increasingTriplet(nums));
+    }
+    @Test
+    public void testIncreasingTriplet2(){
+        int [] nums = new int[]{1,2,3,4,5};
+        Assert.assertTrue(Problems.increasingTriplet(nums));
+    }
+    @Test
+    public void testIncreasingTriplet3(){
+        int [] nums = new int[]{5,4,3,2,1};
+        Assert.assertFalse(Problems.increasingTriplet(nums));
+    }
+    @Test
+    public void testIncreasingTriplet4(){
+        int [] nums = new int[]{2,1,5,0,4,6};
+        Assert.assertTrue(Problems.increasingTriplet(nums));
+    }
 }

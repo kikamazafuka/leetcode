@@ -188,6 +188,31 @@ public class Problems {
     }
 
 
+    public static boolean increasingTriplet(int[] nums) {
+//        int left = 0;
+//        int count = 0;
+//        for(int right = 0; right<nums.length-1; right++){
+//            if(nums[right+1]>nums[right]){
+//                count++;
+//            }else if(nums[right]<nums[left]){
+//                count = 0;
+//                left++;
+//            }
+//            if(count == 2){
+//                return true;
+//            }
+//        }
+        int small = Integer.MAX_VALUE;
+        int big = Integer.MAX_VALUE;
+        for(int n : nums){
+            if(n<=small){
+                small = n;
+            } else if(n<=big){
+                big=n;
+            } else return true;
+        }
+        return false;
+    }
     public static int[] productExceptSelf(int[] nums) {
 //        int[] ans = new int[nums.length];
 //        int prod = 1;

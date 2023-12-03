@@ -214,19 +214,17 @@ public class Problems {
 //        return ans;
 
         int[] lefts = new int[nums.length];
-        int [] rights = new int[nums.length];
         lefts[0] = 1;
         for (int i = 1; i < nums.length; i++) {
             lefts[i] = nums[i-1] * lefts[i-1];
         }
-        rights[nums.length-1] = 1;
+        int right = 1;
         for (int i = nums.length-2; i >= 0; i--) {
-            rights[i] = nums[i+1] * rights[i+1];
+            right = nums[i+1] * right;
+            lefts[i] *=right;
         }
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = lefts[i] * rights[i];
-        }
-        return nums;
+
+        return lefts;
 
     }
 

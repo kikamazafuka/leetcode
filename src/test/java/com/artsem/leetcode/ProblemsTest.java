@@ -115,8 +115,8 @@ public class ProblemsTest {
 
     @Test
     public void testProductExceptSelf(){
-        int [] nums = new int[]{-1,1,0,-3,3,0};
-        int [] exp = new int[]{0,0,0,0,0,0};
+        int [] nums = new int[]{1,2,3,4};
+        int [] exp = new int[]{24,12,8,6};
         Assert.assertArrayEquals(exp,Problems.productExceptSelf(nums));
     }
 }

@@ -99,8 +99,7 @@ public class Problems {
         int[] nums = new int[0];
 
 
-
-        System.out.println(Arrays.toString(Problems.getAverages(nums,40000)));
+        System.out.println(Arrays.toString(Problems.getAverages(nums, 40000)));
         System.out.println(Problems.findMaxAverage(nums, 1));
         System.out.println(Problems.maxOperations(nums, 2));
         System.out.println(Problems.maxArea(nums));
@@ -190,42 +189,61 @@ public class Problems {
 
 
     public static int[] productExceptSelf(int[] nums) {
-        int [] ans = new int [nums.length];
-        int prod = 1;
-        int zeroIndex = -1;
-        for(int i = 0; i<nums.length; i++){
-            if(nums[i] == 0){
-                zeroIndex = i;
-                continue;
-            }
-            prod *= nums[i];
+//        int[] ans = new int[nums.length];
+//        int prod = 1;
+//        int zeroIndex = -1;
+//        for(int i = 0; i<nums.length; i++){
+//            if(nums[i] == 0){
+//                zeroIndex = i;
+//                continue;
+//            }
+//            prod *= nums[i];
+//        }
+//        for(int i = 0; i<nums.length; i++){
+//            if(zeroIndex>0){
+//                ans[i] = 0;
+//            }else if(zeroIndex>=0 && nums[i]!=0){
+//                ans[i] = 0;
+//            } else if(nums[i]==0) {
+//                ans[i] = prod;
+//            } else if(nums[i]!=0){
+//                ans[i] = (int) (prod * Math.pow(nums[i],-1));
+//
+//            } else ans[i] = 0;
+//        }
+//        return ans;
+
+        int[] lefts = new int[nums.length];
+        int [] rights = new int[nums.length];
+        lefts[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            lefts[i] = nums[i-1] * lefts[i-1];
         }
-        for(int i = 0; i<nums.length; i++){
-            if(zeroIndex>0){
-                ans[i] = 0;
-            }else if(zeroIndex>=0 && nums[i]!=0){
-                ans[i] = 0;
-            } else if(nums[i]==0) {
-                ans[i] = prod;
-            } else if(nums[i]!=0){
-                ans[i] = prod/nums[i];
-            } else ans[i] = 0;
+        rights[nums.length-1] = 1;
+        for (int i = nums.length-2; i >= 0; i--) {
+            rights[i] = nums[i+1] * rights[i+1];
         }
-        return ans;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = lefts[i] * rights[i];
+        }
+        return nums;
+
     }
+
     public static int longestSubarray(int[] nums) {
         int l = 0, r;
         int num = 1;
-        for(r=0; r<nums.length; r++){
-            if(nums[r]==0){
+        for (r = 0; r < nums.length; r++) {
+            if (nums[r] == 0) {
                 num--;
             }
-            if(num<0 && nums[l++]==0){
+            if (num < 0 && nums[l++] == 0) {
                 num++;
             }
         }
-        return r-l-1;
+        return r - l - 1;
     }
+
     public static int longestOnes(int[] nums, int k) {
 //        int count = 0;
 //        int max = 0;
@@ -267,45 +285,48 @@ public class Problems {
         }
         return j - i;
     }
+
     public int findMaxConsecutiveOnes(int[] nums) {
         int max = 0;
         int count = 0;
-        for(int i = 0; i<nums.length; i++){
-            if(nums[i]==1){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
                 count++;
             } else count = 0;
-            if(max<count){
-                max=count;
+            if (max < count) {
+                max = count;
             }
         }
         return max;
     }
+
     public static int maxVowels(String s, int k) {
         int countVowels = 0;
-        for(int i = 0; i<k; i++){
-            if(isVowel(s.charAt(i)+"")){
+        for (int i = 0; i < k; i++) {
+            if (isVowel(s.charAt(i) + "")) {
                 countVowels++;
             }
         }
         int maxVowels = countVowels;
-        for(int i = k; i<s.length(); i++){
-            if(isVowel(s.charAt(i)+"")){
+        for (int i = k; i < s.length(); i++) {
+            if (isVowel(s.charAt(i) + "")) {
                 countVowels++;
             }
-            if (isVowel(s.charAt(i-k)+"")){
+            if (isVowel(s.charAt(i - k) + "")) {
                 countVowels--;
             }
-            if (maxVowels<countVowels){
+            if (maxVowels < countVowels) {
                 maxVowels = countVowels;
             }
         }
         return maxVowels;
     }
+
     public static String reverseWordsMed(String s) {
-        String [] strArr = s.split(" ");
+        String[] strArr = s.split(" ");
         StringBuilder str = new StringBuilder();
-        for(int i=strArr.length-1; i>=0; i--){
-            if (strArr[i].equals("")){
+        for (int i = strArr.length - 1; i >= 0; i--) {
+            if (strArr[i].equals("")) {
                 continue;
             }
             str.append(strArr[i].trim());
@@ -313,6 +334,7 @@ public class Problems {
         }
         return str.toString().trim();
     }
+
     public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         List<Boolean> res = new ArrayList<>();
 //        for (int j : candies) {
@@ -330,38 +352,39 @@ public class Problems {
 //            res.add(true);
 //        }
         int maxCandy = Arrays.stream(candies).max().getAsInt();
-        for (int candy : candies){
-            if (candy+extraCandies<maxCandy){
+        for (int candy : candies) {
+            if (candy + extraCandies < maxCandy) {
                 res.add(false);
             } else res.add(true);
         }
 
         return res;
     }
+
     public static int[] getAverages(int[] nums, int k) {
-        int [] res = new int [nums.length];
-        if(nums.length<k*2+1){
+        int[] res = new int[nums.length];
+        if (nums.length < k * 2 + 1) {
             Arrays.fill(res, -1);
             return res;
         }
         int l = 0;
-        int r = nums.length-1;
-        while(l<k){
+        int r = nums.length - 1;
+        while (l < k) {
             res[l] = -1;
             res[r] = -1;
             l++;
             r--;
         }
         long sum = 0;
-        for(int i = 0; i<2*k+1; i++){
+        for (int i = 0; i < 2 * k + 1; i++) {
             sum += nums[i];
         }
-        long avr = sum/(2*k+1);
-        res[l++] = (int)avr;
-        int n = 2*k+1;
-        for(int i = k; i<nums.length-k-1; i++){
-            sum += nums[n++] - nums[i-k];
-            res[l++] = (int)(sum / (2L * k + 1));
+        long avr = sum / (2 * k + 1);
+        res[l++] = (int) avr;
+        int n = 2 * k + 1;
+        for (int i = k; i < nums.length - k - 1; i++) {
+            sum += nums[n++] - nums[i - k];
+            res[l++] = (int) (sum / (2L * k + 1));
         }
         return res;
     }
@@ -379,8 +402,9 @@ public class Problems {
                 return numbers;
             }
         }
-        return  new int [0];
+        return new int[0];
     }
+
     public static double findMaxAverage(int[] nums, int k) {
 //        double maxAvr = -100000;
 //        for (int j = 0; j <= nums.length - k; j++) {
@@ -397,12 +421,12 @@ public class Problems {
 
         double sum = 0;
         for (int i = 0; i < k; i++) {
-            sum+=nums[i];
+            sum += nums[i];
         }
-        double maxAvr = sum/k;
+        double maxAvr = sum / k;
         for (int i = k; i < nums.length; i++) {
-            sum += nums[i] - nums[i-k];
-            maxAvr = Math.max(maxAvr, sum/k);
+            sum += nums[i] - nums[i - k];
+            maxAvr = Math.max(maxAvr, sum / k);
         }
         return maxAvr;
     }

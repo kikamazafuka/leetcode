@@ -104,89 +104,29 @@ public class Problems {
         System.out.println(Problems.maxOperations(nums, 2));
         System.out.println(Problems.maxArea(nums));
         moveZeroes(nums);
-        System.out.println(Arrays.toString(nums));
-        System.out.println(Problems.reverseVowels("leetcode"));
-        System.out.println(Problems.numberOfPoints(list2));
-        System.out.println(Arrays.toString(Problems.mergeSort(ages)));
-        System.out.println(Problems.hammingDistance(93, 73));
-        System.out.println(Problems.calPoints(month));
-        System.out.println(Problems.numberOfPairs(new int[]{5, 12, 53, 22, 7, 59, 41, 54, 71, 24, 91, 74, 62, 47, 20, 14, 73, 11, 82, 2, 15, 38, 38, 20, 57, 70, 86, 93, 38, 75, 94, 19, 36, 40, 28, 6, 35, 86, 38, 94, 4, 90, 18, 87, 24, 22}));
-        System.out.println(Problems.judgeCircle(ss));
-        System.out.println(Problems.rowAndMaximumOnes(multArr1));
-        System.out.println(Problems.repeatedNTimes(ages));
-        System.out.println(Problems.sortString("leetcode"));
-        System.out.println(Problems.sumZero(5));
-        System.out.println(Problems.distinctDifferenceArray(ages));
-        System.out.println(Problems.sumOfUnique(ages));
-        System.out.println(Problems.finalPrices(ages));
-        System.out.println(Problems.sumBase(34, 6));
-        System.out.println(Problems.destCity(list));
-        System.out.println(Problems.findGCD(ages));
-        System.out.println(Problems.prefixCount(word1, "sxyjellhlh"));
-        System.out.println(Integer.bitCount(5));
-//        System.out.println(Problems.sortByBits(ages));
-        System.out.println(Integer.toBinaryString(2));
-        System.out.println(gregorianCalendar);
-        System.out.println(Problems.mergeSimilarItems(multArr1, multArrSum1));
-        System.out.println((Problems.canPlaceFlowers(ages, 1)));
-        System.out.println(month[calendar.get(Calendar.MONTH)]);
-        System.out.println(Problems.deleteGreatestValue(multArr));
-        System.out.println(Problems.removeTrailingZeros("50"));
-        System.out.println(Problems.isSameAfterReversals(526));
-        Problems.getTargetCopy(root, cloned, root.right);
-        System.out.println(Problems.rangeSumBST(root, 7, 15));
-        System.out.println(Problems.findDifference(small, arr));
-        System.out.println(Problems.countGoodRectangles(multArr));
-        System.out.println(Problems.minOperations2(arr));
-        System.out.println(Problems.commonFactors(885, 885));
-        System.out.println(Problems.firstPalindrome(word1));
-        System.out.println(Problems.mergeAlternately(st, st2));
-        System.out.println(Problems.countPairs(ages, 2));
-        System.out.println(Problems.freqAlphabets("1326#"));
-        System.out.println(Problems.majorityElement(ages));
-        System.out.println(Problems.longestCommonPrefix(word1));
-        System.out.println(Problems.pivotInteger(1));
-        System.out.println(Problems.sortPeople(word1, ages));
-        System.out.println(Problems.maximumNumberOfStringPairs(word2));
-        System.out.println(Problems.makeSmallestPalindrome(st));
-        System.out.println(Problems.maxProduct(arr));
-        System.out.println(Problems.replaceDigits(str));
-        System.out.println(Problems.subsetXORSum(arr));
-        System.out.println(Problems.countPoints(rings));
-        System.out.println(Problems.countGoodTriplets(arr, 7, 2, 3));
-        System.out.println(Problems.maxProductDifference(small));
-        System.out.println(Problems.flipAndInvertImage(multArrSum));
-        System.out.println(Problems.removeOuterParentheses(""));
-        System.out.println(Problems.maxDepth(""));
-        System.out.println(Problems.countAsterisks("|l|*e*et|c**o|*de"));
-        System.out.println(Problems.maximum69Number(9696666));
-        System.out.println(Problems.largestAltitude(new int[]{44, 32, -9, 52, 23, -50, 50, 33, -84, 47, -14, 84, 36, -62, 37, 81, -36, -85, -39, 67, -63, 64, -47, 95, 91, -40, 65, 67, 92, -28, 97, 100, 81}));
-        System.out.println(Integer.parseInt((Integer.toString(2, 2))));
-        System.out.println(Problems.minBitFlips(10, 7));
-        System.out.println(Problems.uniqueMorseRepresentations(new String[]{"a"}));
-        System.out.println(Problems.toLowerCase("al&phaBET"));
-        System.out.println(Problems.diagonalSum(multArrSum));
-        System.out.println(Problems.countKDifference(small, 1));
-        System.out.println(Problems.checkIfPangram("uwqohxamknblecdtzpisgvyfjr"));
-        System.out.println(Problems.isAcronym(list1, st));
-        System.out.println(Problems.sortSentence("Myself2 Me1 I4 and3"));
-        System.out.println(Problems.findCenter(multArr));
-        System.out.println(Problems.differenceOfSum(small));
-        System.out.println(Problems.arrayStringsAreEqual(word1, word2));
-        System.out.println(Problems.countDigits(1248));
-        System.out.println(Problems
-                .decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv"));
-        System.out.println(Problems.cellsInRange("K7:M9"));
-        System.out.println(Problems.countMatches(list, ruleKey, ruleValue));
-        Problems.restoreStringRef(str, small);
-        Problems.xorOperation(5, 0);
-        System.out.println(Problems.sumOfMultiples(9));
-        System.out.println(Problems.balancedStringSplit(str));
-        System.out.println(Arrays.toString(Problems.decompressRLElist(arr)));
-
-
     }
 
+
+    public static int compress(char[] chars) {
+        if (chars.length == 1) return 1;
+        int i = 0, j;
+        int count = 1;
+        for (j = 1; j <= chars.length; j++) {
+            if (j != chars.length && chars[j] == chars[j - 1]) {
+                count++;
+            } else if (count > 1) {
+                chars[i++] = chars[j - 1];
+                String num = Integer.toString(count);
+                for (int k = 0; k < num.length(); k++) {
+                    chars[i++] = num.charAt(k);
+                }
+                count = 1;
+            } else {
+                chars[i++] = chars[j - 1];
+            }
+        }
+        return i;
+    }
 
     public static boolean increasingTriplet(int[] nums) {
 //        int left = 0;
@@ -204,15 +144,16 @@ public class Problems {
 //        }
         int small = Integer.MAX_VALUE;
         int big = Integer.MAX_VALUE;
-        for(int n : nums){
-            if(n<=small){
+        for (int n : nums) {
+            if (n <= small) {
                 small = n;
-            } else if(n<=big){
-                big=n;
+            } else if (n <= big) {
+                big = n;
             } else return true;
         }
         return false;
     }
+
     public static int[] productExceptSelf(int[] nums) {
 //        int[] ans = new int[nums.length];
 //        int prod = 1;
@@ -241,12 +182,12 @@ public class Problems {
         int[] lefts = new int[nums.length];
         lefts[0] = 1;
         for (int i = 1; i < nums.length; i++) {
-            lefts[i] = nums[i-1] * lefts[i-1];
+            lefts[i] = nums[i - 1] * lefts[i - 1];
         }
         int right = 1;
-        for (int i = nums.length-2; i >= 0; i--) {
-            right = nums[i+1] * right;
-            lefts[i] *=right;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            right = nums[i + 1] * right;
+            lefts[i] *= right;
         }
 
         return lefts;

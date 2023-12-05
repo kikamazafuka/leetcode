@@ -145,4 +145,20 @@ public class ProblemsTest {
         int [] nums = new int[]{2,1,5,0,4,6};
         Assert.assertTrue(Problems.increasingTriplet(nums));
     }
+
+    @Test
+    public void testCompress(){
+        char [] nums = new char[]{'a', 'a', 'b', 'b', 'c', 'c', 'c'};
+        Assert.assertEquals(6, Problems.compress(nums));
+    }
+    @Test
+    public void testCompress2(){
+        char [] nums = new char[]{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'};
+        Assert.assertEquals(4, Problems.compress(nums));
+    }
+    @Test
+    public void testCompress3(){
+        char [] nums = new char[]{'a', 'a', 'a', 'b', 'b', 'a', 'a'};
+        Assert.assertEquals(6, Problems.compress(nums));
+    }
 }

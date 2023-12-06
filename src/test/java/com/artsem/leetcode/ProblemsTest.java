@@ -161,4 +161,32 @@ public class ProblemsTest {
         char [] nums = new char[]{'a', 'a', 'a', 'b', 'b', 'a', 'a'};
         Assert.assertEquals(6, Problems.compress(nums));
     }
+
+    @Test
+    public void testCanPlaceFlower(){
+        int [] nums = new int[]{1,0,0,0,1};
+        Assert.assertTrue( Problems.canPlaceFlowers(nums, 1));
+    }
+    @Test
+    public void testCanPlaceFlower2(){
+        int [] nums = new int[]{1,0,0,0,1};
+        Assert.assertTrue( Problems.canPlaceFlowers(nums, 2));
+    }
+    @Test
+    public void testCanPlaceFlower3(){
+        int [] nums = new int[]{1,0,0,0,0,1};
+        Assert.assertFalse( Problems.canPlaceFlowers(nums, 2));
+    }
+    @Test
+    public void testCanPlaceFlower4(){
+        int [] nums = new int[]{0,1,0};
+        Assert.assertFalse( Problems.canPlaceFlowers(nums, 1));
+    }
+
+    @Test
+    public void testUniqueOccurrences(){
+        int [] nums = new int[]{1,2,2,1,1,3};
+        Assert.assertTrue( Problems.uniqueOccurrences(nums));
+    }
+
 }

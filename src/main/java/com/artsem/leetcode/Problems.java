@@ -42,20 +42,6 @@ public class Problems {
         list1.add("up");
         list1.add("on");
         list1.add("you");
-        String ruleKey = "type", ruleValue = "phone";
-        String[] word1 = new String[]{"sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "vbx", "fsi", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "gqira", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh",
-                "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh", "sxyjellhlh"};
-        String[] word2 = new String[]{"pay", "attention", "practice", "attend"};
         int[] ages = new int[]{2, 6, 2, 1, 0, 9, 7};
         String st = "cdf";
         String st2 = "a";
@@ -106,6 +92,21 @@ public class Problems {
         moveZeroes(nums);
     }
 
+    public static boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : arr){
+            map.put(num, map.getOrDefault(num, 0)+1);
+        }
+        List<Integer> values = new ArrayList<>(map.values());
+        int [] nums = map.values().stream().mapToInt(Integer::intValue).toArray();
+        Arrays.sort(nums);
+        for (int i = 0; i<nums.length-1; i++){
+            if(nums[i]==nums[i+1]){
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static int compress(char[] chars) {
         if (chars.length == 1) return 1;

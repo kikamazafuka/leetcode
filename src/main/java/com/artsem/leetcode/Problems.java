@@ -97,14 +97,19 @@ public class Problems {
         for(int num : arr){
             map.put(num, map.getOrDefault(num, 0)+1);
         }
-        List<Integer> values = new ArrayList<>(map.values());
-        int [] nums = map.values().stream().mapToInt(Integer::intValue).toArray();
-        Arrays.sort(nums);
-        for (int i = 0; i<nums.length-1; i++){
-            if(nums[i]==nums[i+1]){
-                return false;
-            }
+        Set<Integer> set = new HashSet<>();
+        map.forEach((key, value) -> set.add(value));
+        if (set.size()!=map.values().size()){
+            return false;
         }
+//        List<Integer> values = new ArrayList<>(map.values());
+//        int [] nums = map.values().stream().mapToInt(Integer::intValue).toArray();
+//        Arrays.sort(nums);
+//        for (int i = 0; i<nums.length-1; i++){
+//            if(nums[i]==nums[i+1]){
+//                return false;
+//            }
+//        }
         return true;
     }
 

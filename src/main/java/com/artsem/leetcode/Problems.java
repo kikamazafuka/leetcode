@@ -1,7 +1,5 @@
 package com.artsem.leetcode;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -92,16 +90,51 @@ public class Problems {
         moveZeroes(nums);
     }
 
-    public static boolean uniqueOccurrences(int[] arr) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int num : arr){
-            map.put(num, map.getOrDefault(num, 0)+1);
-        }
-        Set<Integer> set = new HashSet<>();
-        map.forEach((key, value) -> set.add(value));
-        if (set.size()!=map.values().size()){
+    public static boolean closeStrings(String word1, String word2) {
+        if (word1.length() != word2.length()) {
             return false;
         }
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+        for (int i = 0; i < word1.length(); i++) {
+            map1.put(word1.charAt(i), map1.getOrDefault(word1.charAt(i), 0) + 1);
+            map2.put(word2.charAt(i), map2.getOrDefault(word2.charAt(i), 0) + 1);
+        }
+        if (map1.size()!=map2.size()){
+            return false;
+        }
+        int[] chars1 = map1.keySet().stream().mapToInt(Character::charValue).toArray();
+        int[] chars2 = map2.keySet().stream().mapToInt(Character::charValue).toArray();
+        Arrays.sort(chars1);
+        Arrays.sort(chars2);
+        for (int i = 0; i < chars1.length; i++) {
+            if (chars1[i] != chars2[i]) {
+                return false;
+            }
+        }
+        int[] nums1 = map1.values().stream().mapToInt(Integer::intValue).toArray();
+        int[] nums2 = map2.values().stream().mapToInt(Integer::intValue).toArray();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        for (int i = 0; i < nums1.length; i++) {
+            if (nums1[i] != nums2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : arr) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        Set<Integer> set = new HashSet<>(map.values());
+        return map.size() == set.size();
+//        map.forEach((key, value) -> set.add(value));
+//        if (set.size()!=map.values().size()){
+//            return false;
+//        }
 //        List<Integer> values = new ArrayList<>(map.values());
 //        int [] nums = map.values().stream().mapToInt(Integer::intValue).toArray();
 //        Arrays.sort(nums);
@@ -110,7 +143,7 @@ public class Problems {
 //                return false;
 //            }
 //        }
-        return true;
+//        return true;
     }
 
     public static int compress(char[] chars) {

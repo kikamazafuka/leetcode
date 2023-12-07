@@ -189,4 +189,25 @@ public class ProblemsTest {
         Assert.assertTrue( Problems.uniqueOccurrences(nums));
     }
 
+    @Test
+    public void testCloseStrings(){
+        Assert.assertTrue( Problems.closeStrings("abc", "cba"));
+    }
+    @Test
+    public void testCloseStrings2(){
+        Assert.assertFalse( Problems.closeStrings("a", "aa"));
+    }
+    @Test
+    public void testCloseStrings3(){
+        Assert.assertTrue( Problems.closeStrings("cabbba", "abbccc"));
+    }
+    @Test
+    public void testCloseStrings4(){
+        Assert.assertFalse( Problems.closeStrings("uau", "ssx"));
+    }
+    @Test
+    public void testCloseStrings5(){
+        Assert.assertFalse( Problems.closeStrings("mkmczky", "cckcmmy"));
+    }
+
 }

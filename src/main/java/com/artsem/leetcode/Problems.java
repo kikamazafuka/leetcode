@@ -108,6 +108,13 @@ public class Problems {
                 return false;
             }
         }
+        List<Integer> sortedValues1 = new ArrayList<>(map1.values());
+        List<Integer> sortedValues2 = new ArrayList<>(map2.values());
+        Collections.sort(sortedValues1);
+        Collections.sort(sortedValues2);
+        if (!sortedValues1.equals(sortedValues2)){
+            return false;
+        }
 //        int[] chars1 = map1.keySet().stream().mapToInt(Character::charValue).toArray();
 //        int[] chars2 = map2.keySet().stream().mapToInt(Character::charValue).toArray();
 //        Arrays.sort(chars1);
@@ -117,15 +124,15 @@ public class Problems {
 //                return false;
 //            }
 //        }
-        int[] nums1 = map1.values().stream().mapToInt(Integer::intValue).toArray();
-        int[] nums2 = map2.values().stream().mapToInt(Integer::intValue).toArray();
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        for (int i = 0; i < nums1.length; i++) {
-            if (nums1[i] != nums2[i]) {
-                return false;
-            }
-        }
+//        int[] nums1 = map1.values().stream().mapToInt(Integer::intValue).toArray();
+//        int[] nums2 = map2.values().stream().mapToInt(Integer::intValue).toArray();
+//        Arrays.sort(nums1);
+//        Arrays.sort(nums2);
+//        for (int i = 0; i < nums1.length; i++) {
+//            if (nums1[i] != nums2[i]) {
+//                return false;
+//            }
+//        }
         return true;
     }
 

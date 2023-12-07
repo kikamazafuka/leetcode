@@ -209,5 +209,8 @@ public class ProblemsTest {
     public void testCloseStrings5(){
         Assert.assertFalse( Problems.closeStrings("mkmczky", "cckcmmy"));
     }
-
+    @Test
+    public void testCloseStrings6(){
+        Assert.assertFalse( Problems.closeStrings("aaac", "aacc"));
+    }
 }

@@ -213,4 +213,10 @@ public class ProblemsTest {
     public void testCloseStrings6(){
         Assert.assertFalse( Problems.closeStrings("aaac", "aacc"));
     }
+
+    @Test
+    public void testEqualPairs(){
+        int [][] nums = new int[][]{{3,2,1},{1,7,6},{2,7,7}};
+        Assert.assertEquals(1, Problems.equalPairs(nums));
+    }
 }

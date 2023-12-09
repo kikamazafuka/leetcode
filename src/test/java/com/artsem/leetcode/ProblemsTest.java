@@ -230,4 +230,17 @@ public class ProblemsTest {
         String s = "leet**cod*e";
         Assert.assertEquals("lecoe", Problems.removeStars(s));
     }
+
+    @Test
+    public void testBackspaceCompare(){
+        String s = "ab#c";
+        String t = "ad#c";
+        Assert.assertTrue( Problems.backspaceCompare(s, t));
+    }
+    @Test
+    public void testBackspaceCompare2(){
+        String s = "y#fo##f";
+        String t = "y#f#o##f";
+        Assert.assertTrue( Problems.backspaceCompare(s, t));
+    }
 }

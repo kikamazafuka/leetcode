@@ -85,6 +85,25 @@ public class Problems {
 
     }
 
+    public static boolean backspaceCompare(String s, String t) {
+        StringBuilder st1 = new StringBuilder();
+        StringBuilder st2 = new StringBuilder();
+        backspace(s, st1);
+        backspace(t, st2);
+
+        return st1.toString().equals(st2.toString());
+    }
+    private static void backspace(String t, StringBuilder st2) {
+        for(char c : t.toCharArray()){
+            if (c=='#' && st2.length()==0){
+                continue;
+            }
+            if(c=='#' && st2.length()>0){
+                st2.deleteCharAt(st2.length()-1);
+            } else st2.append(c);
+        }
+    }
+
     public static String removeStars(String s) {
 //        Stack<Character> st = new Stack<>();
 //        for (char c : s.toCharArray()) {

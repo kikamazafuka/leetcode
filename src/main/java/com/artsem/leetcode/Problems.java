@@ -86,18 +86,22 @@ public class Problems {
     }
 
     public static String removeStars(String s) {
-
-        Stack<Character> st = new Stack<>();
-        for (char c : s.toCharArray()){
-            if (c!='*'){
-                st.push(c);
-            }else st.pop();
-        }
+//        Stack<Character> st = new Stack<>();
+//        for (char c : s.toCharArray()) {
+//            if (c != '*') {
+//                st.push(c);
+//            } else if (!st.isEmpty())st.pop();
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        for (char c : st) {
+//            sb.append(c);
+//        }
         StringBuilder sb = new StringBuilder();
-        for (char c : st){
-            sb.append(c);
+        for (char c : s.toCharArray()){
+            if(c=='*' && sb.length()>0){
+                sb.deleteCharAt(sb.length()-1);
+            }else sb.append(c);
         }
-
         return sb.toString();
     }
 

@@ -224,4 +224,10 @@ public class ProblemsTest {
         int [][] nums = new int[][]{{3,1,2,2},{1,4,4,5},{2,4,2,2},{2,4,2,2}};
         Assert.assertEquals(3, Problems.equalPairs(nums));
     }
+
+    @Test
+    public void testRemoveStars(){
+        String s = "leet**cod*e";
+        Assert.assertEquals("lecoe", Problems.removeStars(s));
+    }
 }

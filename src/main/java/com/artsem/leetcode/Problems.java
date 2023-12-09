@@ -69,8 +69,6 @@ public class Problems {
         listToMerge1.add(3);
         listToMerge1.add(6);
         list2.add(listToMerge1);
-//        listToMerge1.add(5);
-//        listToMerge1.add(9);
         ArrayList<Integer> listToMerge2 = new ArrayList<>();
         listToMerge2.add(1);
         listToMerge2.add(5);
@@ -83,11 +81,24 @@ public class Problems {
         int[] nums = new int[0];
 
 
-        System.out.println(Arrays.toString(Problems.getAverages(nums, 40000)));
-        System.out.println(Problems.findMaxAverage(nums, 1));
-        System.out.println(Problems.maxOperations(nums, 2));
-        System.out.println(Problems.maxArea(nums));
-        moveZeroes(nums);
+        System.out.println(Problems.removeStars(""));
+
+    }
+
+    public static String removeStars(String s) {
+
+        Stack<Character> st = new Stack<>();
+        for (char c : s.toCharArray()){
+            if (c!='*'){
+                st.push(c);
+            }else st.pop();
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : st){
+            sb.append(c);
+        }
+
+        return sb.toString();
     }
 
     public static int equalPairs(int[][] grid) {

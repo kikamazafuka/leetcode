@@ -243,4 +243,17 @@ public class ProblemsTest {
         String t = "y#f#o##f";
         Assert.assertTrue( Problems.backspaceCompare(s, t));
     }
+
+    @Test
+    public void testMakeGood(){
+        Assert.assertEquals("", Problems.makeGood("Pp"));
+    }
+    @Test
+    public void testMakeGood1(){
+        Assert.assertEquals("leetcode", Problems.makeGood( "leEeetcode"));
+    }
+    @Test
+    public void testMakeGood2(){
+        Assert.assertEquals("", Problems.makeGood("abBAcC"));
+    }
 }

@@ -85,6 +85,24 @@ public class Problems {
 
     }
 
+    public static String predictPartyVictory(String senate) {
+        Queue<Integer> r = new LinkedList<>();
+        Queue<Integer> d = new LinkedList<>();
+        int n = senate.length();
+        for(int i = 0; i<n; i++){
+            if(senate.charAt(i) == 'R')r.add(i);
+            else d.add(i);
+        }
+        while(!r.isEmpty() && !d.isEmpty()){
+            int r_index = r.poll();
+            int d_index = d.poll();
+            if(r_index < d_index){
+                r.add(r_index + n);
+            } else d.add(d_index + n);
+        }
+        return r.size() > d.size() ? "Radiant" : "Dire";
+    }
+
     public static String makeGood(String s) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i<s.length();i++){

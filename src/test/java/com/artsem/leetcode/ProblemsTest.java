@@ -256,4 +256,17 @@ public class ProblemsTest {
     public void testMakeGood2(){
         Assert.assertEquals("", Problems.makeGood("abBAcC"));
     }
+
+    @Test
+    public void testPredictPartyVictory(){
+        Assert.assertEquals("Dire", Problems.predictPartyVictory( "DDRRR"));
+    }
+    @Test
+    public void testPredictPartyVictory1(){
+        Assert.assertEquals("Radiant", Problems.predictPartyVictory( "RD"));
+    }
+    @Test
+    public void testPredictPartyVictory2(){
+        Assert.assertEquals("Dire", Problems.predictPartyVictory( "RDD"));
+    }
 }

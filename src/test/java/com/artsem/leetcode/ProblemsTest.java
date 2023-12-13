@@ -272,7 +272,7 @@ public class ProblemsTest {
 
     @Test
     public void testSingleNumber(){
-        int [] nums = new int[]{4,1,2,1,2};
+        int [] nums = new int[]{6,1,2,1,2};
         Assert.assertEquals(4, Problems.singleNumber(nums));
     }
 }

@@ -85,6 +85,18 @@ public class Problems {
 
     }
 
+    public static int singleNumber(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : nums){
+            map.put(num, map.getOrDefault(num, 0)+1);
+        }
+        for(Map.Entry mapEntry : map.entrySet()){
+            if((int)mapEntry.getValue()==1){
+                return (int)mapEntry.getKey();
+            }
+        }
+        return -1;
+    }
     public static String predictPartyVictory(String senate) {
         Queue<Integer> r = new LinkedList<>();
         Queue<Integer> d = new LinkedList<>();

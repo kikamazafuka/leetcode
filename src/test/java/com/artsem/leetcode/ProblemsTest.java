@@ -269,4 +269,10 @@ public class ProblemsTest {
     public void testPredictPartyVictory2(){
         Assert.assertEquals("Dire", Problems.predictPartyVictory( "RDD"));
     }
+
+    @Test
+    public void testSingleNumber(){
+        int [] nums = new int[]{4,1,2,1,2};
+        Assert.assertEquals(4, Problems.singleNumber(nums));
+    }
 }

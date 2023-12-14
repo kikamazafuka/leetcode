@@ -279,7 +279,7 @@ public class ProblemsTest {
     @Test
     public void testCountBits1(){
         int [] nums = new int[]{0,1,1};
-        Assert.assertArrayEquals(nums, Problems.countBits1(2));
+        Assert.assertArrayEquals(nums, Problems.countBits1(5));
     }
 
     @Test

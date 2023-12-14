@@ -89,7 +89,7 @@ public class Problems {
     public static int[] countBits1(int n) {
      int [] nums = new int [n+1];
      for(int i = 0; i<=n; i++){
-         nums[i] = Integer.bitCount(i);
+         nums[i] = nums[i>>1] + (i & 1);
      }
      return nums;
     }

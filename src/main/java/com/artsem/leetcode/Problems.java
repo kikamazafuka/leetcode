@@ -85,6 +85,14 @@ public class Problems {
 
     }
 
+
+    public static int[] countBits1(int n) {
+     int [] nums = new int [n+1];
+     for(int i = 0; i<=n; i++){
+         nums[i] = Integer.bitCount(i);
+     }
+     return nums;
+    }
     public static int singleNumber(int[] nums) {
 //        Map<Integer, Integer> map = new HashMap<>();
 //        for(int num : nums){

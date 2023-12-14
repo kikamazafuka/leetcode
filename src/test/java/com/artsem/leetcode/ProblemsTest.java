@@ -275,4 +275,16 @@ public class ProblemsTest {
         int [] nums = new int[]{6,1,2,1,2};
         Assert.assertEquals(4, Problems.singleNumber(nums));
     }
+
+    @Test
+    public void testCountBits1(){
+        int [] nums = new int[]{0,1,1};
+        Assert.assertArrayEquals(nums, Problems.countBits1(2));
+    }
+
+    @Test
+    public void testCountBits11(){
+        int [] nums = new int[]{0};
+        Assert.assertArrayEquals(nums, Problems.countBits1(0));
+    }
 }

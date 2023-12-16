@@ -85,6 +85,19 @@ public class Problems {
 
     }
 
+    public int minBitFlips1(int start, int goal) {
+        int count = 0;
+        while(goal>0 || start>0){
+            int bStart = start & 1;
+            int bGoal = goal & 1;
+            if(bStart!=bGoal){
+                count++;
+            }
+            start >>=1;
+            goal >>=1;
+        }
+        return count;
+    }
 
     public static int minFlips(int a, int b, int c) {
 //        String aBin = Integer.toBinaryString(a);

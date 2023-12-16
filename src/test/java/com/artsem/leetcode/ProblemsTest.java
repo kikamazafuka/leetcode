@@ -287,4 +287,17 @@ public class ProblemsTest {
         int [] nums = new int[]{0};
         Assert.assertArrayEquals(nums, Problems.countBits1(0));
     }
+
+    @Test
+    public void testMinFlips(){
+        Assert.assertEquals(3, Problems.minFlips(2,6,5));
+    }
+    @Test
+    public void testMinFlips1(){
+        Assert.assertEquals(1, Problems.minFlips(4,2,7));
+    }
+    @Test
+    public void testMinFlips2(){
+        Assert.assertEquals(0, Problems.minFlips(1,2,3));
+    }
 }

@@ -86,6 +86,50 @@ public class Problems {
     }
 
 
+    public static int minFlips(int a, int b, int c) {
+//        String aBin = Integer.toBinaryString(a);
+//        String bBin = Integer.toBinaryString(b);
+//        String cBin = Integer.toBinaryString(c);
+//        int length = Math.max(aBin.length(),bBin.length());
+//        int maxLength = Math.max(length,cBin.length());
+//        int count = 0;
+//        aBin = addLeadingZeros(aBin,maxLength);
+//        bBin = addLeadingZeros(bBin,maxLength);
+//        cBin = addLeadingZeros(cBin,maxLength);
+//
+//        for (int i = 0; i<maxLength; i++){
+//
+//            if ((Character.getNumericValue(aBin.charAt(i))
+//                    | Character.getNumericValue(bBin.charAt(i))) != Character.getNumericValue(cBin.charAt(i))){
+//                count++;
+//            }
+//        }
+//        return count;
+        int flips = 0;
+        while (a > 0 || b > 0 || c > 0) {
+            int bitA = a & 1;
+            int bitB = b & 1;
+            int bitC = c & 1;
+
+            if (bitC == 0) {
+                flips += (bitA + bitB);
+            } else {
+                if (bitA == 0 && bitB == 0) {
+                    flips += 1;
+                }
+            }
+
+            a >>= 1;
+            b >>= 1;
+            c >>= 1;
+        }
+
+        return flips;
+    }
+    private static String addLeadingZeros(String binaryString, int desiredLength) {
+        // Use String.format to add leading zeros
+        return String.format("%" + desiredLength + "s", binaryString).replace(' ', '0');
+    }
     public static int[] countBits1(int n) {
      int [] nums = new int [n+1];
      for(int i = 0; i<=n; i++){

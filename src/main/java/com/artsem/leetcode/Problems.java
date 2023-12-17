@@ -85,6 +85,31 @@ public class Problems {
 
     }
 
+    public static class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+    public static ListNode oddEvenList(ListNode head) {
+        if(head == null){
+            return null;
+        }
+        ListNode oddNode = head;
+        ListNode evenNode = head.next;
+        ListNode evenHead = evenNode;
+        while(oddNode.next != null && evenNode.next != null){
+            oddNode.next = evenNode.next;
+            evenNode.next = evenNode.next.next;
+            oddNode = oddNode.next;
+            evenNode = evenNode.next;
+
+        }
+        oddNode.next = evenHead;
+        return head;
+    }
+
     public int minBitFlips1(int start, int goal) {
         int count = 0;
         while(goal>0 || start>0){

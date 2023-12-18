@@ -92,6 +92,48 @@ public class Problems {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
+    public ListNode deleteMiddle(ListNode head) {
+        int size = 0;
+        ListNode curr = head;
+        ListNode nodeToRemove = null;
+        // traverse list and count size
+        while(curr != null){
+            size++;
+            System.out.println(curr.val);
+            curr = curr.next;
+        }
+        System.out.println("size = " + size);
+        ListNode oddNode = head;
+        int count = 0;
+        // find node to remove
+        while( oddNode != null){
+            if(count==size/2){
+                nodeToRemove = oddNode;
+                System.out.println("remove : " + nodeToRemove.val);
+                break;
+            }
+            System.out.println(oddNode.val);
+            oddNode = oddNode.next;
+            count++;
+        }
+        ListNode currNode = head;
+        ListNode prevNode = null;
+        // remove node
+        while(currNode != null){
+            if (currNode == nodeToRemove) {
+                if (prevNode != null) {
+                    prevNode.next = currNode.next;
+                } else {
+                    // If there is no previous node, the head is the middle, so update the head
+                    head = currNode.next;
+                }
+                break;
+            }
+            prevNode = currNode;
+            currNode = currNode.next;
+        }
+        return head;
+    }
     public static ListNode oddEvenList(ListNode head) {
         if(head == null){
             return null;

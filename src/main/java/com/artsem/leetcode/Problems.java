@@ -92,6 +92,61 @@ public class Problems {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
+    public int pairSum(ListNode head) {
+        // create ListNode copy
+        ListNode newNode = new ListNode(head.val);
+        ListNode currOrig = head;
+        ListNode currCopy = newNode;
+        int size = 1;
+        while(currOrig.next != null){
+            currCopy.next = new ListNode(currOrig.next.val);
+            currOrig = currOrig.next;
+            currCopy = currCopy.next;
+            size++;
+        }
+
+        // reverse ListNode copy
+        ListNode curr = newNode;
+        ListNode prev = null;
+        ListNode next = null;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        ListNode origCurr = head;
+        ListNode revCurr = prev;
+        int max = 0;
+        int currTwinS = 0;
+        while(origCurr != null && revCurr != null){
+            currTwinS = origCurr.val + revCurr.val;
+            if(currTwinS>max){
+                max = currTwinS;
+            }
+            origCurr = origCurr.next;
+            revCurr = revCurr.next;
+        }
+
+        //traverse both Lists and count twin sum
+        System.out.println("Copy list");
+        ListNode trav1 = head;
+        while(trav1 != null){
+            System.out.println(trav1.val + "");
+            trav1 = trav1.next;
+        }
+
+        System.out.println("reversed list");
+        ListNode trav = prev;
+        while(trav != null){
+            System.out.println(trav.val + "");
+            trav = trav.next;
+        }
+
+
+        return max;
+    }
     public ListNode deleteMiddle(ListNode head) {
         int size = 0;
         ListNode curr = head;

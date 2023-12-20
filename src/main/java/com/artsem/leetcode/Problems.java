@@ -85,6 +85,27 @@ public class Problems {
 
     }
 
+      public static class TreeNode {
+          int val;
+          TreeNode left;
+          TreeNode right;
+          TreeNode() {}
+          TreeNode(int val) { this.val = val; }
+          TreeNode(int val, TreeNode left, TreeNode right) {
+              this.val = val;
+              this.left = left;
+              this.right = right;
+          }
+        }
+        public static int maxDepth(TreeNode root) {
+            if(root == null){
+                return 0;
+            }
+            int left =  maxDepth(root.left);
+            int right = maxDepth(root.right);
+            return Math.max(left,right) + 1;
+        }
+
     public static class ListNode {
       int val;
       ListNode next;
@@ -1760,26 +1781,7 @@ public class Problems {
         return reversedResult == num;
     }
 
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-    public final static TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+    public static TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         return traverse(cloned, target);
     }
 

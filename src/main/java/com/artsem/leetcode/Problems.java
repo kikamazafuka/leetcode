@@ -97,6 +97,27 @@ public class Problems {
               this.right = right;
           }
         }
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> list1 = new ArrayList<>();
+        collectLeaf(root1,list1);
+        List<Integer> list2 = new ArrayList<>();
+        collectLeaf(root2,list2);
+        return list1.equals(list2);
+
+    }
+
+    private static void collectLeaf(TreeNode root, List<Integer> list){
+        if(root == null){
+            return;
+        }
+        if(root.left == null && root.right == null){
+            list.add(root.val);
+        }else {
+            collectLeaf(root.left, list);
+            collectLeaf(root.right, list);
+        }
+
+    }
         public static int maxDepth(TreeNode root) {
             if(root == null){
                 return 0;
@@ -1760,7 +1781,6 @@ public class Problems {
     }
 
     public static boolean isSameAfterReversals(int num) {
-        //return num % 10 != 0 || num == 0;
         if (num == 0) {
             return true;
         }

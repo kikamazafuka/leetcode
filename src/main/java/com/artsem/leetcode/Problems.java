@@ -85,6 +85,34 @@ public class Problems {
 
     }
 
+    public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null){
+            return null;
+        }
+        TreeNode res = null;
+        if(root.val == val){
+            res = copySubtreeRecursive(root);
+            return res;
+        }
+        res = searchBST(root.left, val);
+        if(res != null){
+            return res;
+        }
+        res = searchBST(root.right, val);
+        return res;
+    }
+
+    private TreeNode copySubtreeRecursive(TreeNode originalNode) {
+        if (originalNode == null) {
+            return null;
+        }
+        // Create a new node with the same value
+        TreeNode copiedNode = new TreeNode(originalNode.val);
+        // Recursively copy left and right subtrees
+        copiedNode.left = copySubtreeRecursive(originalNode.left);
+        copiedNode.right = copySubtreeRecursive(originalNode.right);
+        return copiedNode;
+    }
       public static class TreeNode {
           int val;
           TreeNode left;

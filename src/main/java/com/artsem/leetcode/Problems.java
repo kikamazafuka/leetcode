@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import com.artsem.leetcode.TreeNode;
 
 public class Problems {
 
@@ -85,6 +86,92 @@ public class Problems {
 
     }
 
+    public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        for(int i : nums1){
+//            map.put(i, 0);
+//        }
+//        for(int i : nums2){
+//            if(map.containsKey(i)){
+//                map.put(i, 1);
+//            }else map.put(i,0);
+//        }
+//        for(int i : nums3){
+//            if(map.containsKey(i)){
+//                map.put(i, 1);
+//            }
+//        }
+//        List<Integer> list = new ArrayList<>();
+//        for (Map.Entry<Integer, Integer> entry : map.entrySet()){
+//            if (entry.getValue()>0){
+//                list.add(entry.getKey());
+//            }
+//        }
+//        return list;
+        List<Integer> arr= new ArrayList<>();
+        HashMap<Integer, Integer> map= new HashMap();
+        for(int i=0; i<nums1.length; i++)
+            map.put(nums1[i], 1);
+        for(int i=0; i<nums2.length; i++)
+        {
+            if(map.containsKey(nums2[i]))
+            {
+                if(map.get(nums2[i])==1)
+                {
+                    arr.add(nums2[i]);
+                    map.put(nums2[i], 2);
+                }
+            }
+        }
+        for(int i=0; i<nums2.length; i++)
+        {
+            if(!map.containsKey(nums2[i]))
+                map.put(nums2[i], 1);
+        }
+        for(int i=0; i<nums3.length; i++)
+        {
+            if(map.containsKey(nums3[i]))
+            {
+                if(map.get(nums3[i])==1)
+                {
+                    arr.add(nums3[i]);
+                    map.put(nums3[i], 2);
+                }
+            }
+        }
+        return arr;
+    }
+
+    public static int goodNodes(TreeNode root) {
+
+        int count = 0;
+        int max = root.val;
+        count = countNodes(root,count, max);
+
+
+        return count;
+
+
+    }
+
+    private static int countNodes(TreeNode root, int count, int max) {
+        if(root == null){
+            return 0;
+        }
+        // int count = 0;
+        //int max = root.val;
+        if(root.val>=max){
+            System.out.println("root>max: " + root.val);
+            count++;
+        }
+        System.out.println("before left, count = " + count);
+        countNodes(root.left, count, max);
+
+
+        return count;
+
+
+    }
     public TreeNode searchBST(TreeNode root, int val) {
         if(root == null){
             return null;
@@ -113,7 +200,7 @@ public class Problems {
         copiedNode.right = copySubtreeRecursive(originalNode.right);
         return copiedNode;
     }
-      public static class TreeNode {
+    public static class TreeNode {
           int val;
           TreeNode left;
           TreeNode right;
@@ -124,14 +211,13 @@ public class Problems {
               this.left = left;
               this.right = right;
           }
-        }
+    }
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
         List<Integer> list1 = new ArrayList<>();
         collectLeaf(root1,list1);
         List<Integer> list2 = new ArrayList<>();
         collectLeaf(root2,list2);
         return list1.equals(list2);
-
     }
 
     private static void collectLeaf(TreeNode root, List<Integer> list){

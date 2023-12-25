@@ -80,9 +80,48 @@ public class Problems {
         list2.add(listToMerge3);
 
         int[] nums = new int[0];
+        TreeNode treeNode = new TreeNode(3);
+        treeNode.left = new TreeNode(1);
+        treeNode.left.left = new TreeNode(3);
+        treeNode.right = new TreeNode(4);
+        treeNode.right.left = new TreeNode(1);
+        treeNode.right.left = new TreeNode(5);
 
 
+        System.out.println(Problems.goodNodes(treeNode));
         System.out.println(Problems.removeStars(""));
+
+
+    }
+
+    public static int goodNodes(TreeNode root) {
+
+        int count = 0;
+        int max = root.val;
+        count = countNodes(root,count, max);
+
+
+        return count;
+
+
+    }
+
+    private static int countNodes(TreeNode root, int count, int max) {
+        if(root == null){
+            return count;
+        }
+        if(root.val>=max){
+            System.out.println("root>max: " + root.val);
+            max = root.val;
+            count++;
+        }
+        System.out.println("before left, count = " + count);
+        count = countNodes(root.left, count, max);
+        count = countNodes(root.right, count, max);
+
+
+        return count;
+
 
     }
 
@@ -140,37 +179,6 @@ public class Problems {
             }
         }
         return arr;
-    }
-
-    public static int goodNodes(TreeNode root) {
-
-        int count = 0;
-        int max = root.val;
-        count = countNodes(root,count, max);
-
-
-        return count;
-
-
-    }
-
-    private static int countNodes(TreeNode root, int count, int max) {
-        if(root == null){
-            return 0;
-        }
-        // int count = 0;
-        //int max = root.val;
-        if(root.val>=max){
-            System.out.println("root>max: " + root.val);
-            count++;
-        }
-        System.out.println("before left, count = " + count);
-        countNodes(root.left, count, max);
-
-
-        return count;
-
-
     }
     public TreeNode searchBST(TreeNode root, int val) {
         if(root == null){

@@ -300,4 +300,21 @@ public class ProblemsTest {
     public void testMinFlips2(){
         Assert.assertEquals(0, Problems.minFlips(1,2,3));
     }
+
+    @Test
+    public void testTwoOutOfThree(){
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(3);
+        list.add(1);
+        Object [] objects = list.toArray();
+
+        int [] nums = new int[]{3,1};
+        int [] nums1 = new int[]{2,3};
+        int [] nums2 = new int[]{1,2};
+        List<Integer> res = Problems.twoOutOfThree(nums, nums1, nums2);
+        Object[] objects1 = res.toArray();
+        Assert.assertArrayEquals(objects, objects1);
+    }
+
 }

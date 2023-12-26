@@ -80,20 +80,50 @@ public class Problems {
         list2.add(listToMerge3);
 
         int[] nums = new int[0];
-        TreeNode treeNode = new TreeNode(3);
-        treeNode.left = new TreeNode(1);
-        treeNode.left.left = new TreeNode(3);
-        treeNode.right = new TreeNode(4);
-        treeNode.right.left = new TreeNode(1);
-        treeNode.right.left = new TreeNode(5);
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.left.left = new TreeNode(4);
+        treeNode.right = new TreeNode(3);
+//        treeNode.right.left = new TreeNode(1);
+//        treeNode.right.left = new TreeNode(4);
 
 
+        System.out.println(Problems.rightSideView(treeNode));
         System.out.println(Problems.goodNodes(treeNode));
         System.out.println(Problems.removeStars(""));
 
 
     }
 
+    public static List<Integer> rightSideView(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        fillList(root, list, 0);
+        return list;
+    }
+
+    private static void fillList(TreeNode curr, List<Integer> result, int currDepth){
+//        if(node == null){
+//            return;
+//        }
+//        if(node.right==null){
+//            list.add(node.val);
+//            fillList(node.left, list);
+//        }else {
+//            list.add(node.val);
+//            fillList(node.right, list);
+//        }
+
+        if(curr == null){
+            return;
+        }
+        if(currDepth == result.size()){
+            result.add(curr.val);
+        }
+
+        fillList(curr.right, result, currDepth + 1);
+        fillList(curr.left, result, currDepth + 1);
+
+    }
     public static int goodNodes(TreeNode root) {
 
         int count = 0;

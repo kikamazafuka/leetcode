@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import com.artsem.leetcode.TreeNode;
+import com.artsem.leetcode.*;
 
 public class Problems {
 
@@ -88,20 +88,62 @@ public class Problems {
 //        treeNode.right.left = new TreeNode(4);
 
 
-        System.out.println(Problems.rightSideView(treeNode));
-        System.out.println(Problems.goodNodes(treeNode));
+//        System.out.println(Problems.rightSideView(treeNode));
+//        System.out.println(Problems.goodNodes(treeNode));
         System.out.println(Problems.removeStars(""));
 
 
     }
 
-    public static List<Integer> rightSideView(TreeNode root) {
+
+    public static int getNodesAtEachLevel(com.artsem.leetcode.TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) {
+            return 1;
+        }
+        Queue<com.artsem.leetcode.TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                com.artsem.leetcode.TreeNode node = queue.poll();
+                currentLevel.add(node.val);
+
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+
+            result.add(currentLevel);
+        }
+        int level = 1;
+        int currLevel = 1;
+        int max = Integer.MIN_VALUE;
+        for (List<Integer> list : result){
+            int curr = list.stream().mapToInt(v -> v).sum();
+            if (curr>max){
+                max = curr;
+                level = currLevel;
+            }
+            currLevel++;
+        }
+
+        return level;
+    }
+    public static List<Integer> rightSideView(com.artsem.leetcode.TreeNode root) {
         List<Integer> list = new ArrayList<>();
         fillList(root, list, 0);
         return list;
     }
 
-    private static void fillList(TreeNode curr, List<Integer> result, int currDepth){
+    private static void fillList(com.artsem.leetcode.TreeNode curr, List<Integer> result, int currDepth){
 //        if(node == null){
 //            return;
 //        }

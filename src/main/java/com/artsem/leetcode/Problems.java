@@ -87,15 +87,54 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
-    public static int tribonacci(int n) {
-        int [] arr = new int [38];
-        arr[0] = 0;
-        arr[1] = 1;
-        arr[2] = 1;
-        for(int i = 3; i<=n; i++){
-            arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
+    public static boolean isAllPositiveNumbers(List<String> args) {
+        //magic happens here
+        for(String s : args){
+            if(!Problems.isPositiveNumber(s)){
+                return false;
+            }
         }
-        return arr[n];
+        return true;
+    }
+
+    public static boolean isPositiveNumber(String str) {
+        if (str == null || str.length()<1 || str.charAt(0)=='-'){
+            return false;
+        }
+
+        double num;
+        try {
+            num = Double.parseDouble(str);
+        }catch (NullPointerException | NumberFormatException ex){
+            return false;
+        }
+
+        return num>0;
+    }
+
+    public static int tribonacci(int n) {
+//        int [] arr = new int [38];
+//        arr[0] = 0;
+//        arr[1] = 1;
+//        arr[2] = 1;
+//        for(int i = 3; i<=n; i++){
+//            arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
+//        }
+//        return arr[n];
+        if(n==0){
+            return 0;
+        }
+        int a = 0;
+        int b = 1;
+        int c = 1;
+        int d = 0;
+        for(int i = 3; i<=n; i++){
+            d = a+b+c;
+            a=b;
+            b=c;
+            c=d;
+        }
+        return c;
     }
 
     public static int guessNumber(int n) {

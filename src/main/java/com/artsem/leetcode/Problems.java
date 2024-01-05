@@ -88,21 +88,16 @@ public class Problems {
     }
 
     public static int minCostClimbingStairs(int[] cost) {
-        int dp [] = new int [cost.length];
-        for(int i = 0; i<cost.length; i++){
+        int n = cost.length;
+        int[] dp = new int [n];
+        for(int i = 0; i<n; i++){
             if(i<2){
                 dp[i] = cost[i];
             } else{
                 dp[i] = cost[i] + Math.min(dp[i-1], dp[i-2]);
             }
-
         }
-        int sum = 0;
-        for(int n : dp){
-            sum+=n;
-        }
-        return sum;
-
+        return Math.min(dp[n-1], dp[n-2]);
     }
 
     public static boolean isAllPositiveNumbers(List<String> args) {

@@ -48,4 +48,65 @@ public class ProblemsTest {
 
         Assert.assertEquals(exp, res);
     }
+
+    @Test
+    public void testTribonacci(){
+
+        Assert.assertEquals(4, Problems.tribonacci(4));
+    }
+    @Test
+    public void testIsPositiveNumberNegative(){
+        Assert.assertFalse( Problems.isPositiveNumber("-11.22"));
+    }
+    @Test
+    public void testIsPositiveNumberPositiveDouble(){
+        boolean res = Problems.isPositiveNumber("11.22");
+        Assert.assertTrue(res);
+    }
+    @Test
+    public void testIsPositiveNumberPositive(){
+        boolean res = Problems.isPositiveNumber("5");
+        Assert.assertTrue(res);
+    }
+    @Test
+    public void testIsPositiveNumberNull(){
+        boolean res = Problems.isPositiveNumber("null");
+        Assert.assertFalse(res);
+    }
+    @Test
+    public void testIsPositiveNumberEmpty(){
+        boolean res = Problems.isPositiveNumber("");
+        Assert.assertFalse(res);
+    }
+    @Test
+    public void testIsPositiveNumberSpace(){
+        boolean res = Problems.isPositiveNumber(" ");
+        Assert.assertFalse(res);
+    }
+    @Test
+    public void testIsPositiveNumberNul(){
+        boolean res = Problems.isPositiveNumber(null);
+        Assert.assertFalse(res);
+    }
+    @Test
+    public void testIsPositiveNumberZero(){
+        boolean res = Problems.isPositiveNumber("088");
+        Assert.assertTrue(res);
+    }
+    @Test
+    public void testIsAllPositiveNumbersNeg(){
+        boolean res = Problems.isAllPositiveNumbers(List.of("-11.22", "0", "33", "87"));
+        Assert.assertFalse(res);
+    }
+    @Test
+    public void testIsAllPositiveNumbersNull(){
+        boolean res = Problems.isAllPositiveNumbers(List.of( "0", "33", "87", "-5"));
+        Assert.assertFalse(res);
+    }
+
+    @Test
+    public void testMinCostClimbingStairs(){
+        int [] nums = new int[]{10, 15,20};
+        Assert.assertEquals(15, Problems.minCostClimbingStairs(nums));
+    }
 }

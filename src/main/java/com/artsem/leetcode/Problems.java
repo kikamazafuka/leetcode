@@ -87,6 +87,24 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int minCostClimbingStairs(int[] cost) {
+        int dp [] = new int [cost.length];
+        for(int i = 0; i<cost.length; i++){
+            if(i<2){
+                dp[i] = cost[i];
+            } else{
+                dp[i] = cost[i] + Math.min(dp[i-1], dp[i-2]);
+            }
+
+        }
+        int sum = 0;
+        for(int n : dp){
+            sum+=n;
+        }
+        return sum;
+
+    }
+
     public static boolean isAllPositiveNumbers(List<String> args) {
         //magic happens here
         for(String s : args){

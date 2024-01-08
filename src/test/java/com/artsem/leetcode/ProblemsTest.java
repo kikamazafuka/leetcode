@@ -109,4 +109,9 @@ public class ProblemsTest {
         int [] nums = new int[]{10, 15,20};
         Assert.assertEquals(15, Problems.minCostClimbingStairs(nums));
     }
+
+    @Test
+    public void testCountOperations(){
+        Assert.assertEquals(3, Problems.countOperations(2,3));
+    }
 }

@@ -114,4 +114,46 @@ public class ProblemsTest {
     public void testCountOperations(){
         Assert.assertEquals(3, Problems.countOperations(2,3));
     }
+
+    @Test
+    public void testCanVisitAllRooms(){
+        List<List<Integer>> rooms = new ArrayList<>();
+        List<Integer> room1 = List.of(1);
+        List<Integer> room2 = List.of(2);
+        List<Integer> room3 = List.of(3);
+        List<Integer> room4 = List.of();
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
+        rooms.add(room4);
+        Assert.assertTrue(Problems.canVisitAllRooms(rooms));
+    }
+    @Test
+    public void testCanVisitAllRooms2(){
+        List<List<Integer>> rooms = new ArrayList<>();
+        List<Integer> room1 = List.of(4);
+        List<Integer> room2 = List.of(3);
+        List<Integer> room3 = List.of();
+        List<Integer> room4 = List.of(2,5,7);
+        List<Integer> room5 = List.of(1);
+        List<Integer> room6 = List.of();
+        List<Integer> room7 = List.of(8,9);
+        List<Integer> room8 = List.of();
+        List<Integer> room9 = List.of();
+        List<Integer> room10 = List.of(6);
+
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
+        rooms.add(room4);
+        rooms.add(room5);
+        rooms.add(room6);
+        rooms.add(room7);
+        rooms.add(room8);
+        rooms.add(room9);
+        rooms.add(room10);
+
+        Assert.assertFalse(Problems.canVisitAllRooms(rooms));
+    }
+//    [[4],[3],[],[2,5,7],[1],[],[8,9],[],[],[6]]
 }

@@ -87,6 +87,28 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        boolean [] arr = new boolean [rooms.size()];
+        arr[0] = true;
+
+        Stack<Integer> key = new Stack<>();
+        key.add(0);
+        while (!key.isEmpty()){
+            int currKey = key.pop();
+            for (int newKey : rooms.get(currKey)){
+                if(!arr[newKey]){
+                    key.add(newKey);
+                    arr[newKey] = true;
+                }
+            }
+        }
+        for (boolean visited : arr) {
+            if (!visited) {
+                return false;
+            }
+        }
+        return true;
+    }
     public static int countOperations(int num1, int num2) {
         int count = 0;
         while(num1>0 && num2>0){

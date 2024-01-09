@@ -155,5 +155,9 @@ public class ProblemsTest {
 
         Assert.assertFalse(Problems.canVisitAllRooms(rooms));
     }
-//    [[4],[3],[],[2,5,7],[1],[],[8,9],[],[],[6]]
+
+    @Test
+    public void testMinTimeToType(){
+        Assert.assertEquals(7, Problems.minTimeToType("bza"));
+    }
 }

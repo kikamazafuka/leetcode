@@ -87,6 +87,20 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int minTimeToType(String word) {
+        int count = 0;
+        char curr = 'a';
+        for(char c : word.toCharArray()){
+            int num = Math.abs(c - curr);
+            if (num>13){
+                num = 26 - num;
+            }
+            count += num + 1;
+            curr = c;
+
+        }
+        return count;
+    }
     public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
         boolean [] arr = new boolean [rooms.size()];
         arr[0] = true;

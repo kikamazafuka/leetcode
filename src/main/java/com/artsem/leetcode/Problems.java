@@ -89,7 +89,6 @@ public class Problems {
 
     public static int[] successfulPairs(int[] spells, int[] potions, long success) {
         int [] res = new int [spells.length];
-
         Arrays.sort(potions);
         for(int i = 0; i<spells.length; i++){
             int left = 0;

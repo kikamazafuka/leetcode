@@ -1,14 +1,74 @@
 package com.artsem.leetcode;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProblemsTest {
 
     TreeNode treeNode = new TreeNode(1);
+    private int[] numbers;
+    private int[] numbers2;
+    private int[] expected;
+
+    @Before
+    public void testReadContentFileFromResources() throws IOException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("content.txt");
+        if (inputStream == null) {
+            throw new IOException("Resource not found: content.txt");
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line = reader.readLine();
+            if (line != null) {
+                String[] numberStrings = line.split(",");
+                numbers = new int[numberStrings.length];
+                for (int i = 0; i < numberStrings.length; i++) {
+                    numbers[i] = Integer.parseInt(numberStrings[i].trim());
+                }
+            }
+        }
+    }
+    @Before
+    public void testReadContent2FileFromResources() throws IOException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("content2.txt");
+        if (inputStream == null) {
+            throw new IOException("Resource not found: content.txt");
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line = reader.readLine();
+            if (line != null) {
+                String[] numberStrings = line.split(",");
+                numbers2 = new int[numberStrings.length];
+                for (int i = 0; i < numberStrings.length; i++) {
+                    numbers2[i] = Integer.parseInt(numberStrings[i].trim());
+                }
+            }
+        }
+    }
+    @Before
+    public void testReadExpectedFileFromResources() throws IOException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("expected.txt");
+        if (inputStream == null) {
+            throw new IOException("Resource not found: content.txt");
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line = reader.readLine();
+            if (line != null) {
+                String[] numberStrings = line.split(",");
+                expected = new int[numberStrings.length];
+                for (int i = 0; i < numberStrings.length; i++) {
+                    expected[i] = Integer.parseInt(numberStrings[i].trim());
+                }
+            }
+        }
+    }
     @Test
     public void testTwoOutOfThree(){
         List<Integer> list = new ArrayList<>();
@@ -159,5 +219,24 @@ public class ProblemsTest {
     @Test
     public void testMinTimeToType(){
         Assert.assertEquals(7, Problems.minTimeToType("bza"));
+    }
+
+    @Test
+    public void testSuccessfulPairsFromResources(){
+        Assert.assertArrayEquals(expected,Problems.successfulPairs(numbers, numbers2, 1651505078));
+    }
+    @Test
+    public void testSuccessfulPairs(){
+        int [] nums = new int[]{5,1,3};
+        int [] nums2 = new int[]{1,2,3,4,5};
+        int [] exp = new int[]{4,0,3};
+        Assert.assertArrayEquals(exp,Problems.successfulPairs(nums, nums2, 7));
+    }
+    @Test
+    public void testSuccessfulPairs2(){
+        int [] nums = new int[]{15,14,39};
+        int [] nums2 = new int[]{22};
+        int [] exp = new int[]{1,1,1};
+        Assert.assertArrayEquals(exp,Problems.successfulPairs(nums, nums2, 224));
     }
 }

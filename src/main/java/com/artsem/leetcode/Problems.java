@@ -87,6 +87,65 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int[] successfulPairs(int[] spells, int[] potions, long success) {
+        int [] res = new int [spells.length];
+//        for(int i = 0; i<spells.length; i++){
+//            for( int j = 0; j<potions.length; j++){
+//                long prod = (long) spells[i] * potions[j];
+//                if(prod>=success){
+//                    res[i]+=1;
+//                }
+//            }
+//        }
+        if (potions.length==0){
+            return new int[spells.length];
+        }
+        if (potions.length==1){
+            for (int i = 0; i<spells.length; i++){
+                long prod = (long) potions[0] * spells[i];
+                if (prod>=success){
+                    res[i]+=1;
+                }
+            }
+            return res;
+        }
+
+        Arrays.sort(potions);
+        for(int i = 0; i<spells.length; i++){
+            int left = 0;
+            int right = potions.length-1;
+            while (left<right){
+                int mid = left + (right-left)/2;
+                long prod = (long) potions[mid] * spells[i];
+                if (prod<success){
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+                if (left==right && (long)potions[left]*spells[i]<success){
+                    res[i] = potions.length-left - 1;
+                }
+                if (left==right && (long)potions[left]*spells[i]>=success){
+                    res[i] = potions.length-left;
+                }
+                if (left>right){
+                    res[i] = potions.length - left;
+                }
+            }
+//            if (left== potions.length-1){
+//                res[i] = potions.length - left - 1;
+//            }else res[i] = potions.length - left;
+//            for( int j = 0; j<potions.length; j++){
+//                long prod = (long) spells[i] * potions[j];
+//                if(prod>=success){
+//                    res[i]=potions.length-j;
+//                    break;
+//                }
+//            }
+        }
+        return res;
+    }
+
     public static int minTimeToType(String word) {
         int count = 0;
         char curr = 'a';

@@ -89,14 +89,10 @@ public class Problems {
 
     public static List<Integer> findPeaks(int[] mountain) {
         List<Integer> list = new ArrayList<>();
-        int prev = mountain[0];
-        int curr = mountain[1];
         for(int i = 2; i<mountain.length; i++){
-            if(curr>mountain[i] && prev<curr){
+            if(mountain[i-1]>mountain[i] && mountain[i-2]<mountain[i-1]){
                 list.add(i-1);
             }
-            prev = curr;
-            curr = mountain[i];
         }
         return list;
     }

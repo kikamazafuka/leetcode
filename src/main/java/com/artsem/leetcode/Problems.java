@@ -87,6 +87,19 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static List<Integer> findPeaks(int[] mountain) {
+        List<Integer> list = new ArrayList<>();
+        int prev = mountain[0];
+        int curr = mountain[1];
+        for(int i = 2; i<mountain.length; i++){
+            if(curr>mountain[i] && prev<curr){
+                list.add(i-1);
+            }
+            prev = curr;
+            curr = mountain[i];
+        }
+        return list;
+    }
     public static int[] successfulPairs(int[] spells, int[] potions, long success) {
         int [] res = new int [spells.length];
         Arrays.sort(potions);

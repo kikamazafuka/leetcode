@@ -239,4 +239,11 @@ public class ProblemsTest {
         int [] exp = new int[]{1,1,1};
         Assert.assertArrayEquals(exp,Problems.successfulPairs(nums, nums2, 224));
     }
+
+    @Test
+    public void testFindPeaks(){
+        int [] nums = new int[]{1,4,3,8,5};
+
+        Assert.assertEquals(List.of(1,3),Problems.findPeaks(nums));
+    }
 }

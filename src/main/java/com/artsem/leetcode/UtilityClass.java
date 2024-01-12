@@ -18,6 +18,7 @@ public class UtilityClass {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         return choice;
     }
 }

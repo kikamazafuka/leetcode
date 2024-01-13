@@ -86,6 +86,31 @@ public class Problems {
 
         System.out.println(Problems.guessNumber(5));
     }
+    public static int countSymmetricIntegers(int low, int high) {
+
+        int count = 0;
+        for(int i = low; i<=high; i++){
+            String s = String.valueOf(i);
+            int length = s.length();
+            if (length<2 || length%2!=0){
+                continue;
+            }
+            int num1 = Integer.parseInt(s.substring(0,length/2));
+            int num2 = Integer.parseInt(s.substring(length/2,length));
+            int sum1 = 0;
+            int sum2 = 0;
+            while (num1>0){
+                sum1 +=num1%10;
+                num1 /=10;
+                sum2 +=num2%10;
+                num2 /=10;
+            }
+            if (sum1==sum2){
+                count++;
+            }
+        }
+        return count;
+    }
 
     public static List<Integer> findPeaks(int[] mountain) {
         List<Integer> list = new ArrayList<>();

@@ -246,4 +246,17 @@ public class ProblemsTest {
 
         Assert.assertEquals(List.of(1,3),Problems.findPeaks(nums));
     }
+
+    @Test
+    public void testCountSymmetricIntegers(){
+        Assert.assertEquals(9,Problems.countSymmetricIntegers(1,100));
+    }
+    @Test
+    public void testCountSymmetricIntegers2(){
+        Assert.assertEquals(4,Problems.countSymmetricIntegers(1200,1230));
+    }
+    @Test
+    public void testCountSymmetricIntegers3(){
+        Assert.assertEquals(44,Problems.countSymmetricIntegers(100,1782));
+    }
 }

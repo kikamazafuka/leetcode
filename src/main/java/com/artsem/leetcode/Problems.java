@@ -95,17 +95,13 @@ public class Problems {
             if (length<2 || length%2!=0){
                 continue;
             }
-            int num1 = Integer.parseInt(s.substring(0,length/2));
-            int num2 = Integer.parseInt(s.substring(length/2,length));
-            int sum1 = 0;
-            int sum2 = 0;
-            while (num1>0){
-                sum1 +=num1%10;
-                num1 /=10;
-                sum2 +=num2%10;
-                num2 /=10;
+            int num11 = 0;
+            int num22 = 0;
+            for (int j = 0; j<length/2;j++){
+                num11 += s.charAt(j) - '0';
+                num22 += s.charAt(j+length/2) - '0';
             }
-            if (sum1==sum2){
+            if (num11==num22){
                 count++;
             }
         }

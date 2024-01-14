@@ -259,4 +259,11 @@ public class ProblemsTest {
     public void testCountSymmetricIntegers3(){
         Assert.assertEquals(44,Problems.countSymmetricIntegers(100,1782));
     }
+
+    @Test
+    public void testDailyTemperatures(){
+        int [] nums = new int[]{73,74,75,71,69,72,76,73};
+        int [] exp = new int[]{1,1,4,2,1,1,0,0};
+        Assert.assertArrayEquals(exp,Problems.dailyTemperatures(nums));
+    }
 }

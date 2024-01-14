@@ -86,6 +86,30 @@ public class Problems {
 
         System.out.println(Problems.guessNumber(5));
     }
+    public static int[] dailyTemperatures(int[] temperatures) {
+        int n = temperatures.length;
+        int [] res = new int [n];
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0; i<n;i++){
+//            int count = 0;
+//            for(int j=i;j<n;j++){
+//                if(temperatures[j]>temperatures[i]){
+//                    res[i] = count;
+//                    break;
+//                } else count++;
+//            }
+            while (!st.isEmpty() && temperatures[i]>temperatures[st.peek()]){
+                int index = st.pop();
+                res[index] = i - index;
+            }
+            st.push(i);
+        }
+        while (!st.isEmpty()){
+            int index = st.pop();
+            res[index] = 0;
+        }
+        return res;
+    }
     public static int countSymmetricIntegers(int low, int high) {
 
         int count = 0;

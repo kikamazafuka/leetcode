@@ -94,15 +94,15 @@ public class Problems {
             if(i<left || i>right){
                 continue;
             }
-            if(isVowel(s.charAt(0)+"") && isVowel(s.charAt(s.length()-1)+"")){
+            if(isVowel(s.charAt(0)) && isVowel(s.charAt(s.length()-1))){
                 count++;
             }
         }
         return count;
     }
-    private boolean isVowel(String s){
+    private boolean isVowel(char s){
         String vowels = "aeiou";
-        return vowels.contains(s);
+        return vowels.contains(s+"");
     }
 
     public static int[] dailyTemperatures(int[] temperatures) {

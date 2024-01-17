@@ -89,6 +89,7 @@ public class Problems {
 
     public int vowelStrings(String[] words, int left, int right) {
         int count = 0;
+        Arrays.sort(words);
         for(int i = 0; i<words.length; i++){
             String s = words[i];
             if(i<left || i>right){

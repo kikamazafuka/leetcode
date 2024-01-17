@@ -87,6 +87,25 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int[] findMissingAndRepeatedValues(int[][] grid) {
+        int [] arr = new int [2];
+        Set<Integer> set = new HashSet<>();
+        for (int[] ints : grid) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (set.contains(ints[j])) {
+                    arr[0] = ints[j];
+                }
+                set.add(ints[j]);
+            }
+        }
+        int num = 1;
+        while(set.contains(num)){
+            num++;
+        }
+        arr[1] = num;
+        return arr;
+    }
+
     public int vowelStrings(String[] words, int left, int right) {
         int count = 0;
         Arrays.sort(words);

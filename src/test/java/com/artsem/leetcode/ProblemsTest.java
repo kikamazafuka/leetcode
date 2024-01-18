@@ -266,4 +266,13 @@ public class ProblemsTest {
         int [] exp = new int[]{1,1,4,2,1,1,0,0};
         Assert.assertArrayEquals(exp,Problems.dailyTemperatures(nums));
     }
+
+    @Test
+    public void testIsSumEqual(){
+        Assert.assertTrue(Problems.isSumEqual("j","j","bi"));
+    }
+    @Test
+    public void testIsSumEqual2(){
+        Assert.assertTrue(Problems.isSumEqual("acb","cba","cdb"));
+    }
 }

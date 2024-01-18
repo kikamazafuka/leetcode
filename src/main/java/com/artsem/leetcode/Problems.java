@@ -87,6 +87,26 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
+
+        StringBuilder sNum1 = new StringBuilder();
+        StringBuilder sNum2 = new StringBuilder();
+        StringBuilder sNum3 = new StringBuilder();
+        for(char c : firstWord.toCharArray()){
+            sNum1.append(c-'a');
+        }
+        for(char c : secondWord.toCharArray()){
+            sNum2.append(c-'a');
+        }
+        for(char c : targetWord.toCharArray()){
+            sNum3.append(c-'a');
+        }
+        int num1 = Integer.parseInt(sNum1.toString());
+        int num2 = Integer.parseInt(sNum2.toString());
+        int num3 = Integer.parseInt(sNum3.toString());
+        return num3 == num1+num2;
+    }
+
     public static int[] findMissingAndRepeatedValues(int[][] grid) {
         int [] arr = new int [2];
         Set<Integer> set = new HashSet<>();

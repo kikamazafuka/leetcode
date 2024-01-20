@@ -275,4 +275,20 @@ public class ProblemsTest {
     public void testIsSumEqual2(){
         Assert.assertTrue(Problems.isSumEqual("acb","cba","cdb"));
     }
+
+    @Test
+    public void testPascalTriangleGenerate(){
+        List<Integer> list1 = new ArrayList<>(List.of(1));
+        List<Integer> list2 = new ArrayList<>(List.of(1,1));
+        List<Integer> list3 = new ArrayList<>(List.of(1,2,1));
+        List<Integer> list4 = new ArrayList<>(List.of(1,3,3,1));
+        List<Integer> list5 = new ArrayList<>(List.of(1,4,6,6,1));
+        List<List<Integer>> res = new ArrayList<>(List.of(list1,list2,list3,list4,list5));
+//        res.add(list1);
+//        res.add(list2);
+//        res.add(list3);
+//        res.add(list4);
+//        res.add(list5);
+        Assert.assertEquals(res,Problems.pascalTriangleGenerate(5));
+    }
 }

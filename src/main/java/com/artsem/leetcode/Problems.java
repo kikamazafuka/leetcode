@@ -86,6 +86,27 @@ public class Problems {
 
         System.out.println(Problems.guessNumber(5));
     }
+
+    public static List<List<Integer>> pascalTriangleGenerate(int numRows) {
+
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>(List.of(1));
+        List<Integer> prev = new ArrayList<>(List.of(1,1));
+        res.add(list1);
+        res.add(prev);
+        for (int i=1; i<numRows-1; i++){
+            List<Integer> curr = new ArrayList<>();
+            curr.add(1);
+            for (int j = 1; j<prev.size(); j++){
+                curr.add(prev.get(j)+prev.get(j-1));
+            }
+            curr.add(1);
+            prev = curr;
+            res.add(prev);
+        }
+
+        return res;
+    }
     public int percentageLetter(String s, char letter) {
         if(!s.contains(letter+"")){
             return 0;

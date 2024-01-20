@@ -86,6 +86,19 @@ public class Problems {
 
         System.out.println(Problems.guessNumber(5));
     }
+    public int percentageLetter(String s, char letter) {
+        if(!s.contains(letter+"")){
+            return 0;
+        }
+        double count = 0;
+        for(char c : s.toCharArray()){
+            if(c==letter){
+                count++;
+            }
+        }
+        count = count/s.length()*100;
+        return (int)count;
+    }
 
     public boolean isSumEqual2(String firstWord, String secondWord, String targetWord) {
         return getIntValue(firstWord) + getIntValue(secondWord) == getIntValue(targetWord);

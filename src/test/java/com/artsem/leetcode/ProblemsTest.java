@@ -282,7 +282,7 @@ public class ProblemsTest {
         List<Integer> list2 = new ArrayList<>(List.of(1,1));
         List<Integer> list3 = new ArrayList<>(List.of(1,2,1));
         List<Integer> list4 = new ArrayList<>(List.of(1,3,3,1));
-        List<Integer> list5 = new ArrayList<>(List.of(1,4,6,6,1));
+        List<Integer> list5 = new ArrayList<>(List.of(1,4,6,4,1));
         List<List<Integer>> res = new ArrayList<>(List.of(list1,list2,list3,list4,list5));
 //        res.add(list1);
 //        res.add(list2);
@@ -290,5 +290,16 @@ public class ProblemsTest {
 //        res.add(list4);
 //        res.add(list5);
         Assert.assertEquals(res,Problems.pascalTriangleGenerate(5));
+    }
+
+    @Test
+    public void tetsFindKthLargest(){
+        int [] nums = new int[]{3,2,1,5,6,4};
+        Assert.assertEquals(5,Problems.findKthLargest(nums,2));
+    }
+    @Test
+    public void tetsFindKthLargest2(){
+        int [] nums = new int[]{3,2,3,1,2,4,5,5,6};
+        Assert.assertEquals(4,Problems.findKthLargest(nums,4));
     }
 }

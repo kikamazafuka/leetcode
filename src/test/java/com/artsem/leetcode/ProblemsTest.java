@@ -302,4 +302,15 @@ public class ProblemsTest {
         int [] nums = new int[]{3,2,3,1,2,4,5,5,6};
         Assert.assertEquals(4,Problems.findKthLargest(nums,4));
     }
+
+    @Test
+    public void testMaximumUnits(){
+        int [][] nums = new int[][]{{1,3},{2,2},{3,1}};
+        Assert.assertEquals(8, Problems.maximumUnits(nums,4));
+    }
+    @Test
+    public void testMaximumUnits2(){
+        int [][] nums = new int[][]{{5,10},{2,5},{4,7},{3,9}};
+        Assert.assertEquals(91, Problems.maximumUnits(nums,10));
+    }
 }

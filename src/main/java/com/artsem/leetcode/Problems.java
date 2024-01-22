@@ -87,6 +87,20 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int maximumUnits(int[][] boxTypes, int truckSize) {
+        Arrays.sort(boxTypes, Comparator.comparingInt(subarray -> subarray[1]));
+        int maxUnitsInBox = 0;
+        for (int i = boxTypes.length-1; i>=0; i--){
+            maxUnitsInBox += boxTypes[i][0]*boxTypes[i][1];
+            truckSize -= boxTypes[i][0];
+            if (truckSize<=0){
+                maxUnitsInBox -= Math.abs(truckSize)*boxTypes[i][1];
+                return maxUnitsInBox;
+            }
+        }
+        return maxUnitsInBox;
+    }
+
     public static int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for (int num : nums){

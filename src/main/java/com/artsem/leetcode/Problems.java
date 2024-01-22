@@ -87,6 +87,17 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public char repeatedCharacter(String s) {
+        Set<Character> set = new HashSet<>();
+        for(char c : s.toCharArray()){
+            if(set.contains(c)){
+                return c;
+            }
+            set.add(c);
+        }
+        return 'a';
+    }
+
     public static int maximumUnits(int[][] boxTypes, int truckSize) {
         Arrays.sort(boxTypes, Comparator.comparingInt(subarray -> subarray[1]));
         int maxUnitsInBox = 0;

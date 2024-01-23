@@ -313,4 +313,11 @@ public class ProblemsTest {
         int [][] nums = new int[][]{{5,10},{2,5},{4,7},{3,9}};
         Assert.assertEquals(91, Problems.maximumUnits(nums,10));
     }
+
+    @Test
+    public void testKWeakestRows(){
+        int [][] nums = new int[][]{{1,1,0,0,0},{1,1,1,1,0},{1,0,0,0,0},{1,1,0,0,0},{1,1,1,1,1}};
+        int [] exp = new int[]{2,0,3};
+        Assert.assertArrayEquals(exp, Problems.kWeakestRows(nums,10));
+    }
 }

@@ -2,6 +2,7 @@ package com.artsem.leetcode;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problems {
 
@@ -85,6 +86,54 @@ public class Problems {
 
 
         System.out.println(Problems.guessNumber(5));
+    }
+
+    public static int[] kWeakestRows2(int[][] mat, int k) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] != b[0] ? b[0] - a[0] : b[1] - a[1]);
+        int[] ans = new int[k];
+
+        for (int i = 0; i < mat.length; i++) {
+            pq.offer(new int[] {countSoldiers(mat[i],1), i});
+            if (pq.size() > k)
+                pq.poll();
+        }
+
+        while (k > 0)
+            ans[--k] = pq.poll()[1];
+
+        return ans;
+    }
+
+    public static int[] kWeakestRows(int[][] mat, int k) {
+//        Arrays.sort(mat, Comparator.comparingInt(row ->countSoldiers(row,1)));
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i<mat.length; i++){
+            int soldNum = countSoldiers(mat[i],1);
+            map.put(i, soldNum);
+        }
+        map = map.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+        int [] res = new int[k];
+        int count = 0;
+        for (Map.Entry<Integer,Integer> entry : map.entrySet()){
+            if (count<k){
+                res[count++] = entry.getKey();
+            } else break;
+        }
+        return res;
+    }
+
+    private static int countSoldiers(int [] row, int targetElem){
+        int lo = 0;
+        int hi = row.length;
+        while (lo<hi){
+            int mid = lo + (hi-lo)/2;
+            if (row[mid]==targetElem){
+                lo = mid + 1;
+            }else hi = mid;
+        }
+        return lo;
     }
 
     public char repeatedCharacterS(String s) {

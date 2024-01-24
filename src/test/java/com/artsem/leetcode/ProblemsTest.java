@@ -318,6 +318,6 @@ public class ProblemsTest {
     public void testKWeakestRows(){
         int [][] nums = new int[][]{{1,1,0,0,0},{1,1,1,1,0},{1,0,0,0,0},{1,1,0,0,0},{1,1,1,1,1}};
         int [] exp = new int[]{2,0,3};
-        Assert.assertArrayEquals(exp, Problems.kWeakestRows(nums,10));
+        Assert.assertArrayEquals(exp, Problems.kWeakestRows2(nums,3));
     }
 }

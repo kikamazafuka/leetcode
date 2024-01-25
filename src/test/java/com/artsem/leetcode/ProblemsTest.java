@@ -320,4 +320,17 @@ public class ProblemsTest {
         int [] exp = new int[]{2,0,3};
         Assert.assertArrayEquals(exp, Problems.kWeakestRows2(nums,3));
     }
+
+    @Test
+    public void testCountBalls(){
+        Assert.assertEquals(2, Problems.countBalls(1,10));
+    }
+    @Test
+    public void testCountBalls2(){
+        Assert.assertEquals(2, Problems.countBalls(5,15));
+    }
+    @Test
+    public void testCountBalls3(){
+        Assert.assertEquals(2, Problems.countBalls(19,28));
+    }
 }

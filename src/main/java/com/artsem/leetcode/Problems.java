@@ -88,6 +88,25 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int countBalls(int lowLimit, int highLimit) {
+        Map<Integer, Integer> map = new HashMap<>();
+        while(lowLimit<=highLimit){
+            int boxNum = digitSum(lowLimit);
+            map.put(boxNum, map.getOrDefault(boxNum,0)+1 );
+            lowLimit++;
+        }
+        return map.values().stream().max(Comparator.naturalOrder()).get();
+    }
+
+    private static int digitSum(int n){
+        int res = 0;
+        while(n>0){
+            res += n%10;
+            n/=10;
+        }
+        return res;
+    }
+
     public static int[] kWeakestRows2(int[][] mat, int k) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] != b[0] ? b[0] - a[0] : b[1] - a[1]);
         int[] ans = new int[k];

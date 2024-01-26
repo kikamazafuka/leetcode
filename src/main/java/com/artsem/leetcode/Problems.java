@@ -88,6 +88,19 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public boolean divideArray(int[] nums) {
+        int [] res = new int [501];
+        for(int num : nums){
+            res[num]++;
+        }
+        for(int num : res){
+            if(num%2!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int countBalls(int lowLimit, int highLimit) {
         Map<Integer, Integer> map = new HashMap<>();
         while(lowLimit<=highLimit){

@@ -88,6 +88,28 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public int sumRootToLeaf(TreeNode root) {
+
+        List<Integer> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        collectPath(root, sb, list);
+        return list.stream().reduce(0, Integer::sum);
+
+    }
+
+    public void collectPath(TreeNode node, StringBuilder currPath, List<Integer> paths){
+        if(node == null){
+            return;
+        }
+        currPath.append(node.val);
+        if(node.left == null && node.right == null){
+            paths.add(Integer.parseInt(currPath.toString(),2));
+        } else {
+            collectPath(node.left, currPath, paths);
+            collectPath(node.right,currPath, paths);
+        }
+        currPath.deleteCharAt(currPath.length()-1);
+    }
     public boolean divideArray(int[] nums) {
         int [] res = new int [501];
         for(int num : nums){

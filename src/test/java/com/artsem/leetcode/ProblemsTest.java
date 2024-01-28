@@ -333,4 +333,19 @@ public class ProblemsTest {
     public void testCountBalls3(){
         Assert.assertEquals(2, Problems.countBalls(19,28));
     }
+
+    @Test
+    public void testMergeArrays(){
+        int [][] nums1 = new int[][]{{1,2},{2,3},{4,5}};
+        int [][] nums2 = new int[][]{{1,4},{3,2},{4,1}};
+        int [][] exp = new int[][]{{1,6},{2,3},{3,2},{4,6}};
+        Assert.assertArrayEquals(exp, Problems.mergeArrays(nums1,nums2));
+    }
+    @Test
+    public void testMergeArrays2(){
+        int [][] nums1 = new int[][]{{2,4},{3,6},{5,5}};
+        int [][] nums2 = new int[][]{{1,3},{100,3},{900,3},{700,3}};
+        int [][] exp = new int[][]{{1,3},{2,4},{3,6},{4,3},{5,5}};
+        Assert.assertArrayEquals(exp, Problems.mergeArrays(nums1,nums2));
+    }
 }

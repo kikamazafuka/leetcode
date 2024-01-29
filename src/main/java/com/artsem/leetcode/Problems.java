@@ -88,6 +88,26 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public String maximumOddBinaryNumber(String s) {
+        StringBuilder sb = new StringBuilder();
+        int count1 = 0;
+        int count0 = 0;
+        for(char c : s.toCharArray()){
+            if(c == '1'){
+                count1++;
+            } else count0++;
+        }
+        while(count1>1){
+            sb.append("1");
+            count1--;
+        }
+        while(count0>0){
+            sb.append("0");
+            count0--;
+        }
+        sb.append("1");
+        return sb.toString();
+    }
     public static int[][] mergeArraysMergeSort(int[][] nums1, int[][] nums2) {
 
         List<int[]> res = new ArrayList<>();

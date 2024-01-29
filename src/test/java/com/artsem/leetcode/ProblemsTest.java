@@ -339,7 +339,7 @@ public class ProblemsTest {
         int [][] nums1 = new int[][]{{1,2},{2,3},{4,5}};
         int [][] nums2 = new int[][]{{1,4},{3,2},{4,1}};
         int [][] exp = new int[][]{{1,6},{2,3},{3,2},{4,6}};
-        Assert.assertArrayEquals(exp, Problems.mergeArrays(nums1,nums2));
+        Assert.assertArrayEquals(exp, Problems.mergeArraysMergeSort(nums1,nums2));
     }
     @Test
     public void testMergeArrays2(){

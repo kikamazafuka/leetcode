@@ -348,4 +348,23 @@ public class ProblemsTest {
         int [][] exp = new int[][]{{1,3},{2,4},{3,6},{4,3},{5,5}};
         Assert.assertArrayEquals(exp, Problems.mergeArrays(nums1,nums2));
     }
+
+    @Test
+    public void testSplitWordsBySeparator(){
+        List<String> list1 = new ArrayList<>(List.of("one.two.three","four.five","six"));
+        List<String> exp = new ArrayList<>(List.of("one","two","three","four","five","six"));
+        Assert.assertEquals(exp,Problems.splitWordsBySeparator(list1,'.'));
+    }
+    @Test
+    public void testSplitWordsBySeparator2(){
+        List<String> list1 = new ArrayList<>(List.of("one.two.three","four.five","six"));
+        List<String> exp = new ArrayList<>(List.of("one","two","three","four","five","six"));
+        Assert.assertEquals(exp,Problems.splitWordsBySeparator(list1,'.'));
+    }
+    @Test
+    public void testSplitWordsBySeparator3(){
+        List<String> list1 = new ArrayList<>(List.of("$easy$","$problem$"));
+        List<String> exp = new ArrayList<>(List.of("easy","problem"));
+        Assert.assertEquals(exp,Problems.splitWordsBySeparator(list1,'$'));
+    }
 }

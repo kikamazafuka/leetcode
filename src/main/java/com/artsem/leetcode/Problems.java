@@ -88,6 +88,28 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String> list = new ArrayList<>();
+        for(String s : words){
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i<s.length(); i++){
+                if (s.charAt(i)==separator){
+                    if (sb.length()>0) {
+                        list.add(sb.toString());
+                    }
+                    sb.delete(0,sb.length());
+                    continue;
+                }
+                if (i==s.length()-1){
+                    sb.append(s.charAt(i));
+                    list.add(sb.toString());
+                    continue;
+                }
+                sb.append(s.charAt(i));
+            }
+        }
+        return list;
+    }
     public int countGoodSubstrings(String s) {
         if(s.length()<3){
             return 0;

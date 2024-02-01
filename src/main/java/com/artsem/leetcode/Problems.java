@@ -88,6 +88,26 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int canBeTypedWords1(String text, String brokenLetters) {
+
+        Set<Character> set = new HashSet<>();
+        for (char c : brokenLetters.toCharArray()){
+            set.add(c);
+        }
+        int count = 0;
+        String [] words = text.split(" ");
+        for (String word : words) {
+            count++;
+            for (int i = 0; i<word.length(); i++){
+                if (set.contains(word.charAt(i))){
+                    count--;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
     public static int canBeTypedWords(String text, String brokenLetters) {
         boolean isAbleToType = true;
         int count = 0;

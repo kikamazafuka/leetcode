@@ -374,10 +374,10 @@ public class ProblemsTest {
     }
     @Test
     public void testCanBeTypedWords1(){
-        Assert.assertEquals(1,Problems.canBeTypedWords("leet code","lt"));
+        Assert.assertEquals(1,Problems.canBeTypedWords1("leet code","lt"));
     }
     @Test
     public void testCanBeTypedWords2(){
-        Assert.assertEquals(2,Problems.canBeTypedWords("leet code",""));
+        Assert.assertEquals(2,Problems.canBeTypedWords1("leet code",""));
     }
 }

@@ -88,6 +88,23 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int canBeTypedWords(String text, String brokenLetters) {
+        boolean isAbleToType = true;
+        int count = 0;
+        for (int i = 0; i<text.length(); i++){
+            char c = text.charAt(i);
+            if (brokenLetters.contains(text.charAt(i)+"")){
+                isAbleToType = false;
+            }
+            if ((text.charAt(i)==' ' && isAbleToType) || (i == text.length()-1 && isAbleToType)){
+                count++;
+            } else if (text.charAt(i) == ' ' && !isAbleToType){
+                isAbleToType = true;
+            }
+        }
+        return count;
+    }
+
     public List<String> splitWordsBySeparatorArr(List<String> words, char separator) {
         List<String> nm=new ArrayList<>();
         for(int i=0;i<words.size();i++)

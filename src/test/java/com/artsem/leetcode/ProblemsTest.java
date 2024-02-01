@@ -367,4 +367,17 @@ public class ProblemsTest {
         List<String> exp = new ArrayList<>(List.of("easy","problem"));
         Assert.assertEquals(exp,Problems.splitWordsBySeparator(list1,'$'));
     }
+
+    @Test
+    public void testCanBeTypedWords(){
+        Assert.assertEquals(1,Problems.canBeTypedWords("hello world","ad"));
+    }
+    @Test
+    public void testCanBeTypedWords1(){
+        Assert.assertEquals(1,Problems.canBeTypedWords("leet code","lt"));
+    }
+    @Test
+    public void testCanBeTypedWords2(){
+        Assert.assertEquals(2,Problems.canBeTypedWords("leet code",""));
+    }
 }

@@ -380,4 +380,23 @@ public class ProblemsTest {
     public void testCanBeTypedWords2(){
         Assert.assertEquals(2,Problems.canBeTypedWords1("leet code",""));
     }
+
+    @Test
+    public void testMinSubsequence(){
+        int [] nums = new int[]{4,3,10,9,8};
+        List<Integer> exp = new ArrayList<>(List.of(10,9));
+        Assert.assertEquals(exp,Problems.minSubsequence(nums));
+    }
+    @Test
+    public void testMinSubsequence1(){
+        int [] nums = new int[]{4,4,7,6,7};
+        List<Integer> exp = new ArrayList<>(List.of(7,7,6));
+        Assert.assertEquals(exp,Problems.minSubsequence(nums));
+    }
+    @Test
+    public void testMinSubsequence2(){
+        int [] nums = new int[]{6};
+        List<Integer> exp = new ArrayList<>(List.of(6));
+        Assert.assertEquals(exp,Problems.minSubsequence(nums));
+    }
 }

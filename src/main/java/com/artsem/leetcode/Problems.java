@@ -88,6 +88,26 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static List<Integer> minSubsequence(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        int totalSum = 0;
+        for(int n : nums){
+            totalSum += n;
+        }
+        Arrays.sort(nums);
+        int currSum = 0;
+        for(int i = nums.length-1; i>=0; i--){
+            currSum += nums[i];
+            int n = totalSum - currSum;
+            if(currSum <= n){
+                list.add(nums[i]);
+            } else {
+                list.add(nums[i]);
+                break;
+            }
+        }
+        return list;
+    }
     public static int canBeTypedWords1(String text, String brokenLetters) {
 
         Set<Character> set = new HashSet<>();

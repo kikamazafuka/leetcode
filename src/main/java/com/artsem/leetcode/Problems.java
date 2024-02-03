@@ -88,6 +88,23 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int maxFrequencyElements(int[] nums) {
+        int [] arr = new int [101];
+        for(int i = 0; i<nums.length; i++){
+            arr[nums[i]]++;
+        }
+        Arrays.sort(arr);
+        int res = 0;
+        for(int i = arr.length-1; i>0; i--){
+            if(arr[i] != arr[i-1]){
+                res += arr[i];
+                break;
+            } else {
+                res += arr[i];
+            }
+        }
+        return res;
+    }
     public static List<Integer> minSubsequence(int[] nums) {
         List<Integer> list = new ArrayList<>();
         int totalSum = 0;

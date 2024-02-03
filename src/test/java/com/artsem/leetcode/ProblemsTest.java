@@ -399,4 +399,15 @@ public class ProblemsTest {
         List<Integer> exp = new ArrayList<>(List.of(6));
         Assert.assertEquals(exp,Problems.minSubsequence(nums));
     }
+
+    @Test
+    public void testMaxFrequencyElements(){
+        int [] nums = new int[]{1,2,2,3,1,4};
+        Assert.assertEquals(4,Problems.maxFrequencyElements(nums));
+    }
+    @Test
+    public void testMaxFrequencyElements1(){
+        int [] nums = new int[]{1};
+        Assert.assertEquals(1,Problems.maxFrequencyElements(nums));
+    }
 }

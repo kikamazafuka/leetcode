@@ -410,4 +410,20 @@ public class ProblemsTest {
         int [] nums = new int[]{1};
         Assert.assertEquals(1,Problems.maxFrequencyElements(nums));
     }
+
+    @Test
+    public void testKthDistinct(){
+        String [] nums = new String[]{"d","b","c","b","c","a"};
+        Assert.assertEquals("a",Problems.kthDistinct(nums, 2));
+    }
+    @Test
+    public void testKthDistinct1(){
+        String [] nums = new String[]{"aaa","aa","a"};
+        Assert.assertEquals("aaa",Problems.kthDistinct(nums, 1));
+    }
+    @Test
+    public void testKthDistinct2(){
+        String [] nums = new String[]{"a","b","a"};
+        Assert.assertEquals("",Problems.kthDistinct(nums, 3));
+    }
 }

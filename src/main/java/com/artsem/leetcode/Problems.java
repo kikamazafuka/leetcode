@@ -88,6 +88,36 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static String kthDistinctMap(String[] arr, int k) {
+//        Map<String, Integer> map = new HashMap<>();
+//        for(int i = 0; i<arr.length; i++){
+//            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
+//        }
+
+        return "";
+    }
+    public static String kthDistinct(String[] arr, int k) {
+//        Map<String, Integer> map = new HashMap<>();
+//        for(int i = 0; i<arr.length; i++){
+//            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
+//        }
+        int count = 0;
+        boolean flag = true;
+        for(int i = 0; i<arr.length; i++){
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i].equals(arr[j]) && i!=j){
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag){
+                count++;
+            } else flag = true;
+            if (count==k) return arr[i];
+        }
+        return "";
+    }
+
     public int maxFrequencyElementsMap(int[] nums) {
         Map<Integer, Integer> um = new HashMap<>();
         for (int x : nums) {

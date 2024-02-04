@@ -88,6 +88,26 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public int maxFrequencyElementsMap(int[] nums) {
+        Map<Integer, Integer> um = new HashMap<>();
+        for (int x : nums) {
+            um.put(x, um.getOrDefault(x, 0) + 1);
+        }
+
+        int maxi = 0;
+        for (int value : um.values()) {
+            maxi = Math.max(maxi, value);
+        }
+
+        int ans = 0;
+        for (int value : um.values()) {
+            if (value == maxi) {
+                ans += value;
+            }
+        }
+
+        return ans;
+    }
     public static int maxFrequencyElements(int[] nums) {
         int [] arr = new int [101];
         for(int i = 0; i<nums.length; i++){

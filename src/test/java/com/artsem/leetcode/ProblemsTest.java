@@ -414,16 +414,16 @@ public class ProblemsTest {
     @Test
     public void testKthDistinct(){
         String [] nums = new String[]{"d","b","c","b","c","a"};
-        Assert.assertEquals("a",Problems.kthDistinct(nums, 2));
+        Assert.assertEquals("a",Problems.kthDistinctMap(nums, 2));
     }
     @Test
     public void testKthDistinct1(){
         String [] nums = new String[]{"aaa","aa","a"};
-        Assert.assertEquals("aaa",Problems.kthDistinct(nums, 1));
+        Assert.assertEquals("aaa",Problems.kthDistinctMap(nums, 1));
     }
     @Test
     public void testKthDistinct2(){
         String [] nums = new String[]{"a","b","a"};
-        Assert.assertEquals("",Problems.kthDistinct(nums, 3));
+        Assert.assertEquals("",Problems.kthDistinctMap(nums, 3));
     }
 }

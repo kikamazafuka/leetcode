@@ -1,5 +1,7 @@
 package com.artsem.leetcode;
 
+import com.sun.source.doctree.BlockTagTree;
+
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -89,18 +91,23 @@ public class Problems {
     }
 
     public static String kthDistinctMap(String[] arr, int k) {
-//        Map<String, Integer> map = new HashMap<>();
-//        for(int i = 0; i<arr.length; i++){
-//            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
-//        }
+        Map<String, Integer> map = new LinkedHashMap<>();
+        int count = 0;
+        for(int i = 0; i<arr.length; i++){
+            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
+        }
+        for(Map.Entry<String,Integer> entry : map.entrySet()){
+            if (entry.getValue()==1){
+                count++;
+            }
+            if(count==k){
+                return entry.getKey();
+            }
+        }
 
         return "";
     }
     public static String kthDistinct(String[] arr, int k) {
-//        Map<String, Integer> map = new HashMap<>();
-//        for(int i = 0; i<arr.length; i++){
-//            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
-//        }
         int count = 0;
         boolean flag = true;
         for(int i = 0; i<arr.length; i++){

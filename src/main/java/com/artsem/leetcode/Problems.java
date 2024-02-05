@@ -90,18 +90,39 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int countPrefixes(String[] words, String s) {
+        int count = 0;
+        for (String word : words) {
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) != word.charAt(j)) {
+                    break;
+                }
+                if (j == word.length() - 1) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
     public static String kthDistinctMap(String[] arr, int k) {
         Map<String, Integer> map = new LinkedHashMap<>();
         int count = 0;
-        for(int i = 0; i<arr.length; i++){
-            map.put(arr[i], map.getOrDefault(arr[i],0)+1);
+        for (String s : arr) {
+            map.put(s, map.getOrDefault(s, 0) + 1);
         }
-        for(Map.Entry<String,Integer> entry : map.entrySet()){
-            if (entry.getValue()==1){
-                count++;
-            }
-            if(count==k){
-                return entry.getKey();
+//        for(Map.Entry<String,Integer> entry : map.entrySet()){
+//            if (entry.getValue()==1){
+//                count++;
+//            }
+//            if(count==k){
+//                return entry.getKey();
+//            }
+//        }
+        int i = 0;
+        for (String s : arr){
+            if (map.get(s) == 1 && ++i==k){
+                return s;
             }
         }
 

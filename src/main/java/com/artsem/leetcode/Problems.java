@@ -90,8 +90,22 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static List<String> removeAnagramsSort(String[] words) {
+        List<String> list = new ArrayList<>();
+        list.add(words[0]);
+        for (int i = 1; i < words.length; i++) {
+            char [] curr = words[i].toCharArray();
+            char [] prev = words[i-1].toCharArray();
+            Arrays.sort(curr);
+            Arrays.sort(prev);
+            if (Arrays.equals(curr, prev)){
+                continue;
+            }
+            list.add(words[i]);
+        }
+        return list;
+    }
     public static List<String> removeAnagrams(String[] words) {
-
         List<String> list = new ArrayList<>();
         list.add(words[0]);
         for (int i = 1; i < words.length; i++) {
@@ -107,7 +121,6 @@ public class Problems {
         if (str1.length() != str2.length()) {
             return false;
         }
-
         Map<Character, Integer> charCountMap = new HashMap<>();
         for (char c : str1.toCharArray()) {
             charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);

@@ -90,6 +90,20 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public List<String> removeAnagramsString(String[] words) {
+        List<String> list = new ArrayList<>();
+        String prev = "";
+        for (int i = 0; i < words.length; i++) {
+            char [] currArr = words[i].toCharArray();
+            Arrays.sort(currArr);
+            String curr = String.valueOf(currArr);
+            if (!curr.equals(prev)){
+                list.add(words[i]);
+                prev=curr;
+            }
+        }
+        return list;
+    }
     public static List<String> removeAnagramsSort(String[] words) {
         List<String> list = new ArrayList<>();
         list.add(words[0]);

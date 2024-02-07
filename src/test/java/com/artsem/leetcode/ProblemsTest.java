@@ -426,4 +426,10 @@ public class ProblemsTest {
         String [] nums = new String[]{"a","b","a"};
         Assert.assertEquals("",Problems.kthDistinctMap(nums, 3));
     }
+    @Test
+    public void testRemoveAnagrams(){
+        String [] words = new String[]{"abba","baba","bbaa","cd","cd"};
+        List<String> exp = new ArrayList<>(List.of("abba","cd"));
+        Assert.assertEquals(exp,Problems.removeAnagrams(words));
+    }
 }

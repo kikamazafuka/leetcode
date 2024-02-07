@@ -90,6 +90,37 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static List<String> removeAnagrams(String[] words) {
+
+        List<String> list = new ArrayList<>();
+        list.add(words[0]);
+        for (int i = 1; i < words.length; i++) {
+            if (areSameCharacters(words[i], words[i-1])){
+                continue;
+            }
+            list.add(words[i]);
+        }
+        return list;
+    }
+
+    public static boolean areSameCharacters(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        Map<Character, Integer> charCountMap = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+        for (char c : str2.toCharArray()) {
+            int count = charCountMap.getOrDefault(c, 0);
+            if (count == 0) {
+                return false;
+            }
+            charCountMap.put(c, count - 1);
+        }
+        return true;
+    }
     public int smallestEqual(int[] nums) {
         for(int i = 0; i<nums.length; i++){
             if(i%10 == nums[i]){

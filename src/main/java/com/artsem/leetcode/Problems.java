@@ -90,16 +90,33 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static boolean digitCount(String num) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : num.toCharArray()){
+            map.put(c, map.getOrDefault(c, 0) +1);
+        }
+        for(int i = 0; i<num.length(); i++){
+            char iChar = (char)('0' +i);
+            int charAtI = Integer.parseInt(num.charAt(i)+"");
+            if (!map.containsKey(iChar) && charAtI!=0){
+                return false;
+            }
+            if(map.get(iChar)!=null && charAtI!= map.get(iChar)){
+                return false;
+            }
+        }
+        return true;
+    }
     public List<String> removeAnagramsString(String[] words) {
         List<String> list = new ArrayList<>();
         String prev = "";
-        for (int i = 0; i < words.length; i++) {
-            char [] currArr = words[i].toCharArray();
+        for (String word : words) {
+            char[] currArr = word.toCharArray();
             Arrays.sort(currArr);
             String curr = String.valueOf(currArr);
-            if (!curr.equals(prev)){
-                list.add(words[i]);
-                prev=curr;
+            if (!curr.equals(prev)) {
+                list.add(word);
+                prev = curr;
             }
         }
         return list;

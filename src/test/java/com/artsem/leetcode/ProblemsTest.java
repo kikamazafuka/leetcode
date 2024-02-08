@@ -432,4 +432,16 @@ public class ProblemsTest {
         List<String> exp = new ArrayList<>(List.of("abba","cd"));
         Assert.assertEquals(exp,Problems.removeAnagrams(words));
     }
+    @Test
+    public void testDigitCount(){
+        Assert.assertTrue(Problems.digitCount("1210"));
+    }
+    @Test
+    public void testDigitCount1(){
+        Assert.assertFalse(Problems.digitCount("030"));
+    }
+    @Test
+    public void testDigitCount2(){
+        Assert.assertFalse(Problems.digitCount("1"));
+    }
 }

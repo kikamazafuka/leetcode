@@ -90,6 +90,20 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public int[] intersectionSet(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> res = new HashSet<>();
+        for(int num : nums1){
+            set1.add(num);
+        }
+        for (int num : nums2) {
+            if (set1.contains(num)){
+                res.add(num);
+            }
+        }
+        return res.stream().mapToInt(Integer::intValue).toArray();
+    }
+
     public int[] intersection(int[] nums1, int[] nums2) {
         Map<Integer, Integer> set1 = new HashMap<>();
         Map<Integer, Integer> set2 = new HashMap<>();
@@ -106,7 +120,6 @@ public class Problems {
             }
         }
         return list.stream().mapToInt(Integer::intValue).toArray();
-
     }
     public static boolean digitCount(String num) {
         Map<Character, Integer> map = new HashMap<>();

@@ -444,4 +444,9 @@ public class ProblemsTest {
     public void testDigitCount2(){
         Assert.assertFalse(Problems.digitCount("1"));
     }
+    @Test
+    public void testMinimumOperationsArr(){
+        int [] nums = new int[]{1,5,0,3,5};
+        Assert.assertEquals(3,Problems.minimumOperationsArr(nums));
+    }
 }

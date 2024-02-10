@@ -89,6 +89,18 @@ public class Problems {
 
         System.out.println(Problems.guessNumber(5));
     }
+    public static int minimumOperationsArr(int[] nums) {
+        int count = 0;
+        int prev = 0;
+        Arrays.sort(nums);
+        for(int i : nums){
+            if(i!=0 && i!=prev){
+                count++;
+                prev = i;
+            }
+        }
+        return count;
+    }
 
     public int minimumOperations(int[] nums) {
         Set<Integer> set = new HashSet<>();

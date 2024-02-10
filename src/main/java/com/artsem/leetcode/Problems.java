@@ -90,6 +90,15 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public int minimumOperations(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for(int i : nums){
+            if(i!=0){
+                set.add(i);
+            }
+        }
+        return set.size();
+    }
     public int[] intersectionSet(int[] nums1, int[] nums2) {
         Set<Integer> set1 = new HashSet<>();
         Set<Integer> res = new HashSet<>();

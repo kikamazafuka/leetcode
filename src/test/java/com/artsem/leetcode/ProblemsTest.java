@@ -449,4 +449,11 @@ public class ProblemsTest {
         int [] nums = new int[]{1,5,0,3,5};
         Assert.assertEquals(3,Problems.minimumOperationsArr(nums));
     }
+    @Test
+    public void testNextGreaterElement(){
+        int [] nums1 = new int[]{4,1,2};
+        int [] nums2 = new int[]{1,3,4,2};
+        int [] res = new int[]{-1,3,-1};
+        Assert.assertArrayEquals(res,Problems.nextGreaterElement(nums1,nums2));
+    }
 }

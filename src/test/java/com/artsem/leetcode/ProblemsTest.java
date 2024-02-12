@@ -459,6 +459,6 @@ public class ProblemsTest {
     @Test
     public void testEvenOddBit(){
         int [] res = new int[]{2,0};
-        Assert.assertArrayEquals(res,Problems.evenOddBit(17));
+        Assert.assertArrayEquals(res,Problems.evenOddBits(17));
     }
 }

@@ -90,7 +90,7 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
-    public int[] nextGreaterElementMap(int[] nums1, int[] nums2) {
+    public static int[] nextGreaterElementMap(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
         for (int num : nums2) {

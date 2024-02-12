@@ -90,6 +90,19 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int[] evenOddBit(int n) {
+        int [] res = new int [2];
+        String bin = new StringBuilder(Integer.toBinaryString(n)).reverse().toString();
+        for(int i = 0; i<bin.length(); i++){
+            if(bin.charAt(i)=='0'){
+                continue;
+            }
+            if(bin.charAt(i)=='1' && i%2 == 0){
+                res[0]++;
+            } else res[1]++;
+        }
+        return res;
+    }
     public static int[] nextGreaterElementMap(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();

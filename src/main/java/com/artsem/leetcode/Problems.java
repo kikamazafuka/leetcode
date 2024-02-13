@@ -90,6 +90,16 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public boolean canBeEqual(int[] target, int[] arr) {
+        Arrays.sort(target);
+        Arrays.sort(arr);
+        for(int i = 0; i<arr.length; i++){
+            if(target[i]!=arr[i]){
+                return false;
+            }
+        }
+        return true;
+    }
     public static int[] evenOddBits(int n) {
         int n1 = 0;
         int n2 = 0;

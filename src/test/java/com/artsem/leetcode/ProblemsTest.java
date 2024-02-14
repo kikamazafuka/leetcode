@@ -461,4 +461,14 @@ public class ProblemsTest {
         int [] res = new int[]{2,0};
         Assert.assertArrayEquals(res,Problems.evenOddBits(17));
     }
+    @Test
+    public void testMaximumValue(){
+        String [] nums = new String[]{"alic3","bob","3","4","00000"};
+        Assert.assertEquals(5,Problems.maximumValue(nums));
+    }
+    @Test
+    public void testMaximumValue1(){
+        String [] nums = new String[]{"1","01","001","0001"};
+        Assert.assertEquals(1,Problems.maximumValue(nums));
+    }
 }

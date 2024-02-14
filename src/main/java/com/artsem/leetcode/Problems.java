@@ -90,6 +90,22 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int maximumValue(String[] strs) {
+        int max = 0;
+        for (String s : strs){
+            try {
+                int a = Integer.parseInt(s);
+                if (a>max){
+                    max = a;
+                }
+            } catch (NumberFormatException e){
+                if (max<s.length()){
+                    max = s.length();
+                }
+            }
+        }
+        return max;
+    }
     public boolean canBeEqual(int[] target, int[] arr) {
         Arrays.sort(target);
         Arrays.sort(arr);

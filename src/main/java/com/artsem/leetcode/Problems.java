@@ -90,18 +90,21 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public int[] sortedSquares(int[] nums) {
+        int [] res = new int [nums.length];
+        for(int i = 0; i<nums.length; i++){
+            res[i] = nums[i] * nums[i];
+        }
+        Arrays.sort(res);
+        return res;
+    }
     public static int maximumValue(String[] strs) {
         int max = 0;
         for (String s : strs){
             try {
-                int a = Integer.parseInt(s);
-                if (a>max){
-                    max = a;
-                }
+                max = Math.max(Integer.parseInt(s), max);
             } catch (NumberFormatException e){
-                if (max<s.length()){
-                    max = s.length();
-                }
+                    max = Math.max(s.length(),max);
             }
         }
         return max;

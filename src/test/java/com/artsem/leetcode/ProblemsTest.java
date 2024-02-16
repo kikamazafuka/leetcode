@@ -471,4 +471,10 @@ public class ProblemsTest {
         String [] nums = new String[]{"1","01","001","0001"};
         Assert.assertEquals(1,Problems.maximumValue(nums));
     }
+    @Test
+    public void testSortedSquares2Pointers(){
+        int [] res = new int[]{-7,-3,2,3,11};
+        int [] exp = new int[]{4,9,9,49,121};
+        Assert.assertArrayEquals(exp,Problems.sortedSquares2Pointers(res));
+    }
 }

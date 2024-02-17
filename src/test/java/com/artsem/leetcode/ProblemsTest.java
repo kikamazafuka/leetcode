@@ -477,4 +477,11 @@ public class ProblemsTest {
         int [] exp = new int[]{4,9,9,49,121};
         Assert.assertArrayEquals(exp,Problems.sortedSquares2Pointers(res));
     }
+    @Test
+    public void testAnswerQueries(){
+        int [] nums1 = new int[]{4,5,2,1};
+        int [] nums2 = new int[]{3,10,21};
+        int [] res = new int[]{2,3,4};
+        Assert.assertArrayEquals(res,Problems.answerQueries(nums1,nums2));
+    }
 }

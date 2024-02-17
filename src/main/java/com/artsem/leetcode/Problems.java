@@ -90,6 +90,22 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int[] answerQueries(int[] nums, int[] queries) {
+        int [] ans = new int [queries.length];
+        Arrays.sort(nums);
+        for(int i = 0; i<ans.length; i++){
+            int sum = 0;
+            int j = 0;
+            while(sum<queries[i] && j<nums.length){
+                sum += nums[j++];
+                if (sum>queries[i]){
+                    j--;
+                }
+            }
+            ans[i] = j;
+        }
+        return ans;
+    }
     public int minCostToMoveChips(int[] position) {
         int even = 0;
         int odd = 0;

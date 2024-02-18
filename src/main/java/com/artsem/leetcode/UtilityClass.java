@@ -3,6 +3,7 @@ package com.artsem.leetcode;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class UtilityClass {
 
@@ -51,5 +52,22 @@ public class UtilityClass {
                 break;
             }
         }
+    }
+
+    /** Binary Search **/
+    private static int binarySearch(int[]nums, int num){
+        int l = 0;
+        int r = nums.length-1;
+        Arrays.sort(nums);
+        while(l<=r){
+            int mid = l + (r-l)/2;
+            if(nums[mid]==num){
+                return num*2;
+            }
+            if(nums[mid]<num){
+                l=mid+1;
+            } else r=mid-1;
+        }
+        return -1;
     }
 }

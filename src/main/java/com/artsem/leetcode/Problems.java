@@ -90,6 +90,45 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int findFinalValue(int[] nums, int original) {
+        int res = original;
+        int prev = 0;
+        Arrays.sort(nums);
+        while(res!=-1){
+            prev = res;
+            res = binarySearch(nums, res);
+        }
+        return prev;
+    }
+
+
+    private static int binarySearch(int[]nums, int num){
+        int l = 0;
+        int r = nums.length-1;
+        while(l<=r){
+            int mid = l + (r-l)/2;
+            if(nums[mid]==num){
+                return num*2;
+            }
+            if(nums[mid]<num){
+                l=mid+1;
+            } else r=mid-1;
+        }
+        return -1;
+    }
+    public static int[] answerQueriesStorePrefix(int[] nums, int[] queries) {
+        int [] ans = new int [queries.length];
+        Arrays.sort(nums);
+        for (int i = 1; i<nums.length; i++){
+            nums[i] += nums[i-1];
+        }
+        
+        for(int i = 0; i<ans.length; i++){
+            int j = Arrays.binarySearch(nums, queries[i]);
+            ans[i] = Math.abs(j+1);
+        }
+        return ans;
+    }
     public static int[] answerQueries(int[] nums, int[] queries) {
         int [] ans = new int [queries.length];
         Arrays.sort(nums);

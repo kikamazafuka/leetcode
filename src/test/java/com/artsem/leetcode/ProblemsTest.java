@@ -482,6 +482,11 @@ public class ProblemsTest {
         int [] nums1 = new int[]{4,5,2,1};
         int [] nums2 = new int[]{3,10,21};
         int [] res = new int[]{2,3,4};
-        Assert.assertArrayEquals(res,Problems.answerQueries(nums1,nums2));
+        Assert.assertArrayEquals(res,Problems.answerQueriesStorePrefix(nums1,nums2));
+    }
+    @Test
+    public void testFindFinalValue(){
+        int [] nums = new int[]{5,3,6,1,12};
+        Assert.assertEquals(24,Problems.findFinalValue(nums, 3));
     }
 }

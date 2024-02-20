@@ -489,4 +489,24 @@ public class ProblemsTest {
         int [] nums = new int[]{5,3,6,1,12};
         Assert.assertEquals(24,Problems.findFinalValue(nums, 3));
     }
+    @Test
+    public void testShortestToChar(){
+        int [] res = new int[]{3,2,1,0,1,0,0,1,2,2,1,0};
+        Assert.assertArrayEquals(res,Problems.shortestToChar("loveleetcode", 'e'));
+    }
+    @Test
+    public void testShortestToChar1(){
+        int [] res = new int[]{3,2,1,0};
+        Assert.assertArrayEquals(res,Problems.shortestToChar("abaa", 'b'));
+    }
+    @Test
+    public void testShortestToChar2(){
+        int [] res = new int[]{0,1,1,0,1,2,3};
+        Assert.assertArrayEquals(res,Problems.shortestToChar("bdsbsss", 'b'));
+    }
+    @Test
+    public void testShortestToChar3(){
+        int [] res = new int[]{3,2,1,0,1,0,0,1,2,2,1,0};
+        Assert.assertArrayEquals(res,Problems.shortestToChar("loveleetcode", 'e'));
+    }
 }

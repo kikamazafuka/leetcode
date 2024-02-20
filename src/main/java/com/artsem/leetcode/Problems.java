@@ -90,6 +90,25 @@ public class Problems {
         System.out.println(Problems.guessNumber(5));
     }
 
+    public static int[] shortestToChar(String s, char c) {
+        int [] res = new int [s.length()];
+        int prevC = Integer.MAX_VALUE;
+        for(int i = 0; i<s.length(); i++){
+            for(int j = i; j<s.length(); j++){
+                if(s.charAt(j)==c){
+                    int ahead = Math.abs(j-i);
+                    int behind = Math.abs(i-prevC);
+                    res[i] = Math.min(ahead, behind);
+                    prevC = ahead <= behind ? j : prevC;
+                    break;
+                }
+                if (j==s.length()-1){
+                    res[i] = Math.abs(i-prevC);
+                }
+            }
+        }
+        return res;
+    }
     public static int findFinalValue(int[] nums, int original) {
         int res = original;
         int prev = 0;

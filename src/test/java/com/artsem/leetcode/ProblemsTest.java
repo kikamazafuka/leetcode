@@ -509,4 +509,13 @@ public class ProblemsTest {
         int [] res = new int[]{3,2,1,0,1,0,0,1,2,2,1,0};
         Assert.assertArrayEquals(res,Problems.shortestToChar("loveleetcode", 'e'));
     }
+    @Test
+    public void testShortestToChar4(){
+        int [] res = new int[]{3,2,1,0,1,0,0,1,2,2,1,0};
+        Assert.assertArrayEquals(res,Problems.shortestToChar1Pass("loveleetcode", 'e'));
+    }
+    @Test
+    public void testCheckString(){
+        Assert.assertFalse(Problems.checkString("ba"));
+    }
 }

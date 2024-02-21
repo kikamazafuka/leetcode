@@ -91,7 +91,6 @@ public class Problems {
     }
 
     public static boolean checkString(String s) {
-        boolean sw = false;
         char f = s.charAt(0);
         for(char c : s.toCharArray()){
             if (f=='b'){
@@ -100,8 +99,7 @@ public class Problems {
                 }
                 continue;
             }
-            if(c!=f && !sw){
-                sw = true;
+            if(c!=f){
                 f=c;
             }
         }

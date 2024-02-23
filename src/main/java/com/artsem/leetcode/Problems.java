@@ -1,6 +1,5 @@
 package com.artsem.leetcode;
 
-import com.sun.source.doctree.BlockTagTree;
 
 import java.io.*;
 import java.util.*;
@@ -14,35 +13,6 @@ public class Problems {
         String dirname = "/leetcode";
         File dir = new File(dirname);
         System.out.println(dir.getAbsolutePath());
-
-        int[] twoSum = new int[]{12, 4, 6, 8, 1, 4};
-        String str = "a1c1e1";
-
-        String rings = "B0R0G0R9R0B0G0";
-        String[] str1 = new String[]{"alice and bob love leetcode", "i think so too", "this is great thanks very much"};//"G()(al)";
-        String[] s = {"w jrpihe zsyqn l dxchifbxlasaehj", "nmmfrwyl jscqyxk a xfibiooix xolyqfdspkliyejsnksfewbjom", "xnleojowaxwpyogyrayfgyuzhgtdzrsyococuqexggigtberizdzlyrdsfvryiynhg", "krpwiazoulcixkkeyogizvicdkbrsiiuhizhkxdpssynfzuigvcbovm", "rgmz rgztiup wqnvbucfqcyjivvoeedyxvjsmtqwpqpxmzdupfyfeewxegrlbjtsjkusyektigr", "o lgsbechr lqcgfiat pkqdutzrq iveyv iqzgvyddyoqqmqerbmkxlbtmdtkinlk", "hrvh efqvjilibdqxjlpmanmogiossjyxepotezo", "qstd zui nbbohtuk", "qsdrerdzjvhxjqchvuewevyzlkyydpeeblpc"};
-
-        int num = 234;
-        int[] small = new int[]{5, 6, 2, 7, 4};
-        int[] arr = new int[]{0, 6, 0};
-        int[][] multArr = new int[][]{{9, 81}, {33, 17}};
-        int[][] multArrSum = new int[][]{{1}, {0}, {1}};
-
-
-        List<List<String>> list = new ArrayList<>();
-        list.add(List.of(new String[]{"A", "B"}));
-        list.add(List.of(new String[]{"C", "D"}));
-        list.add(List.of(new String[]{"B", "C"}));
-        List<String> list1 = new ArrayList<>();
-        list1.add("never");
-        list1.add("gonna");
-        list1.add("give");
-        list1.add("up");
-        list1.add("on");
-        list1.add("you");
-        int[] ages = new int[]{2, 6, 2, 1, 0, 9, 7};
-        String st = "cdf";
-        String st2 = "a";
 
         TreeNode root = new TreeNode(7);
         root.left = new TreeNode(4);
@@ -58,38 +28,49 @@ public class Problems {
         cloned.right.right = new TreeNode(19);
 
         Calendar calendar = Calendar.getInstance();
-        String[] month = {"5", "-2", "4", "C", "D", "9", "+", "+"};
-        int[][] multArr1 = new int[][]{{0, 1}, {1, 1}, {3, 8}};
-        int[][] multArrSum1 = new int[][]{{3, 1}, {1, 5}};
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        String ss = "RULDDLLDLRDUUUURULRURRRRLRULRLULLLRRULULDDRDLRULDRRULLUDDURDLRRUDRUDDURLLLUUDULRUDRLURRDRLLDDLLLDLRLLRUUDUURDRLDUDRUDRLUDULRLUDRLDDUULDDLDURULUDUUDDRRDUURRLRDLDLRLLDRRUUURDLULLURRRRDRRURDUURDLRRUULRURRUULULUUDURUDLRDDDDDURRRLRUDRUULUUUULDURDRULLRRRUDDDUUULUURRDRDDRLLDRLDULDLUUDRDLULLDLDDRUUUUDDRRRDLLLLURUURLRUUULRDDULUULUURDURDDDRRURLURDLLLRLULRDLDDLRDRRRRLUURRRRLDUDLLRUDLDRDLDRUULDRDULRULRRDLDLLLUDLDLULLDURUURRLLULUURLRLRDUDULLDURRUDDLDDLLUDURLLRLDLDUDLURLLDRRURRDUDLDUULDUDRRUDULLUUDURRRURLULDDLRRURULUURURRDULUULDDDUUDRLDDRLULDUDDLLLDLDURDLRLUURDDRLUDRLUDLRRLUUULLDUUDUDURRUULLDDUDLURRDDLURLDRDRUDRLDDLDULDRULUDRRDRLLUURULURRRUDRLLUURULURRLUULRDDDRDDLDRLDRLDUDRLDRLDDLDUDDURUDUDDDLRRDLUUUDUDURLRDRURUDUDDRDRRLUDURULDULDDRLDLUURUULUDRLRLRLLLLRLDRURRRUULRDURDRRDDURULLRDUDRLULRRLLLDRLRLRRDULDDUDUURLRULUUUULURULDLDRDRLDDLRLURRUULRRLDULLUULUDUDRLDUDRDLLDULURLUDDUURULDURRUURLRDRRRLDDULLLLDDRRLRRDRDLRUDUUDLRLDRDRURULDLULRRDLLURDLLDLRDRURLRUDURDRRRULURDRURLDRRRDUDUDUDURUUUUULURDUDDRRDULRDDLULRDRULDRUURRURLUDDDDLDRLDLLLLRLDRLRDRRRLLDRDRUULURLDRULLDRRDUUDLURLLDULDUUDLRRRDDUDRLDULRDLLULRRUURRRURLRRLDDUDDLULRUDULDULRDUDRLRDULRUUDDRUURUDLDRDUDDUULLUDDLLRLURURLRRULLDDDLURDRRDLLLLULLDLUDDLURLLDDRLDLLDDRDRDDUDLDURLUUUUUDLLLRLDULDDRDDDDRUDLULDRRLLLDUUUDDDRDDLLULUULRRULRUDRURDDULURDRRURUULDDDDUULLLURRRRDLDDLRLDDDRLUUDRDDRDDLUDLUUULLDLRDLURRRLRDRLURUURLULLLLRDDLLLLRUDURRLDURULURULDDRULUDRLDRLLURURRRDURURDRRUDLDDLLRRDRDDLRLRLUDUDRRUDLLDUURUURRDUDLRRLRURUDURDLRRULLDLLUDURUDDRUDULLDUDRRDDUDLLLDLRDRUURLLDLDRDDLDLLUDRDDRUUUDDULRUULRDRUDUURRRURUDLURLRDDLUULRDULRDURLLRDDDRRUDDUDUDLLDDRRUUDURDLLUURDLRULULDULRUURUDRULDRDULLULRRDDLDRDLLLDULRRDDLDRDLLRDDRLUUULUURULRULRUDULRULRUURUDUUDLDUDUUURLLURDDDUDUDLRLULDLDUDUULULLRDUDLDRUDRUULRURDDLDDRDULRLRLRRRRLRULDLLLDDRLUDLULLUUDLDRRLUDULRDRLLRRRULRLRLLUDRUUDUDDLRLDRDDDDRDLDRURULULRUURLRDLLDDRLLRUDRRDDRDUDULRUDULURRUDRDLRDUUDDLDRUDLLDDLRLULLLRUUDRRRRUULLRLLULURLDUDDURLRULULDLDRURDRLLURRDLURRURLULDLRLDUDLULLLDRDLULDLRULLLUDUDUDUDLDDDDDRDLUDUULLUDRLUURDRLULD";
 
-        ArrayList<Integer> listToMerge1 = new ArrayList<>();
-        List<List<Integer>> list2 = new ArrayList<>();
-        listToMerge1.add(3);
-        listToMerge1.add(6);
-        list2.add(listToMerge1);
-        ArrayList<Integer> listToMerge2 = new ArrayList<>();
-        listToMerge2.add(1);
-        listToMerge2.add(5);
-        list2.add(listToMerge2);
-        ArrayList<Integer> listToMerge3 = new ArrayList<>();
-        listToMerge3.add(4);
-        listToMerge3.add(7);
-        list2.add(listToMerge3);
-
-        int[] nums = new int[0];
-        TreeNode treeNode = new TreeNode(1);
-        treeNode.left = new TreeNode(2);
-        treeNode.left.left = new TreeNode(4);
-        treeNode.right = new TreeNode(3);
-//        treeNode.right.left = new TreeNode(1);
-//        treeNode.right.left = new TreeNode(4);
-
-
-        System.out.println(Problems.guessNumber(5));
     }
 
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+        TreeNode head = helper(nums, 0, nums.length - 1);
+        return head;
+    }
+
+    public TreeNode helper(int[] num, int low, int high) {
+        if (low > high) { // Done
+            return null;
+        }
+        int mid = (low + high) / 2;
+        TreeNode node = new TreeNode(num[mid]);
+        node.left = helper(num, low, mid - 1);
+        node.right = helper(num, mid + 1, high);
+        return node;
+    }
+    public static void levelOrderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            System.out.print(current.val + " ");
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
+    }
     public static boolean checkString(String s) {
         char f = s.charAt(0);
         for(char c : s.toCharArray()){

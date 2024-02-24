@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class UtilityClass {
 
@@ -69,5 +71,36 @@ public class UtilityClass {
             } else r=mid-1;
         }
         return -1;
+    }
+
+    public static boolean treeLevelOrderTraversal(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            System.out.print(current.val + " ");
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
+        return true;
+    }
+    public static boolean inOrderTraversal(TreeNode root) {
+        if (root != null) {
+            inOrderTraversal(root.left);
+            System.out.print(root.val + " ");
+            inOrderTraversal(root.right);
+        }
+        return true;
     }
 }

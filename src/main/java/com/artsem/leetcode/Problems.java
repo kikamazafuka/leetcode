@@ -32,6 +32,15 @@ public class Problems {
 
     }
 
+    public int maximumCount(int[] nums) {
+        int pos = 0;
+        int neg = 0;
+        for(int num : nums){
+            if(num < 0) neg++;
+            if(num > 0) pos++;
+        }
+        return Math.max(pos,neg);
+    }
     public TreeNode sortedArrayToBST(int[] nums) {
         if (nums.length == 0) {
             return null;

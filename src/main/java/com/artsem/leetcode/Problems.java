@@ -32,6 +32,24 @@ public class Problems {
 
     }
 
+    public int maximumCountBinSearch(int[] nums) {
+        int pos = nums.length - binSearch(nums, 1);
+        int neg = binSearch(nums, 0);
+        return Math.max(pos,neg);
+    }
+
+    private int binSearch(int [] nums, int target){
+        int l = 0;
+        int r = nums.length;
+
+        while(l<r){
+            int mid = l+(r-l)/2;
+            if(nums[mid]<target){
+                l=mid+1;
+            } else r = mid;
+        }
+        return l;
+    }
     public int maximumCount(int[] nums) {
         int pos = 0;
         int neg = 0;

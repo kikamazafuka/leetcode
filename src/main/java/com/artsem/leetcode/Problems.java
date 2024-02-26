@@ -30,6 +30,35 @@ public class Problems {
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
+        int [][] ma = new int[3][];
+        int length = ma.length;
+
+    }
+
+    public List<Integer> luckyNumbers (int[][] matrix) {
+        int row = matrix[0].length;
+        int col = matrix.length;
+        List<Integer> ls = new ArrayList<>();
+        for (int[] ints : matrix) {
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            int pos = 0;
+            for (int j = 0; j < row; j++) {
+                if (ints[j] < min) {
+                    min = ints[j];
+                    pos = j;
+                }
+            }
+            for (int k = 0; k < col; k++) {
+                if (matrix[k][pos] > max) {
+                    max = matrix[k][pos];
+                }
+            }
+            if (max == min) {
+                ls.add(min);
+            }
+        }
+        return ls;
     }
 
     public int maximumCountBinSearch(int[] nums) {

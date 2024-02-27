@@ -35,6 +35,18 @@ public class Problems {
 
     }
 
+    public int[] replaceElements(int[] arr) {
+        int [] res = new int [arr.length];
+        int max = Integer.MIN_VALUE;
+        for(int i = arr.length-1; i>0; i--){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+            res[i-1] = max;
+        }
+        res[arr.length-1] = -1;
+        return res;
+    }
     public List<Integer> luckyNumbers (int[][] matrix) {
         int row = matrix[0].length;
         int col = matrix.length;

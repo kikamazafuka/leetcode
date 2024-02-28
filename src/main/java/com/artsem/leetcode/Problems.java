@@ -35,6 +35,23 @@ public class Problems {
 
     }
 
+    public static List<List<Integer>> groupThePeopleOnePass(int[] groupSizes) {
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for(int i = 0; i<groupSizes.length; i++){
+            if(!map.containsKey(groupSizes[i])){
+                map.put(groupSizes[i], new ArrayList<>());
+            }
+            List<Integer> currLS = map.get(groupSizes[i]);
+            currLS.add(i);
+            map.put(groupSizes[i], currLS);
+            if (currLS.size()==groupSizes[i]){
+                res.add(currLS);
+                map.remove(groupSizes[i]);
+            }
+        }
+        return res;
+    }
     public static List<List<Integer>> groupThePeople(int[] groupSizes) {
         List<List<Integer>> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();

@@ -35,6 +35,36 @@ public class Problems {
 
     }
 
+    public static List<List<Integer>> groupThePeople(int[] groupSizes) {
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for(int i = 0; i<groupSizes.length; i++){
+            if(map.containsKey(groupSizes[i])){
+                List<Integer> currLS = map.get(groupSizes[i]);
+                currLS.add(i);
+                map.put(groupSizes[i], currLS);
+                continue;
+            }
+            List<Integer> ls = new ArrayList<>();
+            ls.add(i);
+            map.put(groupSizes[i], ls);
+        }
+        for(Map.Entry<Integer, List<Integer>> entry : map.entrySet()){
+            List <Integer> ls = entry.getValue();
+            int subListLength = entry.getKey();
+            List<Integer> listToResList = new ArrayList<>();
+            for (int i = 0; i < ls.size(); i++) {
+                int num = ls.get(i);
+                listToResList.add(num);
+                if (listToResList.size() == subListLength) {
+                    res.add(listToResList);
+                    listToResList = new ArrayList<>();
+                }
+            }
+        }
+        return res;
+    }
+
     public int[] replaceElements(int[] arr) {
         int [] res = new int [arr.length];
         int max = Integer.MIN_VALUE;

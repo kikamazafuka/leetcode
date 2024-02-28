@@ -527,4 +527,12 @@ public class ProblemsTest {
         root.left.right = new TreeNode(5);
         Assert.assertTrue(UtilityClass.inOrderTraversal(root));
     }
+
+    @Test
+    public void testGroupThePeople(){
+        List<List<Integer>> exp = new ArrayList<>();
+
+        int [] res = new int[]{3,3,3,3,3,1,3};
+        Assert.assertEquals(exp,Problems.groupThePeople(res));
+    }
 }

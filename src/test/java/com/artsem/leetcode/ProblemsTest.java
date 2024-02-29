@@ -531,8 +531,22 @@ public class ProblemsTest {
     @Test
     public void testGroupThePeople(){
         List<List<Integer>> exp = new ArrayList<>();
-
         int [] res = new int[]{3,3,3,3,3,1,3};
         Assert.assertEquals(exp,Problems.groupThePeople(res));
+    }
+    @Test
+    public void testFindPeakElement(){
+        int [] res = new int[]{1,2,3,1};
+        Assert.assertEquals(2,Problems.findPeakElement(res));
+    }
+    @Test
+    public void testFindPeakElement2(){
+        int [] res = new int[]{1,2,1,3,5,6,4};
+        Assert.assertEquals(1,Problems.findPeakElement(res));
+    }
+    @Test
+    public void testFindPeakElement3(){
+        int [] res = new int[]{1,0,1,3,5,6,4};
+        Assert.assertEquals(0,Problems.findPeakElement(res));
     }
 }

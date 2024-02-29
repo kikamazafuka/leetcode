@@ -35,6 +35,24 @@ public class Problems {
 
     }
 
+    public static int findPeakElement(int[] nums) {
+        if(nums.length==1) return 0;
+        if (nums[1]<nums[0]){
+            return 0;
+        }
+        if (nums[nums.length-2]<nums[nums.length-1]){
+            return nums.length-1;
+        }
+        for (int i = 1; i<nums.length-1; i++){
+            int prev = nums[i-1];
+            int cur = nums[i];
+            int next = nums[i+1];
+            if(cur>next && cur>prev){
+                return i;
+            }
+        }
+        return -1;
+    }
     public static List<List<Integer>> groupThePeopleOnePass(int[] groupSizes) {
         List<List<Integer>> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();

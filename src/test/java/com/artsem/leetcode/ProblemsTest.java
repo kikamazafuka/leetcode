@@ -549,4 +549,9 @@ public class ProblemsTest {
         int [] res = new int[]{1,0,1,3,5,6,4};
         Assert.assertEquals(0,Problems.findPeakElement(res));
     }
+
+    @Test
+    public void testIsStrictlyPalindromic(){
+        Assert.assertFalse(Problems.isStrictlyPalindromic(4));
+    }
 }

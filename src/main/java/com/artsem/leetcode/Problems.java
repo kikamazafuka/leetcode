@@ -34,6 +34,30 @@ public class Problems {
         int length = ma.length;
 
     }
+
+    public static List<List<Integer>> findMatrix(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else map.put(num, 1);
+        }
+        int max = map.values().stream().mapToInt(Integer::intValue).max().getAsInt();
+        while (max > 0) {
+            List<Integer> curr = new ArrayList<>();
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                if (entry.getValue() <= 0) {
+                    continue;
+                }
+                curr.add(entry.getKey());
+                map.put(entry.getKey(), entry.getValue() - 1);
+            }
+            res.add(curr);
+            max--;
+        }
+        return res;
+    }
     public static boolean isStrictlyPalindromic(int n) {
         for(int i = 2; i<=n-2; i++){
             String convNum = Integer.toString(n,i);

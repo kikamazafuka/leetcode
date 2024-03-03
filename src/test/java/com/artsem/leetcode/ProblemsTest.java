@@ -554,4 +554,11 @@ public class ProblemsTest {
     public void testIsStrictlyPalindromic(){
         Assert.assertFalse(Problems.isStrictlyPalindromic(4));
     }
+
+    @Test
+    public void testFindMatrix(){
+        int [] res = new int[]{1,3,4,1,2,3,1};
+        List<List<Integer>> exp = List.of(List.of(1,2,3,4), List.of(1,3),List.of(1));
+        Assert.assertEquals(exp,Problems.findMatrix(res));
+    }
 }

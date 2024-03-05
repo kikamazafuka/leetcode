@@ -35,7 +35,18 @@ public class Problems {
 
     }
 
-    public List<List<Integer>> findMatrix(int[] nums) {
+    public static int eraseOverlapIntervals(int[][] intervals) {
+        int count = 0;
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0]<intervals[i-1][1]){
+                intervals[i][1] = intervals[i-1][1];
+                count++;
+            }
+        }
+        return count;
+    }
+    public List<List<Integer>> findMatrixRemove(int[] nums) {
         Map<Integer, Integer> um = new HashMap<>();
         for (int i : nums) {
             um.put(i, um.getOrDefault(i, 0) + 1);

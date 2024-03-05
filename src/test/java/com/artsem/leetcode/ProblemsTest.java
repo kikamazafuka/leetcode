@@ -561,4 +561,10 @@ public class ProblemsTest {
         List<List<Integer>> exp = List.of(List.of(1,2,3,4), List.of(1,3),List.of(1));
         Assert.assertEquals(exp,Problems.findMatrix(res));
     }
+    @Test
+    public void testEraseOverlapIntervals(){
+        int [][] nums1 = new int[][]{{1,100},{11,22},{1,11},{2,12}};
+        Assert.assertEquals(2,Problems.eraseOverlapIntervals(nums1));
+    }
+
 }

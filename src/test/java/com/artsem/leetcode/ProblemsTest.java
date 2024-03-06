@@ -566,5 +566,10 @@ public class ProblemsTest {
         int [][] nums1 = new int[][]{{1,100},{11,22},{1,11},{2,12}};
         Assert.assertEquals(2,Problems.eraseOverlapIntervals(nums1));
     }
-
+    @Test
+    public void testFindMinArrowShots(){
+        int [][] nums1 = new int[][]{{10,16},{2,8},{1,6},{7,12}};
+        Assert.assertEquals(2,Problems.findMinArrowShots(nums1));
+    }
 }
+

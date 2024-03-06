@@ -34,6 +34,22 @@ public class Problems {
         int length = ma.length;
 
     }
+//    {1,6}
+//    {2, 8}
+//    {7,12}
+//    {10,16}
+    public static int findMinArrowShots(int[][] points) {
+        Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
+        int count = 1;
+        int curr = points[0][1];
+        for (int i = 1; i < points.length; i++) {
+            if (points[i][0]>curr){
+                curr = points[i][1];
+                count++;
+            }
+        }
+        return count;
+    }
 
     public static int eraseOverlapIntervals(int[][] intervals) {
         int count = 0;

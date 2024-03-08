@@ -571,5 +571,9 @@ public class ProblemsTest {
         int [][] nums1 = new int[][]{{10,16},{2,8},{1,6},{7,12}};
         Assert.assertEquals(2,Problems.findMinArrowShots(nums1));
     }
+    @Test
+    public void testLongestCommonSubsequence(){
+        Assert.assertEquals(3,Problems.longestCommonSubsequence("abcde", "ace"));
+    }
 }
 

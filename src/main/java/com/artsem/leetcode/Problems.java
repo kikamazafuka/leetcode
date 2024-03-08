@@ -34,10 +34,22 @@ public class Problems {
         int length = ma.length;
 
     }
-//    {1,6}
-//    {2, 8}
-//    {7,12}
-//    {10,16}
+
+    public static int longestCommonSubsequence(String text1, String text2) {
+        int n = text1.length();
+        int m = text2.length();
+        int [][] res = new int [n+1][m+1];
+        for(int i = 1; i<=n; i++){
+            for(int j = 1; j<=m; j++){
+                if(text1.charAt(i-1)==text2.charAt(j-1)){
+                    res[i][j] = 1 + res[i-1][j-1];
+                } else {
+                    res[i][j] = Math.max(res[i-1][j], res[i][j-1]);
+                }
+            }
+        }
+        return res[n][m];
+    }
     public static int findMinArrowShots(int[][] points) {
         Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
         int count = 1;

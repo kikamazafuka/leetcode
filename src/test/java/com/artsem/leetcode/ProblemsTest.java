@@ -575,5 +575,11 @@ public class ProblemsTest {
     public void testLongestCommonSubsequence(){
         Assert.assertEquals(3,Problems.longestCommonSubsequence("abcde", "ace"));
     }
+    @Test
+    public void testResultArray(){
+        int [] nums = new int[]{2,3,1};
+        int [] res = new int[]{2,1,3};
+        Assert.assertArrayEquals(res,Problems.resultArray(nums));
+    }
 }
 

@@ -35,6 +35,27 @@ public class Problems {
 
     }
 
+    public static int[] resultArray(int[] nums) {
+        int n = nums.length;
+        Stack<Integer> intStack1 = new Stack<>();
+        Stack<Integer> intStack2 = new Stack<>();
+        intStack1.push(nums[0]);
+        intStack2.push(nums[1]);
+        for(int i = 2; i<n; i++){
+            if (intStack1.peek()>intStack2.peek()){
+                intStack1.push(nums[i]);
+            } else intStack2.push(nums[i]);
+        }
+        while (!intStack2.isEmpty()){
+            nums[n-1] = intStack2.pop();
+            n--;
+        }
+        while (!intStack1.isEmpty()){
+            nums[n-1] = intStack2.pop();
+            n--;
+        }
+        return res;
+    }
     public int unequalTriplets(int[] nums) {
         int count = 0;
         for(int i = 0; i< nums.length; i++){

@@ -581,5 +581,23 @@ public class ProblemsTest {
         int [] res = new int[]{2,1,3};
         Assert.assertArrayEquals(res,Problems.resultArray(nums));
     }
+    @Test
+    public void testCountStudents(){
+        int [] st = new int[]{1,1,0,0};
+        int [] sd = new int[]{0,1,0,1};
+        Assert.assertEquals(0,Problems.countStudents(st,sd));
+    }
+    @Test
+    public void testCountStudents1(){
+        int [] st = new int[]{1,1,1,0,0,1};
+        int [] sd = new int[]{1,0,0,0,1,1};
+        Assert.assertEquals(3,Problems.countStudents(st,sd));
+    }
+    @Test
+    public void testCountStudents2(){
+        int [] st = new int[]{0,0,1,1,0,0,0,0,1,0,0,1,1,0,1,1};
+        int [] sd = new int[]{1,0,0,0,0,0,0,1,0,0,1,0,1,1,1,0};
+        Assert.assertEquals(1,Problems.countStudents(st,sd));
+    }
 }
 

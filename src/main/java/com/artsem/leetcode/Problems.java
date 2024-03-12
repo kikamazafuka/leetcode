@@ -35,6 +35,31 @@ public class Problems {
 
     }
 
+    public static int countStudents(int[] students, int[] sandwiches) {
+        Stack<Integer> stackSand = new Stack<>();
+        Queue<Integer> queueStud = new LinkedList<>();
+        for (int i = sandwiches.length-1; i>=0; i--){
+            stackSand.push(sandwiches[i]);
+        }
+        for (int s : students){
+            queueStud.add(s);
+        }
+        int count = 0;
+        while (!stackSand.isEmpty() && !(count > queueStud.size())){
+            if(stackSand.peek().equals(queueStud.peek())){
+                stackSand.pop();
+                queueStud.poll();
+                count = 0;
+            } else {
+                if (queueStud.size()>1){
+                    int temp = queueStud.poll();
+                    queueStud.add(temp);
+                }
+                count++;
+            }
+        }
+        return queueStud.size();
+    }
     public static int[] resultArray(int[] nums) {
         int n = nums.length;
         Stack<Integer> intStack1 = new Stack<>();
@@ -54,7 +79,7 @@ public class Problems {
             nums[n-1] = intStack2.pop();
             n--;
         }
-        return res;
+        return nums;
     }
     public int unequalTriplets(int[] nums) {
         int count = 0;

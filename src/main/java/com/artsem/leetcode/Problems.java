@@ -35,6 +35,33 @@ public class Problems {
 
     }
 
+    public static int countStudentsR(int[] students, int[] sandwiches) {
+
+        int count = 0;
+        for (int i = 0, j = 0; j<sandwiches.length;) {
+            if (students[i]==sandwiches[j]){
+                sandwiches[j] = -1;
+                students[i] = -1;
+                i++;
+                j++;
+                count = 0;
+            } else {
+                i++;
+                count++;
+            }
+            if (i>students.length-1){
+                i = 0;
+            }
+            if (count>students.length){
+                break;
+            }
+        }
+        count = 0;
+        for (int s : sandwiches) {
+            if (s!=-1) count++;
+        }
+        return count;
+    }
     public static int countStudents(int[] students, int[] sandwiches) {
         Stack<Integer> stackSand = new Stack<>();
         Queue<Integer> queueStud = new LinkedList<>();

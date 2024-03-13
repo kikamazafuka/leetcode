@@ -34,6 +34,20 @@ public class Problems {
         int length = ma.length;
 
     }
+    public int fib(int n) {
+        if(n<2){
+            return n;
+        }
+        int n1 = 0;
+        int n2 = 1;
+        int f = 0;
+        for(int i = 2; i<=n; i++){
+            f = n1+n2;
+            n1 = n2;
+            n2 = f;
+        }
+        return f;
+    }
 
     public static int countStudentsR(int[] students, int[] sandwiches) {
 

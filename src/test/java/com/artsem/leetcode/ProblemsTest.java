@@ -599,5 +599,20 @@ public class ProblemsTest {
         int [] sd = new int[]{1,0,0,0,0,0,0,1,0,0,1,0,1,1,1,0};
         Assert.assertEquals(1,Problems.countStudentsR(st,sd));
     }
+    @Test
+    public void testCountCharacters(){
+        String [] st = new String[]{"tac","bt","hat","tree"};
+        Assert.assertEquals(6,Problems.countCharacters(st,"atach"));
+    }
+    @Test
+    public void testCountCharacters2(){
+        String [] st = new String[]{"hello","world","leetcode"};
+        Assert.assertEquals(10,Problems.countCharacters(st,"welldonehoneyr"));
+    }
+    @Test
+    public void testCountCharactersLength(){
+        String [] st = new String[]{"r"};
+        Assert.assertEquals(1,Problems.countCharacters(st,"r"));
+    }
 }
 

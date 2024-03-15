@@ -34,6 +34,29 @@ public class Problems {
         int length = ma.length;
 
     }
+    public static int countCharacters(String[] words, String chars) {
+        int count = 0;
+        char [] arr = chars.toCharArray();
+        Arrays.sort(arr);
+        for(String s : words){
+            if (s.length()>arr.length){
+                continue;
+            }
+            char [] sArr = s.toCharArray();
+            Arrays.sort(sArr);
+            for(int i = 0, j =0; i<chars.length();){
+                if (arr[i]==sArr[j]){
+                    if (j==sArr.length-1){
+                        count += sArr.length;
+                        break;
+                    }
+                    i++;
+                    j++;
+                }else i++;
+            }
+        }
+        return count;
+    }
     public int fibDP(int N) {
         if(N <= 1)
             return N;

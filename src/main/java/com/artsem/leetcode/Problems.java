@@ -34,6 +34,20 @@ public class Problems {
         int length = ma.length;
 
     }
+
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        char [] sAr = s.toCharArray();
+        char [] tAr = t.toCharArray();
+        Arrays.sort(sAr);
+        Arrays.sort(tAr);
+        for(int i = 0; i<s.length(); i++){
+            if(sAr[i]!=tAr[i]) return false;
+        }
+        return true;
+    }
     public static int countCharacters(String[] words, String chars) {
         int count = 0;
         char [] arr = chars.toCharArray();

@@ -64,7 +64,7 @@ public class Problems {
                 list.add(s);
             }
         }
-        return list.toArray(new String[list.size()]);
+        return list.toArray(new String[0]);
     }
     public int[] sortArrayByParityII(int[] nums) {
         int [] res = new int [nums.length];

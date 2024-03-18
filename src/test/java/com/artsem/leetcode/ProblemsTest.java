@@ -614,5 +614,11 @@ public class ProblemsTest {
         String [] st = new String[]{"r"};
         Assert.assertEquals(1,Problems.countCharacters(st,"r"));
     }
+    @Test
+    public void testFindWords(){
+        String [] st = new String[]{"Hello","Alaska","Dad","Peace"};
+        String [] res = new String[]{"Alaska","Dad"};
+        Assert.assertArrayEquals(res,Problems.findWords(st));
+    }
 }
 

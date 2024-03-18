@@ -35,16 +35,47 @@ public class Problems {
 
     }
 
+    public static String[] findWords(String[] words) {
+        String row1 = "qwertyuiop";
+        String row2 = "asdfghjkl";
+        String row3 = "zxcvbnm";
+        List<String> list = new ArrayList<>();
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : row1.toCharArray()){
+            map.put(c,1);
+        }
+        for(char c : row2.toCharArray()){
+            map.put(c,2);
+        }
+        for(char c : row3.toCharArray()){
+            map.put(c,3);
+        }
+        for(String s : words){
+            boolean flag = true;
+            char currChar = s.toLowerCase().charAt(0);
+            int curr = map.get(currChar);
+            for(char c : s.toLowerCase().toCharArray()){
+                if(curr != map.get(c)){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                list.add(s);
+            }
+        }
+        return list.toArray(new String[list.size()]);
+    }
     public int[] sortArrayByParityII(int[] nums) {
         int [] res = new int [nums.length];
         int odd = 1;
         int even = 0;
-        for(int i = 0; i<nums.length; i++){
-            if(nums[i]%2==0){
-                res[even] = nums[i];
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                res[even] = num;
                 even += 2;
-            } else{
-                res[odd] = nums[i];
+            } else {
+                res[odd] = num;
                 odd += 2;
             }
         }

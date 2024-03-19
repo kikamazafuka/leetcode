@@ -35,6 +35,15 @@ public class Problems {
 
     }
 
+    public static int hammingWeight(int n) {
+
+        String s = Integer.toBinaryString(n);
+        int count = 0;
+        for (char c : s.toCharArray()){
+            if (c == '1')count++;
+        }
+        return count;
+    }
     public static String[] findWords(String[] words) {
         String row1 = "qwertyuiop";
         String row2 = "asdfghjkl";

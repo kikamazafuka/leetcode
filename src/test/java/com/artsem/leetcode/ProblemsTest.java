@@ -620,5 +620,11 @@ public class ProblemsTest {
         String [] res = new String[]{"Alaska","Dad"};
         Assert.assertArrayEquals(res,Problems.findWords(st));
     }
+    @Test
+    public void testHammingWeight(){
+
+        int n = 11111111111111111111111111111101;
+        Assert.assertEquals(31,Problems.hammingWeight(n));
+    }
 }
 

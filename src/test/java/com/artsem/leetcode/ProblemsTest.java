@@ -622,9 +622,18 @@ public class ProblemsTest {
     }
     @Test
     public void testHammingWeight(){
-
-        int n = 11111111111111111111111111111101;
-        Assert.assertEquals(31,Problems.hammingWeight(n));
+        int n = -2147483648;
+        Assert.assertEquals(1,Problems.hammingWeightBits(n));
+    }
+    @Test
+    public void testHammingWeight1(){
+        int n = -1073741824;
+        Assert.assertEquals(2,Problems.hammingWeightBits(n));
+    }
+    @Test
+    public void testHammingWeight2(){
+        int n = -3;
+        Assert.assertEquals(31,Problems.hammingWeightBits(n));
     }
 }
 

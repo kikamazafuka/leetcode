@@ -35,8 +35,15 @@ public class Problems {
 
     }
 
+    public static int hammingWeightBits(int n) {
+        int ones = 0;
+        while(n!=0) {
+            ones = ones + (n & 1);
+            n = n>>>1;
+        }
+        return ones;
+    }
     public static int hammingWeight(int n) {
-
         String s = Integer.toBinaryString(n);
         int count = 0;
         for (char c : s.toCharArray()){

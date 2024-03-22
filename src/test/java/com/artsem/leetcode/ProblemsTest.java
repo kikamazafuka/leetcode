@@ -635,5 +635,15 @@ public class ProblemsTest {
         int n = -3;
         Assert.assertEquals(31,Problems.hammingWeightBits(n));
     }
+    @Test
+    public void testCheckDistances(){
+        int [] n = new int []{1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        Assert.assertTrue(Problems.checkDistances("abaccb",n));
+    }
+    @Test
+    public void testCheckDistances2(){
+        int [] n = new int []{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        Assert.assertFalse(Problems.checkDistances("aa",n));
+    }
 }
 

@@ -35,6 +35,31 @@ public class Problems {
 
     }
 
+    public static boolean checkDistances(String s, int[] distance) {
+        Map<Character, Integer> map = new HashMap<>();
+        Set<Character> set = new HashSet<>();
+        char letter = 'a'; // Start with the first letter 'A'
+        int number = 0; // Start with the number 1
+        for (; letter <= 'z'; letter++, number++) {
+            map.put(letter, number);
+        }
+        for(int i = 0; i<s.length(); i++){
+            char currChar = s.charAt(i);
+            int distToSameChar =  distance[map.get(s.charAt(i))];
+//            char curCharD = s.charAt(i + distance[map.get(s.charAt(i))] + 1);
+            if (!set.contains(s.charAt(i)) && (i+distance[map.get(s.charAt(i))] + 1)<s.length()) {
+                if (s.charAt(i) != s.charAt(i + distance[map.get(s.charAt(i))] + 1)) {
+                    return false;
+                }
+            }
+            if (!set.contains(s.charAt(i))&&(i+distance[map.get(s.charAt(i))] + 1)>=s.length()){
+                return false;
+            }
+            set.add(s.charAt(i));
+        }
+        return true;
+    }
+
     public int islandPerimeter(int[][] grid) {
         int row = grid.length;
         int col = grid[0].length;

@@ -35,6 +35,21 @@ public class Problems {
 
     }
 
+    public static int countWords(String[] words1, String[] words2) {
+        int count = 0;
+        Map<String, Integer> map1 = new HashMap<>();
+        Map<String, Integer> map2 = new HashMap<>();
+        for(String s :  words1){
+            map1.put(s, map1.getOrDefault(s,0)+1);
+        }
+        for(String s : words2){
+            map2.put(s, map2.getOrDefault(s,0)+1);
+        }
+        for (String s : map1.keySet()){
+            if (map2.containsKey(s) && map1.get(s) == 1 && map2.get(s) == 1) count++;
+        }
+        return count;
+    }
     public boolean checkDistancesHash(String s, int[] distance) {
         Map<Character,Integer> map = new HashMap<>();
         char[] arr = s.toCharArray();
@@ -53,15 +68,14 @@ public class Problems {
     public static boolean checkDistances(String s, int[] distance) {
         Map<Character, Integer> map = new HashMap<>();
         Set<Character> set = new HashSet<>();
-        char letter = 'a'; // Start with the first letter 'A'
-        int number = 0; // Start with the number 1
+        char letter = 'a';
+        int number = 0;
         for (; letter <= 'z'; letter++, number++) {
             map.put(letter, number);
         }
         for(int i = 0; i<s.length(); i++){
             char currChar = s.charAt(i);
             int distToSameChar =  distance[map.get(s.charAt(i))];
-//            char curCharD = s.charAt(i + distance[map.get(s.charAt(i))] + 1);
             if (!set.contains(s.charAt(i)) && (i+distance[map.get(s.charAt(i))] + 1)<s.length()) {
                 if (s.charAt(i) != s.charAt(i + distance[map.get(s.charAt(i))] + 1)) {
                     return false;

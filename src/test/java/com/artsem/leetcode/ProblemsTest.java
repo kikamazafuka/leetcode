@@ -645,5 +645,17 @@ public class ProblemsTest {
         int [] n = new int []{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         Assert.assertFalse(Problems.checkDistances("aa",n));
     }
+    @Test
+    public void testCountWords(){
+        String [] st = new String[]{"leetcode","is","amazing","as","is"};
+        String [] res = new String[]{"amazing","leetcode","is"};
+        Assert.assertEquals(2,Problems.countWords(st,res));
+    }
+    @Test
+    public void testCountWords2(){
+        String [] st = new String[]{"a","ab"};
+        String [] res = new String[]{"a","a","a","ab"};
+        Assert.assertEquals(2,Problems.countWords(st,res));
+    }
 }
 

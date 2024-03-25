@@ -657,5 +657,25 @@ public class ProblemsTest {
         String [] res = new String[]{"a","a","a","ab"};
         Assert.assertEquals(2,Problems.countWords(st,res));
     }
+    @Test
+    public void testLongestCommonPrefix(){
+        String [] st = new String[]{"flower","flow","flight"};
+        Assert.assertEquals("fl",Problems.longestCommonPrefix(st));
+    }
+    @Test
+    public void testLongestCommonPrefixEmptyArr(){
+        String [] st = new String[]{"dog","racecar","car"};
+        Assert.assertEquals("",Problems.longestCommonPrefix(st));
+    }
+    @Test
+    public void testLongestCommonPrefix1(){
+        String [] st = new String[]{"dog"};
+        Assert.assertEquals("dog",Problems.longestCommonPrefix(st));
+    }
+    @Test
+    public void testLongestCommonPrefixEmptyStr(){
+        String [] st = new String[]{"",""};
+        Assert.assertEquals("",Problems.longestCommonPrefix(st));
+    }
 }
 

@@ -35,6 +35,30 @@ public class Problems {
 
     }
 
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs.length==1){
+            return strs[0];
+        }
+        StringBuilder pref = new StringBuilder(strs[0]);
+        boolean flag = false;
+        for (int i = 1; i < strs.length; i++) {
+            StringBuilder curPref = new StringBuilder();
+            for (int j = 0; j < pref.length() && j<strs[i].length(); j++) {
+                char cur = pref.charAt(j);
+                char next = strs[i].charAt(j);
+                if (cur != next){
+                    break;
+                } else {
+                    curPref.append(cur);
+                    flag = true;
+                }
+            }
+            pref.delete(0, pref.length());
+            pref = curPref;
+        }
+        if (!flag) return "";
+        return pref.toString();
+    }
     public static int countWords(String[] words1, String[] words2) {
         int count = 0;
         Map<String, Integer> map1 = new HashMap<>();

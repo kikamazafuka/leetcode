@@ -2,6 +2,7 @@ package com.artsem.leetcode;
 
 
 import java.io.*;
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,6 @@ public class Problems {
         root.left = new TreeNode(4);
         root.right = new TreeNode(3);
         root.right.left = new TreeNode(6);
-        // root.left.right = new TreeNode(7);
         root.right.right = new TreeNode(19);
 
         TreeNode cloned = new TreeNode(7);
@@ -30,23 +30,69 @@ public class Problems {
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
 
-        int [][] ma = new int[3][];
+        int[][] ma = new int[3][];
         int length = ma.length;
 
     }
 
+    public static String addBinary(String a, String b) {
+
+        StringBuilder res = new StringBuilder();
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int sum = carry;
+            if (i >= 0) {
+                sum += a.charAt(i) - '0';
+                i--;
+            }
+            if (j >= 0) {
+                sum += b.charAt(j) - '0';
+                j--;
+            }
+            res.insert(0, sum % 2);
+            carry = sum / 2;
+        }
+        return res.toString();
+    }
+
     public static String longestCommonPrefix(String[] strs) {
-        if (strs.length==1){
+        if (strs == null || strs.length == 0) return "";
+        for (int i = 0; i < strs[0].length(); i++) {
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < strs.length; j++) {
+                char charAt = strs[j].charAt(i);
+                if (i == strs[j].length() || strs[j].charAt(i) != c)
+                    return strs[0].substring(0, i);
+            }
+        }
+        return strs[0];
+    }
+
+    public static String longestCommonPrefixHor(String[] strs) {
+        if (strs.length == 0) return "";
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++)
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        return prefix;
+    }
+
+    public static String longestCommonPrefix1(String[] strs) {
+        if (strs.length == 1) {
             return strs[0];
         }
         StringBuilder pref = new StringBuilder(strs[0]);
         boolean flag = false;
         for (int i = 1; i < strs.length; i++) {
             StringBuilder curPref = new StringBuilder();
-            for (int j = 0; j < pref.length() && j<strs[i].length(); j++) {
+            for (int j = 0; j < pref.length() && j < strs[i].length(); j++) {
                 char cur = pref.charAt(j);
                 char next = strs[i].charAt(j);
-                if (cur != next){
+                if (cur != next) {
                     break;
                 } else {
                     curPref.append(cur);
@@ -59,36 +105,38 @@ public class Problems {
         if (!flag) return "";
         return pref.toString();
     }
+
     public static int countWords(String[] words1, String[] words2) {
         int count = 0;
         Map<String, Integer> map1 = new HashMap<>();
         Map<String, Integer> map2 = new HashMap<>();
-        for(String s :  words1){
-            map1.put(s, map1.getOrDefault(s,0)+1);
+        for (String s : words1) {
+            map1.put(s, map1.getOrDefault(s, 0) + 1);
         }
-        for(String s : words2){
-            map2.put(s, map2.getOrDefault(s,0)+1);
+        for (String s : words2) {
+            map2.put(s, map2.getOrDefault(s, 0) + 1);
         }
-        for (String s : map1.keySet()){
+        for (String s : map1.keySet()) {
             if (map2.containsKey(s) && map1.get(s) == 1 && map2.get(s) == 1) count++;
         }
         return count;
     }
+
     public boolean checkDistancesHash(String s, int[] distance) {
-        Map<Character,Integer> map = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         char[] arr = s.toCharArray();
         int len = arr.length;
 
-        for(int i=0; i<len; i++){
-            if(map.containsKey(arr[i])){
+        for (int i = 0; i < len; i++) {
+            if (map.containsKey(arr[i])) {
                 int start = map.get(arr[i]);
                 int diff = i - start - 1;
-                if(distance[arr[i]-'a'] != diff) return false;
-            }
-            else map.put(arr[i], i);
+                if (distance[arr[i] - 'a'] != diff) return false;
+            } else map.put(arr[i], i);
         }
         return true;
     }
+
     public static boolean checkDistances(String s, int[] distance) {
         Map<Character, Integer> map = new HashMap<>();
         Set<Character> set = new HashSet<>();
@@ -97,15 +145,15 @@ public class Problems {
         for (; letter <= 'z'; letter++, number++) {
             map.put(letter, number);
         }
-        for(int i = 0; i<s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char currChar = s.charAt(i);
-            int distToSameChar =  distance[map.get(s.charAt(i))];
-            if (!set.contains(s.charAt(i)) && (i+distance[map.get(s.charAt(i))] + 1)<s.length()) {
+            int distToSameChar = distance[map.get(s.charAt(i))];
+            if (!set.contains(s.charAt(i)) && (i + distance[map.get(s.charAt(i))] + 1) < s.length()) {
                 if (s.charAt(i) != s.charAt(i + distance[map.get(s.charAt(i))] + 1)) {
                     return false;
                 }
             }
-            if (!set.contains(s.charAt(i))&&(i+distance[map.get(s.charAt(i))] + 1)>=s.length()){
+            if (!set.contains(s.charAt(i)) && (i + distance[map.get(s.charAt(i))] + 1) >= s.length()) {
                 return false;
             }
             set.add(s.charAt(i));
@@ -117,67 +165,71 @@ public class Problems {
         int row = grid.length;
         int col = grid[0].length;
         int count = 0;
-        for(int i = 0; i<row; i++){
-            for(int j = 0; j<col; j++){
-                if(grid[i][j]==1){
-                    if(i == 0 || grid[i-1][j] == 0) count++;
-                    if(j == 0 || grid[i][j-1] == 0) count++;
-                    if(j == col-1 || grid[i][j+1] == 0) count++;
-                    if(i == row-1 || grid[i+1][j] == 0) count++;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    if (i == 0 || grid[i - 1][j] == 0) count++;
+                    if (j == 0 || grid[i][j - 1] == 0) count++;
+                    if (j == col - 1 || grid[i][j + 1] == 0) count++;
+                    if (i == row - 1 || grid[i + 1][j] == 0) count++;
                 }
             }
         }
         return count;
     }
+
     public static int hammingWeightBits(int n) {
         int ones = 0;
-        while(n!=0) {
+        while (n != 0) {
             ones = ones + (n & 1);
-            n = n>>>1;
+            n = n >>> 1;
         }
         return ones;
     }
+
     public static int hammingWeight(int n) {
         String s = Integer.toBinaryString(n);
         int count = 0;
-        for (char c : s.toCharArray()){
-            if (c == '1')count++;
+        for (char c : s.toCharArray()) {
+            if (c == '1') count++;
         }
         return count;
     }
+
     public static String[] findWords(String[] words) {
         String row1 = "qwertyuiop";
         String row2 = "asdfghjkl";
         String row3 = "zxcvbnm";
         List<String> list = new ArrayList<>();
         Map<Character, Integer> map = new HashMap<>();
-        for(char c : row1.toCharArray()){
-            map.put(c,1);
+        for (char c : row1.toCharArray()) {
+            map.put(c, 1);
         }
-        for(char c : row2.toCharArray()){
-            map.put(c,2);
+        for (char c : row2.toCharArray()) {
+            map.put(c, 2);
         }
-        for(char c : row3.toCharArray()){
-            map.put(c,3);
+        for (char c : row3.toCharArray()) {
+            map.put(c, 3);
         }
-        for(String s : words){
+        for (String s : words) {
             boolean flag = true;
             char currChar = s.toLowerCase().charAt(0);
             int curr = map.get(currChar);
-            for(char c : s.toLowerCase().toCharArray()){
-                if(curr != map.get(c)){
+            for (char c : s.toLowerCase().toCharArray()) {
+                if (curr != map.get(c)) {
                     flag = false;
                     break;
                 }
             }
-            if(flag){
+            if (flag) {
                 list.add(s);
             }
         }
         return list.toArray(new String[0]);
     }
+
     public int[] sortArrayByParityII(int[] nums) {
-        int [] res = new int [nums.length];
+        int[] res = new int[nums.length];
         int odd = 1;
         int even = 0;
         for (int num : nums) {
@@ -193,63 +245,65 @@ public class Problems {
     }
 
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()){
+        if (s.length() != t.length()) {
             return false;
         }
-        char [] sAr = s.toCharArray();
-        char [] tAr = t.toCharArray();
+        char[] sAr = s.toCharArray();
+        char[] tAr = t.toCharArray();
         Arrays.sort(sAr);
         Arrays.sort(tAr);
-        for(int i = 0; i<s.length(); i++){
-            if(sAr[i]!=tAr[i]) return false;
+        for (int i = 0; i < s.length(); i++) {
+            if (sAr[i] != tAr[i]) return false;
         }
         return true;
     }
+
     public static int countCharacters(String[] words, String chars) {
         int count = 0;
-        char [] arr = chars.toCharArray();
+        char[] arr = chars.toCharArray();
         Arrays.sort(arr);
-        for(String s : words){
-            if (s.length()>arr.length){
+        for (String s : words) {
+            if (s.length() > arr.length) {
                 continue;
             }
-            char [] sArr = s.toCharArray();
+            char[] sArr = s.toCharArray();
             Arrays.sort(sArr);
-            for(int i = 0, j =0; i<chars.length();){
-                if (arr[i]==sArr[j]){
-                    if (j==sArr.length-1){
+            for (int i = 0, j = 0; i < chars.length(); ) {
+                if (arr[i] == sArr[j]) {
+                    if (j == sArr.length - 1) {
                         count += sArr.length;
                         break;
                     }
                     i++;
                     j++;
-                }else i++;
+                } else i++;
             }
         }
         return count;
     }
+
     public int fibDP(int N) {
-        if(N <= 1)
+        if (N <= 1)
             return N;
 
         int[] fib_cache = new int[N + 1];
         fib_cache[1] = 1;
 
-        for(int i = 2; i <= N; i++)
-        {
+        for (int i = 2; i <= N; i++) {
             fib_cache[i] = fib_cache[i - 1] + fib_cache[i - 2];
         }
         return fib_cache[N];
     }
+
     public int fib(int n) {
-        if(n<2){
+        if (n < 2) {
             return n;
         }
         int n1 = 0;
         int n2 = 1;
         int f = 0;
-        for(int i = 2; i<=n; i++){
-            f = n1+n2;
+        for (int i = 2; i <= n; i++) {
+            f = n1 + n2;
             n1 = n2;
             n2 = f;
         }
@@ -259,8 +313,8 @@ public class Problems {
     public static int countStudentsR(int[] students, int[] sandwiches) {
 
         int count = 0;
-        for (int i = 0, j = 0; j<sandwiches.length;) {
-            if (students[i]==sandwiches[j]){
+        for (int i = 0, j = 0; j < sandwiches.length; ) {
+            if (students[i] == sandwiches[j]) {
                 sandwiches[j] = -1;
                 students[i] = -1;
                 i++;
@@ -270,36 +324,37 @@ public class Problems {
                 i++;
                 count++;
             }
-            if (i>students.length-1){
+            if (i > students.length - 1) {
                 i = 0;
             }
-            if (count>students.length){
+            if (count > students.length) {
                 break;
             }
         }
         count = 0;
         for (int s : sandwiches) {
-            if (s!=-1) count++;
+            if (s != -1) count++;
         }
         return count;
     }
+
     public static int countStudents(int[] students, int[] sandwiches) {
         Stack<Integer> stackSand = new Stack<>();
         Queue<Integer> queueStud = new LinkedList<>();
-        for (int i = sandwiches.length-1; i>=0; i--){
+        for (int i = sandwiches.length - 1; i >= 0; i--) {
             stackSand.push(sandwiches[i]);
         }
-        for (int s : students){
+        for (int s : students) {
             queueStud.add(s);
         }
         int count = 0;
-        while (!stackSand.isEmpty() && !(count > queueStud.size())){
-            if(stackSand.peek().equals(queueStud.peek())){
+        while (!stackSand.isEmpty() && !(count > queueStud.size())) {
+            if (stackSand.peek().equals(queueStud.peek())) {
                 stackSand.pop();
                 queueStud.poll();
                 count = 0;
             } else {
-                if (queueStud.size()>1){
+                if (queueStud.size() > 1) {
                     int temp = queueStud.poll();
                     queueStud.add(temp);
                 }
@@ -308,33 +363,35 @@ public class Problems {
         }
         return queueStud.size();
     }
+
     public static int[] resultArray(int[] nums) {
         int n = nums.length;
         Stack<Integer> intStack1 = new Stack<>();
         Stack<Integer> intStack2 = new Stack<>();
         intStack1.push(nums[0]);
         intStack2.push(nums[1]);
-        for(int i = 2; i<n; i++){
-            if (intStack1.peek()>intStack2.peek()){
+        for (int i = 2; i < n; i++) {
+            if (intStack1.peek() > intStack2.peek()) {
                 intStack1.push(nums[i]);
             } else intStack2.push(nums[i]);
         }
-        while (!intStack2.isEmpty()){
-            nums[n-1] = intStack2.pop();
+        while (!intStack2.isEmpty()) {
+            nums[n - 1] = intStack2.pop();
             n--;
         }
-        while (!intStack1.isEmpty()){
-            nums[n-1] = intStack2.pop();
+        while (!intStack1.isEmpty()) {
+            nums[n - 1] = intStack2.pop();
             n--;
         }
         return nums;
     }
+
     public int unequalTriplets(int[] nums) {
         int count = 0;
-        for(int i = 0; i< nums.length; i++){
-            for(int j = i+1; j<nums.length; j++){
-                for(int k = j+1; k<nums.length; k++){
-                    if(nums[i] != nums[j] && nums[i] != nums[k] && nums[j] != nums[k]){
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                for (int k = j + 1; k < nums.length; k++) {
+                    if (nums[i] != nums[j] && nums[i] != nums[k] && nums[j] != nums[k]) {
                         count++;
                     }
                 }
@@ -342,38 +399,41 @@ public class Problems {
         }
         return count;
     }
+
     public int[][] transpose(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
-        int [][] res = new int [n][m];
-        for(int i = 0; i<m; i++){
-            for(int j = 0; j<n; j++){
+        int[][] res = new int[n][m];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 res[j][i] = matrix[i][j];
             }
         }
         return res;
     }
+
     public static int longestCommonSubsequence(String text1, String text2) {
         int n = text1.length();
         int m = text2.length();
-        int [][] res = new int [n+1][m+1];
-        for(int i = 1; i<=n; i++){
-            for(int j = 1; j<=m; j++){
-                if(text1.charAt(i-1)==text2.charAt(j-1)){
-                    res[i][j] = 1 + res[i-1][j-1];
+        int[][] res = new int[n + 1][m + 1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+                    res[i][j] = 1 + res[i - 1][j - 1];
                 } else {
-                    res[i][j] = Math.max(res[i-1][j], res[i][j-1]);
+                    res[i][j] = Math.max(res[i - 1][j], res[i][j - 1]);
                 }
             }
         }
         return res[n][m];
     }
+
     public static int findMinArrowShots(int[][] points) {
         Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
         int count = 1;
         int curr = points[0][1];
         for (int i = 1; i < points.length; i++) {
-            if (points[i][0]>curr){
+            if (points[i][0] > curr) {
                 curr = points[i][1];
                 count++;
             }
@@ -385,13 +445,14 @@ public class Problems {
         int count = 0;
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
         for (int i = 1; i < intervals.length; i++) {
-            if (intervals[i][0]<intervals[i-1][1]){
-                intervals[i][1] = intervals[i-1][1];
+            if (intervals[i][0] < intervals[i - 1][1]) {
+                intervals[i][1] = intervals[i - 1][1];
                 count++;
             }
         }
         return count;
     }
+
     public List<List<Integer>> findMatrixRemove(int[] nums) {
         Map<Integer, Integer> um = new HashMap<>();
         for (int i : nums) {
@@ -443,15 +504,16 @@ public class Problems {
         }
         return res;
     }
+
     public static boolean isStrictlyPalindromic(int n) {
-        for(int i = 2; i<=n-2; i++){
-            String convNum = Integer.toString(n,i);
-            if(!isPalindrom(convNum)) return false;
+        for (int i = 2; i <= n - 2; i++) {
+            String convNum = Integer.toString(n, i);
+            if (!isPalindrom(convNum)) return false;
         }
         return true;
     }
 
-    private static boolean isPalindrom(String str){
+    private static boolean isPalindrom(String str) {
         int i = 0;
         int j = str.length() - 1;
         while (i < j) {
@@ -465,45 +527,47 @@ public class Problems {
     }
 
     public static int findPeakElement(int[] nums) {
-        if(nums.length==1) return 0;
-        if (nums[1]<nums[0]){
+        if (nums.length == 1) return 0;
+        if (nums[1] < nums[0]) {
             return 0;
         }
-        if (nums[nums.length-2]<nums[nums.length-1]){
-            return nums.length-1;
+        if (nums[nums.length - 2] < nums[nums.length - 1]) {
+            return nums.length - 1;
         }
-        for (int i = 1; i<nums.length-1; i++){
-            int prev = nums[i-1];
+        for (int i = 1; i < nums.length - 1; i++) {
+            int prev = nums[i - 1];
             int cur = nums[i];
-            int next = nums[i+1];
-            if(cur>next && cur>prev){
+            int next = nums[i + 1];
+            if (cur > next && cur > prev) {
                 return i;
             }
         }
         return -1;
     }
+
     public static List<List<Integer>> groupThePeopleOnePass(int[] groupSizes) {
         List<List<Integer>> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();
-        for(int i = 0; i<groupSizes.length; i++){
-            if(!map.containsKey(groupSizes[i])){
+        for (int i = 0; i < groupSizes.length; i++) {
+            if (!map.containsKey(groupSizes[i])) {
                 map.put(groupSizes[i], new ArrayList<>());
             }
             List<Integer> currLS = map.get(groupSizes[i]);
             currLS.add(i);
             map.put(groupSizes[i], currLS);
-            if (currLS.size()==groupSizes[i]){
+            if (currLS.size() == groupSizes[i]) {
                 res.add(currLS);
                 map.remove(groupSizes[i]);
             }
         }
         return res;
     }
+
     public static List<List<Integer>> groupThePeople(int[] groupSizes) {
         List<List<Integer>> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();
-        for(int i = 0; i<groupSizes.length; i++){
-            if(map.containsKey(groupSizes[i])){
+        for (int i = 0; i < groupSizes.length; i++) {
+            if (map.containsKey(groupSizes[i])) {
                 List<Integer> currLS = map.get(groupSizes[i]);
                 currLS.add(i);
                 map.put(groupSizes[i], currLS);
@@ -513,8 +577,8 @@ public class Problems {
             ls.add(i);
             map.put(groupSizes[i], ls);
         }
-        for(Map.Entry<Integer, List<Integer>> entry : map.entrySet()){
-            List <Integer> ls = entry.getValue();
+        for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
+            List<Integer> ls = entry.getValue();
             int subListLength = entry.getKey();
             List<Integer> listToResList = new ArrayList<>();
             for (int i = 0; i < ls.size(); i++) {
@@ -530,18 +594,19 @@ public class Problems {
     }
 
     public int[] replaceElements(int[] arr) {
-        int [] res = new int [arr.length];
+        int[] res = new int[arr.length];
         int max = Integer.MIN_VALUE;
-        for(int i = arr.length-1; i>0; i--){
-            if(arr[i]>max){
-                max=arr[i];
+        for (int i = arr.length - 1; i > 0; i--) {
+            if (arr[i] > max) {
+                max = arr[i];
             }
-            res[i-1] = max;
+            res[i - 1] = max;
         }
-        res[arr.length-1] = -1;
+        res[arr.length - 1] = -1;
         return res;
     }
-    public List<Integer> luckyNumbers (int[][] matrix) {
+
+    public List<Integer> luckyNumbers(int[][] matrix) {
         int row = matrix[0].length;
         int col = matrix.length;
         List<Integer> ls = new ArrayList<>();
@@ -570,30 +635,32 @@ public class Problems {
     public int maximumCountBinSearch(int[] nums) {
         int pos = nums.length - binSearch(nums, 1);
         int neg = binSearch(nums, 0);
-        return Math.max(pos,neg);
+        return Math.max(pos, neg);
     }
 
-    private int binSearch(int [] nums, int target){
+    private int binSearch(int[] nums, int target) {
         int l = 0;
         int r = nums.length;
 
-        while(l<r){
-            int mid = l+(r-l)/2;
-            if(nums[mid]<target){
-                l=mid+1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] < target) {
+                l = mid + 1;
             } else r = mid;
         }
         return l;
     }
+
     public int maximumCount(int[] nums) {
         int pos = 0;
         int neg = 0;
-        for(int num : nums){
-            if(num < 0) neg++;
-            if(num > 0) pos++;
+        for (int num : nums) {
+            if (num < 0) neg++;
+            if (num > 0) pos++;
         }
-        return Math.max(pos,neg);
+        return Math.max(pos, neg);
     }
+
     public TreeNode sortedArrayToBST(int[] nums) {
         if (nums.length == 0) {
             return null;
@@ -612,6 +679,7 @@ public class Problems {
         node.right = helper(num, mid + 1, high);
         return node;
     }
+
     public static void levelOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
@@ -633,21 +701,23 @@ public class Problems {
             }
         }
     }
+
     public static boolean checkString(String s) {
         char f = s.charAt(0);
-        for(char c : s.toCharArray()){
-            if (f=='b'){
-                if (c=='a'){
+        for (char c : s.toCharArray()) {
+            if (f == 'b') {
+                if (c == 'a') {
                     return false;
                 }
                 continue;
             }
-            if(c!=f){
-                f=c;
+            if (c != f) {
+                f = c;
             }
         }
         return true;
     }
+
     public static int[] shortestToChar1Pass(String S, char C) {
         int n = S.length(), pos = -n, res[] = new int[n];
         for (int i = 0; i < n; ++i) {
@@ -655,35 +725,37 @@ public class Problems {
             res[i] = i - pos;
         }
         for (int i = pos - 1; i >= 0; --i) {
-            if (S.charAt(i) == C)  pos = i;
+            if (S.charAt(i) == C) pos = i;
             res[i] = Math.min(res[i], pos - i);
         }
         return res;
     }
+
     public static int[] shortestToChar(String s, char c) {
-        int [] res = new int [s.length()];
+        int[] res = new int[s.length()];
         int prevC = Integer.MAX_VALUE;
-        for(int i = 0; i<s.length(); i++){
-            for(int j = i; j<s.length(); j++){
-                if(s.charAt(j)==c){
-                    int ahead = Math.abs(j-i);
-                    int behind = Math.abs(i-prevC);
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(j) == c) {
+                    int ahead = Math.abs(j - i);
+                    int behind = Math.abs(i - prevC);
                     res[i] = Math.min(ahead, behind);
                     prevC = ahead <= behind ? j : prevC;
                     break;
                 }
-                if (j==s.length()-1){
-                    res[i] = Math.abs(i-prevC);
+                if (j == s.length() - 1) {
+                    res[i] = Math.abs(i - prevC);
                 }
             }
         }
         return res;
     }
+
     public static int findFinalValue(int[] nums, int original) {
         int res = original;
         int prev = 0;
         Arrays.sort(nums);
-        while(res!=-1){
+        while (res != -1) {
             prev = res;
             res = binarySearch(nums, res);
         }
@@ -691,42 +763,44 @@ public class Problems {
     }
 
 
-    private static int binarySearch(int[]nums, int num){
+    private static int binarySearch(int[] nums, int num) {
         int l = 0;
-        int r = nums.length-1;
-        while(l<=r){
-            int mid = l + (r-l)/2;
-            if(nums[mid]==num){
-                return num*2;
+        int r = nums.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] == num) {
+                return num * 2;
             }
-            if(nums[mid]<num){
-                l=mid+1;
-            } else r=mid-1;
+            if (nums[mid] < num) {
+                l = mid + 1;
+            } else r = mid - 1;
         }
         return -1;
     }
+
     public static int[] answerQueriesStorePrefix(int[] nums, int[] queries) {
-        int [] ans = new int [queries.length];
+        int[] ans = new int[queries.length];
         Arrays.sort(nums);
-        for (int i = 1; i<nums.length; i++){
-            nums[i] += nums[i-1];
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] += nums[i - 1];
         }
-        
-        for(int i = 0; i<ans.length; i++){
+
+        for (int i = 0; i < ans.length; i++) {
             int j = Arrays.binarySearch(nums, queries[i]);
-            ans[i] = Math.abs(j+1);
+            ans[i] = Math.abs(j + 1);
         }
         return ans;
     }
+
     public static int[] answerQueries(int[] nums, int[] queries) {
-        int [] ans = new int [queries.length];
+        int[] ans = new int[queries.length];
         Arrays.sort(nums);
-        for(int i = 0; i<ans.length; i++){
+        for (int i = 0; i < ans.length; i++) {
             int sum = 0;
             int j = 0;
-            while(sum<queries[i] && j<nums.length){
+            while (sum < queries[i] && j < nums.length) {
                 sum += nums[j++];
-                if (sum>queries[i]){
+                if (sum > queries[i]) {
                     j--;
                 }
             }
@@ -734,73 +808,78 @@ public class Problems {
         }
         return ans;
     }
+
     public int minCostToMoveChips(int[] position) {
         int even = 0;
         int odd = 0;
-        for(int n : position){
-            if(n%2==0){
+        for (int n : position) {
+            if (n % 2 == 0) {
                 even++;
             } else odd++;
         }
         return Math.min(even, odd);
     }
+
     public static int[] sortedSquares2Pointers(int[] nums) {
-        int [] res = new int [nums.length];
+        int[] res = new int[nums.length];
         int n = nums.length;
         int l = 0;
-        int r = n-1;
-        for(int i = n-1; i>0; i--){
-            if(Math.abs(nums[l])<Math.abs(nums[r])){
+        int r = n - 1;
+        for (int i = n - 1; i > 0; i--) {
+            if (Math.abs(nums[l]) < Math.abs(nums[r])) {
                 res[i] = nums[r] * nums[r];
                 r--;
-            }else {
+            } else {
                 res[i] = nums[l] * nums[l];
                 l++;
             }
         }
         return res;
     }
+
     public int[] sortedSquares(int[] nums) {
-        int [] res = new int [nums.length];
-        for(int i = 0; i<nums.length; i++){
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
             res[i] = nums[i] * nums[i];
         }
         Arrays.sort(res);
         return res;
     }
+
     public static int maximumValue(String[] strs) {
         int max = 0;
-        for (String s : strs){
+        for (String s : strs) {
             try {
                 max = Math.max(Integer.parseInt(s), max);
-            } catch (NumberFormatException e){
-                    max = Math.max(s.length(),max);
+            } catch (NumberFormatException e) {
+                max = Math.max(s.length(), max);
             }
         }
         return max;
     }
+
     public boolean canBeEqual(int[] target, int[] arr) {
         Arrays.sort(target);
         Arrays.sort(arr);
-        for(int i = 0; i<arr.length; i++){
-            if(target[i]!=arr[i]){
+        for (int i = 0; i < arr.length; i++) {
+            if (target[i] != arr[i]) {
                 return false;
             }
         }
         return true;
     }
+
     public static int[] evenOddBits(int n) {
         int n1 = 0;
         int n2 = 0;
-        if(n == 0) return new int[]{0, 0};
+        if (n == 0) return new int[]{0, 0};
         int idx = 0;
 
-        while(n > 0) {
-            if(idx % 2 == 0) {
-                if((n & 1) == 1) n1++;
-            }
-            else {
-                if((n & 1) == 1) n2++;
+        while (n > 0) {
+            if (idx % 2 == 0) {
+                if ((n & 1) == 1) n1++;
+            } else {
+                if ((n & 1) == 1) n2++;
             }
             idx++;
             n = (n >> 1);
@@ -808,19 +887,21 @@ public class Problems {
 
         return new int[]{n1, n2};
     }
+
     public static int[] evenOddBit(int n) {
-        int [] res = new int [2];
+        int[] res = new int[2];
         String bin = new StringBuilder(Integer.toBinaryString(n)).reverse().toString();
-        for(int i = 0; i<bin.length(); i++){
-            if(bin.charAt(i)=='0'){
+        for (int i = 0; i < bin.length(); i++) {
+            if (bin.charAt(i) == '0') {
                 continue;
             }
-            if(bin.charAt(i)=='1' && i%2 == 0){
+            if (bin.charAt(i) == '1' && i % 2 == 0) {
                 res[0]++;
             } else res[1]++;
         }
         return res;
     }
+
     public static int[] nextGreaterElementMap(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
@@ -833,33 +914,35 @@ public class Problems {
             nums1[i] = map.getOrDefault(nums1[i], -1);
         return nums1;
     }
+
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        int [] res = new int[nums1.length];
+        int[] res = new int[nums1.length];
         boolean equal = false;
-        for(int i = 0; i<nums1.length; i++){
-            for(int j = 0; j<nums2.length; j++){
-                if(nums1[i] == nums2[j]){
+        for (int i = 0; i < nums1.length; i++) {
+            for (int j = 0; j < nums2.length; j++) {
+                if (nums1[i] == nums2[j]) {
                     equal = true;
                 }
-                if(equal && nums1[i]<nums2[j]){
+                if (equal && nums1[i] < nums2[j]) {
                     res[i] = nums2[j];
                     equal = false;
                     break;
                 }
             }
-            if(equal){
+            if (equal) {
                 res[i] = -1;
                 equal = false;
             }
         }
         return res;
     }
+
     public static int minimumOperationsArr(int[] nums) {
         int count = 0;
         int prev = 0;
         Arrays.sort(nums);
-        for(int i : nums){
-            if(i!=0 && i!=prev){
+        for (int i : nums) {
+            if (i != 0 && i != prev) {
                 count++;
                 prev = i;
             }
@@ -869,21 +952,22 @@ public class Problems {
 
     public int minimumOperations(int[] nums) {
         Set<Integer> set = new HashSet<>();
-        for(int i : nums){
-            if(i!=0){
+        for (int i : nums) {
+            if (i != 0) {
                 set.add(i);
             }
         }
         return set.size();
     }
+
     public int[] intersectionSet(int[] nums1, int[] nums2) {
         Set<Integer> set1 = new HashSet<>();
         Set<Integer> res = new HashSet<>();
-        for(int num : nums1){
+        for (int num : nums1) {
             set1.add(num);
         }
         for (int num : nums2) {
-            if (set1.contains(num)){
+            if (set1.contains(num)) {
                 res.add(num);
             }
         }
@@ -893,37 +977,39 @@ public class Problems {
     public int[] intersection(int[] nums1, int[] nums2) {
         Map<Integer, Integer> set1 = new HashMap<>();
         Map<Integer, Integer> set2 = new HashMap<>();
-        for(int num : nums1){
+        for (int num : nums1) {
             set1.put(num, 0);
         }
-        for(int num : nums2){
+        for (int num : nums2) {
             set2.put(num, 0);
         }
         List<Integer> list = new ArrayList<>();
         for (int num : set1.keySet()) {
-            if (set2.containsKey(num)){
+            if (set2.containsKey(num)) {
                 list.add(num);
             }
         }
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
+
     public static boolean digitCount(String num) {
         Map<Character, Integer> map = new HashMap<>();
-        for(char c : num.toCharArray()){
-            map.put(c, map.getOrDefault(c, 0) +1);
+        for (char c : num.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        for(int i = 0; i<num.length(); i++){
-            char iChar = (char)('0' +i);
-            int charAtI = Integer.parseInt(num.charAt(i)+"");
-            if (!map.containsKey(iChar) && charAtI!=0){
+        for (int i = 0; i < num.length(); i++) {
+            char iChar = (char) ('0' + i);
+            int charAtI = Integer.parseInt(num.charAt(i) + "");
+            if (!map.containsKey(iChar) && charAtI != 0) {
                 return false;
             }
-            if(map.get(iChar)!=null && charAtI!= map.get(iChar)){
+            if (map.get(iChar) != null && charAtI != map.get(iChar)) {
                 return false;
             }
         }
         return true;
     }
+
     public List<String> removeAnagramsString(String[] words) {
         List<String> list = new ArrayList<>();
         String prev = "";
@@ -938,26 +1024,28 @@ public class Problems {
         }
         return list;
     }
+
     public static List<String> removeAnagramsSort(String[] words) {
         List<String> list = new ArrayList<>();
         list.add(words[0]);
         for (int i = 1; i < words.length; i++) {
-            char [] curr = words[i].toCharArray();
-            char [] prev = words[i-1].toCharArray();
+            char[] curr = words[i].toCharArray();
+            char[] prev = words[i - 1].toCharArray();
             Arrays.sort(curr);
             Arrays.sort(prev);
-            if (Arrays.equals(curr, prev)){
+            if (Arrays.equals(curr, prev)) {
                 continue;
             }
             list.add(words[i]);
         }
         return list;
     }
+
     public static List<String> removeAnagrams(String[] words) {
         List<String> list = new ArrayList<>();
         list.add(words[0]);
         for (int i = 1; i < words.length; i++) {
-            if (areSameCharacters(words[i], words[i-1])){
+            if (areSameCharacters(words[i], words[i - 1])) {
                 continue;
             }
             list.add(words[i]);
@@ -982,24 +1070,27 @@ public class Problems {
         }
         return true;
     }
+
     public int smallestEqual(int[] nums) {
-        for(int i = 0; i<nums.length; i++){
-            if(i%10 == nums[i]){
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 10 == nums[i]) {
                 return i;
             }
         }
         return -1;
     }
+
     public static int countPrefixesStartWith(String[] words, String s) {
         int count = 0;
 
-        for(String word : words){
-            if (word.startsWith(s)){
+        for (String word : words) {
+            if (word.startsWith(s)) {
                 count++;
             }
         }
         return count;
     }
+
     public static int countPrefixes(String[] words, String s) {
         int count = 0;
         for (String word : words) {
@@ -1015,6 +1106,7 @@ public class Problems {
         }
         return count;
     }
+
     public static String kthDistinctMap(String[] arr, int k) {
         Map<String, Integer> map = new LinkedHashMap<>();
         int count = 0;
@@ -1030,28 +1122,29 @@ public class Problems {
 //            }
 //        }
         int i = 0;
-        for (String s : arr){
-            if (map.get(s) == 1 && ++i==k){
+        for (String s : arr) {
+            if (map.get(s) == 1 && ++i == k) {
                 return s;
             }
         }
 
         return "";
     }
+
     public static String kthDistinct(String[] arr, int k) {
         int count = 0;
         boolean flag = true;
-        for(int i = 0; i<arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if (arr[i].equals(arr[j]) && i!=j){
+                if (arr[i].equals(arr[j]) && i != j) {
                     flag = false;
                     break;
                 }
             }
-            if (flag){
+            if (flag) {
                 count++;
             } else flag = true;
-            if (count==k) return arr[i];
+            if (count == k) return arr[i];
         }
         return "";
     }
@@ -1076,15 +1169,16 @@ public class Problems {
 
         return ans;
     }
+
     public static int maxFrequencyElements(int[] nums) {
-        int [] arr = new int [101];
-        for(int i = 0; i<nums.length; i++){
+        int[] arr = new int[101];
+        for (int i = 0; i < nums.length; i++) {
             arr[nums[i]]++;
         }
         Arrays.sort(arr);
         int res = 0;
-        for(int i = arr.length-1; i>0; i--){
-            if(arr[i] != arr[i-1]){
+        for (int i = arr.length - 1; i > 0; i--) {
+            if (arr[i] != arr[i - 1]) {
                 res += arr[i];
                 break;
             } else {
@@ -1093,18 +1187,19 @@ public class Problems {
         }
         return res;
     }
+
     public static List<Integer> minSubsequence(int[] nums) {
         List<Integer> list = new ArrayList<>();
         int totalSum = 0;
-        for(int n : nums){
+        for (int n : nums) {
             totalSum += n;
         }
         Arrays.sort(nums);
         int currSum = 0;
-        for(int i = nums.length-1; i>=0; i--){
+        for (int i = nums.length - 1; i >= 0; i--) {
             currSum += nums[i];
             int n = totalSum - currSum;
-            if(currSum <= n){
+            if (currSum <= n) {
                 list.add(nums[i]);
             } else {
                 list.add(nums[i]);
@@ -1113,18 +1208,19 @@ public class Problems {
         }
         return list;
     }
+
     public static int canBeTypedWords1(String text, String brokenLetters) {
 
         Set<Character> set = new HashSet<>();
-        for (char c : brokenLetters.toCharArray()){
+        for (char c : brokenLetters.toCharArray()) {
             set.add(c);
         }
         int count = 0;
-        String [] words = text.split(" ");
+        String[] words = text.split(" ");
         for (String word : words) {
             count++;
-            for (int i = 0; i<word.length(); i++){
-                if (set.contains(word.charAt(i))){
+            for (int i = 0; i < word.length(); i++) {
+                if (set.contains(word.charAt(i))) {
                     count--;
                     break;
                 }
@@ -1136,14 +1232,14 @@ public class Problems {
     public static int canBeTypedWords(String text, String brokenLetters) {
         boolean isAbleToType = true;
         int count = 0;
-        for (int i = 0; i<text.length(); i++){
+        for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
-            if (brokenLetters.contains(text.charAt(i)+"")){
+            if (brokenLetters.contains(text.charAt(i) + "")) {
                 isAbleToType = false;
             }
-            if ((text.charAt(i)==' ' && isAbleToType) || (i == text.length()-1 && isAbleToType)){
+            if ((text.charAt(i) == ' ' && isAbleToType) || (i == text.length() - 1 && isAbleToType)) {
                 count++;
-            } else if (text.charAt(i) == ' ' && !isAbleToType){
+            } else if (text.charAt(i) == ' ' && !isAbleToType) {
                 isAbleToType = true;
             }
         }
@@ -1151,34 +1247,32 @@ public class Problems {
     }
 
     public List<String> splitWordsBySeparatorArr(List<String> words, char separator) {
-        List<String> nm=new ArrayList<>();
-        for(int i=0;i<words.size();i++)
-        {
-            String arr[]=words.get(i).split("["+separator+"]");
-            for(int j=0;j<arr.length;j++)
-            {
+        List<String> nm = new ArrayList<>();
+        for (int i = 0; i < words.size(); i++) {
+            String arr[] = words.get(i).split("[" + separator + "]");
+            for (int j = 0; j < arr.length; j++) {
 
-                if(arr[j].length()>0)
-                {
+                if (arr[j].length() > 0) {
                     nm.add(arr[j]);
                 }
             }
         }
         return nm;
     }
+
     public static List<String> splitWordsBySeparator(List<String> words, char separator) {
         List<String> list = new ArrayList<>();
-        for(String s : words){
+        for (String s : words) {
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i<s.length(); i++){
-                if (s.charAt(i)==separator){
-                    if (sb.length()>0) {
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == separator) {
+                    if (sb.length() > 0) {
                         list.add(sb.toString());
                     }
-                    sb.delete(0,sb.length());
+                    sb.delete(0, sb.length());
                     continue;
                 }
-                if (i==s.length()-1){
+                if (i == s.length() - 1) {
                     sb.append(s.charAt(i));
                     list.add(sb.toString());
                     continue;
@@ -1188,14 +1282,15 @@ public class Problems {
         }
         return list;
     }
+
     public int countGoodSubstrings(String s) {
-        if(s.length()<3){
+        if (s.length() < 3) {
             return 0;
         }
         int count = 0;
-        for(int i = 2; i<s.length(); i++){
-            if(s.charAt(i)!=s.charAt(i-1) && s.charAt(i)!=s.charAt(i-2)
-                    && s.charAt(i-1)!=s.charAt(i-2)){
+        for (int i = 2; i < s.length(); i++) {
+            if (s.charAt(i) != s.charAt(i - 1) && s.charAt(i) != s.charAt(i - 2)
+                    && s.charAt(i - 1) != s.charAt(i - 2)) {
                 count++;
             }
         }
@@ -1206,71 +1301,74 @@ public class Problems {
         StringBuilder sb = new StringBuilder();
         int count1 = 0;
         int count0 = 0;
-        for(char c : s.toCharArray()){
-            if(c == '1'){
+        for (char c : s.toCharArray()) {
+            if (c == '1') {
                 count1++;
             } else count0++;
         }
-        while(count1>1){
+        while (count1 > 1) {
             sb.append("1");
             count1--;
         }
-        while(count0>0){
+        while (count0 > 0) {
             sb.append("0");
             count0--;
         }
         sb.append("1");
         return sb.toString();
     }
+
     public static int[][] mergeArraysMergeSort(int[][] nums1, int[][] nums2) {
 
         List<int[]> res = new ArrayList<>();
-        int i = 0,j = 0;
-        while (i<nums1.length && j<nums2.length){
-            if (nums1[i][0] == nums2[j][0]){
+        int i = 0, j = 0;
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i][0] == nums2[j][0]) {
                 res.add(new int[]{nums1[i][0], nums1[i][1] + nums2[j][1]});
                 i++;
                 j++;
-            } else if (nums1[i][0] < nums2[j][0]){
+            } else if (nums1[i][0] < nums2[j][0]) {
                 res.add(new int[]{nums1[i][0], nums1[i][1]});
                 i++;
             } else {
-                res.add(new int[]{nums2[j][0],nums2[j][1]});
+                res.add(new int[]{nums2[j][0], nums2[j][1]});
                 j++;
             }
         }
-        while (i<nums1.length){
+        while (i < nums1.length) {
             res.add(new int[]{nums1[i][0], nums1[i][1]});
             i++;
         }
-        while (j<nums2.length){
+        while (j < nums2.length) {
             res.add(new int[]{nums2[j][0], nums2[j][1]});
             j++;
         }
 
         return res.toArray(new int[res.size()][]);
     }
+
     public static int[][] mergeArrays(int[][] nums1, int[][] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
-        for(int [] arr : nums1){
+        for (int[] arr : nums1) {
             map.put(arr[0], arr[1]);
         }
-        for(int [] arr : nums2){
-            if(map.containsKey(arr[0])){
-                map.put(arr[0], map.get(arr[0])+arr[1]);
+        for (int[] arr : nums2) {
+            if (map.containsKey(arr[0])) {
+                map.put(arr[0], map.get(arr[0]) + arr[1]);
             } else map.put(arr[0], arr[1]);
         }
 
         List<Map.Entry<Integer, Integer>> entryList = new ArrayList<>(map.entrySet());
         entryList.sort(Map.Entry.comparingByKey());
-        int [][] res = new int[map.size()][2];
+        int[][] res = new int[map.size()][2];
         int count = 0;
-        for (Map.Entry<Integer,Integer> entry : entryList){
+        for (Map.Entry<Integer, Integer> entry : entryList) {
             res[count][0] = entry.getKey();
             res[count++][1] = entry.getValue();
         }
         return res;
     }
+
     public int sumRootToLeaf(TreeNode root) {
 
         List<Integer> list = new ArrayList<>();
@@ -1279,26 +1377,28 @@ public class Problems {
         return list.stream().reduce(0, Integer::sum);
 
     }
-    public void collectPath(TreeNode node, StringBuilder currPath, List<Integer> paths){
-        if(node == null){
+
+    public void collectPath(TreeNode node, StringBuilder currPath, List<Integer> paths) {
+        if (node == null) {
             return;
         }
         currPath.append(node.val);
-        if(node.left == null && node.right == null){
-            paths.add(Integer.parseInt(currPath.toString(),2));
+        if (node.left == null && node.right == null) {
+            paths.add(Integer.parseInt(currPath.toString(), 2));
         } else {
             collectPath(node.left, currPath, paths);
-            collectPath(node.right,currPath, paths);
+            collectPath(node.right, currPath, paths);
         }
-        currPath.deleteCharAt(currPath.length()-1);
+        currPath.deleteCharAt(currPath.length() - 1);
     }
+
     public boolean divideArray(int[] nums) {
-        int [] res = new int [501];
-        for(int num : nums){
+        int[] res = new int[501];
+        for (int num : nums) {
             res[num]++;
         }
-        for(int num : res){
-            if(num%2!=0){
+        for (int num : res) {
+            if (num % 2 != 0) {
                 return false;
             }
         }
@@ -1307,19 +1407,19 @@ public class Problems {
 
     public static int countBalls(int lowLimit, int highLimit) {
         Map<Integer, Integer> map = new HashMap<>();
-        while(lowLimit<=highLimit){
+        while (lowLimit <= highLimit) {
             int boxNum = digitSum(lowLimit);
-            map.put(boxNum, map.getOrDefault(boxNum,0)+1 );
+            map.put(boxNum, map.getOrDefault(boxNum, 0) + 1);
             lowLimit++;
         }
         return map.values().stream().max(Comparator.naturalOrder()).get();
     }
 
-    private static int digitSum(int n){
+    private static int digitSum(int n) {
         int res = 0;
-        while(n>0){
-            res += n%10;
-            n/=10;
+        while (n > 0) {
+            res += n % 10;
+            n /= 10;
         }
         return res;
     }
@@ -1329,7 +1429,7 @@ public class Problems {
         int[] ans = new int[k];
 
         for (int i = 0; i < mat.length; i++) {
-            pq.offer(new int[] {countSoldiers(mat[i],1), i});
+            pq.offer(new int[]{countSoldiers(mat[i], 1), i});
             if (pq.size() > k)
                 pq.poll();
         }
@@ -1343,49 +1443,50 @@ public class Problems {
     public static int[] kWeakestRows(int[][] mat, int k) {
 //        Arrays.sort(mat, Comparator.comparingInt(row ->countSoldiers(row,1)));
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i<mat.length; i++){
-            int soldNum = countSoldiers(mat[i],1);
+        for (int i = 0; i < mat.length; i++) {
+            int soldNum = countSoldiers(mat[i], 1);
             map.put(i, soldNum);
         }
         map = map.entrySet().stream().sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
-        int [] res = new int[k];
+        int[] res = new int[k];
         int count = 0;
-        for (Map.Entry<Integer,Integer> entry : map.entrySet()){
-            if (count<k){
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (count < k) {
                 res[count++] = entry.getKey();
             } else break;
         }
         return res;
     }
 
-    private static int countSoldiers(int [] row, int targetElem){
+    private static int countSoldiers(int[] row, int targetElem) {
         int lo = 0;
         int hi = row.length;
-        while (lo<hi){
-            int mid = lo + (hi-lo)/2;
-            if (row[mid]==targetElem){
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (row[mid] == targetElem) {
                 lo = mid + 1;
-            }else hi = mid;
+            } else hi = mid;
         }
         return lo;
     }
 
     public char repeatedCharacterS(String s) {
         Set<Character> set = new HashSet<>();
-        for(int i = 0; i<s.length();i++){
-            if(set.contains(s.charAt(i))){
+        for (int i = 0; i < s.length(); i++) {
+            if (set.contains(s.charAt(i))) {
                 return s.charAt(i);
             }
             set.add(s.charAt(i));
         }
         throw new RuntimeException("s should contain at least one repeated letter");
     }
+
     public char repeatedCharacter(String s) {
         Set<Character> set = new HashSet<>();
-        for(char c : s.toCharArray()){
-            if(set.contains(c)){
+        for (char c : s.toCharArray()) {
+            if (set.contains(c)) {
                 return c;
             }
             set.add(c);
@@ -1396,11 +1497,11 @@ public class Problems {
     public static int maximumUnits(int[][] boxTypes, int truckSize) {
         Arrays.sort(boxTypes, Comparator.comparingInt(subarray -> subarray[1]));
         int maxUnitsInBox = 0;
-        for (int i = boxTypes.length-1; i>=0; i--){
-            maxUnitsInBox += boxTypes[i][0]*boxTypes[i][1];
+        for (int i = boxTypes.length - 1; i >= 0; i--) {
+            maxUnitsInBox += boxTypes[i][0] * boxTypes[i][1];
             truckSize -= boxTypes[i][0];
-            if (truckSize<=0){
-                maxUnitsInBox -= Math.abs(truckSize)*boxTypes[i][1];
+            if (truckSize <= 0) {
+                maxUnitsInBox -= Math.abs(truckSize) * boxTypes[i][1];
                 return maxUnitsInBox;
             }
         }
@@ -1409,9 +1510,9 @@ public class Problems {
 
     public static int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        for (int num : nums){
+        for (int num : nums) {
             minHeap.offer(num);
-            if (minHeap.size()>k){
+            if (minHeap.size() > k) {
                 minHeap.poll();
             }
         }

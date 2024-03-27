@@ -689,5 +689,20 @@ public class ProblemsTest {
         String b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
         Assert.assertEquals("100",Problems.addBinary(a, b));
     }
+    @Test
+    public void testRemoveDuplicates(){
+        int [] st = new int[]{1,1,2};
+        Assert.assertEquals(2,Problems.removeDuplicates(st));
+    }
+    @Test
+    public void testRemoveDuplicates2(){
+        int [] st = new int[]{0,0,1,1,1,2,2,3,3,4};
+        Assert.assertEquals(5,Problems.removeDuplicates(st));
+    }
+    @Test
+    public void testRemoveDuplicates3(){
+        int [] st = new int[]{0,0};
+        Assert.assertEquals(1,Problems.removeDuplicates(st));
+    }
 }
 

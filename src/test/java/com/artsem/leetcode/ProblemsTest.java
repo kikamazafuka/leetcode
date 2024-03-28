@@ -701,7 +701,7 @@ public class ProblemsTest {
     }
     @Test
     public void testRemoveDuplicates3(){
-        int [] st = new int[]{0,0};
+        int [] st = new int[]{1,1,1};
         Assert.assertEquals(1,Problems.removeDuplicates(st));
     }
 }

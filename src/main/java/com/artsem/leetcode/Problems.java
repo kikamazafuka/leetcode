@@ -39,31 +39,14 @@ public class Problems {
 //    0,1,2,3,4,_,_,_,_,_
     public static int removeDuplicates(int[] nums) {
 
-        if (nums.length==1) return 1;
-
-        int index = 0;
-        if (nums[index]==nums[index+1]){
-            index += 1;
-        }
-        int j = nums.length>2 ?  index + 1 : index;
-        int curr = -101;
-        while (index<nums.length){
-
-            if (nums[index] == nums[j] || nums[j]<=curr) {
+        int j = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[j] = nums[i];
                 j++;
-            } else {
-                nums[index] = nums[j];
-                if (j==nums.length-1) break;
-                curr = nums[j];
-                index += 1;
-                j = index +  1;
-            }
-            if (j==nums.length) break;
-            if (nums[index] == nums[j] && j == nums.length-1) {
-                break;
             }
         }
-        return index+1;
+        return j;
     }
     public static String addBinary(String a, String b) {
 

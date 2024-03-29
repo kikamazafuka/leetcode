@@ -2,7 +2,6 @@ package com.artsem.leetcode;
 
 
 import java.io.*;
-import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,21 +33,15 @@ public class Problems {
         int length = ma.length;
 
     }
-//    Input: numbers = [2,7,11,15], target = 9
-//    Output: [1,2]
     public static int[] twoSum(int[] numbers, int target) {
         int i = 0;
         int j = numbers.length - 1;
-        while (i<j){
-            int sum = numbers[i] + numbers[j];
-            if (sum==target){
-                return new int []{i+1,j+1};
-            }
-            if (sum<target) i++;
-            if (sum>target) j--;
+        while (numbers[i] + numbers[j]!=target){
+            if (numbers[i] + numbers[j]<target){
+                i++;
+            } else j--;
         }
-        throw new IllegalArgumentException();
-
+        return new int []{i+1,j+1};
     }
     public static int removeDuplicates(int[] nums) {
 

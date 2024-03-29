@@ -34,9 +34,22 @@ public class Problems {
         int length = ma.length;
 
     }
+//    Input: numbers = [2,7,11,15], target = 9
+//    Output: [1,2]
+    public static int[] twoSum(int[] numbers, int target) {
+        int i = 0;
+        int j = numbers.length - 1;
+        while (i<j){
+            int sum = numbers[i] + numbers[j];
+            if (sum==target){
+                return new int []{i+1,j+1};
+            }
+            if (sum<target) i++;
+            if (sum>target) j--;
+        }
+        throw new IllegalArgumentException();
 
-//    0,0,1,1,1,2,2,3,3,4
-//    0,1,2,3,4,_,_,_,_,_
+    }
     public static int removeDuplicates(int[] nums) {
 
         int j = 1;

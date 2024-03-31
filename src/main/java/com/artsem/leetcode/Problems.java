@@ -25,6 +25,23 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int maxProfit(int[] prices) {
+        int i = 0, buy, sell, profit = 0, N = prices.length - 1;
+        while (i < N) {
+            while (i < N && prices[i + 1] <= prices[i]){
+                i++;
+            }
+            buy = prices[i];
+
+            while (i < N && prices[i + 1] > prices[i]){
+                i++;
+            }
+            sell = prices[i];
+
+            profit += sell - buy;
+        }
+        return profit;
+    }
     public static int[] twoSum_bs(int[] numbers, int target) {
         for (int i = 0; i < numbers.length; ++i) {
             int low = i + 1;

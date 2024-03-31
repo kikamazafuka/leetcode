@@ -132,6 +132,11 @@ public class ProblemsTest {
         int [] res = new int[]{1,2};
         Assert.assertArrayEquals(res,Problems.twoSum(st,-2));
     }
+    @Test
+    public void testMaxProfit(){
+        int [] st = new int[]{7,1,5,3,6,4};
+        Assert.assertEquals(7,Problems.maxProfit(st));
+    }
 
 }
 

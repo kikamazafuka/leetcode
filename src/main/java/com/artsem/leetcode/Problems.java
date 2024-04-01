@@ -25,6 +25,36 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int maxProfit(int[] prices, int fee) {
+        int buy = 0;
+        int sell = 0;
+        int profit = 0;
+        int i = 0;
+        int n = prices.length - 1;
+        boolean flag = true;
+
+        while(i<n){
+            while(i<n && prices[i] > prices[i+1] && flag){
+                i++;
+                flag = true;
+            }
+            if (flag) {
+                buy = prices[i];
+            }
+            while(!flag || (i<n && prices[i] < prices[i+1])){
+                i++;
+                flag = true;
+            }
+            sell = prices[i];
+            int currProf = (sell-buy)-fee;
+            if(currProf<=0){
+                flag = false;
+                continue;
+            }
+            profit += (sell - buy) - fee;
+        }
+        return profit;
+    }
     public static int maxProfit(int[] prices) {
         int i = 0, buy, sell, profit = 0, N = prices.length - 1;
         while (i < N) {
@@ -32,12 +62,10 @@ public class Problems {
                 i++;
             }
             buy = prices[i];
-
             while (i < N && prices[i + 1] > prices[i]){
                 i++;
             }
             sell = prices[i];
-
             profit += sell - buy;
         }
         return profit;

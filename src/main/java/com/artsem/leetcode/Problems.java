@@ -25,6 +25,23 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int maxProfit1(int[] prices) {
+        int profit = 0;
+        int currProf = 0;
+        int N = prices.length;
+        int buy  = Integer.MAX_VALUE;
+
+        for (int i=0;i<N;i++){
+            if (prices[i]<buy){
+                buy = prices[i];
+            }
+            currProf = prices[i] - buy;
+            if(currProf>profit){
+                profit = currProf;
+            }
+        }
+        return profit;
+    }
     public static int maxProfit(int[] prices, int fee) {
         int buy = 0;
         int sell = 0;

@@ -148,5 +148,15 @@ public class ProblemsTest {
         int [] st = new int[]{1,3,7,5,10,3};
         Assert.assertEquals(6,Problems.maxProfit(st,3));
     }
+    @Test
+    public void testMaxProfitFee3(){
+        int [] st = new int[]{7,1,5,3,6,4};
+        Assert.assertEquals(5,Problems.maxProfit1(st));
+    }
+    @Test
+    public void testMaxProfitFee4(){
+        int [] st = new int[]{1,2};
+        Assert.assertEquals(1,Problems.maxProfit1(st));
+    }
 }
 

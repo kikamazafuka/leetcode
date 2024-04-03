@@ -1240,7 +1240,7 @@ public class Archive {
 //        int sum = n;
 //        int count = 1;
 //        while (count > 0) {
-//            count = Problems.pivotIntegerRecursion(n - i);
+//            count = pivotIntegerRecursion(n - i);
 //            sum += (n - i);
 //            if (count == sum) {
 //                return n - i;
@@ -1628,10 +1628,10 @@ public class Archive {
 //        int countLeft = 0;
 //        int countRight = 0;
 //        for(int i = 0; i<s.length()/2; i++){
-//            if(Problems.isVowel(""+left.charAt(i))){
+//            if(isVowel(""+left.charAt(i))){
 //                countLeft++;
 //            }
-//            if(Problems.isVowel(""+right.charAt(i))){
+//            if(isVowel(""+right.charAt(i))){
 //                countRight++;
 //            }
 //        }
@@ -1953,26 +1953,26 @@ public class Archive {
         return reversedResult == num;
     }
 
-    public static Problems.TreeNode getTargetCopy(final Problems.TreeNode original, final Problems.TreeNode cloned, final Problems.TreeNode target) {
+    public static TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         return traverse(cloned, target);
     }
 
-    private static Problems.TreeNode traverse(Problems.TreeNode node, Problems.TreeNode target) {
+    private static TreeNode traverse(TreeNode node, TreeNode target) {
         if (node == null) {
             return null;
         }
         if (node.val == target.val) {
             return node;
         }
-        Problems.TreeNode leftNode = traverse(node.left, target);
-        Problems.TreeNode rightNode = traverse(node.right, target);
+        TreeNode leftNode = traverse(node.left, target);
+        TreeNode rightNode = traverse(node.right, target);
         if (leftNode != null) {
             return leftNode;
         }
         return rightNode;
     }
 
-    public static int rangeSumBST(Problems.TreeNode root, int low, int high) {
+    public static int rangeSumBST(TreeNode root, int low, int high) {
         int sum = 0;
         List<Integer> result = new ArrayList<>();
         traverse1(root, result, low, high);
@@ -1983,7 +1983,7 @@ public class Archive {
 
     }
 
-    private static void traverse1(Problems.TreeNode node, List<Integer> list, int low, int high) {
+    private static void traverse1(TreeNode node, List<Integer> list, int low, int high) {
         if (node == null) {
             return;
         }
@@ -2008,8 +2008,8 @@ public class Archive {
 //        return resultList;
 
 //        List<List<Integer>> resultList = new ArrayList<>();
-//        List <Integer>  nums1List = Problems.collectToListWhichAreNotPresent(nums1,nums2);
-//        List <Integer>  nums2List = Problems.collectToListWhichAreNotPresent(nums2, nums1);
+//        List <Integer>  nums1List = collectToListWhichAreNotPresent(nums1,nums2);
+//        List <Integer>  nums2List = collectToListWhichAreNotPresent(nums2, nums1);
 //
 //        List<Integer> collect1 = nums1List.stream().distinct().toList();
 //        List<Integer> collect2 = nums2List.stream().distinct().toList();
@@ -2113,7 +2113,7 @@ public class Archive {
 //    public static int subsetXORSum(int[] nums) {
 //        //int result = 0;
 //        int total = 0;
-//        List<List<Integer>> subsets = Problems.generateSubsets(nums);
+//        List<List<Integer>> subsets = generateSubsets(nums);
 //        subsets.sort(Comparator.comparing(List::size));
 //        for (List<Integer> subset : subsets) {
 //            int result = 0;

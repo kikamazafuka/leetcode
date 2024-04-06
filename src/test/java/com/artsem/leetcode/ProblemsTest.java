@@ -160,13 +160,13 @@ public class ProblemsTest {
     }
     @Test
     public void testBuyChoco(){
-        int [] st = new int[]{46,56,41};
-        Assert.assertEquals(1,Problems.buyChoco(st,79));
+        int [] st = new int[]{1,2,2};
+        Assert.assertEquals(0,Problems.buyChoco(st,3));
     }
     @Test
     public void testBuyChoco1(){
         int [] st = new int[]{46,56,41};
-        Assert.assertEquals(1,Problems.buyChoco(st,79));
+        Assert.assertEquals(79,Problems.buyChoco(st,79));
     }
     @Test
     public void testBuyChoco2(){

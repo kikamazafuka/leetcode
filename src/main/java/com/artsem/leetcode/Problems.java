@@ -27,7 +27,27 @@ public class Problems {
     }
 
     public static int buyChoco(int[] prices, int money) {
-        Arrays.sort(prices);
+        int ans = Integer.MAX_VALUE;
+        int fin;
+        for (int i = 0; i < prices.length; i++) {
+            for (int j = 0; j < prices.length; j++) {
+                if (i != j ) {
+                    int sum = prices[i] + prices[j];
+                    ans = Math.min(ans, sum);
+                }
+            }
+        }
+
+        fin = money - ans;
+        if(fin>=0){
+            return fin;
+        }
+        else{
+            return money;
+        }
+    }
+    public static int buyChocoSort(int[] prices, int money) {
+//        Arrays.sort(prices);
         for(int i = 0; i<prices.length; i++){
             for(int j = i + 1; j<prices.length; j++){
                 if(prices[i]+prices[j]<=money){

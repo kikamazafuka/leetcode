@@ -6,6 +6,7 @@ import java.util.*;
 public class Problems {
     public static void main(String[] args) {
 
+
         String dirname = "/leetcode";
         File dir = new File(dirname);
 
@@ -25,6 +26,17 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int buyChoco(int[] prices, int money) {
+        Arrays.sort(prices);
+        for(int i = 0; i<prices.length && prices[i]<money; i++){
+            for(int j = i + 1; j<prices.length && prices[j]<money; j++){
+                if(prices[i]+prices[j]<=money){
+                    return money - prices[i] - prices[j];
+                }
+            }
+        }
+        return money;
+    }
     public int minDistance(String word1, String word2) {
         int len1 = word1.length();
         int len2 = word2.length();

@@ -158,5 +158,20 @@ public class ProblemsTest {
         int [] st = new int[]{1,2};
         Assert.assertEquals(1,Problems.maxProfit1(st));
     }
+    @Test
+    public void testBuyChoco(){
+        int [] st = new int[]{46,56,41};
+        Assert.assertEquals(1,Problems.buyChoco(st,79));
+    }
+    @Test
+    public void testBuyChoco1(){
+        int [] st = new int[]{46,56,41};
+        Assert.assertEquals(1,Problems.buyChoco(st,79));
+    }
+    @Test
+    public void testBuyChoco2(){
+        int [] st = new int[]{98,54,6,34,66,63,52,39};
+        Assert.assertEquals(22,Problems.buyChoco(st,62));
+    }
 }
 

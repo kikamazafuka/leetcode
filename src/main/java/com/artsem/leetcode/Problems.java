@@ -26,6 +26,16 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static boolean canMakeArithmeticProgression(int[] arr) {
+        Arrays.sort(arr);
+        int dif = arr[1] - arr[0];
+        for(int i = 0; i<arr.length-1; i++){
+            if(arr[i+1]-arr[i]!=dif){
+                return false;
+            }
+        }
+        return true;
+    }
     public static int buyChoco(int[] prices, int money) {
         int ans = Integer.MAX_VALUE;
         int fin;
@@ -37,7 +47,6 @@ public class Problems {
                 }
             }
         }
-
         fin = money - ans;
         if(fin>=0){
             return fin;

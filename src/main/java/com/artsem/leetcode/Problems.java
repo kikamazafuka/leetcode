@@ -26,6 +26,19 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static long findTheArrayConcVal(int[] nums) {
+        long res = 0;
+        String sum = "";
+        for(int i = 0, j = nums.length-1; i<=j; i++,j--){
+            if (i!=j){
+                 sum = nums[i] + String.valueOf(nums[j]);
+            } else {
+                sum = String.valueOf(nums[j]);
+            }
+            res +=  Integer.parseInt(sum);
+        }
+        return res;
+    }
     public static boolean canMakeArithmeticProgression(int[] arr) {
         Arrays.sort(arr);
         int dif = arr[1] - arr[0];

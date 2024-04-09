@@ -169,9 +169,14 @@ public class ProblemsTest {
         Assert.assertEquals(79,Problems.buyChoco(st,79));
     }
     @Test
-    public void testBuyChoco2(){
-        int [] st = new int[]{98,54,6,34,66,63,52,39};
-        Assert.assertEquals(22,Problems.buyChoco(st,62));
+    public void testFindTheArrayConcVal(){
+        int [] st = new int[]{5,14,13,8,12};
+        Assert.assertEquals(673,Problems.findTheArrayConcVal(st));
+    }
+    @Test
+    public void testFindTheArrayConcVal2(){
+        int [] st = new int[]{5,5};
+        Assert.assertEquals(55,Problems.findTheArrayConcVal(st));
     }
 }
 

@@ -26,16 +26,22 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public long findTheArrayConcValString(int[] nums) {
+        long res = 0;
+        for (int i = 0, j = nums.length - 1; i <= j; i++, j--) {
+            long mult = i != j ? (long) Math.pow(10, String.valueOf(nums[j]).length()) : 0;
+            res += nums[i] * mult + nums[j];
+        }
+        return res;
+    }
     public static long findTheArrayConcVal(int[] nums) {
         long res = 0;
-        String sum = "";
+        long mult;
         for(int i = 0, j = nums.length-1; i<=j; i++,j--){
             if (i!=j){
-                 sum = nums[i] + String.valueOf(nums[j]);
-            } else {
-                sum = String.valueOf(nums[j]);
-            }
-            res +=  Integer.parseInt(sum);
+                mult = nums[j]<10 ? 10 : nums[j]<100 ? 100 : nums[j]<1000 ?1000 : nums[j]<10000 ? 10000 : 100000;
+            } else mult = 0;
+            res +=  nums[i] * mult + nums[j];
         }
         return res;
     }

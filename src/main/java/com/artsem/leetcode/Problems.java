@@ -28,7 +28,7 @@ public class Problems {
 
     public static List<List<Integer>> minimumAbsDifference(int[] arr) {
         Arrays.sort(arr);
-        int minDif = 0;
+        int minDif = Integer.MAX_VALUE;
         List<List<Integer>> res = new ArrayList<>();
         for(int i = 0; i<arr.length-1; i++){
             minDif = Math.min(minDif, arr[i+1]-arr[i]);

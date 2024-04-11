@@ -26,6 +26,18 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static String greatestLetter(String s) {
+        char gr = Character.MIN_VALUE;
+        for(char c : s.toCharArray()){
+            char cap = (char) (c - ' ');
+            if(s.indexOf(cap)!=-1){
+                if(cap>gr){
+                    gr = cap;
+                }
+            }
+        }
+        return gr>'\u0000' ? String.valueOf(gr) : "";
+    }
     public static List<List<Integer>> minimumAbsDifference(int[] arr) {
         Arrays.sort(arr);
         int min = Integer.MAX_VALUE;

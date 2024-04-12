@@ -26,6 +26,16 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public boolean containsDuplicate(int[] nums) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int n : nums){
+            map.put(n, map.getOrDefault(n,0)+1);
+        }
+        for(int n : map.values()){
+            if(n>1) return true;
+        }
+        return false;
+    }
     public static int[] rotate(int[] nums, int k) {
         int[] res = new int[nums.length];
         for(int i = 0; i< nums.length; i++){
@@ -37,9 +47,7 @@ public class Problems {
                 res[newInd] = nums[i];
             }
         }
-        for(int i = 0; i<nums.length;i++){
-            nums[i] = res[i];
-        }
+        System.arraycopy(res, 0, nums, 0, nums.length);
         return res;
     }
     public static String greatestLetter(String s) {

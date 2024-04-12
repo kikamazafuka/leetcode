@@ -203,5 +203,20 @@ public class ProblemsTest {
         int [] exp = new int[]{2,1};
         Assert.assertArrayEquals(exp,Problems.rotate(st,3));
     }
+
+    @Test
+    public void testIntersect(){
+        int [] st = new int[]{1,2,2,1};
+        int [] st2 = new int[]{2,2};
+        int [] exp = new int[]{2,2};
+        Assert.assertArrayEquals(exp,Problems.intersect(st,st2));
+    }
+    @Test
+    public void testIntersect2(){
+        int [] st = new int[]{4,9,5};
+        int [] st2 = new int[]{9,4,9,8,4};
+        int [] exp = new int[]{4,9};
+        Assert.assertArrayEquals(exp,Problems.intersect(st,st2));
+    }
 }
 

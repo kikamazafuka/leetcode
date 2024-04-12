@@ -26,6 +26,22 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int[] rotate(int[] nums, int k) {
+        int[] res = new int[nums.length];
+        for(int i = 0; i< nums.length; i++){
+            int newInd = i + k%nums.length;
+            if (newInd< nums.length){
+                res[newInd] = nums[i];
+            } else {
+                newInd -= nums.length;
+                res[newInd] = nums[i];
+            }
+        }
+        for(int i = 0; i<nums.length;i++){
+            nums[i] = res[i];
+        }
+        return res;
+    }
     public static String greatestLetter(String s) {
         char gr = Character.MIN_VALUE;
         for(char c : s.toCharArray()){

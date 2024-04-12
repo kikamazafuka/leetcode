@@ -184,5 +184,24 @@ public class ProblemsTest {
         int [] st = new int[]{4,2,1,3};
         Assert.assertEquals(673,Problems.minimumAbsDifference(st));
     }
+    @Test
+    public void testRotate(){
+        int [] st = new int[]{1,2,3,4,5,6,7};
+        int [] exp = new int[]{5,6,7,1,2,3,4};
+        Assert.assertArrayEquals(exp,Problems.rotate(st,3));
+    }
+
+    @Test
+    public void testRotate2(){
+        int [] st = new int[]{-1};
+        int [] exp = new int[]{-1};
+        Assert.assertArrayEquals(exp,Problems.rotate(st,2));
+    }
+    @Test
+    public void testRotate3(){
+        int [] st = new int[]{1,2};
+        int [] exp = new int[]{2,1};
+        Assert.assertArrayEquals(exp,Problems.rotate(st,3));
+    }
 }
 

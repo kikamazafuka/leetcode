@@ -26,6 +26,16 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int removeElement(int[] nums, int val) {
+        int k = 0;
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]!=val){
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
     public static int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);

@@ -218,5 +218,11 @@ public class ProblemsTest {
         int [] exp = new int[]{4,9};
         Assert.assertArrayEquals(exp,Problems.intersect(st,st2));
     }
+    @Test
+    public void testRemoveElement(){
+        int [] st = new int[]{0,1,2,2,3,0,4,2};
+        int [] exp = new int[]{2,1};
+        Assert.assertEquals(5,Problems.removeElement(st,2));
+    }
 }
 

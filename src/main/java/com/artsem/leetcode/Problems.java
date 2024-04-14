@@ -26,6 +26,50 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int minSubArrayLenSlidWin(int target, int[] nums) {
+        int sum = 0;
+        int k = 0;
+        int curLen = 0;
+        int minLen = Integer.MAX_VALUE;
+
+        for(int i = 0; i<nums.length; i++){
+            sum += nums[i];
+            curLen++;
+            if(sum>=target){
+                while(sum>=target){
+                    if(minLen>curLen){
+                        minLen=curLen;
+                    }
+                    sum -= nums[k];
+                    k++;
+                    curLen--;
+                }
+            }
+        }
+        if (minLen==Integer.MAX_VALUE) return 0;
+        return minLen;
+    }
+    public static int minSubArrayLen(int target, int[] nums) {
+        int sum = 0;
+        int len = 0;
+        int minLen = Integer.MAX_VALUE;
+        int k = 0;
+        for (int i = 0; i<nums.length; i++) {
+            sum += nums[i];
+            len++;
+            if (sum >= target) {
+                if (minLen > len) {
+                    minLen = len;
+                }
+                k++;
+                i=k;
+                len = 0;
+                sum = 0;
+            }
+        }
+        if (minLen==Integer.MAX_VALUE) return 0;
+        return minLen;
+    }
     public static int removeElement(int[] nums, int val) {
         int k = 0;
         for(int i = 0; i<nums.length; i++){

@@ -224,5 +224,27 @@ public class ProblemsTest {
         int [] exp = new int[]{2,1};
         Assert.assertEquals(5,Problems.removeElement(st,2));
     }
+    @Test
+    public void testMinSubArrayLen(){
+        int [] st = new int[]{1,4,4};
+        int [] exp = new int[]{2,1};
+        Assert.assertEquals(1,Problems.minSubArrayLenSlidWin(4,st));
+    }
+    @Test
+    public void testMinSubArrayLen2(){
+        int [] st = new int[]{1,1,1,1,1,1,1,1};
+        int [] exp = new int[]{2,1};
+        Assert.assertEquals(0,Problems.minSubArrayLenSlidWin(11,st));
+    }
+    @Test
+    public void testMinSubArrayLen3(){
+        int [] st = new int[]{1,2,3,4,5};
+        Assert.assertEquals(3,Problems.minSubArrayLenSlidWin(11,st));
+    }
+    @Test
+    public void testMinSubArrayLen4(){
+        int [] st = new int[]{1,2,3,4,5};
+        Assert.assertEquals(5,Problems.minSubArrayLenSlidWin(15,st));
+    }
 }
 

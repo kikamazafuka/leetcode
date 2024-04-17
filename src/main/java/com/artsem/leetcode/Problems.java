@@ -26,6 +26,30 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int reverseMath(int x) {
+        int result = 0;
+        while (x != 0)
+        {
+            int tail = x % 10;
+            int newResult = result * 10 + tail;
+            if ((newResult - tail) / 10 != result)
+            { return 0; }
+            result = newResult;
+            x = x / 10;
+        }
+        return result;
+    }
+    public static int reverse(int x) {
+        try {
+            String num = String.valueOf(Math.abs(x));
+            StringBuilder sb = new StringBuilder(num);
+            int res = Integer.parseInt(sb.reverse().toString());
+            res = x < 0 ? res*(-1) : res;
+            return res;
+        } catch (NumberFormatException a){
+            return 0;
+        }
+    }
     public void rotate(int[][] matrix) {
         for(int i = 0; i<matrix.length; i++){
             for(int j = i+1; j<matrix[0].length; j++){

@@ -8,8 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class ProblemsTest {
 
@@ -245,6 +244,11 @@ public class ProblemsTest {
     public void testMinSubArrayLen4(){
         int [] st = new int[]{1,2,3,4,5};
         Assert.assertEquals(5,Problems.minSubArrayLenSlidWin(15,st));
+    }
+    @Test
+    public void testReverse(){
+        int st = -2147483648;
+        Assert.assertEquals(5,Problems.reverseMath(st));
     }
 }
 

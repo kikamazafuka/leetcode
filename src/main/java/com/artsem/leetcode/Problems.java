@@ -25,7 +25,47 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public int guessNumber(int n) {
+        int l = 1;
+        int r = n;
+        while(l<r){
+            int mid = l + (r-l)/2;
+            if(guess(mid) == 0){
+                return mid;
+            }
+            if(guess(mid) == -1) {
+                r = mid;
+            }
+            if(guess(mid) == 1){
+                l = mid+1;
+            }
+        }
+        return l;
+    }
+    private static int guess(int n){
+        return 1;
+    }
+    public static String codelandUsernameValidation(String str) {
+
+        if(str.length() < 4 || str.length() > 25 || str.charAt(str.length()-1) == '_'){
+            return "false";
+        }
+        for(char c : str.toCharArray()){
+            if(c != '_' && !isLetter(c) && !isDigit(c)){
+                return "false";
+            }
+        }
+        // code goes here
+        return "true";
+    }
+    public static boolean isLetter(char c) {
+        return Character.isLetter(c);
+    }
+    public static boolean isDigit(char c) {
+        return Character.isDigit(c);
+    }
     public static int reverseMath(int x) {
+
         int result = 0;
         while (x != 0)
         {

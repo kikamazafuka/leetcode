@@ -248,7 +248,14 @@ public class ProblemsTest {
     @Test
     public void testReverse(){
         int st = -2147483648;
-//        Assert.assertEquals(5,Problems.reverseMath(st));
+        Assert.assertEquals(5,Problems.reverseMath(st));
     }
+
+    @Test
+    public void testCodelandUsernameValidation(){
+        int st = -2147483648;
+        Assert.assertEquals("true",Problems.codelandUsernameValidation("u__hello_world123"));
+    }
+
 }
 

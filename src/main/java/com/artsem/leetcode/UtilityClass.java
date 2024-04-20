@@ -6,12 +6,21 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class UtilityClass {
 
     public static boolean isVowel(String c) {
         String vowels = "aeiouAEIOU";
         return vowels.contains(c);
+    }
+    /** Depth First Search **/
+    public static void dfs(TreeNode root, Set<Integer> set){
+        if(root != null){
+            set.add(root.val);
+            dfs(root.left, set);
+            dfs(root.right, set);
+        }
     }
     public static int getUserChoice(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -55,6 +64,7 @@ public class UtilityClass {
             }
         }
     }
+
 
     /** Binary Search **/
     private static int binarySearch(int[]nums, int num){

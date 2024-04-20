@@ -25,6 +25,11 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public boolean isUnivalTree(TreeNode root) {
+        Set<Integer> set = new HashSet<>();
+        UtilityClass.dfs(root, set);
+        return set.size() == 1;
+    }
     public boolean evaluateTree(TreeNode root) {
         if(root.val == 1){
             return true;

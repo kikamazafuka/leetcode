@@ -25,6 +25,26 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public boolean evaluateTree(TreeNode root) {
+        if(root.val == 1){
+            return true;
+        }
+        if(root.val == 0){
+            return false;
+        }
+        if(root.val == 2){
+            return evaluateTree(root.left) || evaluateTree(root.right);
+        }
+        return evaluateTree(root.left) && evaluateTree(root.right);
+    }
+    public static int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int left =  maxDepth(root.left);
+        int right = maxDepth(root.right);
+        return Math.max(left,right) + 1;
+    }
     public int guessNumber(int n) {
         int l = 1;
         int r = n;

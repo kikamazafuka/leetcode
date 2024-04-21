@@ -265,7 +265,17 @@ public class ProblemsTest {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(19);
         int st = -2147483648;
-        Assert.assertEquals("true",Problems.maxDepth(root));
+        Assert.assertEquals("true",Problems.isUnivalTree(root));
+    }
+    @Test
+    public void testIncreasingBST(){
+        TreeNode root = new TreeNode(7);
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(19);
+        int st = -2147483648;
+        Assert.assertEquals("true",Problems.increasingBST(root));
     }
 }
 

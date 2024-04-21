@@ -24,8 +24,25 @@ public class Problems {
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
+//    TreeNode root = new TreeNode(7);
+//    root.left = new TreeNode(4);
+//    root.right = new TreeNode(3);
+//    root.right.left = new TreeNode(6);
+//    root.right.right = new TreeNode(19);
+    public static TreeNode increasingBST(TreeNode root) {
+        return increasingBST(root, null);
+    }
 
-    public boolean isUnivalTree(TreeNode root) {
+    private static TreeNode increasingBST(TreeNode root, TreeNode tail){
+        if(root == null){
+            return tail;
+        }
+        TreeNode res = increasingBST(root.left, root);
+        root.left = null;
+        root.right = increasingBST(root.right, tail);
+        return res;
+    }
+    public static boolean isUnivalTree(TreeNode root) {
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
         while(!q.isEmpty()){

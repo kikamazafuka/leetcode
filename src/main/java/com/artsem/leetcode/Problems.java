@@ -1,11 +1,16 @@
 package com.artsem.leetcode;
 
+import com.sun.source.tree.Tree;
+
 import java.io.*;
 import java.util.*;
 
 public class Problems {
     public static void main(String[] args) {
 
+        Character c = 'c';
+        c = Character.toTitleCase(c);
+        System.out.println(c);
         String dirname = "/leetcode";
         File dir = new File(dirname);
 
@@ -29,6 +34,29 @@ public class Problems {
 //    root.right = new TreeNode(3);
 //    root.right.left = new TreeNode(6);
 //    root.right.right = new TreeNode(19);
+public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+    TreeNode res = new TreeNode();
+    res.val = root1.val + root2.val;
+
+    Queue<TreeNode> q1 = new LinkedList<>();
+    Queue<TreeNode> q2 = new LinkedList<>();
+
+    q1.offer(root1);
+    q2.offer(root2);
+    while(!q1.isEmpty() || !q2.isEmpty()){
+        TreeNode node = new TreeNode();
+        int newVal = 0;
+        if(root1.left != null){
+            newVal = root1.left.val;
+        }
+        if(root2.left != null){
+            newVal += root2.left.val;
+        }
+        node.val = newVal;
+    }
+    return new TreeNode();
+
+}
     public static TreeNode increasingBST(TreeNode root) {
         return increasingBST(root, null);
     }

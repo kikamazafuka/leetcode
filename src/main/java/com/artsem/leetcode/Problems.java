@@ -35,8 +35,20 @@ public class Problems {
 //    root.right.left = new TreeNode(6);
 //    root.right.right = new TreeNode(19);
     public boolean findRotation(int[][] mat, int[][] target) {
-        boolean eq = false;
+        if(compareMatrix(mat, target) == 0){
+            return true;
+        }
         rotate(mat);
+        int res = compareMatrix(mat, target);
+        rotate(mat);
+        res += compareMatrix(mat, target);
+        rotate(mat);
+        res += compareMatrix(mat, target);
+
+        return res<3;
+    }
+
+    private static int compareMatrix(int[][] mat, int[][] target){
         int count = 0;
         for(int i = 0; i<mat.length; i++){
             boolean flag = false;
@@ -51,28 +63,9 @@ public class Problems {
                 break;
             }
         }
-        rotate(mat);
-
-        return true;
+        return count;
     }
 
-//    public static void rotate(int[][] matrix) {
-//        for(int i = 0; i<matrix.length; i++){
-//            for(int j = i+1; j<matrix[0].length; j++){
-//                int tmp = matrix[i][j];
-//                matrix[i][j] = matrix[j][i];
-//                matrix[j][i] = tmp;
-//            }
-//        }
-//
-//        for(int i = 0; i<matrix.length; i++){
-//            for(int j = 0; j<matrix[0].length/2; j++){
-//                int tmp = matrix[i][j];
-//                matrix[i][j] = matrix[i][matrix.length - 1 - j];
-//                matrix[i][matrix.length - 1 - j] = tmp;
-//            }
-//        }
-//    }
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
         TreeNode res = new TreeNode();
         res.val = root1.val + root2.val;

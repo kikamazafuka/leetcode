@@ -34,29 +34,68 @@ public class Problems {
 //    root.right = new TreeNode(3);
 //    root.right.left = new TreeNode(6);
 //    root.right.right = new TreeNode(19);
-public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-    TreeNode res = new TreeNode();
-    res.val = root1.val + root2.val;
-
-    Queue<TreeNode> q1 = new LinkedList<>();
-    Queue<TreeNode> q2 = new LinkedList<>();
-
-    q1.offer(root1);
-    q2.offer(root2);
-    while(!q1.isEmpty() || !q2.isEmpty()){
-        TreeNode node = new TreeNode();
-        int newVal = 0;
-        if(root1.left != null){
-            newVal = root1.left.val;
+    public boolean findRotation(int[][] mat, int[][] target) {
+        boolean eq = false;
+        rotate(mat);
+        int count = 0;
+        for(int i = 0; i<mat.length; i++){
+            boolean flag = false;
+            for(int j = 0; j<mat[0].length; j++){
+                if(mat[i][j] != target[i][j]){
+                    count++;
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag){
+                break;
+            }
         }
-        if(root2.left != null){
-            newVal += root2.left.val;
-        }
-        node.val = newVal;
+        rotate(mat);
+
+        return true;
     }
-    return new TreeNode();
 
-}
+//    public static void rotate(int[][] matrix) {
+//        for(int i = 0; i<matrix.length; i++){
+//            for(int j = i+1; j<matrix[0].length; j++){
+//                int tmp = matrix[i][j];
+//                matrix[i][j] = matrix[j][i];
+//                matrix[j][i] = tmp;
+//            }
+//        }
+//
+//        for(int i = 0; i<matrix.length; i++){
+//            for(int j = 0; j<matrix[0].length/2; j++){
+//                int tmp = matrix[i][j];
+//                matrix[i][j] = matrix[i][matrix.length - 1 - j];
+//                matrix[i][matrix.length - 1 - j] = tmp;
+//            }
+//        }
+//    }
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        TreeNode res = new TreeNode();
+        res.val = root1.val + root2.val;
+
+        Queue<TreeNode> q1 = new LinkedList<>();
+        Queue<TreeNode> q2 = new LinkedList<>();
+
+        q1.offer(root1);
+        q2.offer(root2);
+        while(!q1.isEmpty() || !q2.isEmpty()){
+            TreeNode node = new TreeNode();
+            int newVal = 0;
+            if(root1.left != null){
+                newVal = root1.left.val;
+            }
+            if(root2.left != null){
+                newVal += root2.left.val;
+            }
+            node.val = newVal;
+        }
+        return new TreeNode();
+
+    }
     public static TreeNode increasingBST(TreeNode root) {
         return increasingBST(root, null);
     }

@@ -30,6 +30,18 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public int sumOfTheDigitsOfHarshadNumber(int x) {
+        int digSum = 0;
+        int temp = x;
+        while(x>0){
+            digSum += x % 10;
+            x /= 10;
+        }
+        if(temp % digSum == 0){
+            return digSum;
+        }
+        return -1;
+    }
     public int scoreOfString(String s) {
         int res = 0;
         for(int i = 0; i<s.length()-1; i++){

@@ -29,11 +29,14 @@ public class Problems {
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
-//    TreeNode root = new TreeNode(7);
-//    root.left = new TreeNode(4);
-//    root.right = new TreeNode(3);
-//    root.right.left = new TreeNode(6);
-//    root.right.right = new TreeNode(19);
+
+    public int scoreOfString(String s) {
+        int res = 0;
+        for(int i = 0; i<s.length()-1; i++){
+            res += Math.abs(s.charAt(i) - s.charAt(i+1));
+        }
+        return res;
+    }
     public boolean findRotation(int[][] mat, int[][] target) {
         if(compareMatrix(mat, target) == 0){
             return true;

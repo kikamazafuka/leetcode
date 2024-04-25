@@ -30,6 +30,25 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public int longestMonotonicSubarray(int[] nums) {
+        int maxInc = 1;
+        int currInc = 1;
+        for(int i = 0; i<nums.length-1; i++){
+            if(nums[i]<nums[i+1]){
+                currInc++;
+                maxInc = Math.max(maxInc, currInc);
+            } else currInc = 1;
+        }
+        int maxDec = 1;
+        int currDec = 1;
+        for(int i = 0; i<nums.length-1; i++){
+            if(nums[i]>nums[i+1]){
+                currDec++;
+                maxDec = Math.max(maxDec, currDec);
+            } else currDec = 1;
+        }
+        return Math.max(maxInc, maxDec);
+    }
     public int sumOfTheDigitsOfHarshadNumber(int x) {
         int digSum = 0;
         int temp = x;

@@ -1,5 +1,6 @@
 package com.artsem.leetcode;
 
+import com.artsem.leetcode.easy.MaximumLengthSubstringWithTwoOccurrences;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -276,6 +277,19 @@ public class ProblemsTest {
         root.right.right = new TreeNode(19);
         int st = -2147483648;
         Assert.assertEquals("true",Problems.increasingBST(root));
+    }
+
+    @Test
+    public void testMaximumLengthSubstring(){
+        Assert.assertEquals(9, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("eebadadbfa"));
+    }
+    @Test
+    public void testMaximumLengthSubstring1(){
+        Assert.assertEquals(4, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("bcbbbcba"));
+    }
+    @Test
+    public void testMaximumLengthSubstring2(){
+        Assert.assertEquals(4, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("bcbc"));
     }
 }
 

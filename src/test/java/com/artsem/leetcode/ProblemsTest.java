@@ -1,5 +1,6 @@
 package com.artsem.leetcode;
 
+import com.artsem.leetcode.easy.FindTheSumOfEncryptedIntegers;
 import com.artsem.leetcode.easy.MaximumLengthSubstringWithTwoOccurrences;
 import org.junit.Assert;
 import org.junit.Before;
@@ -290,6 +291,11 @@ public class ProblemsTest {
     @Test
     public void testMaximumLengthSubstring2(){
         Assert.assertEquals(4, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("bcbc"));
+    }
+    @Test
+    public void testSumOfEncryptedInt(){
+        int [] st = new int[]{1,2,3};
+        Assert.assertEquals(6, FindTheSumOfEncryptedIntegers.sumOfEncryptedInt(st));
     }
 }
 

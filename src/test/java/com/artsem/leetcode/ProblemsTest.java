@@ -297,5 +297,17 @@ public class ProblemsTest {
         int [] st = new int[]{1,2,3};
         Assert.assertEquals(6, FindTheSumOfEncryptedIntegers.sumOfEncryptedInt(st));
     }
+    @Test
+    public void testDecrNum(){
+        Assert.assertEquals(2, Problems.decrNum(2718));
+    }
+    @Test
+    public void testDecrNum1(){
+        Assert.assertEquals(0, Problems.decrNum(4));
+    }
+    @Test
+    public void testDecrNum2(){
+        Assert.assertEquals(2, Problems.decrNum(19));
+    }
 }
 

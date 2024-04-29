@@ -30,6 +30,27 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public int minOperations(int[] nums, int k) {
+        int count = 0;
+        for(int n : nums){
+            if(n<k) count++;
+        }
+        return count;
+    }
+    public static int decrNum(int num){
+        int count = 0;
+        while(num>=10){
+            int currSum = 0;
+            while(num>0){
+                int digit = num % 10;
+                currSum += digit;
+                num /= 10;
+            }
+            num = currSum;
+            count++;
+        }
+        return count;
+    }
     public int longestMonotonicSubarray(int[] nums) {
         int maxInc = 1;
         int currInc = 1;

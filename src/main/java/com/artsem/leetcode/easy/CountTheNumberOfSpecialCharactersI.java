@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CountTheNumberOfSpecialCharactersI {
-    public int numberOfSpecialCharsArr(String word) {
+
+
+    public static int numberOfSpecialCharsArr(String word) {
         int res = 0;
         int [] a = new int[26];
         int [] b = new int[26];

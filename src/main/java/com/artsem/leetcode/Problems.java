@@ -30,6 +30,48 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    // bcab
+    public static int stringChallenge(String str){
+        StringBuilder sb = new StringBuilder(str);
+        boolean canBeReduced = true;
+        while (canBeReduced) {
+            canBeReduced=false;
+            for (int i = 0; i < sb.length() - 1; ) {
+                char curr = sb.charAt(i);
+                char next = sb.charAt(i+1);
+                if (curr != next) {
+                    String newChar = guessChar(curr, next);
+                    sb.deleteCharAt(i).deleteCharAt(i).insert(i, newChar);
+                    canBeReduced=true;
+                } else i++;
+
+            }
+        }
+        return sb.length();
+    }
+    private static String guessChar(char a, char b){
+        if ((a == 'a' && b == 'b')||(a == 'b' && b == 'a')){
+            return "c";
+        } else if ((a == 'b' && b == 'c')||(a == 'c' && b == 'b')){
+            return "a";
+        } else return "b";
+    }
+    public static int minOperationsBinS(int[] nums, int k) {
+        int count = 0;
+        Arrays.sort(nums);
+        int l = 0;
+        int r = nums.length-1;
+        while(l<r){
+            int mid = l + (r-l)/2;
+            if(nums[mid]==k){
+                return mid;
+            }
+            if(nums[mid]<k){
+                l = mid + 1;
+            } else r = mid;
+        }
+        return l;
+    }
     public int minOperations(int[] nums, int k) {
         int count = 0;
         for(int n : nums){

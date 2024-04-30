@@ -1,18 +1,33 @@
 package com.artsem.leetcode;
 
+import com.artsem.leetcode.easy.AppleRedistributionIntoBoxes;
 import com.artsem.leetcode.easy.FindTheSumOfEncryptedIntegers;
 import com.artsem.leetcode.easy.MaximumLengthSubstringWithTwoOccurrences;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 
 public class ProblemsTest {
+    final static List<Integer> ints = new ArrayList<>();
+
 
     TreeNode treeNode = new TreeNode(1);
     private int[] numbers;
@@ -52,6 +67,20 @@ public class ProblemsTest {
                 }
             }
         }
+    }
+    private static Object[][] provideArrays() {
+//        apple = [1,3,2], capacity = [4,3,1,5,2]
+        return new Object[][] {
+                { new int[]{4,3,1,5,2}, new int[]{1,3,2}, 2 },
+
+        };
+    }
+    static Stream<Arguments> arraysProvider() {
+        return Stream.of(
+                arguments(new int[]{4,3,1,5,2},  new int[]{1,3,2}, 2),
+                arguments(new int[]{2,4,2,7},  new int[]{5,5,5}, 4)
+
+        );
     }
     @Before
     public void testReadExpectedFileFromResources() throws IOException {
@@ -105,9 +134,10 @@ public class ProblemsTest {
     }
     @Test
     public void testTwoSum1(){
-        int [] st = new int[]{2,3,4};
-        int [] res = new int[]{1,3};
-        Assert.assertArrayEquals(res,Problems.twoSum(st,6));
+        int [] provided = new int[]{2,3,4};
+        int [] expected = new int[]{1,3};
+        int num = 6;
+        Assert.assertArrayEquals(expected,Problems.twoSum(provided,num));
     }
     @Test
     public void testTwoSum2(){
@@ -280,34 +310,68 @@ public class ProblemsTest {
         Assert.assertEquals("true",Problems.increasingBST(root));
     }
 
-    @Test
-    public void testMaximumLengthSubstring(){
-        Assert.assertEquals(9, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("eebadadbfa"));
+    @ParameterizedTest(name = "testMaximumLengthSubstring prov: {0} - expect: {1}")
+    @CsvSource({
+            "eebadadbfa, 9",
+            "bcbbbcba, 4",
+            "bcbc, 4"
+    })
+    public void testMaximumLengthSubstring(String s, int exp){
+        Assert.assertEquals(exp, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring(s));
     }
-    @Test
-    public void testMaximumLengthSubstring1(){
-        Assert.assertEquals(4, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("bcbbbcba"));
-    }
-    @Test
-    public void testMaximumLengthSubstring2(){
-        Assert.assertEquals(4, MaximumLengthSubstringWithTwoOccurrences.maximumLengthSubstring("bcbc"));
-    }
+
     @Test
     public void testSumOfEncryptedInt(){
         int [] st = new int[]{1,2,3};
         Assert.assertEquals(6, FindTheSumOfEncryptedIntegers.sumOfEncryptedInt(st));
     }
-    @Test
-    public void testDecrNum(){
-        Assert.assertEquals(2, Problems.decrNum(2718));
+    @ParameterizedTest(name = "decreasing number prov: {0} - expect: {1}")
+    @CsvSource({
+            "2718, 2",
+            "4, 0",
+            "19, 2"
+    })
+    public void testDecrNum(int num, int ex){
+        Assert.assertEquals(ex, Problems.decrNum(num));
     }
     @Test
-    public void testDecrNum1(){
-        Assert.assertEquals(0, Problems.decrNum(4));
+    public void testMinOperationsBinS(){
+        int [] st = new int[]{2,11,10,1,3};
+        Assert.assertEquals(3, Problems.minOperationsBinS(st,10));
     }
     @Test
-    public void testDecrNum2(){
-        Assert.assertEquals(2, Problems.decrNum(19));
+    public void testMinOperationsBinS1(){
+        int [] st = new int[]{1,1,2,4,9};
+        Assert.assertEquals(4, Problems.minOperationsBinS(st,9));
+    }
+
+    @ParameterizedTest
+    @ValueSource()
+    public void testMinOperationsBinS2() {
+
+        int[] st = new int[]{1, 1, 2, 4, 9};
+        Assert.assertEquals(0, Problems.minOperationsBinS(st, 1));
+    }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @CsvSource({
+            "abcabc, 2",
+            "cccc, 4",
+            "19, 2"
+    })
+    public void testStringChallenge(String input, int expected) {
+
+        int[] st = new int[]{1, 1, 2, 4, 9};
+        Assert.assertEquals(expected, Problems.stringChallenge(input));
+    }
+//    apple = [1,3,2], capacity = [4,3,1,5,2]
+
+    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @MethodSource("arraysProvider")
+    public void testStringChallenge(int[] capacity,int[] apple, int expected) {
+
+        int[] st = new int[]{1, 1, 2, 4, 9};
+        Assert.assertEquals(expected, AppleRedistributionIntoBoxes.minimumBoxes(apple,capacity));
     }
 }
 

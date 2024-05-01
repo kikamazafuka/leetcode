@@ -64,7 +64,11 @@ public class Problems {
         while(l<r){
             int mid = l + (r-l)/2;
             if(nums[mid]==k){
-                return mid;
+                while (nums[mid]==k){
+                    mid--;
+                    if (mid<0) break;
+                }
+                return mid+1;
             }
             if(nums[mid]<k){
                 l = mid + 1;

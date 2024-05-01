@@ -77,8 +77,17 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
-                arguments(new int[]{4,3,1,5,2},  new int[]{1,3,2}, 2),
-                arguments(new int[]{2,4,2,7},  new int[]{5,5,5}, 4)
+                arguments(new int[]{1, 1, 2, 4, 9},  new int[]{1,3,2}, 1),
+                arguments(new int[]{1, 1, 2, 4, 9},  new int[]{5,5,5}, 9)
+
+        );
+    }
+
+    static Stream<Arguments> oneArrayProvider() {
+        return Stream.of(
+                arguments(new int[]{1, 1, 2, 4, 9}, 1, 0),
+                arguments(new int[]{1, 1, 2, 4, 9}, 9, 4),
+                arguments(new int[]{2,11,10,1,3}, 10,3)
 
         );
     }
@@ -334,23 +343,11 @@ public class ProblemsTest {
     public void testDecrNum(int num, int ex){
         Assert.assertEquals(ex, Problems.decrNum(num));
     }
-    @Test
-    public void testMinOperationsBinS(){
-        int [] st = new int[]{2,11,10,1,3};
-        Assert.assertEquals(3, Problems.minOperationsBinS(st,10));
-    }
-    @Test
-    public void testMinOperationsBinS1(){
-        int [] st = new int[]{1,1,2,4,9};
-        Assert.assertEquals(4, Problems.minOperationsBinS(st,9));
-    }
 
-    @ParameterizedTest
-    @ValueSource()
-    public void testMinOperationsBinS2() {
-
-        int[] st = new int[]{1, 1, 2, 4, 9};
-        Assert.assertEquals(0, Problems.minOperationsBinS(st, 1));
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("oneArrayProvider")
+    public void testMinOperationsBinS2(int [] arr, int param, int exp) {
+        Assert.assertEquals(exp, Problems.minOperationsBinS(arr, param));
     }
 
     @ParameterizedTest(name = "prov: {0} - expect: {1}")
@@ -360,17 +357,12 @@ public class ProblemsTest {
             "19, 2"
     })
     public void testStringChallenge(String input, int expected) {
-
-        int[] st = new int[]{1, 1, 2, 4, 9};
         Assert.assertEquals(expected, Problems.stringChallenge(input));
     }
-//    apple = [1,3,2], capacity = [4,3,1,5,2]
 
-    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
     @MethodSource("arraysProvider")
     public void testStringChallenge(int[] capacity,int[] apple, int expected) {
-
-        int[] st = new int[]{1, 1, 2, 4, 9};
         Assert.assertEquals(expected, AppleRedistributionIntoBoxes.minimumBoxes(apple,capacity));
     }
 }

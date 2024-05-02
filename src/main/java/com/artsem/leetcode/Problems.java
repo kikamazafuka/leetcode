@@ -4,6 +4,7 @@ import com.sun.source.tree.Tree;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Problems {
     public static void main(String[] args) {
@@ -31,20 +32,32 @@ public class Problems {
     }
 
     // bcab
+    public static boolean isSubstringPresent(String s) {
+        Set<String> sub = new HashSet<>();
+        for(int i = 0; i<s.length()-1; i++){
+            sub.add("" + s.charAt(i)+s.charAt(i+1));
+        }
+        for(int i = s.length()-1; i>0; i--){
+            String str = "" + s.charAt(i) + s.charAt(i-1);
+            if(sub.contains(str)){
+                return true;
+            }
+        }
+        return false;
+    }
     public static int stringChallenge(String str){
         StringBuilder sb = new StringBuilder(str);
         boolean canBeReduced = true;
         while (canBeReduced) {
             canBeReduced=false;
-            for (int i = 0; i < sb.length() - 1; ) {
+            for (int i = 0; i < sb.length() - 1; i++) {
                 char curr = sb.charAt(i);
                 char next = sb.charAt(i+1);
                 if (curr != next) {
                     String newChar = guessChar(curr, next);
                     sb.deleteCharAt(i).deleteCharAt(i).insert(i, newChar);
                     canBeReduced=true;
-                } else i++;
-
+                }
             }
         }
         return sb.length();
@@ -57,7 +70,6 @@ public class Problems {
         } else return "b";
     }
     public static int minOperationsBinS(int[] nums, int k) {
-        int count = 0;
         Arrays.sort(nums);
         int l = 0;
         int r = nums.length-1;
@@ -84,6 +96,8 @@ public class Problems {
         return count;
     }
     public static int decrNum(int num){
+        Predicate<Integer> pr = x -> x == 2;
+        pr.negate();
         int count = 0;
         while(num>=10){
             int currSum = 0;

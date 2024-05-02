@@ -356,7 +356,7 @@ public class ProblemsTest {
     @CsvSource({
             "abcabc, 2",
             "cccc, 4",
-            "19, 2"
+            "ab, 1"
     })
     public void testStringChallenge(String input, int expected) {
         Assert.assertEquals(expected, Problems.stringChallenge(input));
@@ -366,6 +366,16 @@ public class ProblemsTest {
     @MethodSource("arraysProvider")
     public void testStringChallenge(int[] capacity,int[] apple, int expected) {
         Assert.assertEquals(expected, AppleRedistributionIntoBoxes.minimumBoxes(apple,capacity));
+    }
+    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @CsvSource({
+            "leetcode, true",
+            "abcba, true",
+            "abcd, false",
+            "uuxqvxrlh, true"
+    })
+    public void testIsSubstringPresent(String provided, boolean expected) {
+        Assert.assertEquals(expected, Problems.isSubstringPresent(provided));
     }
 }
 

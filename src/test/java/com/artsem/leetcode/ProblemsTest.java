@@ -5,20 +5,17 @@ import com.artsem.leetcode.easy.FindTheSumOfEncryptedIntegers;
 import com.artsem.leetcode.easy.MaximumLengthSubstringWithTwoOccurrences;
 import org.junit.Assert;
 import org.junit.Before;
-//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -372,10 +369,11 @@ public class ProblemsTest {
             "leetcode, true",
             "abcba, true",
             "abcd, false",
-            "uuxqvxrlh, true"
+            "uuxqvxrlh, true",
+            "leafbcaef, true"
     })
     public void testIsSubstringPresent(String provided, boolean expected) {
-        Assert.assertEquals(expected, Problems.isSubstringPresent(provided));
+        Assert.assertEquals(expected, Problems.isSubstringPresentOnePath(provided));
     }
 }
 

@@ -31,7 +31,22 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
-    // bcab
+    public static int addedInteger(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        return nums2[0] - nums1[0];
+    }
+    public static boolean isSubstringPresentOnePath(String s) {
+        for (int index = 0; index + 1 < s.length(); index++) {
+            if (s.charAt(index) == s.charAt(index + 1))
+                return true;
+        }
+        for (int index = 1; index + 1 < s.length(); index++) {
+            if (s.charAt(index - 1) == s.charAt(index + 1))
+                return true;
+        }
+        return false;
+    }
     public static boolean isSubstringPresent(String s) {
         Set<String> sub = new HashSet<>();
         for(int i = 0; i<s.length()-1; i++){

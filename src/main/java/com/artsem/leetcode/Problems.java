@@ -31,6 +31,58 @@ public class Problems {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
     }
 
+    public static int stringChallenge(String str){
+        StringBuilder sb = new StringBuilder(str);
+        boolean canBeReduced = true;
+        while (canBeReduced) {
+            canBeReduced=false;
+            for (int i = 0; i < sb.length() - 1; i++) {
+                char curr = sb.charAt(i);
+                char next = sb.charAt(i+1);
+                if (curr != next) {
+                    String newChar = guessChar(curr, next);
+                    sb.deleteCharAt(i).deleteCharAt(i).insert(i, newChar);
+                    canBeReduced=true;
+                }
+            }
+        }
+        return sb.length();
+    }
+    private static String guessChar(char a, char b){
+        if ((a == 'a' && b == 'b')||(a == 'b' && b == 'a')){
+            return "c";
+        } else if ((a == 'b' && b == 'c')||(a == 'c' && b == 'b')){
+            return "a";
+        } else return "b";
+    }
+    public int countPrefixSuffixPairs(String[] words) {
+        int count = 0;
+        for(int i = 0; i<words.length; i++){
+            for(int j = i + 1; j< words.length; j++){
+                if(isPrefixAndSuffix(words[i], words[j])){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static boolean isPrefixAndSuffix(String str1, String str2){
+        if(str1.length()>str2.length()){
+            return false;
+        }
+        for(int i = 0; i<str1.length(); i++){
+            if(str1.charAt(i) != str2.charAt(i)){
+                return false;
+            }
+        }
+        for(int i = str1.length()-1, j = str2.length()-1; i>=0; i--, j--){
+            if(str1.charAt(i) != str2.charAt(j)){
+                return false;
+            }
+        }
+        return true;
+    }
     public int addedInteger(int[] nums1, int[] nums2) {
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
@@ -70,30 +122,7 @@ public class Problems {
         }
         return false;
     }
-    public static int stringChallenge(String str){
-        StringBuilder sb = new StringBuilder(str);
-        boolean canBeReduced = true;
-        while (canBeReduced) {
-            canBeReduced=false;
-            for (int i = 0; i < sb.length() - 1; i++) {
-                char curr = sb.charAt(i);
-                char next = sb.charAt(i+1);
-                if (curr != next) {
-                    String newChar = guessChar(curr, next);
-                    sb.deleteCharAt(i).deleteCharAt(i).insert(i, newChar);
-                    canBeReduced=true;
-                }
-            }
-        }
-        return sb.length();
-    }
-    private static String guessChar(char a, char b){
-        if ((a == 'a' && b == 'b')||(a == 'b' && b == 'a')){
-            return "c";
-        } else if ((a == 'b' && b == 'c')||(a == 'c' && b == 'b')){
-            return "a";
-        } else return "b";
-    }
+
     public static int minOperationsBinS(int[] nums, int k) {
         Arrays.sort(nums);
         int l = 0;

@@ -29,7 +29,10 @@ public class Problems {
 
         Calendar calendar = Calendar.getInstance();
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        List<Integer> ls = new ArrayList<>(List.of(1,2,3));
+        ls.remove(2);
     }
+
 
     public static int stringChallenge(String str){
         StringBuilder sb = new StringBuilder(str);

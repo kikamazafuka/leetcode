@@ -73,10 +73,11 @@ public class Problems {
         return count;
     }
     public int countKeyChanges(String s) {
+        String low = s.toLowerCase();
         int count = 0;
         for(int i = 0; i<s.length()-1; i++){
-            char curr = s.toLowerCase().charAt(i);
-            char next = s.toLowerCase().charAt(i+1);
+            char curr = low.charAt(i);
+            char next = low.charAt(i+1);
             if(next!=curr)count++;
         }
         return count;

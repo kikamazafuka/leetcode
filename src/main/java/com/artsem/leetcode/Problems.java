@@ -58,6 +58,29 @@ public class Problems {
             return "a";
         } else return "b";
     }
+    public static int decrNum(int num){
+        int count = 0;
+        while(num>=10){
+            int currSum = 0;
+            while(num>0){
+                int digit = num % 10;
+                currSum += digit;
+                num /= 10;
+            }
+            num = currSum;
+            count++;
+        }
+        return count;
+    }
+    public int countKeyChanges(String s) {
+        int count = 0;
+        for(int i = 0; i<s.length()-1; i++){
+            char curr = s.toLowerCase().charAt(i);
+            char next = s.toLowerCase().charAt(i+1);
+            if(next!=curr)count++;
+        }
+        return count;
+    }
     public int countPrefixSuffixPairs(String[] words) {
         int count = 0;
         for(int i = 0; i<words.length; i++){
@@ -152,22 +175,7 @@ public class Problems {
         }
         return count;
     }
-    public static int decrNum(int num){
-        Predicate<Integer> pr = x -> x == 2;
-        pr.negate();
-        int count = 0;
-        while(num>=10){
-            int currSum = 0;
-            while(num>0){
-                int digit = num % 10;
-                currSum += digit;
-                num /= 10;
-            }
-            num = currSum;
-            count++;
-        }
-        return count;
-    }
+
     public int longestMonotonicSubarray(int[] nums) {
         int maxInc = 1;
         int currInc = 1;

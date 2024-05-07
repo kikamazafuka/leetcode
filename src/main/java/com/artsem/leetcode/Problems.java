@@ -10,6 +10,8 @@ public class Problems {
     public static void main(String[] args) {
 
         Character c = 'c';
+        Object o = new Object();
+
         c = Character.toTitleCase(c);
         System.out.println(c);
         String dirname = "/leetcode";
@@ -33,6 +35,17 @@ public class Problems {
         ls.remove(2);
     }
 
+    public int returnToBoundaryCount(int[] nums) {
+        int count = 0;
+        int boundary = 0;
+        for(int i : nums){
+            boundary += i;
+            if(boundary == 0){
+                count++;
+            }
+        }
+        return count;
+    }
 
     public static int stringChallenge(String str){
         StringBuilder sb = new StringBuilder(str);

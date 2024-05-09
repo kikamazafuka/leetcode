@@ -3,6 +3,7 @@ package com.artsem.leetcode;
 import com.artsem.leetcode.easy.AppleRedistributionIntoBoxes;
 import com.artsem.leetcode.easy.FindTheSumOfEncryptedIntegers;
 import com.artsem.leetcode.easy.MaximumLengthSubstringWithTwoOccurrences;
+import com.artsem.leetcode.easy.MinimumNumberOfPushesToTypeWordI;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -374,6 +375,16 @@ public class ProblemsTest {
     })
     public void testIsSubstringPresent(String provided, boolean expected) {
         Assert.assertEquals(expected, Problems.isSubstringPresentOnePath(provided));
+    }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @CsvSource({
+            "acolkxjbizfmhnrdq, 27",
+            "xycdefghij, 12",
+            "abcde, 5"
+    })
+    public void testIsSubstringPresent(String provided, int expected) {
+        Assert.assertEquals(expected, MinimumNumberOfPushesToTypeWordI.minimumPushes(provided));
     }
 }
 

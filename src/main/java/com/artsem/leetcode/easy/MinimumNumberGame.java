@@ -1,15 +1,28 @@
 package com.artsem.leetcode.easy;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class MinimumNumberGame {
-    public int[] numberGame(int[] nums) {
+    public static int[] numberGamePQ(int[] nums) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for (int num :
+                nums) {
+            queue.offer(num);
+        }
+        for (int i = 0; i<nums.length-1; i+=2){
+            nums[i+1] = queue.poll();
+            nums[i] = queue.poll();
+        }
+        return nums;
+    }
+    public static int[] numberGame(int[] nums) {
         Arrays.sort(nums);
         for(int i = 0; i<nums.length-1; i+=2){
             int temp = nums[i];
             nums[i] = nums[i+1];
             nums[i+1] = temp;
         }
+
         return nums;
     }
 }

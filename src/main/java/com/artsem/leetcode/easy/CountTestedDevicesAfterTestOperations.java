@@ -1,6 +1,17 @@
 package com.artsem.leetcode.easy;
 
 public class CountTestedDevicesAfterTestOperations {
+
+    public int countTestedDevicesOneLoop(int[] batteryPercentages) {
+        int count = 0;
+        for (int batteryPercentage : batteryPercentages) {
+            if (batteryPercentage - count > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public int countTestedDevices(int[] batteryPercentages) {
         int n = batteryPercentages.length;
         int count = 0;

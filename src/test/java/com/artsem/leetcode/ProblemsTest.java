@@ -389,5 +389,15 @@ public class ProblemsTest {
     public void testNumberGame(int[] nums,int[] expected) {
         Assert.assertArrayEquals(expected, MinimumNumberGame.numberGamePQ(nums));
     }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {1}")
+    @CsvSource({
+            "abc, abb, ab, 2",
+            "xycdefghij, 12",
+            "abcde, 5"
+    })
+    public void testFindMinimumOperations(String s1, String s2, String s3, int expected) {
+        Assert.assertEquals(expected, MakeThreeStringsEqual.findMinimumOperations(s1, s2, s3));
+    }
 }
 

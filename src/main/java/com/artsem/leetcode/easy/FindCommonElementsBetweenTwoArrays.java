@@ -1,4 +1,4 @@
-package com.artsem.leetcode.easy.some;
+package com.artsem.leetcode.easy;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -12,4 +12,8 @@ public class DivisibleAndNonDivisibleSumsDifference {
         }
         return num1;
     }
+
+    public int differenceOfSumsMath(int n, int m) {
+        return (1 + n) * n / 2 - (1 + n / m) * (n / m) * m;
+    }
 }

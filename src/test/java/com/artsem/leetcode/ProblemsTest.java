@@ -72,8 +72,8 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
-                arguments(new int[]{5,4,2,3,5,7,8,6,9,3,4,5},  new int[]{3,2,4,3,5,4,5,5,7,6,9,8}, 1),
-                arguments(new int[]{5,4,2,3},  new int[]{3,2,5,4}, 9)
+                arguments(new int[]{2,3,1,3,2,4,6,7,9,2,19},  new int[]{2,1,4,3,9,6}, new int[]{2,2,2,1,4,3,3,9,6,7,19}),
+                arguments(new int[]{28,6,22,8,44,17},  new int[]{22,28,8,6}, new int[]{22,28,8,6,17,44})
         );
     }
 
@@ -394,6 +394,12 @@ public class ProblemsTest {
     })
     public void testFindMinimumOperations(String s1, String s2, String s3, int expected) {
         Assert.assertEquals(expected, MakeThreeStringsEqual.findMinimumOperations(s1, s2, s3));
+    }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("arraysProvider")
+    public void testRelativeSortArray(int[] nums,int[] nums2,int[] expected) {
+        Assert.assertArrayEquals(expected, RelativeSortArray.relativeSortArray(nums, nums2));
     }
 }
 

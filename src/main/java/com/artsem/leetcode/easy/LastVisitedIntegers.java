@@ -13,16 +13,13 @@ public class LastVisitedIntegers {
                 k++;
                 if (k <= seen.size()) {
                     ans.add(seen.get(k - 1));
-                }
-                if (k > seen.size()) {
+                }else  {
                     ans.add(-1);
                 }
-            }
-            if (num > 0) {
+            }else {
                 k = 0;
                 seen.add(0, num);
             }
-
         }
         return ans;
     }

@@ -72,6 +72,9 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
+                arguments(new int[]{7,12,9,8,9,15}, 4, 9),
+                arguments(new int[]{2,12,1,11,4,5}, 6, 0),
+                arguments(new int[]{10,8,5,9,11,6,8},  1, 15),
                 arguments(new int[]{2,3,1,3,2,4,6,7,9,2,19},  new int[]{2,1,4,3,9,6}, new int[]{2,2,2,1,4,3,3,9,6,7,19}),
                 arguments(new int[]{28,6,22,8,44,17},  new int[]{22,28,8,6}, new int[]{22,28,8,6,17,44})
         );
@@ -411,6 +414,11 @@ public class ProblemsTest {
     @MethodSource("oneArrayProvider")
     public void testFindChampion(int[][] nums, int n) {
         Assert.assertEquals(n, FindChampionI.findChampionRow(nums));
+    }
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("arraysProvider")
+    public void testFindChampion(int[] nums, int n, int exp) {
+        Assert.assertEquals(exp, FindTheKorOfAnArray.findKOr(nums, n));
     }
 }
 

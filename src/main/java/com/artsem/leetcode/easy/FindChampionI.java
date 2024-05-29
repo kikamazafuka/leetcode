@@ -24,4 +24,22 @@ public class FindChampionI {
         }
         return res;
     }
+    public static int findChampionRow(int[][] grid) {
+        int n = grid.length;
+        int max = 0;
+        int result = 0;
+        for( int i = 0; i<n; i++){
+            int rowCount = 0;
+            for(int j = 0; j<n; j++){
+                if(grid[i][j] == 1){
+                    rowCount++;
+                }
+            }
+            if (rowCount>max){
+                result = i;
+                max = rowCount;
+            }
+        }
+        return result;
+    }
 }

@@ -410,7 +410,7 @@ public class ProblemsTest {
     @ParameterizedTest(name = "prov: {0} - expect: {2}")
     @MethodSource("oneArrayProvider")
     public void testFindChampion(int[][] nums, int n) {
-        Assert.assertEquals(n, FindChampionI.findChampion(nums));
+        Assert.assertEquals(n, FindChampionI.findChampionRow(nums));
     }
 }
 

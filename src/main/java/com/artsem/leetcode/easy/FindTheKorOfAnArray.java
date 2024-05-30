@@ -56,4 +56,27 @@ public class FindTheKorOfAnArray {
         }
         return Integer.valueOf(sb.toString(),2);
     }
+
+    public int findKOrBitwiseConvert(int[] nums, int k) {
+
+        int [] res = new int [32];
+        for(int i = 0; i<nums.length; i++){
+            int bit = 0;
+            while(nums[i]>0){
+                int currBit = nums[i]&1;
+                if(currBit==1){
+                    res[bit]++;
+                }
+                bit++;
+                nums[i] >>= 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i<res.length; i++){
+            if(res[i]>=k){
+                ans += (1<<i);
+            }
+        }
+        return ans;
+    }
 }

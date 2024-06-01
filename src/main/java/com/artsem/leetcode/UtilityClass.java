@@ -14,6 +14,10 @@ public class UtilityClass {
         String vowels = "aeiouAEIOU";
         return vowels.contains(c);
     }
+    private boolean isVowel(char s) {
+        String vowels = "aeiouAEIOU";
+        return vowels.contains(s + "");
+    }
     /** Depth First Search **/
     public static void dfs(TreeNode root, Set<Integer> set){
         if(root != null){

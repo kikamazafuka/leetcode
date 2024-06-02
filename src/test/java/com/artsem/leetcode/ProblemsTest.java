@@ -425,5 +425,15 @@ public class ProblemsTest {
     public void testFindChampion(int[] nums, int exp) {
         Assert.assertEquals(exp, MinimumSumOfMountainTripletsI.minimumSum(nums));
     }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @CsvSource({
+            "9sUZyS, true",
+            "xycdefghij, 12",
+            "abcde, 5"
+    })
+    public void testFindChampion(String s, boolean exp) {
+        Assert.assertEquals(exp, ValidWord.isValid(s));
+    }
 }
 

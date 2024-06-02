@@ -1,26 +1,44 @@
 package com.artsem.leetcode.easy;
 
 public class ValidWord {
-    public boolean isValid(String word) {
 
-
-        return false;
+    public static boolean isValid(String word) {
+        return isMinChar(word) && containsVowelandConsonant(word) && containsOnlyDigitsAndLett(word);
     }
 
-    private boolean isMinChar(String word){
+    private static boolean isMinChar(String word){
         return word.length()>2;
     }
 
-    private boolean containsOnlyDigitsAndLett(String word){
-
-        return false;
+    private static boolean containsOnlyDigitsAndLett(String word){
+        for(char c : word.toCharArray()){
+            if(!((c>=48 && c<=57) || (c>=65 && c<=90) || (c>=97 && c<=122))){
+                return false;
+            }
+        }
+        return true;
     }
 
-    private boolean containsVowel(String word){
-        for (char c : word.toCharArray()){
-            if(isVowel(c)) return true;
+    public boolean isAlphanumeric(String word) {
+        for (char c : word.toCharArray()) {
+            if (!((c >= '0' && c <= '9') ||
+                    (c >= 'A' && c <= 'Z') ||
+                    (c >= 'a' && c <= 'z'))) {
+                return false;
+            }
         }
-        return false;
+        return true;
+    }
+
+
+    private static boolean containsVowelandConsonant(String word){
+        boolean vowel = false;
+        boolean consonant = false;
+        for (char c : word.toCharArray()){
+            if(isVowel(c)) vowel = true;
+            if(isConsonant(c)) consonant = true;
+        }
+        return vowel && consonant;
     }
 
     private boolean containsConsonant(String word){
@@ -30,7 +48,7 @@ public class ValidWord {
         return false;
     }
 
-    private boolean isConsonant(char ch)
+    private static boolean isConsonant(char ch)
     {
         // To handle lower case
         ch = Character.toUpperCase(ch);
@@ -39,8 +57,8 @@ public class ValidWord {
                 ch == 'I' || ch == 'O' ||
                 ch == 'U') && ch >= 65 && ch <= 90;
     }
-    public static boolean isVowel(char c) {
+    public static boolean isVowel(char ch) {
         String vowels = "aeiouAEIOU";
-        return vowels.contains(c+"");
+        return vowels.contains(ch+"");
     }
 }

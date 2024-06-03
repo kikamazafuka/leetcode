@@ -2,6 +2,30 @@ package com.artsem.leetcode.easy;
 
 public class ValidWord {
 
+    public boolean isValidOneLoop(String word) {
+        int n = word.length();
+        if (n < 3) {
+            return false;
+        }
+
+        int vowels = 0;
+        int consonants = 0;
+
+        for (char c : word.toCharArray()) {
+            if (Character.isLetter(c)) {
+                // Check for vowels (case-insensitive)
+                if ("aeiouAEIOU".indexOf(c) != -1) {
+                    vowels++;
+                } else {
+                    consonants++;
+                }
+            } else if (!Character.isDigit(c)) {
+                return false; // Invalid character if not a letter or digit
+            }
+        }
+        return vowels >= 1 && consonants >= 1;
+    }
+
     public static boolean isValid(String word) {
         return isMinChar(word) && containsVowelandConsonant(word) && containsOnlyDigitsAndLett(word);
     }

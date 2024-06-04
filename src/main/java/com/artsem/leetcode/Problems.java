@@ -35,6 +35,20 @@ public class Problems {
         ls.remove(2);
     }
 
+    public int minimumChairs(String s) {
+        int count = 0;
+        int max = 0;
+        for(int i = 0; i<s.length(); i++){
+            if(s.charAt(i)=='E'){
+                count++;
+                max = Math.max(max, count);
+            }
+            if(s.charAt(i) == 'L'){
+                count--;
+            }
+        }
+        return max;
+    }
     public int returnToBoundaryCount(int[] nums) {
         int count = 0;
         int boundary = 0;

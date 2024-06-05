@@ -35,6 +35,13 @@ public class Problems {
         ls.remove(2);
     }
 
+    public int minimumChairsStr(String s) {
+        while(s.contains("LE"))
+            s=s.replace("LE","");
+
+        s=s.replace("L","");
+        return s.length();
+    }
     public int minimumChairs(String s) {
         int count = 0;
         int max = 0;

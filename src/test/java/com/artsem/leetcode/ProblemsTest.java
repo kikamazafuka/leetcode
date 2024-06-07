@@ -435,5 +435,15 @@ public class ProblemsTest {
     public void testFindChampion(String s, boolean exp) {
         Assert.assertEquals(exp, ValidWord.isValid(s));
     }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @CsvSource({
+            "cb34a, a",
+            "abc, abc",
+            "abcde, 5"
+    })
+    public void testClearDigits(String s, String exp) {
+        Assert.assertEquals(exp, ClearDigits.clearDigits(s));
+    }
 }
 

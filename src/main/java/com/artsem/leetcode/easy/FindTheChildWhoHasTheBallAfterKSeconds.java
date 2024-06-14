@@ -21,4 +21,9 @@ public class FindTheChildWhoHasTheBallAfterKSeconds {
         }
         return position;
     }
+
+    public int numberOfChildMath(int n, int k) {
+
+        return (k / --n & 1) > 0 ? n - k % n : k % n;
+    }
 }

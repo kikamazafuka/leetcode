@@ -72,11 +72,13 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
-                arguments(new int[]{8,6,1,5,3}, 9),
-                arguments(new int[]{5,4,8,7,10,2}, 13),
-                arguments(new int[]{6,5,4,3,4,5}, -1),
-                arguments(new int[]{2,3,1,3,2,4,6,7,9,2,19},  new int[]{2,1,4,3,9,6}, new int[]{2,2,2,1,4,3,3,9,6,7,19}),
-                arguments(new int[]{28,6,22,8,44,17},  new int[]{22,28,8,6}, new int[]{22,28,8,6,17,44})
+                arguments(new String[]{"e","a","b"}, new int[]{0,0,1}, List.of("e","b")),
+                arguments(new String[]{"a","b","c","d"}, new int[]{1,0,1,1}, List.of("a","b","c")),
+                arguments(new String[]{"e","a","b"}, new int[]{0,0,1}, List.of("e","a","b"))
+//                arguments(new int[]{5,4,8,7,10,2}, 13),
+//                arguments(new int[]{6,5,4,3,4,5}, -1),
+//                arguments(new int[]{2,3,1,3,2,4,6,7,9,2,19},  new int[]{2,1,4,3,9,6}, new int[]{2,2,2,1,4,3,3,9,6,7,19}),
+//                arguments(new int[]{28,6,22,8,44,17},  new int[]{22,28,8,6}, new int[]{22,28,8,6,17,44})
         );
     }
 
@@ -444,6 +446,12 @@ public class ProblemsTest {
     })
     public void testClearDigits(String s, String exp) {
         Assert.assertEquals(exp, ClearDigits.clearDigits(s));
+    }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("arraysProvider")
+    public void testGetLongestSubsequence(String [] words,int [] groups, List<String>exp) {
+        Assert.assertEquals(exp, LongestUnequalAdjacentGroupsSubsequenceI.getLongestSubsequence(words, groups));
     }
 }
 

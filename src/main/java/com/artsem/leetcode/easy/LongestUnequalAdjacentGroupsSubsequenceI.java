@@ -17,4 +17,16 @@ public class LongestUnequalAdjacentGroupsSubsequenceI {
         }
         return res;
     }
+
+    public List<String> getWordsInLongestSubsequence(int n, String[] words, int[] groups) {
+        int prev = -1;
+        List<String> ans = new ArrayList<>();
+        for (int i = 0; i < n; ++i) {
+            if (groups[i] != prev) {
+                prev = groups[i];
+                ans.add(words[i]);
+            }
+        }
+        return ans;
+    }
 }

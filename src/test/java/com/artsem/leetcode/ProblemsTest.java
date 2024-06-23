@@ -84,11 +84,13 @@ public class ProblemsTest {
 
     static Stream<Arguments> oneArrayProvider() {
         return Stream.of(
+                arguments(new int[]{1,2,1,3}, 1),
+                arguments(new int[]{1,2,3}, 0),
+                arguments(new int[]{1,2,2,1}, 3),
+                arguments(new int[]{2,14,47,34,19,29,4,38,10,5,45,10,18,11,28,12,39,20,50,9,28,27,36,35,41,35,23,21,5,18,3,11,3,29,25,46,45,42,43,19}, 3),
                 arguments(new int[][]{{0,1},{0,0}}, 0),
                 arguments(new int[][]{{0,0,1},{1,0,1},{0,0,0}}, 1),
-                arguments(new int[]{2,11,10,1,3}, 10,3),
-                arguments(new int[]{39,100,81,98,59,39,20,25}, 39,2),
-                arguments(new int[]{461014807,949525533,461168956,955378962,201853312,868615466,111296775,826211472,787701997,997815735,331703664,767059968,755845780,379172289,799659901,796364207,207726970,164916559,252071916,931039175,986904618,888378704,425066138,845357919,85555200,859575916,890463721,874136800,16923963,283830288,992488637,978932013,941188926}, 364875277,9)
+                arguments(new int[]{1,2,1,3}, 1)
         );
     }
     @Before
@@ -452,6 +454,11 @@ public class ProblemsTest {
     @MethodSource("arraysProvider")
     public void testGetLongestSubsequence(String [] words,int [] groups, List<String>exp) {
         Assert.assertEquals(exp, LongestUnequalAdjacentGroupsSubsequenceI.getLongestSubsequence(words, groups));
+    }
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("oneArrayProvider")
+    public void testDuplicateNumbersXOR(int[] nums, int exp) {
+        Assert.assertEquals(exp, FindTheXOROfNumbersWhichAppearTwice.duplicateNumbersXOR(nums));
     }
 }
 

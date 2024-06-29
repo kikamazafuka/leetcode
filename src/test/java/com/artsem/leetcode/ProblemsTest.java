@@ -465,7 +465,7 @@ public class ProblemsTest {
     @ParameterizedTest(name = "prov: {0} - expect: {2}")
     @MethodSource("arraysProvider")
     public void sumIndicesWithKSetBits(List<Integer> nums, int k, int exp) {
-        Assert.assertEquals(exp, SumOfValuesAtIndicesWithKSetBits.sumIndicesWithKSetBits(nums,k));
+        Assert.assertEquals(exp, SumOfValuesAtIndicesWithKSetBits.sumIndicesWithKSetBitsManipulation(nums,k));
     }
 }
 

@@ -72,7 +72,9 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
-                arguments(new String[]{"e","a","b"}, new int[]{0,0,1}, List.of("e","b")),
+                arguments(List.of(5,10,1,5,2), 1, 13),
+                arguments(List.of(4,3,2,1), 2, 1),
+                arguments(List.of(5,10,1,5,2), 1 ),
                 arguments(new String[]{"a","b","c","d"}, new int[]{1,0,1,1}, List.of("a","b","c")),
                 arguments(new String[]{"e","a","b"}, new int[]{0,0,1}, List.of("e","a","b"))
 //                arguments(new int[]{5,4,8,7,10,2}, 13),
@@ -459,6 +461,11 @@ public class ProblemsTest {
     @MethodSource("oneArrayProvider")
     public void testDuplicateNumbersXOR(int[] nums, int exp) {
         Assert.assertEquals(exp, FindTheXOROfNumbersWhichAppearTwice.duplicateNumbersXOR(nums));
+    }
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("arraysProvider")
+    public void sumIndicesWithKSetBits(List<Integer> nums, int k, int exp) {
+        Assert.assertEquals(exp, SumOfValuesAtIndicesWithKSetBits.sumIndicesWithKSetBits(nums,k));
     }
 }
 

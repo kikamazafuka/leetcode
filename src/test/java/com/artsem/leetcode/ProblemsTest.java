@@ -72,9 +72,10 @@ public class ProblemsTest {
     }
     static Stream<Arguments> arraysProvider() {
         return Stream.of(
-                arguments(List.of(5,10,1,5,2), 1, 13),
-                arguments(List.of(4,3,2,1), 2, 1),
-                arguments(List.of(5,10,1,5,2), 1 ),
+                arguments(List.of(3,1,5,4,2), 2, 4),
+                arguments(List.of(3,1,5,4,2), 5, 5),
+                arguments(List.of(1,1,2,2), 2, 3),
+                arguments(List.of(1,2), 1, 2),
                 arguments(new String[]{"a","b","c","d"}, new int[]{1,0,1,1}, List.of("a","b","c")),
                 arguments(new String[]{"e","a","b"}, new int[]{0,0,1}, List.of("e","a","b"))
 //                arguments(new int[]{5,4,8,7,10,2}, 13),
@@ -466,6 +467,12 @@ public class ProblemsTest {
     @MethodSource("arraysProvider")
     public void sumIndicesWithKSetBits(List<Integer> nums, int k, int exp) {
         Assert.assertEquals(exp, SumOfValuesAtIndicesWithKSetBits.sumIndicesWithKSetBitsManipulation(nums,k));
+    }
+
+    @ParameterizedTest(name = "prov: {0} - expect: {2}")
+    @MethodSource("arraysProvider")
+    public void testMinOperations(List<Integer> nums, int k, int exp) {
+        Assert.assertEquals(exp, MinimumOperationsToCollectElements.minOperations(nums,k));
     }
 }
 

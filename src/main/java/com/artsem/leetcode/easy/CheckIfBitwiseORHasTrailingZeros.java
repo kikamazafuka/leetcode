@@ -12,4 +12,18 @@ public class CheckIfBitwiseORHasTrailingZeros {
         }
         return false;
     }
+    public boolean hasTrailingZerosModulo(int[] nums) {
+        int n = nums.length; // Number of elements in the array `nums`
+
+        // Iterate through the array
+        for (int i = 0; i < n; i++) {
+            // Check if any pair of elements' bitwise OR results in a number with trailing zeros (even number)
+            for (int j = 0; j < n; j++) {
+                if (i != j && (nums[i] | nums[j]) % 2 == 0) {
+                    return true; // Return true if such a pair is found
+                }
+            }
+        }
+        return false;
+    }
 }
